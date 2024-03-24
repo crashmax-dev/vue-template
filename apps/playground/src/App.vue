@@ -1,13 +1,13 @@
 <script setup lang="ts">
 import { UiButton } from '@pnpm-workspace/ui'
-import { add } from '@pnpm-workspace/utils'
+import { divide } from '@pnpm-workspace/utils'
 import { computed, ref } from 'vue'
 
-const count = ref(0)
-const result = computed(() => add(count.value, 1))
+const count = ref(2)
+const result = computed(() => divide(count.value, 2))
 
 function increment() {
-  count.value += 1
+  count.value += 2
 }
 </script>
 
