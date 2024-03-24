@@ -1,0 +1,16 @@
+{
+  "name": "@pnpm-workspace/utils",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "types": "./src/index.ts",
+  "module": "./src/index.ts",
+  "scripts": {
+    "dev": "pnpm type-check --watch",
+    "build": "pnpm type-check",
+    "type-check": "tsc"
+  },
+  "devDependencies": {
+    "vite-plugin-dts": "3.7.3"
+  }
+}

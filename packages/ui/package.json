@@ -1,0 +1,22 @@
+{
+  "name": "@pnpm-workspace/ui",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "types": "./src/index.ts",
+  "module": "./src/index.ts",
+  "scripts": {
+    "dev": "pnpm type-check --watch",
+    "build": "pnpm type-check",
+    "type-check": "vue-tsc"
+  },
+  "dependencies": {
+    "vue": "3.4.21"
+  },
+  "devDependencies": {
+    "vue-tsc": "2.0.7"
+  },
+  "peerDependencies": {
+    "vue": ">=3.0.0"
+  }
+}

@@ -1,0 +1,19 @@
+{
+  "name": "@pnpm-workspace/root",
+  "type": "module",
+  "private": true,
+  "scripts": {
+    "dev": "turbo dev",
+    "build": "turbo build --filter=./apps/*",
+    "build:packages": "turbo build --filter=./packages/*",
+    "format": "prettier --write \"**/*.{js,ts,tsx,json}\""
+  },
+  "devDependencies": {
+    "@crashmax/prettier-config": "5.0.2",
+    "@types/node": "20.11.30",
+    "rimraf": "5.0.5",
+    "turbo": "1.13.0",
+    "typescript": "5.4.3",
+    "vite": "5.2.5"
+  }
+}
