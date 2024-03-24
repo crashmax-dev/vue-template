@@ -9,6 +9,9 @@ permissions:
   id-token: write
   contents: write
 
+env:
+  TURBO_TELEMETRY_DEBUG: 1
+
 jobs:
   cache-and-install:
     runs-on: ubuntu-latest
