@@ -5,9 +5,12 @@
   "type": "module",
   "types": "./src/index.ts",
   "module": "./src/index.ts",
+  "files": [
+    "dist"
+  ],
   "scripts": {
     "dev": "pnpm type-check --watch",
-    "build": "pnpm type-check",
+    "build": "pnpm type-check && vite build",
     "type-check": "tsc"
   },
   "devDependencies": {
