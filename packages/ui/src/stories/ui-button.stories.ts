@@ -16,14 +16,27 @@ export default meta
 
 type Story = StoryObj<typeof UiButton>
 
-export const Primary: Story = {
+const buttonTemplate = '<ui-button v-bind="args">Button</ui-button>'
+
+const BaseButton: Story = {
   render: (args) => ({
     components: { UiButton },
     setup() {
       return { args }
     },
-    template: '<ui-button v-bind="args">Button</ui-button>'
-  }),
+    template: buttonTemplate
+  })
+}
+
+export const SmallButton: Story = {
+  ...BaseButton,
+  args: {
+    size: 'small'
+  }
+}
+
+export const ButtonLarge: Story = {
+  ...BaseButton,
   args: {
     size: 'large'
   }

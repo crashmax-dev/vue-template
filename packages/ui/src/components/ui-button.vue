@@ -16,6 +16,8 @@ const buttonSize = computed(() => (props.size === 'small' ? '0.5rem' : '1rem'))
 
 <style scoped>
 button {
+  font-family: inherit;
+  font-weight: 600;
   cursor: pointer;
   background: #333;
   border-radius: 6px;

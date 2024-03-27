@@ -1,7 +1,6 @@
 {
   "recommendations": [
     "vue.volar",
-    "ms-playwright.playwright",
     "dbaeumer.vscode-eslint"
   ]
 }

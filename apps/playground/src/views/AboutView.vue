@@ -14,12 +14,7 @@ function increment() {
 <template>
   <div class="about">
     <h1>This is an about page</h1>
-    <ui-button
-      v-if="clicks"
-      class="sefsef"
-      size="large"
-      @click="increment"
-    >
+    <ui-button size="small" @click="increment">
       Count {{ count }}
     </ui-button>
   </div>
