@@ -9,3 +9,7 @@ Thumbs.db
 
 storybook-static
 *storybook.log
+
+coverage
+test-results/
+playwright-report/

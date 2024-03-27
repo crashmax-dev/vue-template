@@ -1,20 +1,34 @@
 {
-  "name": "@pnpm-workspace/playground",
-  "private": true,
-  "version": "0.0.0",
+  "name": "playground",
   "type": "module",
+  "version": "0.0.0",
+  "private": true,
   "scripts": {
     "dev": "vite",
-    "build": "vue-tsc && vite build",
-    "preview": "vite preview"
+    "build": "pnpm type-check && vite build",
+    "preview": "vite preview",
+    "test:unit": "vitest",
+    "test:unit-ui": "vitest --ui",
+    "test:e2e": "playwright test",
+    "type-check": "vue-tsc --build --force"
   },
   "dependencies": {
     "@pnpm-workspace/ui": "workspace:*",
     "@pnpm-workspace/utils": "workspace:*",
-    "vue": "3.4.21"
+    "pinia": "2.1.7",
+    "vue": "3.4.21",
+    "vue-router": "4.3.0"
   },
   "devDependencies": {
+    "@playwright/test": "1.42.1",
+    "@tsconfig/node20": "20.1.4",
+    "@types/jsdom": "21.1.6",
     "@vitejs/plugin-vue": "5.0.4",
+    "@vitest/ui": "1.4.0",
+    "@vue/test-utils": "2.4.5",
+    "@vue/tsconfig": "0.5.1",
+    "jsdom": "24.0.0",
+    "vitest": "1.4.0",
     "vue-tsc": "2.0.7"
   }
 }

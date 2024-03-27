@@ -6,12 +6,12 @@
     "dev": "turbo dev",
     "build": "turbo build --filter=./apps/*",
     "build:packages": "turbo build --filter=./packages/*",
-    "format": "prettier --write \"**/*.{js,ts,tsx,json}\""
+    "lint": "eslint .",
+    "lint:fix": "eslint . --fix"
   },
   "devDependencies": {
-    "@crashmax/prettier-config": "5.0.2",
+    "@antfu/eslint-config": "2.11.0",
     "@types/node": "20.11.30",
-    "rimraf": "5.0.5",
     "turbo": "1.13.0",
     "typescript": "5.4.3",
     "vite": "5.2.6"

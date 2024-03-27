@@ -1,16 +1,16 @@
 <script setup lang="ts">
-import { computed } from 'vue';
+import { computed } from 'vue'
 
 const props = defineProps<{
   size: 'small' | 'large'
 }>()
 
-const buttonSize = computed(() => props.size === 'small' ? '0.5rem' : '1rem')
+const buttonSize = computed(() => (props.size === 'small' ? '0.5rem' : '1rem'))
 </script>
 
 <template>
   <button>
-    <slot></slot>
+    <slot />
   </button>
 </template>
 

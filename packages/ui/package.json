@@ -1,17 +1,20 @@
 {
   "name": "@pnpm-workspace/ui",
-  "private": true,
-  "version": "0.0.0",
   "type": "module",
-  "types": "./src/index.ts",
+  "version": "0.0.0",
+  "private": true,
   "module": "./src/index.ts",
+  "types": "./src/index.ts",
   "scripts": {
     "dev": "pnpm run \"/^dev:.*/\"",
     "build": "pnpm type-check",
     "type-check": "vue-tsc",
     "dev:type-check": "pnpm type-check --watch",
-    "dev:storybook": "storybook dev -p 6006",
+    "dev:storybook": "storybook dev -p 6006 --no-open",
     "build-storybook": "storybook build"
+  },
+  "peerDependencies": {
+    "vue": ">=3.0.0"
   },
   "dependencies": {
     "vue": "3.4.21"
@@ -27,8 +30,5 @@
     "@vitejs/plugin-vue": "5.0.4",
     "storybook": "8.0.4",
     "vue-tsc": "2.0.7"
-  },
-  "peerDependencies": {
-    "vue": ">=3.0.0"
   }
 }
