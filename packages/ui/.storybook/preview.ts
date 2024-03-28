@@ -2,7 +2,7 @@ import type { Preview } from '@storybook/vue3'
 import { templateDecorator } from './template-decorator.js'
 import { themeDecorator } from './theme-decorator.js'
 import './style.css'
-import '../src/themes/zinc.css'
+import '../src/themes/violet.css'
 
 const preview: Preview = {
   decorators: [templateDecorator, themeDecorator],

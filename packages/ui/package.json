@@ -3,8 +3,17 @@
   "type": "module",
   "version": "0.0.0",
   "private": true,
-  "module": "./src/index.ts",
-  "types": "./src/index.ts",
+  "exports": {
+    ".": {
+      "types": "./src/index.ts",
+      "import": "./src/index.ts"
+    },
+    "./composables": {
+      "types": "./src/composables/index.ts",
+      "import": "./src/composables/index.ts"
+    },
+    "./themes/*": "./src/themes/*.css"
+  },
   "scripts": {
     "dev": "pnpm run \"/^dev:.*/\"",
     "build": "pnpm type-check",
@@ -17,6 +26,7 @@
     "vue": ">=3.0.0"
   },
   "dependencies": {
+    "class-variance-authority": "0.7.0",
     "vue": "3.4.21"
   },
   "devDependencies": {

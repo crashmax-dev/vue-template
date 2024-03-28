@@ -1,19 +1,27 @@
 <script setup lang="ts">
-import { onMounted, provide, ref, watch } from 'vue'
+import { computed, onMounted, provide, ref, watch } from 'vue'
 import type { Theme, UseTheme } from '../composables/use-theme.js'
 
 const props = withDefaults(defineProps<{
+  /**
+   * @default 'light'
+   */
   theme: Theme
 }>(), {
   theme: 'light'
 })
 
 const theme = ref<Theme>(props.theme)
-watch(() => props.theme, toggleTheme)
+const isDark = computed(() => theme.value === 'dark')
+watch(() => props.theme, toggleDarkTheme)
 
 function toggleTheme() {
-  const isDark = theme.value === 'dark'
-  document.documentElement.classList.toggle('dark', isDark)
+  theme.value = isDark.value ? 'light' : 'dark'
+  toggleDarkTheme()
+}
+
+function toggleDarkTheme() {
+  document.documentElement.classList.toggle('dark', isDark.value)
 }
 
 onMounted(() => {
