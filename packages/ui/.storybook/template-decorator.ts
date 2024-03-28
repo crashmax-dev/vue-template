@@ -2,9 +2,9 @@
 import { addons, makeDecorator } from '@storybook/preview-api'
 import { h, onMounted, watch } from 'vue'
 
-export const vueTemplateDecorator = makeDecorator({
-  name: 'vue-template-decorator',
-  parameterName: 'vue-template',
+export const templateDecorator = makeDecorator({
+  name: 'template-decorator',
+  parameterName: 'template-decorator',
   wrapper: (storyFn, context) => {
     const story = storyFn(context)
 

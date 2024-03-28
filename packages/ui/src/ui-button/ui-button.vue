@@ -5,7 +5,7 @@ const props = defineProps<{
   size: 'small' | 'large'
 }>()
 
-const buttonSize = computed(() => (props.size === 'small' ? '0.5rem' : '1rem'))
+const buttonSize = computed(() => props.size === 'small' ? '0.5rem' : '1rem')
 </script>
 
 <template>
@@ -19,15 +19,18 @@ button {
   font-family: inherit;
   font-weight: 600;
   cursor: pointer;
-  background: #333;
+  background: hsl(var(--primary));
   border-radius: 6px;
-  color: #fff;
-  border: none;
+  color: hsl(var(--primary-foreground));
   padding: v-bind(buttonSize);
-  transition: background 0.3s;
+  border: none;
+
+  transition-property: background;
+  transition-timing-function: cubic-bezier(.4, 0, .2, 1);
+  transition-duration: .15s
 }
 
 button:hover {
-  background: #444;
+  background: hsl(var(--primary) / .9);
 }
 </style>
