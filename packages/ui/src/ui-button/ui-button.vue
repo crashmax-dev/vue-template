@@ -5,7 +5,7 @@ export type ButtonProps = VariantProps<typeof button>
 
 withDefaults(defineProps<{ variant: ButtonProps['variant'], size: ButtonProps['size'] }>(), {
   variant: 'primary',
-  size: 'medium'
+  size: 'small'
 })
 
 const button = cva('button', {

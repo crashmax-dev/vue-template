@@ -10,7 +10,7 @@
     "lint:fix": "eslint . --fix"
   },
   "devDependencies": {
-    "@antfu/eslint-config": "2.11.0",
+    "@antfu/eslint-config": "2.11.3",
     "@types/node": "20.11.30",
     "turbo": "1.13.0",
     "typescript": "5.4.3",

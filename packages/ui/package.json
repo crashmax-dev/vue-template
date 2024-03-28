@@ -30,16 +30,16 @@
     "vue": "3.4.21"
   },
   "devDependencies": {
-    "@storybook/addon-essentials": "8.0.4",
-    "@storybook/addon-interactions": "8.0.4",
-    "@storybook/addon-links": "8.0.4",
-    "@storybook/blocks": "8.0.4",
-    "@storybook/preview-api": "8.0.4",
-    "@storybook/test": "8.0.4",
-    "@storybook/vue3": "8.0.4",
-    "@storybook/vue3-vite": "8.0.4",
+    "@storybook/addon-essentials": "8.0.5",
+    "@storybook/addon-interactions": "8.0.5",
+    "@storybook/addon-links": "8.0.5",
+    "@storybook/blocks": "8.0.5",
+    "@storybook/preview-api": "8.0.5",
+    "@storybook/test": "8.0.5",
+    "@storybook/vue3": "8.0.5",
+    "@storybook/vue3-vite": "8.0.5",
     "@vitejs/plugin-vue": "5.0.4",
-    "storybook": "8.0.4",
+    "storybook": "8.0.5",
     "vue-tsc": "2.0.7"
   }
 }
