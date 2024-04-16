@@ -5,6 +5,7 @@ import App from './App.vue'
 import { router } from './router'
 
 import '@pnpm-workspace/ui/themes/zinc'
+import './main.css'
 
 const app = createApp(App)
 

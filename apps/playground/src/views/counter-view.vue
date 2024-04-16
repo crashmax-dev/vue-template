@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import { UiButton } from '@pnpm-workspace/ui'
 import { useTheme } from '@pnpm-workspace/ui/composables'
+
 import { useCounterStore } from '@/stores/counter.js'
 
 const counter = useCounterStore()

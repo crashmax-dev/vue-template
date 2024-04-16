@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import { UiThemeProvider } from '@pnpm-workspace/ui'
 import { RouterLink, RouterView } from 'vue-router'
+
 import { RoutePath } from '@/router'
 </script>
 

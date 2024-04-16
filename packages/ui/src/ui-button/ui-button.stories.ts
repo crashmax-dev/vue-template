@@ -1,6 +1,6 @@
-import type { Meta, StoryObj } from '@storybook/vue3'
-
 import UiButton from './ui-button.vue'
+
+import type { Meta, StoryObj } from '@storybook/vue3'
 
 const meta: Meta<typeof UiButton> = {
   component: UiButton,

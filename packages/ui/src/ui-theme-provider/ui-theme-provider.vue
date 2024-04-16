@@ -1,12 +1,13 @@
 <script setup lang="ts">
 import { computed, onMounted, provide, ref, watch } from 'vue'
+
 import { type Theme, uiThemeInjectionKey } from '../composables/use-theme.js'
 
 const props = withDefaults(defineProps<{
   /**
    * @default 'light'
    */
-  theme: Theme
+  theme?: Theme
 }>(), {
   theme: 'light'
 })

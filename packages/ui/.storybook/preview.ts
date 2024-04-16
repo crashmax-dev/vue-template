@@ -1,7 +1,9 @@
-import type { Preview } from '@storybook/vue3'
 import { templateDecorator } from './template-decorator.js'
 import { themeDecorator } from './theme-decorator.js'
+
 import './style.css'
+import type { Preview } from '@storybook/vue3'
+
 import '../src/themes/violet.css'
 
 const preview: Preview = {

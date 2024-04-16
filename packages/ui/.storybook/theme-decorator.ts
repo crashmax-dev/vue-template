@@ -1,5 +1,6 @@
-import type { Decorator } from '@storybook/vue3'
 import UiThemeProvider from '../src/ui-theme-provider/ui-theme-provider.vue'
+
+import type { Decorator } from '@storybook/vue3'
 
 export const themeDecorator: Decorator = (story, context) => {
   const theme = context.globals.theme || 'light'
