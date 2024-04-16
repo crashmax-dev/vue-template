@@ -15,18 +15,18 @@
     "@pnpm-workspace/ui": "workspace:*",
     "@pnpm-workspace/utils": "workspace:*",
     "pinia": "2.1.7",
-    "vue": "3.4.21",
+    "vue": "3.4.22",
     "vue-router": "4.3.0"
   },
   "devDependencies": {
     "@tsconfig/node20": "20.1.4",
     "@types/jsdom": "21.1.6",
     "@vitejs/plugin-vue": "5.0.4",
-    "@vitest/ui": "1.4.0",
+    "@vitest/ui": "1.5.0",
     "@vue/test-utils": "2.4.5",
     "@vue/tsconfig": "0.5.1",
     "jsdom": "24.0.0",
-    "vitest": "1.4.0",
-    "vue-tsc": "2.0.7"
+    "vitest": "1.5.0",
+    "vue-tsc": "2.0.13"
   }
 }
