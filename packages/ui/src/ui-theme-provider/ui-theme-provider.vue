@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { computed, onMounted, provide, ref, watch } from 'vue'
-import type { Theme, UseTheme } from '../composables/use-theme.js'
+import { type Theme, uiThemeInjectionKey } from '../composables/use-theme.js'
 
 const props = withDefaults(defineProps<{
   /**
@@ -28,7 +28,7 @@ onMounted(() => {
   toggleTheme()
 })
 
-provide<UseTheme>('ui-theme', {
+provide(uiThemeInjectionKey, {
   theme,
   toggleTheme
 })

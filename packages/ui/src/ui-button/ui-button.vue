@@ -3,10 +3,16 @@ import { type VariantProps, cva } from 'class-variance-authority'
 
 export type ButtonProps = VariantProps<typeof button>
 
-withDefaults(defineProps<{ variant: ButtonProps['variant'], size: ButtonProps['size'] }>(), {
-  variant: 'primary',
-  size: 'small'
-})
+withDefaults(
+  defineProps<{
+    variant?: ButtonProps['variant']
+    size?: ButtonProps['size']
+  }>(),
+  {
+    variant: 'primary',
+    size: 'small'
+  }
+)
 
 const button = cva('button', {
   variants: {
@@ -20,7 +26,11 @@ const button = cva('button', {
     }
   },
   compoundVariants: [
-    { variant: 'primary', size: 'medium', class: 'primary-medium' }
+    {
+      variant: 'primary',
+      size: 'medium',
+      class: 'primary-medium'
+    }
   ]
 })
 </script>
@@ -38,6 +48,9 @@ const button = cva('button', {
   border-width: 1px;
   border-style: solid;
   cursor: pointer;
+  touch-action: manipulation;
+  user-select: none;
+  inline-size: fit-content;
 
   transition-property: all;
   transition-timing-function: cubic-bezier(.4, 0, .2, 1);
@@ -47,7 +60,7 @@ const button = cva('button', {
 .primary {
   color: hsl(var(--primary-foreground));
   background-color: hsl(var(--primary));
-  border: transparent;
+  border-color: transparent;
 }
 
 .primary:hover {
