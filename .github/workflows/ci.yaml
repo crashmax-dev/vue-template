@@ -39,11 +39,11 @@ jobs:
       - name: Build apps and packages
         run: pnpm build
 
-      # - name: Deploy to GitHub Pages
-      #   uses: JamesIves/github-pages-deploy-action@v4.5.0
-      #   with:
-      #     branch: gh-pages
-      #     folder: apps/playground/dist
+      - name: Deploy to GitHub Pages
+        uses: JamesIves/github-pages-deploy-action@v4.5.0
+        with:
+          branch: gh-pages
+          folder: packages/ui/storybook-static
 
       # - name: Publish packages to NPM
       #   shell: bash

@@ -16,7 +16,7 @@
   },
   "scripts": {
     "dev": "pnpm run \"/^dev:.*/\"",
-    "build": "pnpm type-check",
+    "build": "pnpm type-check && pnpm build-storybook",
     "type-check": "vue-tsc",
     "dev:type-check": "pnpm type-check --watch",
     "dev:storybook": "storybook dev -p 6006 --no-open",
