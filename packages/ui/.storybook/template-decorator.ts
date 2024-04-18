@@ -1,5 +1,6 @@
 /* eslint-disable ts/ban-ts-comment */
 import { addons, makeDecorator } from '@storybook/preview-api'
+import dedent from 'dedent'
 import { h, onMounted, watch } from 'vue'
 
 export const templateDecorator = makeDecorator({
@@ -23,7 +24,7 @@ export const templateDecorator = makeDecorator({
           try {
             // @ts-expect-error
             const src = context.originalStoryFn(context.args).template
-            const code = formatTemplate(src, context.args)
+            const code = dedent(formatTemplate(src, context.args))
             const channel = addons.getChannel()
 
             channel.emit('storybook/docs/snippet-rendered', {
@@ -31,8 +32,7 @@ export const templateDecorator = makeDecorator({
               args: context.args,
               source: code
             })
-          }
-          catch (e) {
+          } catch (e) {
             console.warn('Failed to render code', e)
           }
         }

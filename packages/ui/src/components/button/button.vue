@@ -18,7 +18,9 @@ const button = cva('button', {
   variants: {
     variant: {
       primary: 'primary',
-      secondary: 'secondary'
+      secondary: 'secondary',
+      outline: 'outline',
+      destructive: 'destructive'
     },
     size: {
       small: 'small',
@@ -28,8 +30,7 @@ const button = cva('button', {
   compoundVariants: [
     {
       variant: 'primary',
-      size: 'medium',
-      class: 'primary-medium'
+      size: 'medium'
     }
   ]
 })
@@ -47,6 +48,8 @@ const button = cva('button', {
   display: inline-flex;
   border-width: 1px;
   border-style: solid;
+  border-radius: calc(var(--radius) - 2px);
+  border-color: hsl(var(--border));
   cursor: pointer;
   touch-action: manipulation;
   user-select: none;
@@ -57,6 +60,7 @@ const button = cva('button', {
   transition-duration: .15s
 }
 
+/* primary */
 .primary {
   color: hsl(var(--primary-foreground));
   background-color: hsl(var(--primary));
@@ -67,16 +71,38 @@ const button = cva('button', {
   background-color: hsl(var(--primary) / .9);
 }
 
+/* secondary */
 .secondary {
   color: hsl(var(--accent-foreground));
   background-color: hsl(var(--accent));
-  border-color: hsl(var(--border));
 }
 
 .secondary:hover {
   background-color: hsl(var(--accent) / .9);
 }
 
+/* outline */
+.outline {
+  color: hsl(var(--accent-foreground));
+  background-color: hsl(var(--background));
+}
+
+.outline:hover {
+  color: hsl(var(--accent-foreground));
+  background-color: hsl(var(--accent));
+}
+
+.destructive {
+  color: hsl(var(--destructive-foreground));
+  background-color: hsl(var(--destructive));
+  border-color: transparent;
+}
+
+.destructive:hover {
+  background-color: hsl(var(--destructive) / .9);
+}
+
+/* sizez */
 .small {
   /* 14px */
   font-size: 0.875rem;
@@ -91,9 +117,5 @@ const button = cva('button', {
   /* 24px */
   line-height: 1.5rem;
   padding: 0.5rem 1rem;
-}
-
-.primary-medium {
-  text-transform: uppercase;
 }
 </style>

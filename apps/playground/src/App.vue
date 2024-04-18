@@ -1,12 +1,12 @@
 <script setup lang="ts">
-import { UiThemeProvider } from '@pnpm-workspace/ui'
+import { VThemeProvider } from '@pnpm-workspace/ui'
 import { RouterLink, RouterView } from 'vue-router'
 
 import { RoutePath } from '@/router'
 </script>
 
 <template>
-  <ui-theme-provider>
+  <v-theme-provider initial-theme="dark">
     <header>
       <nav>
         <router-link :to="RoutePath.Home">
@@ -19,5 +19,5 @@ import { RoutePath } from '@/router'
     </header>
 
     <router-view />
-  </ui-theme-provider>
+  </v-theme-provider>
 </template>

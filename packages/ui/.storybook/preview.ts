@@ -1,10 +1,10 @@
 import { templateDecorator } from './template-decorator.js'
 import { themeDecorator } from './theme-decorator.js'
 
-import './style.css'
 import type { Preview } from '@storybook/vue3'
 
-import '../src/themes/violet.css'
+import '../src/themes/zinc.css'
+import './style.css'
 
 const preview: Preview = {
   decorators: [templateDecorator, themeDecorator],
@@ -21,9 +21,7 @@ const preview: Preview = {
     }
   },
   parameters: {
-    backgrounds: {
-      default: 'light'
-    },
+    backgrounds: { disable: true },
     actions: { argTypesRegex: '^on[A-Z].*' },
     controls: {
       matchers: {

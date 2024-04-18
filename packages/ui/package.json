@@ -26,8 +26,9 @@
     "vue": ">=3.0.0"
   },
   "dependencies": {
+    "@vueuse/core": "10.9.0",
     "class-variance-authority": "0.7.0",
-    "vue": "3.4.22"
+    "vue": "3.4.23"
   },
   "devDependencies": {
     "@storybook/addon-essentials": "8.0.8",
@@ -39,6 +40,7 @@
     "@storybook/vue3": "8.0.8",
     "@storybook/vue3-vite": "8.0.8",
     "@vitejs/plugin-vue": "5.0.4",
+    "dedent": "1.5.3",
     "storybook": "8.0.8",
     "vue-tsc": "2.0.13"
   }

@@ -1,16 +1,18 @@
-import { type InjectionKey, type Ref, inject } from 'vue'
+import { type InjectionKey, inject } from 'vue'
+
+import type { RemovableRef } from '@vueuse/core'
 
 export type Theme = 'light' | 'dark'
 
 export interface UseTheme {
-  theme: Ref<Theme>
-  toggleTheme: () => void
+  theme: RemovableRef<Theme>
+  setTheme: (theme?: Theme) => void
 }
 
-export const uiThemeInjectionKey = Symbol('ui-theme') as InjectionKey<UseTheme>
+export const useThemeInjectionKey = Symbol('v-use-theme') as InjectionKey<UseTheme>
 
-export function useTheme() {
-  const theme = inject(uiThemeInjectionKey)
+export function useTheme(): UseTheme {
+  const theme = inject(useThemeInjectionKey)
 
   if (!theme) {
     throw new Error('useTheme must be used within a UiThemeProvider')

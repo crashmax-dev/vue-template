@@ -1,6 +1,5 @@
 <script setup lang="ts">
-import { UiButton } from '@pnpm-workspace/ui'
-import { useTheme } from '@pnpm-workspace/ui/composables'
+import { VButton, useTheme } from '@pnpm-workspace/ui'
 
 import { useCounterStore } from '@/stores/counter.js'
 
@@ -10,12 +9,12 @@ const theme = useTheme()
 
 <template>
   <div>
-    <ui-button size="small" @click="counter.increment">
+    <v-button size="small" variant="secondary" @click="counter.increment">
       Count {{ counter.count }} * 2 = {{ counter.doubleCount }}
-    </ui-button>
-    <ui-button size="small" @click="theme.toggleTheme">
+    </v-button>
+    <v-button size="small" @click="theme.setTheme()">
       Toggle Theme
-    </ui-button>
+    </v-button>
   </div>
 </template>
 

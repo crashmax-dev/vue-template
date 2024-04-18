@@ -1,11 +1,16 @@
-import UiThemeProvider from '../src/ui-theme-provider/ui-theme-provider.vue'
+import ThemeProvider from '../src/providers/theme-provider.vue'
 
 import type { Decorator } from '@storybook/vue3'
 
 export const themeDecorator: Decorator = (story, context) => {
   const theme = context.globals.theme || 'light'
+
   return {
-    components: { story, UiThemeProvider },
-    template: `<ui-theme-provider theme="${theme}"><story /></ui-theme-provider>`
+    components: { story, ThemeProvider },
+    template: `
+      <theme-provider theme="${theme}" force>
+        <story />
+      </theme-provider>
+    `
   }
 }
