@@ -28,6 +28,7 @@
   "dependencies": {
     "@vueuse/core": "10.9.0",
     "class-variance-authority": "0.7.0",
+    "radix-vue": "1.7.0",
     "vue": "3.4.23"
   },
   "devDependencies": {

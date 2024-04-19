@@ -1,45 +1,50 @@
 <script setup lang="ts">
 import { type VariantProps, cva } from 'class-variance-authority'
+import { Primitive, type PrimitiveProps } from 'radix-vue'
 
-export type ButtonProps = VariantProps<typeof button>
+import type { ButtonHTMLAttributes } from 'vue'
 
-withDefaults(
-  defineProps<{
-    variant?: ButtonProps['variant']
-    size?: ButtonProps['size']
-  }>(),
-  {
-    variant: 'primary',
-    size: 'small'
-  }
-)
+type ButtonVariants = VariantProps<typeof buttonVariants>
 
-const button = cva('button', {
+interface Props extends /* @vue-ignore */ ButtonHTMLAttributes, PrimitiveProps {
+  variant?: ButtonVariants['variant']
+  size?: ButtonVariants['size']
+}
+
+defineOptions({
+  name: 'VButton'
+})
+
+withDefaults(defineProps<Props>(), {
+  variant: 'primary',
+  size: 'medium',
+  as: 'button'
+})
+
+const buttonVariants = cva('button', {
   variants: {
     variant: {
       primary: 'primary',
       secondary: 'secondary',
       outline: 'outline',
-      destructive: 'destructive'
+      danger: 'danger'
     },
     size: {
       small: 'small',
       medium: 'medium'
     }
-  },
-  compoundVariants: [
-    {
-      variant: 'primary',
-      size: 'medium'
-    }
-  ]
+  }
 })
 </script>
 
 <template>
-  <button :class="button({ variant, size })">
+  <primitive
+    :as="as"
+    :as-child="asChild"
+    :class="buttonVariants({ variant, size })"
+  >
     <slot />
-  </button>
+  </primitive>
 </template>
 
 <style scoped>
@@ -92,17 +97,23 @@ const button = cva('button', {
   background-color: hsl(var(--accent));
 }
 
-.destructive {
+.danger {
   color: hsl(var(--destructive-foreground));
   background-color: hsl(var(--destructive));
   border-color: transparent;
 }
 
-.destructive:hover {
+.danger:hover {
   background-color: hsl(var(--destructive) / .9);
 }
 
-/* sizez */
+/* attributes */
+[disabled] {
+  pointer-events: none;
+  opacity: .5;
+}
+
+/* sizes */
 .small {
   /* 14px */
   font-size: 0.875rem;

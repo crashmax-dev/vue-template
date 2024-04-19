@@ -9,10 +9,10 @@ const theme = useTheme()
 
 <template>
   <div>
-    <v-button size="small" variant="secondary" @click="counter.increment">
+    <v-button variant="secondary" @click="counter.increment">
       Count {{ counter.count }} * 2 = {{ counter.doubleCount }}
     </v-button>
-    <v-button size="small" @click="theme.setTheme()">
+    <v-button @click="theme.setTheme()">
       Toggle Theme
     </v-button>
   </div>
