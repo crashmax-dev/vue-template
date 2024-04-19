@@ -44,9 +44,3 @@ jobs:
         with:
           branch: gh-pages
           folder: packages/ui/storybook-static
-
-      # - name: Publish packages to NPM
-      #   shell: bash
-      #   run: |
-      #     echo "//registry.npmjs.org/:_authToken="${{ secrets.NPM_TOKEN }}"" > ~/.npmrc
-      #     pnpm -r --filter='./packages/*' publish --access public --provenance

@@ -2,6 +2,8 @@ import antfu from '@antfu/eslint-config'
 
 export default antfu({
   typescript: true,
+  markdown: true,
+  yaml: true,
   rules: {
     'curly': 'off',
     'no-console': 'off',
