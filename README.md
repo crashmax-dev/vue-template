@@ -23,8 +23,8 @@
 
 ## CI
 
-- Q: How to publish to NPM?
-- A: Add the code below to [.github/workflows/ci.yml](.github/workflows/ci.yml) and add `NPM_TOKEN` to GitHub repository secrets.
+- Q: How do i publish packages to NPM?
+- A: Add the code below to [.github/workflows/ci.yml](.github/workflows/ci.yml) and add `NPM_TOKEN` to the GitHub repository secrets.
 
 ```yaml
 - name: Publish packages to NPM
@@ -32,4 +32,44 @@
   run: |
     echo "//registry.npmjs.org/:_authToken="${{ secrets.NPM_TOKEN }}"" > ~/.npmrc
     pnpm -r --filter='./packages/*' publish --access public --provenance
+```
+
+and create a configuration for `vite.config.ts`
+
+```ts
+import { defineConfig } from 'vite'
+import dts from 'vite-plugin-dts'
+
+export default defineConfig({
+  plugins: [dts()],
+  build: {
+    target: 'esnext',
+    sourcemap: true,
+    minify: false,
+    emptyOutDir: false,
+    lib: {
+      entry: './src/index.ts',
+      name: 'utils',
+      fileName: 'index'
+    },
+    rollupOptions: {
+      output: {
+        exports: 'named'
+      }
+    }
+  }
+})
+```
+and you will need to specify the export in the package.json file
+```json
+{
+  "files": ["dist"],
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js",
+      "require": "./dist/index.umd.cjs"
+    }
+  }
+}
 ```

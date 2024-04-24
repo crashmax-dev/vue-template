@@ -5,8 +5,8 @@
  * "exports": {
  *   ".": {
  *     "types": "./dist/index.d.ts",
- *     "import": "./dist/utils.js",
- *     "require": "./dist/utils.umd.cjs"
+ *     "import": "./dist/index.js",
+ *     "require": "./dist/index.umd.cjs"
  *   }
  * }
  */
@@ -22,9 +22,9 @@ export default defineConfig({
     minify: false,
     emptyOutDir: false,
     lib: {
-      entry: './src/utils.ts',
+      entry: './src/index.ts',
       name: 'utils',
-      fileName: 'utils'
+      fileName: 'index'
     },
     rollupOptions: {
       output: {
