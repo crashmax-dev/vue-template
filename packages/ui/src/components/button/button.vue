@@ -54,7 +54,6 @@ const buttonVariants = cva('button', {
   border-width: 1px;
   border-style: solid;
   border-radius: calc(var(--radius) - 2px);
-  border-color: hsl(var(--border));
   cursor: pointer;
   touch-action: manipulation;
   user-select: none;

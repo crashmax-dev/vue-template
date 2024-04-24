@@ -5,7 +5,6 @@ import App from './App.vue'
 import { router } from './router'
 
 import '@pnpm-workspace/ui/themes/purple'
-import './main.css'
 
 const app = createApp(App)
 

@@ -6,7 +6,7 @@ import { RoutePath } from '@/router'
 </script>
 
 <template>
-  <v-theme-provider theme="dark">
+  <v-theme-provider initial-theme="dark">
     <header>
       <nav>
         <router-link :to="RoutePath.Home">

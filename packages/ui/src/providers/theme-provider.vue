@@ -35,3 +35,23 @@ provide(useThemeInjectionKey, {
 <template>
   <slot />
 </template>
+
+<style>
+* {
+  border-color: hsl(var(--border))
+}
+
+html {
+  -webkit-text-size-adjust: 100%;
+  font-variation-settings: normal
+}
+
+body {
+  background-color: hsl(var(--background));
+  color: hsl(var(--foreground));
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  font-synthesis-weight: none;
+  text-rendering: optimizeLegibility
+}
+</style>
