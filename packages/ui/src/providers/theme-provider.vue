@@ -4,14 +4,11 @@ import { provide, watch } from 'vue'
 
 import { type Theme, useThemeInjectionKey } from '../composables/use-theme.js'
 
-const props = withDefaults(defineProps<{
-  theme: Theme
-  force?: boolean
-}>(), {
-  force: false
-})
+const props = defineProps<{
+  initialTheme: Theme
+}>()
 
-const currentTheme = useLocalStorage<Theme>('theme', props.theme)
+const currentTheme = useLocalStorage<Theme>('theme', props.initialTheme)
 
 function isDark(): boolean {
   return currentTheme.value === 'dark'
@@ -26,10 +23,6 @@ function applyTheme(): void {
 }
 
 watch(currentTheme, () => {
-  if (props.force) {
-    setTheme(props.theme)
-  }
-
   applyTheme()
 }, { immediate: true })
 
