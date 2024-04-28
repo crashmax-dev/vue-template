@@ -8,6 +8,7 @@ export default antfu({
     'curly': 'off',
     'no-console': 'off',
     'no-unused-vars': 'warn',
+    'antfu/if-newline': 'off',
     'unused-imports/no-unused-imports': 'warn'
   },
   vue: {
