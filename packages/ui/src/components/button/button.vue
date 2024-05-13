@@ -51,59 +51,64 @@ const buttonVariants = cva('button', {
 .button {
   font-family: inherit;
   display: inline-flex;
-  border-width: 1px;
-  border-style: solid;
-  border-radius: calc(var(--radius) - 2px);
   cursor: pointer;
   touch-action: manipulation;
   user-select: none;
   inline-size: fit-content;
 
+  border-width: 1px;
+  border-style: solid;
+  border-radius: calc(var(--radius) - 2px);
+
   transition-property: all;
   transition-timing-function: cubic-bezier(.4, 0, .2, 1);
-  transition-duration: .15s
+  transition-duration: .15s;
+
+  color: var(--button-color);
+  background-color: var(--button-background);
+  border-color: var(--button-border-color);
 }
 
 /* primary */
 .primary {
-  color: hsl(var(--primary-foreground));
-  background-color: hsl(var(--primary));
-  border-color: transparent;
+  --button-color: hsl(var(--primary-foreground));
+  --button-background: hsl(var(--primary));
+  --button-border-color: transparent;
 }
 
 .primary:hover {
-  background-color: hsl(var(--primary) / .9);
+  --button-background: hsl(var(--primary) / .9);
 }
 
 /* secondary */
 .secondary {
-  color: hsl(var(--accent-foreground));
-  background-color: hsl(var(--accent));
+  --button-color: hsl(var(--accent-foreground));
+  --button-background: hsl(var(--accent));
 }
 
 .secondary:hover {
-  background-color: hsl(var(--accent) / .9);
+  --button-background: hsl(var(--accent) / .9);
 }
 
 /* outline */
 .outline {
-  color: hsl(var(--accent-foreground));
-  background-color: hsl(var(--background));
+  --button-color: hsl(var(--accent-foreground));
+  --button-background: hsl(var(--background));
 }
 
 .outline:hover {
   color: hsl(var(--accent-foreground));
-  background-color: hsl(var(--accent));
+  --button-background: hsl(var(--accent));
 }
 
 .danger {
-  color: hsl(var(--destructive-foreground));
-  background-color: hsl(var(--destructive));
-  border-color: transparent;
+  --button-color: hsl(var(--destructive-foreground));
+  --button-background: hsl(var(--destructive));
+  --button-border-color: transparent;
 }
 
 .danger:hover {
-  background-color: hsl(var(--destructive) / .9);
+  --button-background: hsl(var(--destructive) / .9);
 }
 
 /* attributes */
