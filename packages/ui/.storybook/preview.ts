@@ -16,9 +16,9 @@ const preview: Preview = {
         title: 'Theme',
         icon: 'circlehollow',
         items: ['light', 'dark'],
-        dynamicTitle: true
-      }
-    }
+        dynamicTitle: true,
+      },
+    },
   },
   parameters: {
     backgrounds: { disable: true },
@@ -26,10 +26,10 @@ const preview: Preview = {
     controls: {
       matchers: {
         color: /(background|color)$/i,
-        date: /Date$/
-      }
-    }
-  }
+        date: /Date$/,
+      },
+    },
+  },
 }
 
 export default preview

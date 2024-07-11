@@ -12,6 +12,6 @@ export const themeDecorator: Decorator = (story, context) => {
       <theme-provider initial-theme="${theme}">
         <story />
       </theme-provider>
-    `
+    `,
   }
 }

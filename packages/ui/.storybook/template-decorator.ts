@@ -30,7 +30,7 @@ export const templateDecorator = makeDecorator({
             channel.emit('storybook/docs/snippet-rendered', {
               id: context.id,
               args: context.args,
-              source: code
+              source: code,
             })
           } catch (e) {
             console.warn('Failed to render code', e)
@@ -39,9 +39,9 @@ export const templateDecorator = makeDecorator({
 
         // @ts-expect-error
         return () => h(story)
-      }
+      },
     }
-  }
+  },
 })
 
 function propToSource(key: string, value: string): string {
@@ -63,7 +63,7 @@ function formatTemplate(template: string, args: any, replacing = 'v-bind="args"'
     replacing,
     Object.keys(args)
       .map((key) => propToSource(key, args[key]))
-      .join(' ')
+      .join(' '),
   )
 
   return code

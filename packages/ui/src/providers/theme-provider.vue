@@ -28,7 +28,7 @@ watch(currentTheme, () => {
 
 provide(useThemeInjectionKey, {
   theme: currentTheme,
-  setTheme
+  setTheme,
 })
 </script>
 

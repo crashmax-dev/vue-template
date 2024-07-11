@@ -6,18 +6,18 @@ import { RoutePath } from '@/router'
 </script>
 
 <template>
-  <v-theme-provider initial-theme="dark">
+  <VThemeProvider initial-theme="dark">
     <header>
       <nav>
-        <router-link :to="RoutePath.Home">
+        <RouterLink :to="RoutePath.Home">
           Home
-        </router-link>
-        <router-link :to="RoutePath.Counter">
+        </RouterLink>
+        <RouterLink :to="RoutePath.Counter">
           Counter
-        </router-link>
+        </RouterLink>
       </nav>
     </header>
 
-    <router-view />
-  </v-theme-provider>
+    <RouterView />
+  </VThemeProvider>
 </template>

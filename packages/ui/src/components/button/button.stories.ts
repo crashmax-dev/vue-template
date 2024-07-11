@@ -5,22 +5,22 @@ import type { Meta, StoryObj } from '@storybook/vue3'
 const meta: Meta<typeof VButton> = {
   component: VButton,
   parameters: {
-    actions: { disable: true }
+    actions: { disable: true },
   },
   argTypes: {
     variant: {
       control: 'select',
-      options: ['primary', 'secondary', 'outline', 'danger']
+      options: ['primary', 'secondary', 'outline', 'danger'],
     },
     size: {
       control: 'select',
-      options: ['small', 'medium']
+      options: ['small', 'medium'],
     },
     disabled: {
       control: 'boolean',
-      default: false
-    }
-  }
+      default: false,
+    },
+  },
 }
 
 export default meta
@@ -35,8 +35,8 @@ const BaseButton: Story = {
     setup() {
       return { args }
     },
-    template: buttonTemplate
-  })
+    template: buttonTemplate,
+  }),
 }
 
 export const Buttons: Story = {
@@ -54,8 +54,8 @@ export const Buttons: Story = {
         <v-button variant="danger">Danger</v-button>
         <v-button variant="secondary" disabled>Disabled</v-button>
       </div>
-    `
-  })
+    `,
+  }),
 }
 
 export const SizesButton: Story = {
@@ -70,40 +70,40 @@ export const SizesButton: Story = {
         <v-button size="small">Button</v-button>
         <v-button size="medium">Button</v-button>
       </div>
-    `
-  })
+    `,
+  }),
 }
 
 export const PrimaryButton: Story = {
   ...BaseButton,
   name: 'Primary',
   args: {
-    variant: 'primary'
-  }
+    variant: 'primary',
+  },
 }
 
 export const SecondaryButton: Story = {
   ...BaseButton,
   name: 'Secondary',
   args: {
-    variant: 'secondary'
-  }
+    variant: 'secondary',
+  },
 }
 
 export const OutlineButton: Story = {
   ...BaseButton,
   name: 'Outline',
   args: {
-    variant: 'outline'
-  }
+    variant: 'outline',
+  },
 }
 
 export const DangerButton: Story = {
   ...BaseButton,
   name: 'Danger',
   args: {
-    variant: 'danger'
-  }
+    variant: 'danger',
+  },
 }
 
 export const DisabledButton: Story = {
@@ -111,6 +111,6 @@ export const DisabledButton: Story = {
   name: 'Disabled',
   args: {
     variant: 'secondary',
-    disabled: true
-  }
+    disabled: true,
+  },
 }

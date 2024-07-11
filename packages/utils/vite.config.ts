@@ -24,12 +24,13 @@ export default defineConfig({
     lib: {
       entry: './src/index.ts',
       name: 'utils',
-      fileName: 'index'
+      fileName: 'index',
+      formats: ['es'],
     },
     rollupOptions: {
       output: {
-        exports: 'named'
-      }
-    }
-  }
+        exports: 'named',
+      },
+    },
+  },
 })

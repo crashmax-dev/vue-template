@@ -5,20 +5,20 @@ const config: StorybookConfig = {
   addons: [
     '@storybook/addon-links',
     '@storybook/addon-essentials',
-    '@storybook/addon-interactions'
+    '@storybook/addon-interactions',
   ],
   framework: {
     name: '@storybook/vue3-vite',
     options: {
-      docgen: 'vue-component-meta'
-    }
+      docgen: 'vue-component-meta',
+    },
   },
   docs: {
-    autodocs: 'tag'
+    autodocs: 'tag',
   },
   core: {
-    disableTelemetry: true
-  }
+    disableTelemetry: true,
+  },
 }
 
 export default config

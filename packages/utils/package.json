@@ -3,14 +3,18 @@
   "type": "module",
   "version": "0.0.0",
   "private": true,
-  "module": "./src/index.ts",
-  "types": "./src/index.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js"
+    }
+  },
   "files": [
     "dist"
   ],
   "scripts": {
-    "dev": "pnpm type-check --watch",
-    "build": "pnpm type-check && vite build",
+    "dev": "pnpm build --watch",
+    "build": "vite build",
     "type-check": "tsc"
   },
   "devDependencies": {

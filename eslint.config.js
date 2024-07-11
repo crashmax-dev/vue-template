@@ -9,22 +9,20 @@ export default antfu({
     'no-console': 'off',
     'no-unused-vars': 'warn',
     'antfu/if-newline': 'off',
-    'unused-imports/no-unused-imports': 'warn'
+    'unused-imports/no-unused-imports': 'warn',
+    'eslint-comments/no-unlimited-disable': 'off',
   },
   vue: {
     overrides: {
-      'vue/component-name-in-template-casing': ['warn', 'kebab-case', {
-        registeredComponentsOnly: false
-      }],
+      'vue/custom-event-name-casing': ['error', 'kebab-case'],
       'vue/block-order': ['warn', {
-        order: [['script', 'template'], 'style']
-      }]
-    }
+        order: [['script', 'template'], 'style'],
+      }],
+    },
   },
   stylistic: {
     overrides: {
       'style/brace-style': ['warn', '1tbs'],
-      'style/comma-dangle': ['warn', 'never'],
       'style/arrow-parens': 'off',
       'import/order': [
         'warn',
@@ -33,29 +31,34 @@ export default antfu({
             'builtin',
             'external',
             [
-              'internal'
+              'internal',
             ],
             [
               'parent',
-              'sibling'
+              'sibling',
             ],
             'index',
-            'type'
+            'type',
           ],
           'newlines-between': 'always',
           'alphabetize': {
             order: 'asc',
-            caseInsensitive: true
+            caseInsensitive: true,
           },
           'pathGroups': [
             {
-              pattern: 'src/**',
+              pattern: '@pnpm-workspace/**',
+              group: 'external',
+              position: 'before',
+            },
+            {
+              pattern: '@/**',
               group: 'internal',
-              position: 'after'
-            }
-          ]
-        }
-      ]
-    }
-  }
+              position: 'before',
+            },
+          ],
+        },
+      ],
+    },
+  },
 })

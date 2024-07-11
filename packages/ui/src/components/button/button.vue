@@ -12,13 +12,13 @@ interface Props extends /* @vue-ignore */ ButtonHTMLAttributes, PrimitiveProps {
 }
 
 defineOptions({
-  name: 'VButton'
+  name: 'VButton',
 })
 
 withDefaults(defineProps<Props>(), {
   variant: 'primary',
   size: 'medium',
-  as: 'button'
+  as: 'button',
 })
 
 const buttonVariants = cva('button', {
@@ -27,24 +27,24 @@ const buttonVariants = cva('button', {
       primary: 'primary',
       secondary: 'secondary',
       outline: 'outline',
-      danger: 'danger'
+      danger: 'danger',
     },
     size: {
       small: 'small',
-      medium: 'medium'
-    }
-  }
+      medium: 'medium',
+    },
+  },
 })
 </script>
 
 <template>
-  <primitive
+  <Primitive
     :as="as"
     :as-child="asChild"
     :class="buttonVariants({ variant, size })"
   >
     <slot />
-  </primitive>
+  </Primitive>
 </template>
 
 <style scoped>

@@ -2,7 +2,7 @@ import { createRouter, createWebHistory } from 'vue-router'
 
 export const RoutePath = {
   Home: '/',
-  Counter: '/counter'
+  Counter: '/counter',
 } as const
 
 export const router = createRouter({
@@ -11,12 +11,12 @@ export const router = createRouter({
     {
       path: RoutePath.Home,
       name: 'home',
-      component: () => import('@/views/home-view.vue')
+      component: () => import('@/views/home-view.vue'),
     },
     {
       path: RoutePath.Counter,
       name: 'counter',
-      component: () => import('@/views/counter-view.vue')
-    }
-  ]
+      component: () => import('@/views/counter-view.vue'),
+    },
+  ],
 })
