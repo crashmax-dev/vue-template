@@ -2,7 +2,8 @@
 
 ## Requirements
 
-> Node.js 20.12+, PNPM 9+
+- Node.js >=20.15.x
+- PNPM 9.5.0
 
 ## Stack
 
@@ -14,7 +15,7 @@
 
 ## Scripts
 
-- `pnpm i --frozen-lockfile` — Install node dependencies
+- `pnpm i --frozen-lockfile` — Install dependencies
 - `pnpm dev` — Running playground (http://localhost:5173) and storybook (http://localhost:6006)
 - `pnpm build` — Building apps and packages
 - `pnpm build:packages` — Building all packages
@@ -50,26 +51,28 @@ export default defineConfig({
     lib: {
       entry: './src/index.ts',
       name: 'utils',
-      fileName: 'index'
+      fileName: 'index',
+      formats: ['es'],
     },
     rollupOptions: {
       output: {
-        exports: 'named'
-      }
-    }
-  }
+        exports: 'named',
+      },
+    },
+  },
 })
 ```
 and you will need to specify the export in the package.json file
 ```json
 {
-  "files": ["dist"],
   "exports": {
     ".": {
       "types": "./dist/index.d.ts",
-      "import": "./dist/index.js",
-      "require": "./dist/index.umd.cjs"
+      "import": "./dist/index.js"
     }
-  }
+  },
+  "files": [
+    "dist"
+  ]
 }
 ```

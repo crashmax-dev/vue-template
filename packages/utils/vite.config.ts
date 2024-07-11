@@ -1,16 +1,3 @@
-/**
- * To publish the package to npm
- * you will need to specify exports in package.json
- *
- * "exports": {
- *   ".": {
- *     "types": "./dist/index.d.ts",
- *     "import": "./dist/index.js",
- *     "require": "./dist/index.umd.cjs"
- *   }
- * }
- */
-
 import { defineConfig } from 'vite'
 import dts from 'vite-plugin-dts'
 
