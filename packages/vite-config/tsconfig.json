@@ -16,7 +16,6 @@
     "noUnusedParameters": true,
     "declaration": true,
     "outDir": "dist",
-    "sourceMap": true,
     "isolatedModules": true,
     "skipLibCheck": true
   },
