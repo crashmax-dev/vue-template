@@ -40,6 +40,7 @@ jobs:
       - name: Copy artifacts
         run: |
           mkdir -p dist/histoire
+          touch dist/.nojekyll
           cp -r packages/ui/dist/* dist/histoire
           cp -r apps/playground/dist/* dist
 
