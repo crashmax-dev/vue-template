@@ -39,7 +39,7 @@ jobs:
 
       - name: Copy artifacts
         run: |
-          mkdir -p dist
+          mkdir -p dist/histoire
           cp -r packages/ui/dist/* dist/histoire
           cp -r packages/apps/playground/dist/* dist
 
