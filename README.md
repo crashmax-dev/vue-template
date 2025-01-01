@@ -2,23 +2,22 @@
 
 ## Requirements
 
-- Node.js >=20.15.x
-- PNPM 9.5.0
+- Node.js >=20.18.x
+- PNPM 9.15.x
 
 ## Stack
 
-- PNPM
-- Turborepo
-- Vite
-- Vue
-- Storybook
+- [PNPM](https://pnpm.io)
+- [Turborepo](https://turbo.build/repo/docs)
+- [Vite](https://vite.dev)
+- [Vue](https://vuejs.org)
+- [Histoire](https://histoire.dev)
 
 ## Scripts
 
 - `pnpm i --frozen-lockfile` — Install dependencies
-- `pnpm dev` — Running playground (http://localhost:5173) and storybook (http://localhost:6006)
+- `pnpm dev` — Running apps (http://localhost:5173) and Histoire (http://localhost:6006)
 - `pnpm build` — Building apps and packages
-- `pnpm build:packages` — Building all packages
 - `pnpm lint` — Check the linting
 - `pnpm lint:fix` — Linting and fixing
 

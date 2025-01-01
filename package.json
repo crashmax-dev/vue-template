@@ -10,8 +10,6 @@
   "scripts": {
     "dev": "turbo dev",
     "build": "turbo build",
-    "dev:ui": "turbo dev --filter=./packages/ui",
-    "build:ui": "turbo build --filter=./packages/ui",
     "build:packages": "turbo build --filter=./packages/*",
     "lint": "eslint .",
     "lint:fix": "eslint . --fix"
