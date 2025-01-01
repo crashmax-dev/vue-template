@@ -37,8 +37,14 @@ jobs:
       - name: Build apps and packages
         run: pnpm build
 
+      - name: Copy artifacts
+        run:
+          mkdir -p dist
+          cp -r packages/ui/dist/* dist/histoire
+          cp -r packages/apps/playground/dist/* dist
+
       - name: Deploy to GitHub Pages
         uses: JamesIves/github-pages-deploy-action@v4.7.2
         with:
           branch: gh-pages
-          folder: packages/ui/dist
+          folder: dist

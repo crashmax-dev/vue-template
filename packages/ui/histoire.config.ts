@@ -12,6 +12,7 @@ export default defineConfig({
     HstVue(),
   ],
   vite: {
+    base: './',
     css,
     plugins,
   },
