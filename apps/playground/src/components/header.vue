@@ -26,8 +26,9 @@ const theme = useTheme()
       <VButton
         as="a"
         variant="secondary"
-        href="/histoire"
+        href="/vue-template/histoire"
         target="_blank"
+        class="header-link"
       >
         Histoire
       </VButton>
