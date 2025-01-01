@@ -41,7 +41,7 @@ jobs:
         run: |
           mkdir -p dist/histoire
           cp -r packages/ui/dist/* dist/histoire
-          cp -r packages/apps/playground/dist/* dist
+          cp -r apps/playground/dist/* dist
 
       - name: Deploy to GitHub Pages
         uses: JamesIves/github-pages-deploy-action@v4.7.2
