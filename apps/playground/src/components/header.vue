@@ -24,6 +24,15 @@ const theme = useTheme()
       </VButton>
 
       <VButton
+        as="a"
+        variant="secondary"
+        href="/histoire"
+        target="_blank"
+      >
+        Histoire
+      </VButton>
+
+      <VButton
         class="toggle-theme"
         @click="theme.setTheme()"
       >
