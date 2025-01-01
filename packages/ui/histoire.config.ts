@@ -5,6 +5,7 @@ import { defineConfig } from 'histoire'
 export default defineConfig({
   outDir: 'dist',
   setupFile: './src/histoire/histoire.setup.ts',
+  routerMode: 'hash',
   theme: {
     title: 'UI',
   },
