@@ -1,4 +1,4 @@
-import { double } from '@pnpm-workspace/utils'
+import { double } from '@vue-workspace/utils'
 import { defineStore } from 'pinia'
 import { computed, ref } from 'vue'
 

@@ -1,5 +1,5 @@
 {
-  "name": "@pnpm-workspace/utils",
+  "name": "@vue-workspace/utils",
   "type": "module",
   "version": "0.0.0",
   "private": true,
@@ -13,11 +13,7 @@
     "dist"
   ],
   "scripts": {
-    "dev": "pnpm build --watch",
-    "build": "vite build",
-    "type-check": "tsc"
-  },
-  "devDependencies": {
-    "vite-plugin-dts": "3.9.1"
+    "dev": "tsc --watch",
+    "build": "tsc"
   }
 }

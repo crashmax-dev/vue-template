@@ -1,26 +1,34 @@
 {
-  "name": "@pnpm-workspace/root",
+  "name": "@vue-workspace/root",
   "type": "module",
   "private": true,
-  "packageManager": "pnpm@9.5.0",
+  "packageManager": "pnpm@9.15.0",
   "engines": {
-    "node": ">=20.15.0"
-  },
-  "volta": {
-    "node": "20.15.1"
+    "pnpm": ">=9.15",
+    "node": ">=20.18"
   },
   "scripts": {
     "dev": "turbo dev",
-    "build": "turbo build --filter=./apps/*",
+    "build": "turbo build",
     "build:packages": "turbo build --filter=./packages/*",
     "lint": "eslint .",
     "lint:fix": "eslint . --fix"
   },
   "devDependencies": {
-    "@antfu/eslint-config": "2.22.0",
-    "@types/node": "20.14.10",
-    "turbo": "2.0.6",
-    "typescript": "5.4.5",
-    "vite": "5.3.3"
+    "@antfu/eslint-config": "3.9.2",
+    "@iconify-json/heroicons-outline": "1.2.1",
+    "@tsconfig/node20": "20.1.4",
+    "@types/node": "20.17.9",
+    "@vitejs/plugin-vue": "5.2.1",
+    "@vue/tsconfig": "0.7.0",
+    "sass-embedded": "1.83.0",
+    "tsx": "4.19.2",
+    "turbo": "2.3.3",
+    "typescript": "5.6.3",
+    "unplugin-icons": "0.22.0",
+    "unplugin-vue-components": "0.28.0",
+    "vite": "5.4.11",
+    "vite-plugin-static-copy": "2.2.0",
+    "vue-tsc": "2.2.0"
   }
 }

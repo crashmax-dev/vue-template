@@ -1,4 +1,4 @@
-import { type InjectionKey, inject } from 'vue'
+import { inject, type InjectionKey } from 'vue'
 
 import type { RemovableRef } from '@vueuse/core'
 
