@@ -38,7 +38,7 @@ jobs:
         run: pnpm build
 
       - name: Copy artifacts
-        run:
+        run: |
           mkdir -p dist
           cp -r packages/ui/dist/* dist/histoire
           cp -r packages/apps/playground/dist/* dist
