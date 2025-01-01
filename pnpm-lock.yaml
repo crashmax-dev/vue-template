@@ -65,6 +65,9 @@ importers:
       '@vueuse/core':
         specifier: 12.2.0
         version: 12.2.0(typescript@5.6.3)
+      es-module-shims:
+        specifier: 1.10.1
+        version: 1.10.1
       pinia:
         specifier: 2.3.0
         version: 2.3.0(typescript@5.6.3)(vue@3.5.13(typescript@5.6.3))
@@ -90,6 +93,9 @@ importers:
       jsdom:
         specifier: 25.0.1
         version: 25.0.1
+      vite-plugin-static-filehash:
+        specifier: 0.0.8-alpha.2
+        version: 0.0.8-alpha.2
       vitest:
         specifier: 2.1.8
         version: 2.1.8(@types/node@20.17.9)(@vitest/ui@2.1.8)(jsdom@25.0.1)(sass-embedded@1.83.0)
@@ -1437,6 +1443,9 @@ packages:
 
   es-module-lexer@1.5.4:
     resolution: {integrity: sha512-MVNK56NiMrOwitFB7cqDwq0CQutbw+0BvLshJSse0MUNU+y1FC3bUS/AQg7oUng+/wKrrki7JfmwtVHkVfPLlw==}
+
+  es-module-shims@1.10.1:
+    resolution: {integrity: sha512-HSSkRLkqFEyX6GrCAHrSOR5iz/QzQJRqZUF7bFJOZ4aoSw0WoSggfsTIGN2yFbF8v6xjQFhT4HGP6b+0qQZmEQ==}
 
   esbuild@0.21.5:
     resolution: {integrity: sha512-mg3OPMV4hXywwpoDxu3Qda5xCKQi+vCTZq8S9J/EpkhB2HzKXq4SNFZE3+NK93JYxc8VMSep+lOUSC/RVKaBqw==}
@@ -3090,6 +3099,9 @@ packages:
     peerDependencies:
       vite: ^5.0.0 || ^6.0.0
 
+  vite-plugin-static-filehash@0.0.8-alpha.2:
+    resolution: {integrity: sha512-KvIlOms0DnCC4VzqoTiF/7FpFQyUX/ck9LwRRkGEFh0dxc2dG66nDhN7IBjqXlGyvjdsUPBKh29uPLRYme8T0g==}
+
   vite@5.4.11:
     resolution: {integrity: sha512-c7jFQRklXua0mTzneGW9QVyxFjUgwcihC4bXEtujIo2ouWCe1Ajt/amn2PCxYnhYfd5k09JX3SB7OYWFKYqj8Q==}
     engines: {node: ^18.0.0 || >=20.0.0}
@@ -4578,6 +4590,8 @@ snapshots:
       is-arrayish: 0.2.1
 
   es-module-lexer@1.5.4: {}
+
+  es-module-shims@1.10.1: {}
 
   esbuild@0.21.5:
     optionalDependencies:
@@ -6567,6 +6581,11 @@ snapshots:
       fs-extra: 11.2.0
       picocolors: 1.1.1
       vite: 5.4.11(@types/node@20.17.9)(sass-embedded@1.83.0)
+
+  vite-plugin-static-filehash@0.0.8-alpha.2:
+    dependencies:
+      es-module-shims: 1.10.1
+      magic-string: 0.30.17
 
   vite@5.4.11(@types/node@20.17.9)(sass-embedded@1.83.0):
     dependencies:
