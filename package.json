@@ -9,6 +9,7 @@
   },
   "scripts": {
     "dev": "turbo dev",
+    "build": "turbo build",
     "dev:ui": "turbo dev --filter=./packages/ui",
     "build:ui": "turbo build --filter=./packages/ui",
     "build:packages": "turbo build --filter=./packages/*",
@@ -17,19 +18,19 @@
   },
   "devDependencies": {
     "@antfu/eslint-config": "3.9.2",
-    "@iconify-json/heroicons-outline": "1.2.0",
+    "@iconify-json/heroicons-outline": "1.2.1",
     "@tsconfig/node20": "20.1.4",
     "@types/node": "20.17.9",
     "@vitejs/plugin-vue": "5.2.1",
     "@vue/tsconfig": "0.7.0",
-    "sass-embedded": "1.82.0",
+    "sass-embedded": "1.83.0",
     "tsx": "4.19.2",
     "turbo": "2.3.3",
     "typescript": "5.6.3",
-    "unplugin-icons": "0.21.0",
-    "unplugin-vue-components": "0.27.5",
+    "unplugin-icons": "0.22.0",
+    "unplugin-vue-components": "0.28.0",
     "vite": "5.4.11",
     "vite-plugin-static-copy": "2.2.0",
-    "vue-tsc": "2.1.10"
+    "vue-tsc": "2.2.0"
   }
 }

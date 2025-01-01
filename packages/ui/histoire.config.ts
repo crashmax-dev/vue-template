@@ -1,5 +1,5 @@
 import { HstVue } from '@histoire/plugin-vue'
-import { plugins, staticCopyPlugin } from '@vue-workspace/vite-config'
+import { css, plugins } from '@vue-workspace/vite-config'
 import { defineConfig } from 'histoire'
 
 export default defineConfig({
@@ -11,10 +11,8 @@ export default defineConfig({
   plugins: [
     HstVue(),
   ],
-  // vite: {
-  //   plugins: [
-  //     ...plugins,
-  //     staticCopyPlugin,
-  //   ],
-  // },
+  vite: {
+    css,
+    plugins,
+  },
 })

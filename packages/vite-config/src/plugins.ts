@@ -1,32 +1,15 @@
-import { resolve } from 'node:path'
-import { fileURLToPath } from 'node:url'
-
+import path from 'node:path'
+import url from 'node:url'
 import Vue from '@vitejs/plugin-vue'
 import { FileSystemIconLoader } from 'unplugin-icons/loaders'
 import IconsResolver from 'unplugin-icons/resolver'
 import Icons from 'unplugin-icons/vite'
 import Components from 'unplugin-vue-components/vite'
 import { viteStaticCopy } from 'vite-plugin-static-copy'
-
 import type { PluginOption } from 'vite'
 
-const assetsDir = fileURLToPath(new URL('../../../packages/ui/src/assets', import.meta.url))
-
-// https://github.com/sapphi-red/vite-plugin-static-copy
-export const staticCopyPlugin = viteStaticCopy(
-  {
-    targets: [
-      // {
-      //   src: resolve(assetsDir, 'fonts'),
-      //   dest: '',
-      // },
-      // {
-      //   src: `${resolve(assetsDir, 'favicon')}/**`,
-      //   dest: '',
-      // },
-    ],
-  },
-)
+const assetsDir = url.fileURLToPath(new URL('../../../packages/ui/src/assets', import.meta.url))
+const toPosixPath = (filePath: string) => filePath.replace(/\\/g, '/')
 
 export const plugins: PluginOption[] = [
   Vue(),
@@ -43,7 +26,7 @@ export const plugins: PluginOption[] = [
     },
     customCollections: {
       'custom-icon': FileSystemIconLoader(
-        resolve(assetsDir, 'icons'),
+        path.resolve(assetsDir, 'icons'),
         (svg) => svg.replace(/^<svg /, '<svg width="1em" height="1em" '),
       ),
     },
@@ -58,6 +41,15 @@ export const plugins: PluginOption[] = [
           'heroicons-outline',
         ],
       }),
+    ],
+  }),
+  // https://github.com/sapphi-red/vite-plugin-static-copy
+  viteStaticCopy({
+    targets: [
+      {
+        src: toPosixPath(path.join(assetsDir, 'favicon', '**')),
+        dest: '',
+      },
     ],
   }),
 ]

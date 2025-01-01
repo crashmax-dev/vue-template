@@ -1,0 +1,17 @@
+@use '@vue-workspace/ui/themes/zinc' as *;
+
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+Display&display=swap');
+
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+}
+
+html {
+  font-family: 'Noto Sans Display', system-ui, sans-serif;
+  font-size: 1rem;
+}
+
+.icon {
+  font-size: 20px;
+}

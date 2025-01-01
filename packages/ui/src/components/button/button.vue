@@ -1,14 +1,13 @@
 <script setup lang="ts">
-import { type VariantProps, cva } from 'class-variance-authority'
+import { cva, type VariantProps } from 'class-variance-authority'
 import { Primitive, type PrimitiveProps } from 'radix-vue'
-
 import type { ButtonHTMLAttributes } from 'vue'
 
-type ButtonVariants = VariantProps<typeof buttonVariants>
+type ButtonClasses = VariantProps<typeof buttonClasses>
 
 interface Props extends /* @vue-ignore */ ButtonHTMLAttributes, PrimitiveProps {
-  variant?: ButtonVariants['variant']
-  size?: ButtonVariants['size']
+  variant?: ButtonClasses['variant']
+  size?: ButtonClasses['size']
 }
 
 defineOptions({
@@ -21,17 +20,16 @@ withDefaults(defineProps<Props>(), {
   as: 'button',
 })
 
-const buttonVariants = cva('button', {
+const buttonClasses = cva('button', {
   variants: {
     variant: {
-      primary: 'primary',
-      secondary: 'secondary',
-      outline: 'outline',
-      danger: 'danger',
+      primary: 'variant-primary',
+      secondary: 'variant-secondary',
+      danger: 'variant-danger',
     },
     size: {
-      small: 'small',
-      medium: 'medium',
+      small: 'size-small',
+      medium: 'size-medium',
     },
   },
 })
@@ -41,96 +39,83 @@ const buttonVariants = cva('button', {
   <Primitive
     :as="as"
     :as-child="asChild"
-    :class="buttonVariants({ variant, size })"
+    :class="buttonClasses({ variant, size })"
   >
     <slot />
   </Primitive>
 </template>
 
-<style scoped>
+<style scoped lang="scss">
 .button {
+  --button-padding: 0.5rem 1rem;
+
   font-family: inherit;
   display: inline-flex;
   cursor: pointer;
   touch-action: manipulation;
   user-select: none;
   inline-size: fit-content;
-
-  border-width: 1px;
-  border-style: solid;
+  border: none;
   border-radius: calc(var(--radius) - 2px);
-
   transition-property: all;
   transition-timing-function: cubic-bezier(.4, 0, .2, 1);
   transition-duration: .15s;
-
   color: var(--button-color);
   background-color: var(--button-background);
-  border-color: var(--button-border-color);
-}
+  padding: var(--button-padding);
 
-/* primary */
-.primary {
-  --button-color: hsl(var(--primary-foreground));
-  --button-background: hsl(var(--primary));
-  --button-border-color: transparent;
-}
+  /** variants */
+  &.variant {
+    &-primary {
+      --button-color: hsl(var(--primary-foreground));
+      --button-background: hsl(var(--primary));
 
-.primary:hover {
-  --button-background: hsl(var(--primary) / .9);
-}
+      &:hover {
+        --button-background: hsl(var(--primary) / .9);
+      }
+    }
 
-/* secondary */
-.secondary {
-  --button-color: hsl(var(--accent-foreground));
-  --button-background: hsl(var(--accent));
-}
+    &-secondary {
+      --button-color: hsl(var(--accent-foreground));
+      --button-background: hsl(var(--accent));
 
-.secondary:hover {
-  --button-background: hsl(var(--accent) / .9);
-}
+      &:hover {
+        --button-background: hsl(var(--accent) / .9);
+      }
+    }
 
-/* outline */
-.outline {
-  --button-color: hsl(var(--accent-foreground));
-  --button-background: hsl(var(--background));
-}
+    &-danger {
+      --button-color: hsl(var(--destructive-foreground));
+      --button-background: hsl(var(--destructive));
 
-.outline:hover {
-  color: hsl(var(--accent-foreground));
-  --button-background: hsl(var(--accent));
-}
+      &:hover {
+        --button-background: hsl(var(--destructive) / .9);
+      }
+    }
+  }
 
-.danger {
-  --button-color: hsl(var(--destructive-foreground));
-  --button-background: hsl(var(--destructive));
-  --button-border-color: transparent;
-}
+  /** sizes */
+  &.size {
+    &-small {
+      /* 14px */
+      font-size: 0.875rem;
+      /* 20px */
+      line-height: 1.25rem;
+      --button-padding: 0.25rem 0.5rem;
+    }
 
-.danger:hover {
-  --button-background: hsl(var(--destructive) / .9);
-}
+    &-medium {
+      /* 16px */
+      font-size: 1rem;
+      /* 24px */
+      line-height: 1.5rem;
+    }
+  }
 
-/* attributes */
-[disabled] {
-  pointer-events: none;
-  opacity: .5;
-}
-
-/* sizes */
-.small {
-  /* 14px */
-  font-size: 0.875rem;
-  /* 20px */
-  line-height: 1.25rem;
-  padding: 0.25rem 0.5rem;
-}
-
-.medium {
-  /* 16px */
-  font-size: 1rem;
-  /* 24px */
-  line-height: 1.5rem;
-  padding: 0.5rem 1rem;
+  /* attributes */
+  &[disabled] {
+    cursor: not-allowed;
+    opacity: .5;
+  }
 }
 </style>

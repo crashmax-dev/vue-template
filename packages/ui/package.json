@@ -5,7 +5,8 @@
   "private": true,
   "exports": {
     ".": "./src/index.ts",
-    "./assets/*": "./src/assets/*"
+    "./assets/*": "./src/assets/*",
+    "./themes/*": "./src/themes/*.css"
   },
   "files": [
     "src"
@@ -17,9 +18,10 @@
     "type-check": "vue-tsc --noEmit"
   },
   "dependencies": {
-    "@vueuse/core": "12.0.0",
+    "@vueuse/core": "12.2.0",
     "class-variance-authority": "0.7.1",
-    "radix-vue": "1.9.11",
+    "pinia": "2.3.0",
+    "radix-vue": "1.9.12",
     "vue": "3.5.13"
   },
   "devDependencies": {
