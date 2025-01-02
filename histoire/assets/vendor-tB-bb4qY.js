@@ -4773,44 +4773,44 @@ function setRef$1(rawRef, oldRawRef, parentSuspense, vnode, isUnmount = false) {
     }
   }
 }
-let supported$3;
-let perf$3;
+let supported$2;
+let perf$2;
 function startMeasure$1(instance, type) {
   if (instance.appContext.config.performance && isSupported$1()) {
-    perf$3.mark(`vue-${type}-${instance.uid}`);
+    perf$2.mark(`vue-${type}-${instance.uid}`);
   }
   {
-    devtoolsPerfStart$1(instance, type, isSupported$1() ? perf$3.now() : Date.now());
+    devtoolsPerfStart$1(instance, type, isSupported$1() ? perf$2.now() : Date.now());
   }
 }
 function endMeasure$1(instance, type) {
   if (instance.appContext.config.performance && isSupported$1()) {
     const startTag = `vue-${type}-${instance.uid}`;
     const endTag = startTag + `:end`;
-    perf$3.mark(endTag);
-    perf$3.measure(
+    perf$2.mark(endTag);
+    perf$2.measure(
       `<${formatComponentName$1(instance, instance.type)}> ${type}`,
       startTag,
       endTag
     );
-    perf$3.clearMarks(startTag);
-    perf$3.clearMarks(endTag);
+    perf$2.clearMarks(startTag);
+    perf$2.clearMarks(endTag);
   }
   {
-    devtoolsPerfEnd$1(instance, type, isSupported$1() ? perf$3.now() : Date.now());
+    devtoolsPerfEnd$1(instance, type, isSupported$1() ? perf$2.now() : Date.now());
   }
 }
 function isSupported$1() {
-  if (supported$3 !== void 0) {
-    return supported$3;
+  if (supported$2 !== void 0) {
+    return supported$2;
   }
   if (typeof window !== "undefined" && window.performance) {
-    supported$3 = true;
-    perf$3 = window.performance;
+    supported$2 = true;
+    perf$2 = window.performance;
   } else {
-    supported$3 = false;
+    supported$2 = false;
   }
-  return supported$3;
+  return supported$2;
 }
 function initFeatureFlags$1() {
   const needWarn = [];
@@ -8294,7 +8294,7 @@ function initDev$1() {
 {
   initDev$1();
 }
-var isVue2$1 = false;
+var isVue2 = false;
 function set(target, key, val) {
   if (Array.isArray(target)) {
     target.length = Math.max(target.length, key);
@@ -8311,37 +8311,37 @@ function del(target, key) {
   }
   delete target[key];
 }
-function getDevtoolsGlobalHook$1() {
-  return getTarget$1().__VUE_DEVTOOLS_GLOBAL_HOOK__;
+function getDevtoolsGlobalHook() {
+  return getTarget().__VUE_DEVTOOLS_GLOBAL_HOOK__;
 }
-function getTarget$1() {
+function getTarget() {
   return typeof navigator !== "undefined" && typeof window !== "undefined" ? window : typeof global !== "undefined" ? global : {};
 }
-const isProxyAvailable$1 = typeof Proxy === "function";
-const HOOK_SETUP$1 = "devtools-plugin:setup";
-const HOOK_PLUGIN_SETTINGS_SET$1 = "plugin:settings:set";
-let supported$2;
-let perf$2;
-function isPerformanceSupported$1() {
+const isProxyAvailable = typeof Proxy === "function";
+const HOOK_SETUP = "devtools-plugin:setup";
+const HOOK_PLUGIN_SETTINGS_SET = "plugin:settings:set";
+let supported$1;
+let perf$1;
+function isPerformanceSupported() {
   var _a2;
-  if (supported$2 !== void 0) {
-    return supported$2;
+  if (supported$1 !== void 0) {
+    return supported$1;
   }
   if (typeof window !== "undefined" && window.performance) {
-    supported$2 = true;
-    perf$2 = window.performance;
+    supported$1 = true;
+    perf$1 = window.performance;
   } else if (typeof global !== "undefined" && ((_a2 = global.perf_hooks) === null || _a2 === void 0 ? void 0 : _a2.performance)) {
-    supported$2 = true;
-    perf$2 = global.perf_hooks.performance;
+    supported$1 = true;
+    perf$1 = global.perf_hooks.performance;
   } else {
-    supported$2 = false;
+    supported$1 = false;
   }
-  return supported$2;
+  return supported$1;
 }
-function now$1() {
-  return isPerformanceSupported$1() ? perf$2.now() : Date.now();
+function now() {
+  return isPerformanceSupported() ? perf$1.now() : Date.now();
 }
-let ApiProxy$1 = class ApiProxy2 {
+class ApiProxy {
   constructor(plugin2, hook) {
     this.target = null;
     this.targetQueue = [];
@@ -8375,11 +8375,11 @@ let ApiProxy$1 = class ApiProxy2 {
         currentSettings = value;
       },
       now() {
-        return now$1();
+        return now();
       }
     };
     if (hook) {
-      hook.on(HOOK_PLUGIN_SETTINGS_SET$1, (pluginId, value) => {
+      hook.on(HOOK_PLUGIN_SETTINGS_SET, (pluginId, value) => {
         if (pluginId === this.plugin.id) {
           this.fallbacks.setSettings(value);
         }
@@ -8438,16 +8438,16 @@ let ApiProxy$1 = class ApiProxy2 {
       item.resolve(await this.target[item.method](...item.args));
     }
   }
-};
-function setupDevtoolsPlugin$1(pluginDescriptor, setupFn) {
+}
+function setupDevtoolsPlugin(pluginDescriptor, setupFn) {
   const descriptor = pluginDescriptor;
-  const target = getTarget$1();
-  const hook = getDevtoolsGlobalHook$1();
-  const enableProxy = isProxyAvailable$1 && descriptor.enableEarlyProxy;
+  const target = getTarget();
+  const hook = getDevtoolsGlobalHook();
+  const enableProxy = isProxyAvailable && descriptor.enableEarlyProxy;
   if (hook && (target.__VUE_DEVTOOLS_PLUGIN_API_AVAILABLE__ || !enableProxy)) {
-    hook.emit(HOOK_SETUP$1, pluginDescriptor, setupFn);
+    hook.emit(HOOK_SETUP, pluginDescriptor, setupFn);
   } else {
-    const proxy = enableProxy ? new ApiProxy$1(descriptor, hook) : null;
+    const proxy = enableProxy ? new ApiProxy(descriptor, hook) : null;
     const list = target.__VUE_DEVTOOLS_PLUGINS__ = target.__VUE_DEVTOOLS_PLUGINS__ || [];
     list.push({
       pluginDescriptor: descriptor,
@@ -8465,38 +8465,38 @@ function setupDevtoolsPlugin$1(pluginDescriptor, setupFn) {
  */
 let activePinia;
 const setActivePinia = (pinia) => activePinia = pinia;
-const piniaSymbol$1 = Symbol("pinia");
+const piniaSymbol = Symbol("pinia");
 function isPlainObject$1(o2) {
   return o2 && typeof o2 === "object" && Object.prototype.toString.call(o2) === "[object Object]" && typeof o2.toJSON !== "function";
 }
-var MutationType$1;
+var MutationType;
 (function(MutationType2) {
   MutationType2["direct"] = "direct";
   MutationType2["patchObject"] = "patch object";
   MutationType2["patchFunction"] = "patch function";
-})(MutationType$1 || (MutationType$1 = {}));
-const IS_CLIENT$1 = typeof window !== "undefined";
-const USE_DEVTOOLS = IS_CLIENT$1;
-const _global$2 = /* @__PURE__ */ (() => typeof window === "object" && window.window === window ? window : typeof self === "object" && self.self === self ? self : typeof global === "object" && global.global === global ? global : typeof globalThis === "object" ? globalThis : { HTMLElement: null })();
-function bom$1(blob, { autoBom = false } = {}) {
+})(MutationType || (MutationType = {}));
+const IS_CLIENT = typeof window !== "undefined";
+const USE_DEVTOOLS = IS_CLIENT;
+const _global$1 = /* @__PURE__ */ (() => typeof window === "object" && window.window === window ? window : typeof self === "object" && self.self === self ? self : typeof global === "object" && global.global === global ? global : typeof globalThis === "object" ? globalThis : { HTMLElement: null })();
+function bom(blob, { autoBom = false } = {}) {
   if (autoBom && /^\s*(?:text\/\S*|application\/xml|\S*\/\S*\+xml)\s*;.*charset\s*=\s*utf-8/i.test(blob.type)) {
     return new Blob([String.fromCharCode(65279), blob], { type: blob.type });
   }
   return blob;
 }
-function download$1(url, name, opts) {
+function download(url, name, opts) {
   const xhr = new XMLHttpRequest();
   xhr.open("GET", url);
   xhr.responseType = "blob";
   xhr.onload = function() {
-    saveAs$1(xhr.response, name, opts);
+    saveAs(xhr.response, name, opts);
   };
   xhr.onerror = function() {
     console.error("could not download file");
   };
   xhr.send();
 }
-function corsEnabled$1(url) {
+function corsEnabled(url) {
   const xhr = new XMLHttpRequest();
   xhr.open("HEAD", url, false);
   try {
@@ -8505,7 +8505,7 @@ function corsEnabled$1(url) {
   }
   return xhr.status >= 200 && xhr.status <= 299;
 }
-function click$1(node) {
+function click(node) {
   try {
     node.dispatchEvent(new MouseEvent("click"));
   } catch (e2) {
@@ -8514,34 +8514,34 @@ function click$1(node) {
     node.dispatchEvent(evt);
   }
 }
-const _navigator$1 = typeof navigator === "object" ? navigator : { userAgent: "" };
-const isMacOSWebView$1 = /* @__PURE__ */ (() => /Macintosh/.test(_navigator$1.userAgent) && /AppleWebKit/.test(_navigator$1.userAgent) && !/Safari/.test(_navigator$1.userAgent))();
-const saveAs$1 = !IS_CLIENT$1 ? () => {
+const _navigator = typeof navigator === "object" ? navigator : { userAgent: "" };
+const isMacOSWebView = /* @__PURE__ */ (() => /Macintosh/.test(_navigator.userAgent) && /AppleWebKit/.test(_navigator.userAgent) && !/Safari/.test(_navigator.userAgent))();
+const saveAs = !IS_CLIENT ? () => {
 } : (
   // Use download attribute first if possible (#193 Lumia mobile) unless this is a macOS WebView or mini program
-  typeof HTMLAnchorElement !== "undefined" && "download" in HTMLAnchorElement.prototype && !isMacOSWebView$1 ? downloadSaveAs$1 : (
+  typeof HTMLAnchorElement !== "undefined" && "download" in HTMLAnchorElement.prototype && !isMacOSWebView ? downloadSaveAs : (
     // Use msSaveOrOpenBlob as a second approach
-    "msSaveOrOpenBlob" in _navigator$1 ? msSaveAs$1 : (
+    "msSaveOrOpenBlob" in _navigator ? msSaveAs : (
       // Fallback to using FileReader and a popup
-      fileSaverSaveAs$1
+      fileSaverSaveAs
     )
   )
 );
-function downloadSaveAs$1(blob, name = "download", opts) {
+function downloadSaveAs(blob, name = "download", opts) {
   const a2 = document.createElement("a");
   a2.download = name;
   a2.rel = "noopener";
   if (typeof blob === "string") {
     a2.href = blob;
     if (a2.origin !== location.origin) {
-      if (corsEnabled$1(a2.href)) {
-        download$1(blob, name, opts);
+      if (corsEnabled(a2.href)) {
+        download(blob, name, opts);
       } else {
         a2.target = "_blank";
-        click$1(a2);
+        click(a2);
       }
     } else {
-      click$1(a2);
+      click(a2);
     }
   } else {
     a2.href = URL.createObjectURL(blob);
@@ -8549,37 +8549,37 @@ function downloadSaveAs$1(blob, name = "download", opts) {
       URL.revokeObjectURL(a2.href);
     }, 4e4);
     setTimeout(function() {
-      click$1(a2);
+      click(a2);
     }, 0);
   }
 }
-function msSaveAs$1(blob, name = "download", opts) {
+function msSaveAs(blob, name = "download", opts) {
   if (typeof blob === "string") {
-    if (corsEnabled$1(blob)) {
-      download$1(blob, name, opts);
+    if (corsEnabled(blob)) {
+      download(blob, name, opts);
     } else {
       const a2 = document.createElement("a");
       a2.href = blob;
       a2.target = "_blank";
       setTimeout(function() {
-        click$1(a2);
+        click(a2);
       });
     }
   } else {
-    navigator.msSaveOrOpenBlob(bom$1(blob, opts), name);
+    navigator.msSaveOrOpenBlob(bom(blob, opts), name);
   }
 }
-function fileSaverSaveAs$1(blob, name, opts, popup) {
+function fileSaverSaveAs(blob, name, opts, popup) {
   popup = popup || open("", "_blank");
   if (popup) {
     popup.document.title = popup.document.body.innerText = "downloading...";
   }
   if (typeof blob === "string")
-    return download$1(blob, name, opts);
+    return download(blob, name, opts);
   const force = blob.type === "application/octet-stream";
-  const isSafari = /constructor/i.test(String(_global$2.HTMLElement)) || "safari" in _global$2;
+  const isSafari = /constructor/i.test(String(_global$1.HTMLElement)) || "safari" in _global$1;
   const isChromeIOS = /CriOS\/[\d]+/.test(navigator.userAgent);
-  if ((isChromeIOS || force && isSafari || isMacOSWebView$1) && typeof FileReader !== "undefined") {
+  if ((isChromeIOS || force && isSafari || isMacOSWebView) && typeof FileReader !== "undefined") {
     const reader = new FileReader();
     reader.onloadend = function() {
       let url = reader.result;
@@ -8608,7 +8608,7 @@ function fileSaverSaveAs$1(blob, name, opts, popup) {
     }, 4e4);
   }
 }
-function toastMessage$1(message, type) {
+function toastMessage(message, type) {
   const piniaMessage = "🍍 " + message;
   if (typeof __VUE_DEVTOOLS_TOAST__ === "function") {
     __VUE_DEVTOOLS_TOAST__(piniaMessage, type);
@@ -8620,69 +8620,69 @@ function toastMessage$1(message, type) {
     console.log(piniaMessage);
   }
 }
-function isPinia$1(o2) {
+function isPinia(o2) {
   return "_a" in o2 && "install" in o2;
 }
-function checkClipboardAccess$1() {
+function checkClipboardAccess() {
   if (!("clipboard" in navigator)) {
-    toastMessage$1(`Your browser doesn't support the Clipboard API`, "error");
+    toastMessage(`Your browser doesn't support the Clipboard API`, "error");
     return true;
   }
 }
-function checkNotFocusedError$1(error) {
+function checkNotFocusedError(error) {
   if (error instanceof Error && error.message.toLowerCase().includes("document is not focused")) {
-    toastMessage$1('You need to activate the "Emulate a focused page" setting in the "Rendering" panel of devtools.', "warn");
+    toastMessage('You need to activate the "Emulate a focused page" setting in the "Rendering" panel of devtools.', "warn");
     return true;
   }
   return false;
 }
-async function actionGlobalCopyState$1(pinia) {
-  if (checkClipboardAccess$1())
+async function actionGlobalCopyState(pinia) {
+  if (checkClipboardAccess())
     return;
   try {
     await navigator.clipboard.writeText(JSON.stringify(pinia.state.value));
-    toastMessage$1("Global state copied to clipboard.");
+    toastMessage("Global state copied to clipboard.");
   } catch (error) {
-    if (checkNotFocusedError$1(error))
+    if (checkNotFocusedError(error))
       return;
-    toastMessage$1(`Failed to serialize the state. Check the console for more details.`, "error");
+    toastMessage(`Failed to serialize the state. Check the console for more details.`, "error");
     console.error(error);
   }
 }
-async function actionGlobalPasteState$1(pinia) {
-  if (checkClipboardAccess$1())
+async function actionGlobalPasteState(pinia) {
+  if (checkClipboardAccess())
     return;
   try {
-    loadStoresState$1(pinia, JSON.parse(await navigator.clipboard.readText()));
-    toastMessage$1("Global state pasted from clipboard.");
+    loadStoresState(pinia, JSON.parse(await navigator.clipboard.readText()));
+    toastMessage("Global state pasted from clipboard.");
   } catch (error) {
-    if (checkNotFocusedError$1(error))
+    if (checkNotFocusedError(error))
       return;
-    toastMessage$1(`Failed to deserialize the state from clipboard. Check the console for more details.`, "error");
+    toastMessage(`Failed to deserialize the state from clipboard. Check the console for more details.`, "error");
     console.error(error);
   }
 }
-async function actionGlobalSaveState$1(pinia) {
+async function actionGlobalSaveState(pinia) {
   try {
-    saveAs$1(new Blob([JSON.stringify(pinia.state.value)], {
+    saveAs(new Blob([JSON.stringify(pinia.state.value)], {
       type: "text/plain;charset=utf-8"
     }), "pinia-state.json");
   } catch (error) {
-    toastMessage$1(`Failed to export the state as JSON. Check the console for more details.`, "error");
+    toastMessage(`Failed to export the state as JSON. Check the console for more details.`, "error");
     console.error(error);
   }
 }
-let fileInput$1;
-function getFileOpener$1() {
-  if (!fileInput$1) {
-    fileInput$1 = document.createElement("input");
-    fileInput$1.type = "file";
-    fileInput$1.accept = ".json";
+let fileInput;
+function getFileOpener() {
+  if (!fileInput) {
+    fileInput = document.createElement("input");
+    fileInput.type = "file";
+    fileInput.accept = ".json";
   }
   function openFile() {
     return new Promise((resolve2, reject) => {
-      fileInput$1.onchange = async () => {
-        const files = fileInput$1.files;
+      fileInput.onchange = async () => {
+        const files = fileInput.files;
         if (!files)
           return resolve2(null);
         const file = files.item(0);
@@ -8690,28 +8690,28 @@ function getFileOpener$1() {
           return resolve2(null);
         return resolve2({ text: await file.text(), file });
       };
-      fileInput$1.oncancel = () => resolve2(null);
-      fileInput$1.onerror = reject;
-      fileInput$1.click();
+      fileInput.oncancel = () => resolve2(null);
+      fileInput.onerror = reject;
+      fileInput.click();
     });
   }
   return openFile;
 }
-async function actionGlobalOpenStateFile$1(pinia) {
+async function actionGlobalOpenStateFile(pinia) {
   try {
-    const open2 = getFileOpener$1();
+    const open2 = getFileOpener();
     const result = await open2();
     if (!result)
       return;
     const { text, file } = result;
-    loadStoresState$1(pinia, JSON.parse(text));
-    toastMessage$1(`Global state imported from "${file.name}".`);
+    loadStoresState(pinia, JSON.parse(text));
+    toastMessage(`Global state imported from "${file.name}".`);
   } catch (error) {
-    toastMessage$1(`Failed to import the state from JSON. Check the console for more details.`, "error");
+    toastMessage(`Failed to import the state from JSON. Check the console for more details.`, "error");
     console.error(error);
   }
 }
-function loadStoresState$1(pinia, state) {
+function loadStoresState(pinia, state) {
   for (const key in state) {
     const storeState = pinia.state.value[key];
     if (storeState) {
@@ -8721,26 +8721,26 @@ function loadStoresState$1(pinia, state) {
     }
   }
 }
-function formatDisplay$2(display) {
+function formatDisplay$1(display) {
   return {
     _custom: {
       display
     }
   };
 }
-const PINIA_ROOT_LABEL$1 = "🍍 Pinia (root)";
-const PINIA_ROOT_ID$1 = "_root";
-function formatStoreForInspectorTree$1(store) {
-  return isPinia$1(store) ? {
-    id: PINIA_ROOT_ID$1,
-    label: PINIA_ROOT_LABEL$1
+const PINIA_ROOT_LABEL = "🍍 Pinia (root)";
+const PINIA_ROOT_ID = "_root";
+function formatStoreForInspectorTree(store) {
+  return isPinia(store) ? {
+    id: PINIA_ROOT_ID,
+    label: PINIA_ROOT_LABEL
   } : {
     id: store.$id,
     label: store.$id
   };
 }
-function formatStoreForInspectorState$1(store) {
-  if (isPinia$1(store)) {
+function formatStoreForInspectorState(store) {
+  if (isPinia(store)) {
     const storeNames = Array.from(store._s.keys());
     const storeMap = store._s;
     const state2 = {
@@ -8786,7 +8786,7 @@ function formatStoreForInspectorState$1(store) {
   }
   return state;
 }
-function formatEventData$1(events) {
+function formatEventData(events) {
   if (!events)
     return {};
   if (Array.isArray(events)) {
@@ -8804,51 +8804,51 @@ function formatEventData$1(events) {
     });
   } else {
     return {
-      operation: formatDisplay$2(events.type),
-      key: formatDisplay$2(events.key),
+      operation: formatDisplay$1(events.type),
+      key: formatDisplay$1(events.key),
       oldValue: events.oldValue,
       newValue: events.newValue
     };
   }
 }
-function formatMutationType$1(type) {
+function formatMutationType(type) {
   switch (type) {
-    case MutationType$1.direct:
+    case MutationType.direct:
       return "mutation";
-    case MutationType$1.patchFunction:
+    case MutationType.patchFunction:
       return "$patch";
-    case MutationType$1.patchObject:
+    case MutationType.patchObject:
       return "$patch";
     default:
       return "unknown";
   }
 }
-let isTimelineActive$1 = true;
-const componentStateTypes$1 = [];
-const MUTATIONS_LAYER_ID$1 = "pinia:mutations";
-const INSPECTOR_ID$1 = "pinia";
+let isTimelineActive = true;
+const componentStateTypes = [];
+const MUTATIONS_LAYER_ID = "pinia:mutations";
+const INSPECTOR_ID = "pinia";
 const { assign: assign$1$1 } = Object;
-const getStoreType$1 = (id2) => "🍍 " + id2;
-function registerPiniaDevtools$1(app, pinia) {
-  setupDevtoolsPlugin$1({
+const getStoreType = (id2) => "🍍 " + id2;
+function registerPiniaDevtools(app, pinia) {
+  setupDevtoolsPlugin({
     id: "dev.esm.pinia",
     label: "Pinia 🍍",
     logo: "https://pinia.vuejs.org/logo.svg",
     packageName: "pinia",
     homepage: "https://pinia.vuejs.org",
-    componentStateTypes: componentStateTypes$1,
+    componentStateTypes,
     app
   }, (api) => {
     if (typeof api.now !== "function") {
-      toastMessage$1("You seem to be using an outdated version of Vue Devtools. Are you still using the Beta release instead of the stable one? You can find the links at https://devtools.vuejs.org/guide/installation.html.");
+      toastMessage("You seem to be using an outdated version of Vue Devtools. Are you still using the Beta release instead of the stable one? You can find the links at https://devtools.vuejs.org/guide/installation.html.");
     }
     api.addTimelineLayer({
-      id: MUTATIONS_LAYER_ID$1,
+      id: MUTATIONS_LAYER_ID,
       label: `Pinia 🍍`,
       color: 15064968
     });
     api.addInspector({
-      id: INSPECTOR_ID$1,
+      id: INSPECTOR_ID,
       label: "Pinia 🍍",
       icon: "storage",
       treeFilterPlaceholder: "Search stores",
@@ -8856,32 +8856,32 @@ function registerPiniaDevtools$1(app, pinia) {
         {
           icon: "content_copy",
           action: () => {
-            actionGlobalCopyState$1(pinia);
+            actionGlobalCopyState(pinia);
           },
           tooltip: "Serialize and copy the state"
         },
         {
           icon: "content_paste",
           action: async () => {
-            await actionGlobalPasteState$1(pinia);
-            api.sendInspectorTree(INSPECTOR_ID$1);
-            api.sendInspectorState(INSPECTOR_ID$1);
+            await actionGlobalPasteState(pinia);
+            api.sendInspectorTree(INSPECTOR_ID);
+            api.sendInspectorState(INSPECTOR_ID);
           },
           tooltip: "Replace the state with the content of your clipboard"
         },
         {
           icon: "save",
           action: () => {
-            actionGlobalSaveState$1(pinia);
+            actionGlobalSaveState(pinia);
           },
           tooltip: "Save the state as a JSON file"
         },
         {
           icon: "folder_open",
           action: async () => {
-            await actionGlobalOpenStateFile$1(pinia);
-            api.sendInspectorTree(INSPECTOR_ID$1);
-            api.sendInspectorState(INSPECTOR_ID$1);
+            await actionGlobalOpenStateFile(pinia);
+            api.sendInspectorTree(INSPECTOR_ID);
+            api.sendInspectorState(INSPECTOR_ID);
           },
           tooltip: "Import the state from a JSON file"
         }
@@ -8893,12 +8893,12 @@ function registerPiniaDevtools$1(app, pinia) {
           action: (nodeId) => {
             const store = pinia._s.get(nodeId);
             if (!store) {
-              toastMessage$1(`Cannot reset "${nodeId}" store because it wasn't found.`, "warn");
+              toastMessage(`Cannot reset "${nodeId}" store because it wasn't found.`, "warn");
             } else if (typeof store.$reset !== "function") {
-              toastMessage$1(`Cannot reset "${nodeId}" store because it doesn't have a "$reset" method implemented.`, "warn");
+              toastMessage(`Cannot reset "${nodeId}" store because it doesn't have a "$reset" method implemented.`, "warn");
             } else {
               store.$reset();
-              toastMessage$1(`Store "${nodeId}" reset.`);
+              toastMessage(`Store "${nodeId}" reset.`);
             }
           }
         }
@@ -8910,7 +8910,7 @@ function registerPiniaDevtools$1(app, pinia) {
         const piniaStores = payload.componentInstance.proxy._pStores;
         Object.values(piniaStores).forEach((store) => {
           payload.instanceData.state.push({
-            type: getStoreType$1(store.$id),
+            type: getStoreType(store.$id),
             key: "state",
             editable: true,
             value: store._isOptionsAPI ? {
@@ -8934,7 +8934,7 @@ function registerPiniaDevtools$1(app, pinia) {
           });
           if (store._getters && store._getters.length) {
             payload.instanceData.state.push({
-              type: getStoreType$1(store.$id),
+              type: getStoreType(store.$id),
               key: "getters",
               editable: false,
               value: store._getters.reduce((getters, key) => {
@@ -8951,40 +8951,40 @@ function registerPiniaDevtools$1(app, pinia) {
       }
     });
     api.on.getInspectorTree((payload) => {
-      if (payload.app === app && payload.inspectorId === INSPECTOR_ID$1) {
+      if (payload.app === app && payload.inspectorId === INSPECTOR_ID) {
         let stores = [pinia];
         stores = stores.concat(Array.from(pinia._s.values()));
-        payload.rootNodes = (payload.filter ? stores.filter((store) => "$id" in store ? store.$id.toLowerCase().includes(payload.filter.toLowerCase()) : PINIA_ROOT_LABEL$1.toLowerCase().includes(payload.filter.toLowerCase())) : stores).map(formatStoreForInspectorTree$1);
+        payload.rootNodes = (payload.filter ? stores.filter((store) => "$id" in store ? store.$id.toLowerCase().includes(payload.filter.toLowerCase()) : PINIA_ROOT_LABEL.toLowerCase().includes(payload.filter.toLowerCase())) : stores).map(formatStoreForInspectorTree);
       }
     });
     api.on.getInspectorState((payload) => {
-      if (payload.app === app && payload.inspectorId === INSPECTOR_ID$1) {
-        const inspectedStore = payload.nodeId === PINIA_ROOT_ID$1 ? pinia : pinia._s.get(payload.nodeId);
+      if (payload.app === app && payload.inspectorId === INSPECTOR_ID) {
+        const inspectedStore = payload.nodeId === PINIA_ROOT_ID ? pinia : pinia._s.get(payload.nodeId);
         if (!inspectedStore) {
           return;
         }
         if (inspectedStore) {
-          payload.state = formatStoreForInspectorState$1(inspectedStore);
+          payload.state = formatStoreForInspectorState(inspectedStore);
         }
       }
     });
     api.on.editInspectorState((payload, ctx) => {
-      if (payload.app === app && payload.inspectorId === INSPECTOR_ID$1) {
-        const inspectedStore = payload.nodeId === PINIA_ROOT_ID$1 ? pinia : pinia._s.get(payload.nodeId);
+      if (payload.app === app && payload.inspectorId === INSPECTOR_ID) {
+        const inspectedStore = payload.nodeId === PINIA_ROOT_ID ? pinia : pinia._s.get(payload.nodeId);
         if (!inspectedStore) {
-          return toastMessage$1(`store "${payload.nodeId}" not found`, "error");
+          return toastMessage(`store "${payload.nodeId}" not found`, "error");
         }
         const { path } = payload;
-        if (!isPinia$1(inspectedStore)) {
+        if (!isPinia(inspectedStore)) {
           if (path.length !== 1 || !inspectedStore._customProperties.has(path[0]) || path[0] in inspectedStore.$state) {
             path.unshift("$state");
           }
         } else {
           path.unshift("state");
         }
-        isTimelineActive$1 = false;
+        isTimelineActive = false;
         payload.set(inspectedStore, path, payload.state.value);
-        isTimelineActive$1 = true;
+        isTimelineActive = true;
       }
     });
     api.on.editComponentState((payload) => {
@@ -8992,33 +8992,33 @@ function registerPiniaDevtools$1(app, pinia) {
         const storeId = payload.type.replace(/^🍍\s*/, "");
         const store = pinia._s.get(storeId);
         if (!store) {
-          return toastMessage$1(`store "${storeId}" not found`, "error");
+          return toastMessage(`store "${storeId}" not found`, "error");
         }
         const { path } = payload;
         if (path[0] !== "state") {
-          return toastMessage$1(`Invalid path for store "${storeId}":
+          return toastMessage(`Invalid path for store "${storeId}":
 ${path}
 Only state can be modified.`);
         }
         path[0] = "$state";
-        isTimelineActive$1 = false;
+        isTimelineActive = false;
         payload.set(store, path, payload.state.value);
-        isTimelineActive$1 = true;
+        isTimelineActive = true;
       }
     });
   });
 }
-function addStoreToDevtools$1(app, store) {
-  if (!componentStateTypes$1.includes(getStoreType$1(store.$id))) {
-    componentStateTypes$1.push(getStoreType$1(store.$id));
+function addStoreToDevtools(app, store) {
+  if (!componentStateTypes.includes(getStoreType(store.$id))) {
+    componentStateTypes.push(getStoreType(store.$id));
   }
-  setupDevtoolsPlugin$1({
+  setupDevtoolsPlugin({
     id: "dev.esm.pinia",
     label: "Pinia 🍍",
     logo: "https://pinia.vuejs.org/logo.svg",
     packageName: "pinia",
     homepage: "https://pinia.vuejs.org",
-    componentStateTypes: componentStateTypes$1,
+    componentStateTypes,
     app,
     settings: {
       logStoreChanges: {
@@ -9035,32 +9035,32 @@ function addStoreToDevtools$1(app, store) {
   }, (api) => {
     const now2 = typeof api.now === "function" ? api.now.bind(api) : Date.now;
     store.$onAction(({ after, onError, name, args }) => {
-      const groupId = runningActionId$1++;
+      const groupId = runningActionId++;
       api.addTimelineEvent({
-        layerId: MUTATIONS_LAYER_ID$1,
+        layerId: MUTATIONS_LAYER_ID,
         event: {
           time: now2(),
           title: "🛫 " + name,
           subtitle: "start",
           data: {
-            store: formatDisplay$2(store.$id),
-            action: formatDisplay$2(name),
+            store: formatDisplay$1(store.$id),
+            action: formatDisplay$1(name),
             args
           },
           groupId
         }
       });
       after((result) => {
-        activeAction$1 = void 0;
+        activeAction = void 0;
         api.addTimelineEvent({
-          layerId: MUTATIONS_LAYER_ID$1,
+          layerId: MUTATIONS_LAYER_ID,
           event: {
             time: now2(),
             title: "🛬 " + name,
             subtitle: "end",
             data: {
-              store: formatDisplay$2(store.$id),
-              action: formatDisplay$2(name),
+              store: formatDisplay$1(store.$id),
+              action: formatDisplay$1(name),
               args,
               result
             },
@@ -9069,17 +9069,17 @@ function addStoreToDevtools$1(app, store) {
         });
       });
       onError((error) => {
-        activeAction$1 = void 0;
+        activeAction = void 0;
         api.addTimelineEvent({
-          layerId: MUTATIONS_LAYER_ID$1,
+          layerId: MUTATIONS_LAYER_ID,
           event: {
             time: now2(),
             logType: "error",
             title: "💥 " + name,
             subtitle: "end",
             data: {
-              store: formatDisplay$2(store.$id),
-              action: formatDisplay$2(name),
+              store: formatDisplay$1(store.$id),
+              action: formatDisplay$1(name),
               args,
               error
             },
@@ -9091,10 +9091,10 @@ function addStoreToDevtools$1(app, store) {
     store._customProperties.forEach((name) => {
       watch$2(() => unref$1(store[name]), (newValue, oldValue) => {
         api.notifyComponentUpdate();
-        api.sendInspectorState(INSPECTOR_ID$1);
-        if (isTimelineActive$1) {
+        api.sendInspectorState(INSPECTOR_ID);
+        if (isTimelineActive) {
           api.addTimelineEvent({
-            layerId: MUTATIONS_LAYER_ID$1,
+            layerId: MUTATIONS_LAYER_ID,
             event: {
               time: now2(),
               title: "Change",
@@ -9103,7 +9103,7 @@ function addStoreToDevtools$1(app, store) {
                 newValue,
                 oldValue
               },
-              groupId: activeAction$1
+              groupId: activeAction
             }
           });
         }
@@ -9111,18 +9111,18 @@ function addStoreToDevtools$1(app, store) {
     });
     store.$subscribe(({ events, type }, state) => {
       api.notifyComponentUpdate();
-      api.sendInspectorState(INSPECTOR_ID$1);
-      if (!isTimelineActive$1)
+      api.sendInspectorState(INSPECTOR_ID);
+      if (!isTimelineActive)
         return;
       const eventData = {
         time: now2(),
-        title: formatMutationType$1(type),
-        data: assign$1$1({ store: formatDisplay$2(store.$id) }, formatEventData$1(events)),
-        groupId: activeAction$1
+        title: formatMutationType(type),
+        data: assign$1$1({ store: formatDisplay$1(store.$id) }, formatEventData(events)),
+        groupId: activeAction
       };
-      if (type === MutationType$1.patchFunction) {
+      if (type === MutationType.patchFunction) {
         eventData.subtitle = "⤵️";
-      } else if (type === MutationType$1.patchObject) {
+      } else if (type === MutationType.patchObject) {
         eventData.subtitle = "🧩";
       } else if (events && !Array.isArray(events)) {
         eventData.subtitle = events.type;
@@ -9138,7 +9138,7 @@ function addStoreToDevtools$1(app, store) {
         };
       }
       api.addTimelineEvent({
-        layerId: MUTATIONS_LAYER_ID$1,
+        layerId: MUTATIONS_LAYER_ID,
         event: eventData
       });
     }, { detached: true, flush: "sync" });
@@ -9146,80 +9146,80 @@ function addStoreToDevtools$1(app, store) {
     store._hotUpdate = markRaw$1((newStore) => {
       hotUpdate(newStore);
       api.addTimelineEvent({
-        layerId: MUTATIONS_LAYER_ID$1,
+        layerId: MUTATIONS_LAYER_ID,
         event: {
           time: now2(),
           title: "🔥 " + store.$id,
           subtitle: "HMR update",
           data: {
-            store: formatDisplay$2(store.$id),
-            info: formatDisplay$2(`HMR update`)
+            store: formatDisplay$1(store.$id),
+            info: formatDisplay$1(`HMR update`)
           }
         }
       });
       api.notifyComponentUpdate();
-      api.sendInspectorTree(INSPECTOR_ID$1);
-      api.sendInspectorState(INSPECTOR_ID$1);
+      api.sendInspectorTree(INSPECTOR_ID);
+      api.sendInspectorState(INSPECTOR_ID);
     });
     const { $dispose } = store;
     store.$dispose = () => {
       $dispose();
       api.notifyComponentUpdate();
-      api.sendInspectorTree(INSPECTOR_ID$1);
-      api.sendInspectorState(INSPECTOR_ID$1);
-      api.getSettings().logStoreChanges && toastMessage$1(`Disposed "${store.$id}" store 🗑`);
+      api.sendInspectorTree(INSPECTOR_ID);
+      api.sendInspectorState(INSPECTOR_ID);
+      api.getSettings().logStoreChanges && toastMessage(`Disposed "${store.$id}" store 🗑`);
     };
     api.notifyComponentUpdate();
-    api.sendInspectorTree(INSPECTOR_ID$1);
-    api.sendInspectorState(INSPECTOR_ID$1);
-    api.getSettings().logStoreChanges && toastMessage$1(`"${store.$id}" store installed 🆕`);
+    api.sendInspectorTree(INSPECTOR_ID);
+    api.sendInspectorState(INSPECTOR_ID);
+    api.getSettings().logStoreChanges && toastMessage(`"${store.$id}" store installed 🆕`);
   });
 }
-let runningActionId$1 = 0;
-let activeAction$1;
-function patchActionForGrouping$1(store, actionNames, wrapWithProxy) {
+let runningActionId = 0;
+let activeAction;
+function patchActionForGrouping(store, actionNames, wrapWithProxy) {
   const actions = actionNames.reduce((storeActions, actionName) => {
     storeActions[actionName] = toRaw$1(store)[actionName];
     return storeActions;
   }, {});
   for (const actionName in actions) {
     store[actionName] = function() {
-      const _actionId = runningActionId$1;
+      const _actionId = runningActionId;
       const trackedStore = wrapWithProxy ? new Proxy(store, {
         get(...args) {
-          activeAction$1 = _actionId;
+          activeAction = _actionId;
           return Reflect.get(...args);
         },
         set(...args) {
-          activeAction$1 = _actionId;
+          activeAction = _actionId;
           return Reflect.set(...args);
         }
       }) : store;
-      activeAction$1 = _actionId;
+      activeAction = _actionId;
       const retValue = actions[actionName].apply(trackedStore, arguments);
-      activeAction$1 = void 0;
+      activeAction = void 0;
       return retValue;
     };
   }
 }
-function devtoolsPlugin$1({ app, store, options }) {
+function devtoolsPlugin({ app, store, options }) {
   if (store.$id.startsWith("__hot:")) {
     return;
   }
   store._isOptionsAPI = !!options.state;
-  patchActionForGrouping$1(store, Object.keys(options.actions), store._isOptionsAPI);
+  patchActionForGrouping(store, Object.keys(options.actions), store._isOptionsAPI);
   const originalHotUpdate = store._hotUpdate;
   toRaw$1(store)._hotUpdate = function(newStore) {
     originalHotUpdate.apply(this, arguments);
-    patchActionForGrouping$1(store, Object.keys(newStore._hmrPayload.actions), !!store._isOptionsAPI);
+    patchActionForGrouping(store, Object.keys(newStore._hmrPayload.actions), !!store._isOptionsAPI);
   };
-  addStoreToDevtools$1(
+  addStoreToDevtools(
     app,
     // FIXME: is there a way to allow the assignment from Store<Id, S, G, A> to StoreGeneric?
     store
   );
 }
-function createPinia$1() {
+function createPinia() {
   const scope = effectScope$1(true);
   const state = scope.run(() => ref$1({}));
   let _p2 = [];
@@ -9229,17 +9229,17 @@ function createPinia$1() {
       setActivePinia(pinia);
       {
         pinia._a = app;
-        app.provide(piniaSymbol$1, pinia);
+        app.provide(piniaSymbol, pinia);
         app.config.globalProperties.$pinia = pinia;
         if (USE_DEVTOOLS) {
-          registerPiniaDevtools$1(app, pinia);
+          registerPiniaDevtools(app, pinia);
         }
         toBeInstalled.forEach((plugin2) => _p2.push(plugin2));
         toBeInstalled = [];
       }
     },
     use(plugin2) {
-      if (!this._a && !isVue2$1) {
+      if (!this._a && !isVue2) {
         toBeInstalled.push(plugin2);
       } else {
         _p2.push(plugin2);
@@ -9255,7 +9255,7 @@ function createPinia$1() {
     state
   });
   if (USE_DEVTOOLS && typeof Proxy !== "undefined") {
-    pinia.use(devtoolsPlugin$1);
+    pinia.use(devtoolsPlugin);
   }
   return pinia;
 }
@@ -9322,7 +9322,7 @@ const skipHydrateSymbol = Symbol("pinia:skipHydration");
 function shouldHydrate(obj) {
   return !isPlainObject$1(obj) || !obj.hasOwnProperty(skipHydrateSymbol);
 }
-const { assign: assign$3 } = Object;
+const { assign: assign$2 } = Object;
 function isComputed(o2) {
   return !!(isRef$1(o2) && o2.effect);
 }
@@ -9340,7 +9340,7 @@ function createOptionsStore(id2, options, pinia, hot) {
       // use ref() to unwrap refs inside state TODO: check if this is still necessary
       toRefs(ref$1(state ? state() : {}).value)
     ) : toRefs(pinia.state.value[id2]);
-    return assign$3(localState, actions, Object.keys(getters || {}).reduce((computedGetters, name) => {
+    return assign$2(localState, actions, Object.keys(getters || {}).reduce((computedGetters, name) => {
       if (name in localState) {
         console.warn(`[🍍]: A getter cannot have the same name as another state property. Rename one of them. Found with "${name}" in store "${id2}".`);
       }
@@ -9357,7 +9357,7 @@ function createOptionsStore(id2, options, pinia, hot) {
 }
 function createSetupStore($id, setup, options = {}, pinia, hot, isOptionsStore) {
   let scope;
-  const optionsForPlugin = assign$3({ actions: {} }, options);
+  const optionsForPlugin = assign$2({ actions: {} }, options);
   if (!pinia._e.active) {
     throw new Error("Pinia destroyed");
   }
@@ -9400,14 +9400,14 @@ function createSetupStore($id, setup, options = {}, pinia, hot, isOptionsStore) 
     if (typeof partialStateOrMutator === "function") {
       partialStateOrMutator(pinia.state.value[$id]);
       subscriptionMutation = {
-        type: MutationType$1.patchFunction,
+        type: MutationType.patchFunction,
         storeId: $id,
         events: debuggerEvents
       };
     } else {
       mergeReactiveObjects(pinia.state.value[$id], partialStateOrMutator);
       subscriptionMutation = {
-        type: MutationType$1.patchObject,
+        type: MutationType.patchObject,
         payload: partialStateOrMutator,
         storeId: $id,
         events: debuggerEvents
@@ -9426,7 +9426,7 @@ function createSetupStore($id, setup, options = {}, pinia, hot, isOptionsStore) 
     const { state } = options;
     const newState = state ? state() : {};
     this.$patch(($state) => {
-      assign$3($state, newState);
+      assign$2($state, newState);
     });
   } : (
     /* istanbul ignore next */
@@ -9498,16 +9498,16 @@ function createSetupStore($id, setup, options = {}, pinia, hot, isOptionsStore) 
         if (options2.flush === "sync" ? isSyncListening : isListening) {
           callback({
             storeId: $id,
-            type: MutationType$1.direct,
+            type: MutationType.direct,
             events: debuggerEvents
           }, state);
         }
-      }, assign$3({}, $subscribeOptions, options2)));
+      }, assign$2({}, $subscribeOptions, options2)));
       return removeSubscription;
     },
     $dispose
   };
-  const store = reactive$1(assign$3(
+  const store = reactive$1(assign$2(
     {
       _hmrPayload,
       _customProperties: markRaw$1(/* @__PURE__ */ new Set())
@@ -9555,7 +9555,7 @@ function createSetupStore($id, setup, options = {}, pinia, hot, isOptionsStore) 
           // @ts-expect-error
           options.getters[key]
         ) : prop;
-        if (IS_CLIENT$1) {
+        if (IS_CLIENT) {
           const getters = setupStore._getters || // @ts-expect-error: same
           (setupStore._getters = markRaw$1([]));
           getters.push(key);
@@ -9564,8 +9564,8 @@ function createSetupStore($id, setup, options = {}, pinia, hot, isOptionsStore) 
     }
   }
   {
-    assign$3(store, setupStore);
-    assign$3(toRaw$1(store), setupStore);
+    assign$2(store, setupStore);
+    assign$2(toRaw$1(store), setupStore);
   }
   Object.defineProperty(store, "$state", {
     get: () => hot ? hotState.value : pinia.state.value[$id],
@@ -9574,7 +9574,7 @@ function createSetupStore($id, setup, options = {}, pinia, hot, isOptionsStore) 
         throw new Error("cannot set hotState");
       }
       $patch(($state) => {
-        assign$3($state, state);
+        assign$2($state, state);
       });
     }
   });
@@ -9643,7 +9643,7 @@ function createSetupStore($id, setup, options = {}, pinia, hot, isOptionsStore) 
       enumerable: false
     };
     ["_p", "_hmrPayload", "_getters", "_customProperties"].forEach((p2) => {
-      Object.defineProperty(store, p2, assign$3({ value: store[p2] }, nonEnumerable));
+      Object.defineProperty(store, p2, assign$2({ value: store[p2] }, nonEnumerable));
     });
   }
   pinia._p.forEach((extender) => {
@@ -9655,9 +9655,9 @@ function createSetupStore($id, setup, options = {}, pinia, hot, isOptionsStore) 
         options: optionsForPlugin
       }));
       Object.keys(extensions || {}).forEach((key) => store._customProperties.add(key));
-      assign$3(store, extensions);
+      assign$2(store, extensions);
     } else {
-      assign$3(store, scope.run(() => extender({
+      assign$2(store, scope.run(() => extender({
         store,
         app: pinia._a,
         pinia,
@@ -9695,7 +9695,7 @@ function defineStore(idOrOptions, setup, setupOptions) {
     const hasContext = hasInjectionContext();
     pinia = // in test mode, ignore the argument provided as we can always retrieve a
     // pinia instance with getActivePinia()
-    pinia || (hasContext ? inject$1(piniaSymbol$1, null) : null);
+    pinia || (hasContext ? inject$1(piniaSymbol, null) : null);
     if (pinia)
       setActivePinia(pinia);
     if (!activePinia) {
@@ -9717,12 +9717,12 @@ This will fail in production.`);
     const store = pinia._s.get(id2);
     if (hot) {
       const hotId = "__hot:" + id2;
-      const newStore = isSetupStore ? createSetupStore(hotId, setup, options, pinia, true) : createOptionsStore(hotId, assign$3({}, options), pinia, true);
+      const newStore = isSetupStore ? createSetupStore(hotId, setup, options, pinia, true) : createOptionsStore(hotId, assign$2({}, options), pinia, true);
       hot._hotUpdate(newStore);
       delete pinia.state.value[hotId];
       pinia._s.delete(hotId);
     }
-    if (IS_CLIENT$1) {
+    if (IS_CLIENT) {
       const currentInstance2 = getCurrentInstance$1();
       if (currentInstance2 && currentInstance2.proxy && // avoid adding stores that are just built for hot module replacement
       !hot) {
@@ -10841,11 +10841,11 @@ var __spreadValues$1 = (a2, b2) => {
   return a2;
 };
 var __spreadProps = (a2, b2) => __defProps(a2, __getOwnPropDescs(b2));
-function assign$2(to2, from) {
+function assign$1(to2, from) {
   for (const key in from) {
     if (Object.prototype.hasOwnProperty.call(from, key)) {
       if (typeof from[key] === "object" && to2[key]) {
-        assign$2(to2[key], from[key]);
+        assign$1(to2[key], from[key]);
       } else {
         to2[key] = from[key];
       }
@@ -12615,7 +12615,7 @@ function install(app, options2 = {}) {
   if (app.$_vTooltipInstalled)
     return;
   app.$_vTooltipInstalled = true;
-  assign$2(config$1, options2);
+  assign$1(config$1, options2);
   app.directive("tooltip", PrivateVTooltip);
   app.directive("close-popper", PrivateVClosePopper);
   app.component("VTooltip", _sfc_main$1);
@@ -17049,44 +17049,44 @@ const updateSlots = (instance, children, optimized) => {
     }
   }
 };
-let supported$1;
-let perf$1;
+let supported;
+let perf;
 function startMeasure(instance, type) {
   if (instance.appContext.config.performance && isSupported()) {
-    perf$1.mark(`vue-${type}-${instance.uid}`);
+    perf.mark(`vue-${type}-${instance.uid}`);
   }
   {
-    devtoolsPerfStart(instance, type, isSupported() ? perf$1.now() : Date.now());
+    devtoolsPerfStart(instance, type, isSupported() ? perf.now() : Date.now());
   }
 }
 function endMeasure(instance, type) {
   if (instance.appContext.config.performance && isSupported()) {
     const startTag = `vue-${type}-${instance.uid}`;
     const endTag = startTag + `:end`;
-    perf$1.mark(endTag);
-    perf$1.measure(
+    perf.mark(endTag);
+    perf.measure(
       `<${formatComponentName(instance, instance.type)}> ${type}`,
       startTag,
       endTag
     );
-    perf$1.clearMarks(startTag);
-    perf$1.clearMarks(endTag);
+    perf.clearMarks(startTag);
+    perf.clearMarks(endTag);
   }
   {
-    devtoolsPerfEnd(instance, type, isSupported() ? perf$1.now() : Date.now());
+    devtoolsPerfEnd(instance, type, isSupported() ? perf.now() : Date.now());
   }
 }
 function isSupported() {
-  if (supported$1 !== void 0) {
-    return supported$1;
+  if (supported !== void 0) {
+    return supported;
   }
   if (typeof window !== "undefined" && window.performance) {
-    supported$1 = true;
-    perf$1 = window.performance;
+    supported = true;
+    perf = window.performance;
   } else {
-    supported$1 = false;
+    supported = false;
   }
-  return supported$1;
+  return supported;
 }
 function initFeatureFlags() {
   const needWarn = [];
@@ -21901,10 +21901,10 @@ function useClipboard(options = {}) {
     copy
   };
 }
-const _global$1 = typeof globalThis !== "undefined" ? globalThis : typeof window !== "undefined" ? window : typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : {};
+const _global = typeof globalThis !== "undefined" ? globalThis : typeof window !== "undefined" ? window : typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : {};
 const globalKey = "__vueuse_ssr_handlers__";
-_global$1[globalKey] = _global$1[globalKey] || {};
-const handlers = _global$1[globalKey];
+_global[globalKey] = _global[globalKey] || {};
+const handlers = _global[globalKey];
 function getSSRHandler(key, fallback) {
   return handlers[key] || fallback;
 }
@@ -25762,7 +25762,7 @@ function formatRouteLocation(routeLocation, tooltip) {
     }
   };
 }
-function formatDisplay$1(display) {
+function formatDisplay(display) {
   return {
     _custom: {
       display
@@ -25775,7 +25775,7 @@ function addDevtools(app, router, matcher) {
     return;
   router.__hasDevtools = true;
   const id2 = routerId++;
-  setupDevtoolsPlugin$1({
+  setupDevtoolsPlugin({
     id: "org.vuejs.router" + (id2 ? "." + id2 : ""),
     label: "Vue Router",
     packageName: "vue-router",
@@ -25856,7 +25856,7 @@ function addDevtools(app, router, matcher) {
     let navigationId = 0;
     router.beforeEach((to2, from) => {
       const data = {
-        guard: formatDisplay$1("beforeEach"),
+        guard: formatDisplay("beforeEach"),
         from: formatRouteLocation(from, "Current Location during this navigation"),
         to: formatRouteLocation(to2, "Target location")
       };
@@ -25876,7 +25876,7 @@ function addDevtools(app, router, matcher) {
     });
     router.afterEach((to2, from, failure) => {
       const data = {
-        guard: formatDisplay$1("afterEach")
+        guard: formatDisplay("afterEach")
       };
       if (failure) {
         data.failure = {
@@ -25888,9 +25888,9 @@ function addDevtools(app, router, matcher) {
             value: failure
           }
         };
-        data.status = formatDisplay$1("❌");
+        data.status = formatDisplay("❌");
       } else {
-        data.status = formatDisplay$1("✅");
+        data.status = formatDisplay("✅");
       }
       data.from = formatRouteLocation(from, "Current Location during this navigation");
       data.to = formatRouteLocation(to2, "Target location");
@@ -27088,7 +27088,6 @@ const cva = (base, config2) => (props) => {
   }, []);
   return cx(base, getVariantClassNames, getCompoundVariantClassNames, props === null || props === void 0 ? void 0 : props.class, props === null || props === void 0 ? void 0 : props.className);
 };
-var isVue2 = false;
 function ai$1(a2) {
   let t2 = false, e2;
   const n2 = effectScope(true);
@@ -48242,953 +48241,6 @@ const MountStory = /* @__PURE__ */ defineComponent$1({
 function defineSetupVue3(handler) {
   return handler;
 }
-function getDevtoolsGlobalHook() {
-  return getTarget().__VUE_DEVTOOLS_GLOBAL_HOOK__;
-}
-function getTarget() {
-  return typeof navigator !== "undefined" && typeof window !== "undefined" ? window : typeof globalThis !== "undefined" ? globalThis : {};
-}
-const isProxyAvailable = typeof Proxy === "function";
-const HOOK_SETUP = "devtools-plugin:setup";
-const HOOK_PLUGIN_SETTINGS_SET = "plugin:settings:set";
-let supported;
-let perf;
-function isPerformanceSupported() {
-  var _a2;
-  if (supported !== void 0) {
-    return supported;
-  }
-  if (typeof window !== "undefined" && window.performance) {
-    supported = true;
-    perf = window.performance;
-  } else if (typeof globalThis !== "undefined" && ((_a2 = globalThis.perf_hooks) === null || _a2 === void 0 ? void 0 : _a2.performance)) {
-    supported = true;
-    perf = globalThis.perf_hooks.performance;
-  } else {
-    supported = false;
-  }
-  return supported;
-}
-function now() {
-  return isPerformanceSupported() ? perf.now() : Date.now();
-}
-class ApiProxy {
-  constructor(plugin2, hook) {
-    this.target = null;
-    this.targetQueue = [];
-    this.onQueue = [];
-    this.plugin = plugin2;
-    this.hook = hook;
-    const defaultSettings = {};
-    if (plugin2.settings) {
-      for (const id2 in plugin2.settings) {
-        const item = plugin2.settings[id2];
-        defaultSettings[id2] = item.defaultValue;
-      }
-    }
-    const localSettingsSaveId = `__vue-devtools-plugin-settings__${plugin2.id}`;
-    let currentSettings = Object.assign({}, defaultSettings);
-    try {
-      const raw = localStorage.getItem(localSettingsSaveId);
-      const data = JSON.parse(raw);
-      Object.assign(currentSettings, data);
-    } catch (e2) {
-    }
-    this.fallbacks = {
-      getSettings() {
-        return currentSettings;
-      },
-      setSettings(value) {
-        try {
-          localStorage.setItem(localSettingsSaveId, JSON.stringify(value));
-        } catch (e2) {
-        }
-        currentSettings = value;
-      },
-      now() {
-        return now();
-      }
-    };
-    if (hook) {
-      hook.on(HOOK_PLUGIN_SETTINGS_SET, (pluginId, value) => {
-        if (pluginId === this.plugin.id) {
-          this.fallbacks.setSettings(value);
-        }
-      });
-    }
-    this.proxiedOn = new Proxy({}, {
-      get: (_target, prop) => {
-        if (this.target) {
-          return this.target.on[prop];
-        } else {
-          return (...args) => {
-            this.onQueue.push({
-              method: prop,
-              args
-            });
-          };
-        }
-      }
-    });
-    this.proxiedTarget = new Proxy({}, {
-      get: (_target, prop) => {
-        if (this.target) {
-          return this.target[prop];
-        } else if (prop === "on") {
-          return this.proxiedOn;
-        } else if (Object.keys(this.fallbacks).includes(prop)) {
-          return (...args) => {
-            this.targetQueue.push({
-              method: prop,
-              args,
-              resolve: () => {
-              }
-            });
-            return this.fallbacks[prop](...args);
-          };
-        } else {
-          return (...args) => {
-            return new Promise((resolve2) => {
-              this.targetQueue.push({
-                method: prop,
-                args,
-                resolve: resolve2
-              });
-            });
-          };
-        }
-      }
-    });
-  }
-  async setRealTarget(target) {
-    this.target = target;
-    for (const item of this.onQueue) {
-      this.target.on[item.method](...item.args);
-    }
-    for (const item of this.targetQueue) {
-      item.resolve(await this.target[item.method](...item.args));
-    }
-  }
-}
-function setupDevtoolsPlugin(pluginDescriptor, setupFn) {
-  const descriptor = pluginDescriptor;
-  const target = getTarget();
-  const hook = getDevtoolsGlobalHook();
-  const enableProxy = isProxyAvailable && descriptor.enableEarlyProxy;
-  if (hook && (target.__VUE_DEVTOOLS_PLUGIN_API_AVAILABLE__ || !enableProxy)) {
-    hook.emit(HOOK_SETUP, pluginDescriptor, setupFn);
-  } else {
-    const proxy = enableProxy ? new ApiProxy(descriptor, hook) : null;
-    const list = target.__VUE_DEVTOOLS_PLUGINS__ = target.__VUE_DEVTOOLS_PLUGINS__ || [];
-    list.push({
-      pluginDescriptor: descriptor,
-      setupFn,
-      proxy
-    });
-    if (proxy) {
-      setupFn(proxy.proxiedTarget);
-    }
-  }
-}
-/*!
- * pinia v2.3.0
- * (c) 2024 Eduardo San Martin Morote
- * @license MIT
- */
-const piniaSymbol = Symbol("pinia");
-var MutationType;
-(function(MutationType2) {
-  MutationType2["direct"] = "direct";
-  MutationType2["patchObject"] = "patch object";
-  MutationType2["patchFunction"] = "patch function";
-})(MutationType || (MutationType = {}));
-const IS_CLIENT = typeof window !== "undefined";
-const _global = /* @__PURE__ */ (() => typeof window === "object" && window.window === window ? window : typeof self === "object" && self.self === self ? self : typeof global === "object" && global.global === global ? global : typeof globalThis === "object" ? globalThis : { HTMLElement: null })();
-function bom(blob, { autoBom = false } = {}) {
-  if (autoBom && /^\s*(?:text\/\S*|application\/xml|\S*\/\S*\+xml)\s*;.*charset\s*=\s*utf-8/i.test(blob.type)) {
-    return new Blob([String.fromCharCode(65279), blob], { type: blob.type });
-  }
-  return blob;
-}
-function download(url, name, opts) {
-  const xhr = new XMLHttpRequest();
-  xhr.open("GET", url);
-  xhr.responseType = "blob";
-  xhr.onload = function() {
-    saveAs(xhr.response, name, opts);
-  };
-  xhr.onerror = function() {
-    console.error("could not download file");
-  };
-  xhr.send();
-}
-function corsEnabled(url) {
-  const xhr = new XMLHttpRequest();
-  xhr.open("HEAD", url, false);
-  try {
-    xhr.send();
-  } catch (e2) {
-  }
-  return xhr.status >= 200 && xhr.status <= 299;
-}
-function click(node) {
-  try {
-    node.dispatchEvent(new MouseEvent("click"));
-  } catch (e2) {
-    const evt = document.createEvent("MouseEvents");
-    evt.initMouseEvent("click", true, true, window, 0, 0, 0, 80, 20, false, false, false, false, 0, null);
-    node.dispatchEvent(evt);
-  }
-}
-const _navigator = typeof navigator === "object" ? navigator : { userAgent: "" };
-const isMacOSWebView = /* @__PURE__ */ (() => /Macintosh/.test(_navigator.userAgent) && /AppleWebKit/.test(_navigator.userAgent) && !/Safari/.test(_navigator.userAgent))();
-const saveAs = !IS_CLIENT ? () => {
-} : (
-  // Use download attribute first if possible (#193 Lumia mobile) unless this is a macOS WebView or mini program
-  typeof HTMLAnchorElement !== "undefined" && "download" in HTMLAnchorElement.prototype && !isMacOSWebView ? downloadSaveAs : (
-    // Use msSaveOrOpenBlob as a second approach
-    "msSaveOrOpenBlob" in _navigator ? msSaveAs : (
-      // Fallback to using FileReader and a popup
-      fileSaverSaveAs
-    )
-  )
-);
-function downloadSaveAs(blob, name = "download", opts) {
-  const a2 = document.createElement("a");
-  a2.download = name;
-  a2.rel = "noopener";
-  if (typeof blob === "string") {
-    a2.href = blob;
-    if (a2.origin !== location.origin) {
-      if (corsEnabled(a2.href)) {
-        download(blob, name, opts);
-      } else {
-        a2.target = "_blank";
-        click(a2);
-      }
-    } else {
-      click(a2);
-    }
-  } else {
-    a2.href = URL.createObjectURL(blob);
-    setTimeout(function() {
-      URL.revokeObjectURL(a2.href);
-    }, 4e4);
-    setTimeout(function() {
-      click(a2);
-    }, 0);
-  }
-}
-function msSaveAs(blob, name = "download", opts) {
-  if (typeof blob === "string") {
-    if (corsEnabled(blob)) {
-      download(blob, name, opts);
-    } else {
-      const a2 = document.createElement("a");
-      a2.href = blob;
-      a2.target = "_blank";
-      setTimeout(function() {
-        click(a2);
-      });
-    }
-  } else {
-    navigator.msSaveOrOpenBlob(bom(blob, opts), name);
-  }
-}
-function fileSaverSaveAs(blob, name, opts, popup) {
-  popup = popup || open("", "_blank");
-  if (popup) {
-    popup.document.title = popup.document.body.innerText = "downloading...";
-  }
-  if (typeof blob === "string")
-    return download(blob, name, opts);
-  const force = blob.type === "application/octet-stream";
-  const isSafari = /constructor/i.test(String(_global.HTMLElement)) || "safari" in _global;
-  const isChromeIOS = /CriOS\/[\d]+/.test(navigator.userAgent);
-  if ((isChromeIOS || force && isSafari || isMacOSWebView) && typeof FileReader !== "undefined") {
-    const reader = new FileReader();
-    reader.onloadend = function() {
-      let url = reader.result;
-      if (typeof url !== "string") {
-        popup = null;
-        throw new Error("Wrong reader.result type");
-      }
-      url = isChromeIOS ? url : url.replace(/^data:[^;]*;/, "data:attachment/file;");
-      if (popup) {
-        popup.location.href = url;
-      } else {
-        location.assign(url);
-      }
-      popup = null;
-    };
-    reader.readAsDataURL(blob);
-  } else {
-    const url = URL.createObjectURL(blob);
-    if (popup)
-      popup.location.assign(url);
-    else
-      location.href = url;
-    popup = null;
-    setTimeout(function() {
-      URL.revokeObjectURL(url);
-    }, 4e4);
-  }
-}
-function toastMessage(message, type) {
-  const piniaMessage = "🍍 " + message;
-  if (typeof __VUE_DEVTOOLS_TOAST__ === "function") {
-    __VUE_DEVTOOLS_TOAST__(piniaMessage, type);
-  } else if (type === "error") {
-    console.error(piniaMessage);
-  } else if (type === "warn") {
-    console.warn(piniaMessage);
-  } else {
-    console.log(piniaMessage);
-  }
-}
-function isPinia(o2) {
-  return "_a" in o2 && "install" in o2;
-}
-function checkClipboardAccess() {
-  if (!("clipboard" in navigator)) {
-    toastMessage(`Your browser doesn't support the Clipboard API`, "error");
-    return true;
-  }
-}
-function checkNotFocusedError(error) {
-  if (error instanceof Error && error.message.toLowerCase().includes("document is not focused")) {
-    toastMessage('You need to activate the "Emulate a focused page" setting in the "Rendering" panel of devtools.', "warn");
-    return true;
-  }
-  return false;
-}
-async function actionGlobalCopyState(pinia) {
-  if (checkClipboardAccess())
-    return;
-  try {
-    await navigator.clipboard.writeText(JSON.stringify(pinia.state.value));
-    toastMessage("Global state copied to clipboard.");
-  } catch (error) {
-    if (checkNotFocusedError(error))
-      return;
-    toastMessage(`Failed to serialize the state. Check the console for more details.`, "error");
-    console.error(error);
-  }
-}
-async function actionGlobalPasteState(pinia) {
-  if (checkClipboardAccess())
-    return;
-  try {
-    loadStoresState(pinia, JSON.parse(await navigator.clipboard.readText()));
-    toastMessage("Global state pasted from clipboard.");
-  } catch (error) {
-    if (checkNotFocusedError(error))
-      return;
-    toastMessage(`Failed to deserialize the state from clipboard. Check the console for more details.`, "error");
-    console.error(error);
-  }
-}
-async function actionGlobalSaveState(pinia) {
-  try {
-    saveAs(new Blob([JSON.stringify(pinia.state.value)], {
-      type: "text/plain;charset=utf-8"
-    }), "pinia-state.json");
-  } catch (error) {
-    toastMessage(`Failed to export the state as JSON. Check the console for more details.`, "error");
-    console.error(error);
-  }
-}
-let fileInput;
-function getFileOpener() {
-  if (!fileInput) {
-    fileInput = document.createElement("input");
-    fileInput.type = "file";
-    fileInput.accept = ".json";
-  }
-  function openFile() {
-    return new Promise((resolve2, reject) => {
-      fileInput.onchange = async () => {
-        const files = fileInput.files;
-        if (!files)
-          return resolve2(null);
-        const file = files.item(0);
-        if (!file)
-          return resolve2(null);
-        return resolve2({ text: await file.text(), file });
-      };
-      fileInput.oncancel = () => resolve2(null);
-      fileInput.onerror = reject;
-      fileInput.click();
-    });
-  }
-  return openFile;
-}
-async function actionGlobalOpenStateFile(pinia) {
-  try {
-    const open2 = getFileOpener();
-    const result = await open2();
-    if (!result)
-      return;
-    const { text, file } = result;
-    loadStoresState(pinia, JSON.parse(text));
-    toastMessage(`Global state imported from "${file.name}".`);
-  } catch (error) {
-    toastMessage(`Failed to import the state from JSON. Check the console for more details.`, "error");
-    console.error(error);
-  }
-}
-function loadStoresState(pinia, state) {
-  for (const key in state) {
-    const storeState = pinia.state.value[key];
-    if (storeState) {
-      Object.assign(storeState, state[key]);
-    } else {
-      pinia.state.value[key] = state[key];
-    }
-  }
-}
-function formatDisplay(display) {
-  return {
-    _custom: {
-      display
-    }
-  };
-}
-const PINIA_ROOT_LABEL = "🍍 Pinia (root)";
-const PINIA_ROOT_ID = "_root";
-function formatStoreForInspectorTree(store) {
-  return isPinia(store) ? {
-    id: PINIA_ROOT_ID,
-    label: PINIA_ROOT_LABEL
-  } : {
-    id: store.$id,
-    label: store.$id
-  };
-}
-function formatStoreForInspectorState(store) {
-  if (isPinia(store)) {
-    const storeNames = Array.from(store._s.keys());
-    const storeMap = store._s;
-    const state2 = {
-      state: storeNames.map((storeId) => ({
-        editable: true,
-        key: storeId,
-        value: store.state.value[storeId]
-      })),
-      getters: storeNames.filter((id2) => storeMap.get(id2)._getters).map((id2) => {
-        const store2 = storeMap.get(id2);
-        return {
-          editable: false,
-          key: id2,
-          value: store2._getters.reduce((getters, key) => {
-            getters[key] = store2[key];
-            return getters;
-          }, {})
-        };
-      })
-    };
-    return state2;
-  }
-  const state = {
-    state: Object.keys(store.$state).map((key) => ({
-      editable: true,
-      key,
-      value: store.$state[key]
-    }))
-  };
-  if (store._getters && store._getters.length) {
-    state.getters = store._getters.map((getterName) => ({
-      editable: false,
-      key: getterName,
-      value: store[getterName]
-    }));
-  }
-  if (store._customProperties.size) {
-    state.customProperties = Array.from(store._customProperties).map((key) => ({
-      editable: true,
-      key,
-      value: store[key]
-    }));
-  }
-  return state;
-}
-function formatEventData(events) {
-  if (!events)
-    return {};
-  if (Array.isArray(events)) {
-    return events.reduce((data, event) => {
-      data.keys.push(event.key);
-      data.operations.push(event.type);
-      data.oldValue[event.key] = event.oldValue;
-      data.newValue[event.key] = event.newValue;
-      return data;
-    }, {
-      oldValue: {},
-      keys: [],
-      operations: [],
-      newValue: {}
-    });
-  } else {
-    return {
-      operation: formatDisplay(events.type),
-      key: formatDisplay(events.key),
-      oldValue: events.oldValue,
-      newValue: events.newValue
-    };
-  }
-}
-function formatMutationType(type) {
-  switch (type) {
-    case MutationType.direct:
-      return "mutation";
-    case MutationType.patchFunction:
-      return "$patch";
-    case MutationType.patchObject:
-      return "$patch";
-    default:
-      return "unknown";
-  }
-}
-let isTimelineActive = true;
-const componentStateTypes = [];
-const MUTATIONS_LAYER_ID = "pinia:mutations";
-const INSPECTOR_ID = "pinia";
-const { assign: assign$1 } = Object;
-const getStoreType = (id2) => "🍍 " + id2;
-function registerPiniaDevtools(app, pinia) {
-  setupDevtoolsPlugin({
-    id: "dev.esm.pinia",
-    label: "Pinia 🍍",
-    logo: "https://pinia.vuejs.org/logo.svg",
-    packageName: "pinia",
-    homepage: "https://pinia.vuejs.org",
-    componentStateTypes,
-    app
-  }, (api) => {
-    if (typeof api.now !== "function") {
-      toastMessage("You seem to be using an outdated version of Vue Devtools. Are you still using the Beta release instead of the stable one? You can find the links at https://devtools.vuejs.org/guide/installation.html.");
-    }
-    api.addTimelineLayer({
-      id: MUTATIONS_LAYER_ID,
-      label: `Pinia 🍍`,
-      color: 15064968
-    });
-    api.addInspector({
-      id: INSPECTOR_ID,
-      label: "Pinia 🍍",
-      icon: "storage",
-      treeFilterPlaceholder: "Search stores",
-      actions: [
-        {
-          icon: "content_copy",
-          action: () => {
-            actionGlobalCopyState(pinia);
-          },
-          tooltip: "Serialize and copy the state"
-        },
-        {
-          icon: "content_paste",
-          action: async () => {
-            await actionGlobalPasteState(pinia);
-            api.sendInspectorTree(INSPECTOR_ID);
-            api.sendInspectorState(INSPECTOR_ID);
-          },
-          tooltip: "Replace the state with the content of your clipboard"
-        },
-        {
-          icon: "save",
-          action: () => {
-            actionGlobalSaveState(pinia);
-          },
-          tooltip: "Save the state as a JSON file"
-        },
-        {
-          icon: "folder_open",
-          action: async () => {
-            await actionGlobalOpenStateFile(pinia);
-            api.sendInspectorTree(INSPECTOR_ID);
-            api.sendInspectorState(INSPECTOR_ID);
-          },
-          tooltip: "Import the state from a JSON file"
-        }
-      ],
-      nodeActions: [
-        {
-          icon: "restore",
-          tooltip: 'Reset the state (with "$reset")',
-          action: (nodeId) => {
-            const store = pinia._s.get(nodeId);
-            if (!store) {
-              toastMessage(`Cannot reset "${nodeId}" store because it wasn't found.`, "warn");
-            } else if (typeof store.$reset !== "function") {
-              toastMessage(`Cannot reset "${nodeId}" store because it doesn't have a "$reset" method implemented.`, "warn");
-            } else {
-              store.$reset();
-              toastMessage(`Store "${nodeId}" reset.`);
-            }
-          }
-        }
-      ]
-    });
-    api.on.inspectComponent((payload, ctx) => {
-      const proxy = payload.componentInstance && payload.componentInstance.proxy;
-      if (proxy && proxy._pStores) {
-        const piniaStores = payload.componentInstance.proxy._pStores;
-        Object.values(piniaStores).forEach((store) => {
-          payload.instanceData.state.push({
-            type: getStoreType(store.$id),
-            key: "state",
-            editable: true,
-            value: store._isOptionsAPI ? {
-              _custom: {
-                value: toRaw(store.$state),
-                actions: [
-                  {
-                    icon: "restore",
-                    tooltip: "Reset the state of this store",
-                    action: () => store.$reset()
-                  }
-                ]
-              }
-            } : (
-              // NOTE: workaround to unwrap transferred refs
-              Object.keys(store.$state).reduce((state, key) => {
-                state[key] = store.$state[key];
-                return state;
-              }, {})
-            )
-          });
-          if (store._getters && store._getters.length) {
-            payload.instanceData.state.push({
-              type: getStoreType(store.$id),
-              key: "getters",
-              editable: false,
-              value: store._getters.reduce((getters, key) => {
-                try {
-                  getters[key] = store[key];
-                } catch (error) {
-                  getters[key] = error;
-                }
-                return getters;
-              }, {})
-            });
-          }
-        });
-      }
-    });
-    api.on.getInspectorTree((payload) => {
-      if (payload.app === app && payload.inspectorId === INSPECTOR_ID) {
-        let stores = [pinia];
-        stores = stores.concat(Array.from(pinia._s.values()));
-        payload.rootNodes = (payload.filter ? stores.filter((store) => "$id" in store ? store.$id.toLowerCase().includes(payload.filter.toLowerCase()) : PINIA_ROOT_LABEL.toLowerCase().includes(payload.filter.toLowerCase())) : stores).map(formatStoreForInspectorTree);
-      }
-    });
-    globalThis.$pinia = pinia;
-    api.on.getInspectorState((payload) => {
-      if (payload.app === app && payload.inspectorId === INSPECTOR_ID) {
-        const inspectedStore = payload.nodeId === PINIA_ROOT_ID ? pinia : pinia._s.get(payload.nodeId);
-        if (!inspectedStore) {
-          return;
-        }
-        if (inspectedStore) {
-          if (payload.nodeId !== PINIA_ROOT_ID)
-            globalThis.$store = toRaw(inspectedStore);
-          payload.state = formatStoreForInspectorState(inspectedStore);
-        }
-      }
-    });
-    api.on.editInspectorState((payload, ctx) => {
-      if (payload.app === app && payload.inspectorId === INSPECTOR_ID) {
-        const inspectedStore = payload.nodeId === PINIA_ROOT_ID ? pinia : pinia._s.get(payload.nodeId);
-        if (!inspectedStore) {
-          return toastMessage(`store "${payload.nodeId}" not found`, "error");
-        }
-        const { path } = payload;
-        if (!isPinia(inspectedStore)) {
-          if (path.length !== 1 || !inspectedStore._customProperties.has(path[0]) || path[0] in inspectedStore.$state) {
-            path.unshift("$state");
-          }
-        } else {
-          path.unshift("state");
-        }
-        isTimelineActive = false;
-        payload.set(inspectedStore, path, payload.state.value);
-        isTimelineActive = true;
-      }
-    });
-    api.on.editComponentState((payload) => {
-      if (payload.type.startsWith("🍍")) {
-        const storeId = payload.type.replace(/^🍍\s*/, "");
-        const store = pinia._s.get(storeId);
-        if (!store) {
-          return toastMessage(`store "${storeId}" not found`, "error");
-        }
-        const { path } = payload;
-        if (path[0] !== "state") {
-          return toastMessage(`Invalid path for store "${storeId}":
-${path}
-Only state can be modified.`);
-        }
-        path[0] = "$state";
-        isTimelineActive = false;
-        payload.set(store, path, payload.state.value);
-        isTimelineActive = true;
-      }
-    });
-  });
-}
-function addStoreToDevtools(app, store) {
-  if (!componentStateTypes.includes(getStoreType(store.$id))) {
-    componentStateTypes.push(getStoreType(store.$id));
-  }
-  setupDevtoolsPlugin({
-    id: "dev.esm.pinia",
-    label: "Pinia 🍍",
-    logo: "https://pinia.vuejs.org/logo.svg",
-    packageName: "pinia",
-    homepage: "https://pinia.vuejs.org",
-    componentStateTypes,
-    app,
-    settings: {
-      logStoreChanges: {
-        label: "Notify about new/deleted stores",
-        type: "boolean",
-        defaultValue: true
-      }
-      // useEmojis: {
-      //   label: 'Use emojis in messages ⚡️',
-      //   type: 'boolean',
-      //   defaultValue: true,
-      // },
-    }
-  }, (api) => {
-    const now2 = typeof api.now === "function" ? api.now.bind(api) : Date.now;
-    store.$onAction(({ after, onError, name, args }) => {
-      const groupId = runningActionId++;
-      api.addTimelineEvent({
-        layerId: MUTATIONS_LAYER_ID,
-        event: {
-          time: now2(),
-          title: "🛫 " + name,
-          subtitle: "start",
-          data: {
-            store: formatDisplay(store.$id),
-            action: formatDisplay(name),
-            args
-          },
-          groupId
-        }
-      });
-      after((result) => {
-        activeAction = void 0;
-        api.addTimelineEvent({
-          layerId: MUTATIONS_LAYER_ID,
-          event: {
-            time: now2(),
-            title: "🛬 " + name,
-            subtitle: "end",
-            data: {
-              store: formatDisplay(store.$id),
-              action: formatDisplay(name),
-              args,
-              result
-            },
-            groupId
-          }
-        });
-      });
-      onError((error) => {
-        activeAction = void 0;
-        api.addTimelineEvent({
-          layerId: MUTATIONS_LAYER_ID,
-          event: {
-            time: now2(),
-            logType: "error",
-            title: "💥 " + name,
-            subtitle: "end",
-            data: {
-              store: formatDisplay(store.$id),
-              action: formatDisplay(name),
-              args,
-              error
-            },
-            groupId
-          }
-        });
-      });
-    }, true);
-    store._customProperties.forEach((name) => {
-      watch(() => unref(store[name]), (newValue, oldValue) => {
-        api.notifyComponentUpdate();
-        api.sendInspectorState(INSPECTOR_ID);
-        if (isTimelineActive) {
-          api.addTimelineEvent({
-            layerId: MUTATIONS_LAYER_ID,
-            event: {
-              time: now2(),
-              title: "Change",
-              subtitle: name,
-              data: {
-                newValue,
-                oldValue
-              },
-              groupId: activeAction
-            }
-          });
-        }
-      }, { deep: true });
-    });
-    store.$subscribe(({ events, type }, state) => {
-      api.notifyComponentUpdate();
-      api.sendInspectorState(INSPECTOR_ID);
-      if (!isTimelineActive)
-        return;
-      const eventData = {
-        time: now2(),
-        title: formatMutationType(type),
-        data: assign$1({ store: formatDisplay(store.$id) }, formatEventData(events)),
-        groupId: activeAction
-      };
-      if (type === MutationType.patchFunction) {
-        eventData.subtitle = "⤵️";
-      } else if (type === MutationType.patchObject) {
-        eventData.subtitle = "🧩";
-      } else if (events && !Array.isArray(events)) {
-        eventData.subtitle = events.type;
-      }
-      if (events) {
-        eventData.data["rawEvent(s)"] = {
-          _custom: {
-            display: "DebuggerEvent",
-            type: "object",
-            tooltip: "raw DebuggerEvent[]",
-            value: events
-          }
-        };
-      }
-      api.addTimelineEvent({
-        layerId: MUTATIONS_LAYER_ID,
-        event: eventData
-      });
-    }, { detached: true, flush: "sync" });
-    const hotUpdate = store._hotUpdate;
-    store._hotUpdate = markRaw((newStore) => {
-      hotUpdate(newStore);
-      api.addTimelineEvent({
-        layerId: MUTATIONS_LAYER_ID,
-        event: {
-          time: now2(),
-          title: "🔥 " + store.$id,
-          subtitle: "HMR update",
-          data: {
-            store: formatDisplay(store.$id),
-            info: formatDisplay(`HMR update`)
-          }
-        }
-      });
-      api.notifyComponentUpdate();
-      api.sendInspectorTree(INSPECTOR_ID);
-      api.sendInspectorState(INSPECTOR_ID);
-    });
-    const { $dispose } = store;
-    store.$dispose = () => {
-      $dispose();
-      api.notifyComponentUpdate();
-      api.sendInspectorTree(INSPECTOR_ID);
-      api.sendInspectorState(INSPECTOR_ID);
-      api.getSettings().logStoreChanges && toastMessage(`Disposed "${store.$id}" store 🗑`);
-    };
-    api.notifyComponentUpdate();
-    api.sendInspectorTree(INSPECTOR_ID);
-    api.sendInspectorState(INSPECTOR_ID);
-    api.getSettings().logStoreChanges && toastMessage(`"${store.$id}" store installed 🆕`);
-  });
-}
-let runningActionId = 0;
-let activeAction;
-function patchActionForGrouping(store, actionNames, wrapWithProxy) {
-  const actions = actionNames.reduce((storeActions, actionName) => {
-    storeActions[actionName] = toRaw(store)[actionName];
-    return storeActions;
-  }, {});
-  for (const actionName in actions) {
-    store[actionName] = function() {
-      const _actionId = runningActionId;
-      const trackedStore = wrapWithProxy ? new Proxy(store, {
-        get(...args) {
-          activeAction = _actionId;
-          return Reflect.get(...args);
-        },
-        set(...args) {
-          activeAction = _actionId;
-          return Reflect.set(...args);
-        }
-      }) : store;
-      activeAction = _actionId;
-      const retValue = actions[actionName].apply(trackedStore, arguments);
-      activeAction = void 0;
-      return retValue;
-    };
-  }
-}
-function devtoolsPlugin({ app, store, options }) {
-  if (store.$id.startsWith("__hot:")) {
-    return;
-  }
-  store._isOptionsAPI = !!options.state;
-  if (!store._p._testing) {
-    patchActionForGrouping(store, Object.keys(options.actions), store._isOptionsAPI);
-    const originalHotUpdate = store._hotUpdate;
-    toRaw(store)._hotUpdate = function(newStore) {
-      originalHotUpdate.apply(this, arguments);
-      patchActionForGrouping(store, Object.keys(newStore._hmrPayload.actions), !!store._isOptionsAPI);
-    };
-  }
-  addStoreToDevtools(
-    app,
-    // FIXME: is there a way to allow the assignment from Store<Id, S, G, A> to StoreGeneric?
-    store
-  );
-}
-function createPinia() {
-  const scope = effectScope(true);
-  const state = scope.run(() => ref({}));
-  let _p2 = [];
-  let toBeInstalled = [];
-  const pinia = markRaw({
-    install(app) {
-      {
-        pinia._a = app;
-        app.provide(piniaSymbol, pinia);
-        app.config.globalProperties.$pinia = pinia;
-        if (IS_CLIENT) {
-          registerPiniaDevtools(app, pinia);
-        }
-        toBeInstalled.forEach((plugin2) => _p2.push(plugin2));
-        toBeInstalled = [];
-      }
-    },
-    use(plugin2) {
-      if (!this._a && !isVue2) {
-        toBeInstalled.push(plugin2);
-      } else {
-        _p2.push(plugin2);
-      }
-      return this;
-    },
-    _p: _p2,
-    // it's actually undefined here
-    // @ts-expect-error
-    _a: null,
-    _e: scope,
-    _s: /* @__PURE__ */ new Map(),
-    state
-  });
-  if (IS_CLIENT && typeof Proxy !== "undefined") {
-    pinia.use(devtoolsPlugin);
-  }
-  return pinia;
-}
 const _sfc_main = {};
 const _hoisted_1 = { class: "wrapper" };
 function _sfc_render(_ctx, _cache) {
@@ -49198,8 +48250,7 @@ function _sfc_render(_ctx, _cache) {
 }
 _sfc_main.__file = "src/histoire/wrapper.vue";
 const Wrapper = /* @__PURE__ */ _export_sfc(_sfc_main, [["render", _sfc_render], ["__scopeId", "data-v-2104f4f0"], ["__file", "/home/runner/work/vue-template/vue-template/packages/ui/src/histoire/wrapper.vue"]]);
-const setupVue3 = defineSetupVue3(({ app, addWrapper }) => {
-  app.use(createPinia());
+const setupVue3 = defineSetupVue3(({ addWrapper }) => {
   addWrapper(Wrapper);
 });
 const h$1 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
@@ -50108,7 +49159,7 @@ export {
   Icon as I,
   onMounted$1 as J,
   createApp$1 as K,
-  createPinia$1 as L,
+  createPinia as L,
   plugin as M,
   parseQuery as N,
   h$3 as O,

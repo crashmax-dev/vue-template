@@ -1,4 +1,4 @@
-import { aq as defineComponent, ar as _export_sfc, as as O, at as openBlock, au as createBlock, av as withCtx, aw as renderSlot, ax as normalizeClass, ay as cva, az as resolveComponent, aA as createVNode, aB as createTextVNode } from "./vendor-Cd7igpgb.js";
+import { aq as defineComponent, ar as _export_sfc, as as O, at as openBlock, au as createBlock, av as withCtx, aw as renderSlot, ax as normalizeClass, ay as cva, az as resolveComponent, aA as createVNode, aB as createTextVNode } from "./vendor-tB-bb4qY.js";
 const _sfc_main$1 = /* @__PURE__ */ defineComponent({
   ...{
     name: "VButton"
