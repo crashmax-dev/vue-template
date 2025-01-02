@@ -6,7 +6,7 @@ const counter = useCounterStore()
 </script>
 
 <template>
-  <VButton @click="counter.increment">
+  <VButton @click="counter.increment()">
     Count {{ counter.count }} * 2 = {{ counter.doubleCount }}
   </VButton>
 </template>
