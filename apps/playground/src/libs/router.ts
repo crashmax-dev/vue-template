@@ -11,12 +11,12 @@ export const router = createRouter({
     {
       path: RoutePath.Home,
       name: 'home',
-      component: () => import('@/views/home-view.vue'),
+      component: () => import('@/pages/home/home.vue'),
     },
     {
       path: RoutePath.Counter,
       name: 'counter',
-      component: () => import('@/views/counter-view.vue'),
+      component: () => import('@/pages/counter/counter.vue'),
     },
   ],
 })

@@ -1,12 +1,18 @@
 <script setup lang="ts">
-import { RoutePath } from '@/router'
+import { RoutePath } from '@/libs/router'
 import { useTheme, VButton } from '@vue-workspace/ui'
+import ExternalLinkIcon from '~icons/heroicons-outline/external-link'
 import MoonIcon from '~icons/heroicons-outline/moon'
 import SunIcon from '~icons/heroicons-outline/sun'
 import { RouterLink, useRoute } from 'vue-router'
 
 const route = useRoute()
 const theme = useTheme()
+
+function histoireUrl() {
+  if (import.meta.env.DEV) return 'http://localhost:6006'
+  return '/vue-template/histoire'
+}
 </script>
 
 <template>
@@ -26,10 +32,11 @@ const theme = useTheme()
       <VButton
         as="a"
         variant="secondary"
-        href="/vue-template/histoire"
+        :href="histoireUrl()"
         target="_blank"
-        class="header-link"
+        class="header-link header-link__with-icon"
       >
+        <ExternalLinkIcon />
         Histoire
       </VButton>
 
@@ -60,6 +67,12 @@ const theme = useTheme()
 
   &-link {
     text-decoration: none;
+
+    &__with-icon {
+      display: flex;
+      align-items: center;
+      gap: 4px;
+    }
   }
 }
 

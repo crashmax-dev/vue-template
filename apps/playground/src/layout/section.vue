@@ -1,12 +1,12 @@
 <template>
-  <div class="container">
+  <section class="section">
     <RouterView />
-  </div>
+  </section>
 </template>
 
 <style scoped lang="scss">
-.container {
-  max-width: 1200px;
+.section {
+  max-width: 1024px;
   margin: 0 auto;
   padding: 1rem;
 }
