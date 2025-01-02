@@ -12,10 +12,11 @@
 - [Vite](https://vite.dev)
 - [Vue](https://vuejs.org)
 - [Histoire](https://histoire.dev)
+- [Vitest][https://vitest.dev]
 
 ## Scripts
 
-- `pnpm i --frozen-lockfile` — Install dependencies
+- `pnpm i` — Install dependencies
 - `pnpm dev` — Running apps (http://localhost:5173) and Histoire (http://localhost:6006)
 - `pnpm build` — Building apps and packages
 - `pnpm lint` — Check the linting
@@ -24,7 +25,7 @@
 ## CI
 
 - Q: How do i publish packages to NPM?
-- A: Add the code below to [.github/workflows/ci.yml](.github/workflows/ci.yml) and add `NPM_TOKEN` to the GitHub repository secrets.
+- A: Add the code below to [.github/workflows/ci.yaml](.github/workflows/ci.yaml) and add `NPM_TOKEN` to the GitHub repository secrets.
 
 ```yaml
 - name: Publish packages to NPM
