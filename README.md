@@ -12,7 +12,7 @@
 - [Vite](https://vite.dev)
 - [Vue](https://vuejs.org)
 - [Histoire](https://histoire.dev)
-- [Vitest][https://vitest.dev]
+- [Vitest](https://vitest.dev)
 
 ## Scripts
 
@@ -22,17 +22,16 @@
 - `pnpm lint` — Check the linting
 - `pnpm lint:fix` — Linting and fixing
 
-## CI
+## Publish packages to NPM
 
-- Q: How do i publish packages to NPM?
-- A: Add the code below to [.github/workflows/ci.yaml](.github/workflows/ci.yaml) and add `NPM_TOKEN` to the GitHub repository secrets.
+Add the code below to [.github/workflows/ci.yaml](.github/workflows/ci.yaml) and add `NPM_TOKEN` to the GitHub repository secrets.
 
 ```yaml
 - name: Publish packages to NPM
   shell: bash
   run: |
     echo "//registry.npmjs.org/:_authToken="${{ secrets.NPM_TOKEN }}"" > ~/.npmrc
-    pnpm -r --filter='./packages/*' publish --access public --provenance
+    pnpm -r --filter=./packages/* publish --access public --provenance
 ```
 
 and create a configuration for `vite.config.ts`
@@ -62,7 +61,9 @@ export default defineConfig({
   },
 })
 ```
+
 and you will need to specify the export in the package.json file
+
 ```json
 {
   "exports": {
