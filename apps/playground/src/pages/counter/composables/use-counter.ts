@@ -6,8 +6,8 @@ export const useCounterStore = defineStore('composables/use-counter', () => {
   const count = ref(0)
   const doubleCount = computed(() => double(count.value))
 
-  function increment() {
-    count.value++
+  function increment(value = 1) {
+    count.value += value
   }
 
   return {
