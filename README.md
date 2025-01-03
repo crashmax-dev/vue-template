@@ -19,6 +19,8 @@
 - `pnpm i` — Install dependencies
 - `pnpm dev` — Running apps (http://localhost:5173) and Histoire (http://localhost:6006)
 - `pnpm build` — Building apps and packages
+- `pnpm test` — Running tests
+- `pnpm test:ui` — Running tests with [UI](https://vitest.dev/guide/ui.html)
 - `pnpm lint` — Check the linting
 - `pnpm lint:fix` — Linting and fixing
 
