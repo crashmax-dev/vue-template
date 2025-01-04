@@ -8,21 +8,20 @@ import Components from 'unplugin-vue-components/vite'
 import { viteStaticCopy } from 'vite-plugin-static-copy'
 import type { PluginOption } from 'vite'
 
-const assetsDir = url.fileURLToPath(new URL('../../../packages/ui/src/assets', import.meta.url))
+const assetsDir = url.fileURLToPath(new URL(
+  '../../../packages/ui/src/assets',
+  import.meta.url,
+))
 const toPosixPath = (filePath: string) => filePath.replace(/\\/g, '/')
 
 export const plugins: PluginOption[] = [
   Vue(),
   // https://github.com/unplugin/unplugin-icons
   Icons({
-    compiler: 'vue3',
-    autoInstall: false,
-    iconCustomizer(collection, _icon, props) {
-      if (collection.startsWith('heroicons')) {
-        props.style = 'fill:currentColor;'
-        props.width = '1em'
-        props.height = '1em'
-      }
+    iconCustomizer(_collection, _icon, props) {
+      props.style = 'fill:currentColor'
+      props.width = '1em'
+      props.height = '1em'
     },
     customCollections: {
       'custom-icon': FileSystemIconLoader(
@@ -47,7 +46,8 @@ export const plugins: PluginOption[] = [
   viteStaticCopy({
     targets: [
       {
-        src: toPosixPath(path.join(assetsDir, 'favicon', '**')),
+        // copy files to dist from public folder
+        src: toPosixPath(path.join(assetsDir, 'public', '**')),
         dest: '',
       },
     ],

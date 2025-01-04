@@ -16,9 +16,13 @@
 
 ## Scripts
 
+> [!NOTE]
+> Before running the project for the first time, run `pnpm build:packages`
+
 - `pnpm i` — Install dependencies
 - `pnpm dev` — Running apps (http://localhost:5173) and Histoire (http://localhost:6006)
 - `pnpm build` — Building apps and packages
+- `pnpm build:packages` — Building packages
 - `pnpm test` — Running tests
 - `pnpm test:ui` — Running tests with [UI](https://vitest.dev/guide/ui.html)
 - `pnpm lint` — Check the linting
