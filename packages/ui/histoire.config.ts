@@ -15,6 +15,6 @@ export default defineConfig({
   vite: {
     base: '',
     css,
-    plugins,
+    plugins: plugins(),
   },
 })

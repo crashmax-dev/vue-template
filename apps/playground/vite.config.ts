@@ -3,8 +3,13 @@ import { defineConfig } from 'vite'
 
 export default defineConfig({
   base: './',
-  plugins,
   css,
+  plugins: plugins({
+    devtools: true,
+    devtoolsOptions: {
+      componentInspector: false,
+    },
+  }),
   resolve: {
     alias: alias(import.meta.url),
   },
