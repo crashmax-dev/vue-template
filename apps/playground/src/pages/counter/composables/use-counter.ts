@@ -2,7 +2,7 @@ import { double } from '@vue-workspace/utils'
 import { acceptHMRUpdate, defineStore } from 'pinia'
 import { computed, ref } from 'vue'
 
-export const useCounterStore = defineStore('composables/use-counter', () => {
+export const useCounterStore = defineStore('counter/use-counter', () => {
   const count = ref(0)
   const doubleCount = computed(() => double(count.value))
 

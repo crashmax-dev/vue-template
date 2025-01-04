@@ -53,7 +53,7 @@ function histoireUrl() {
 
 <style scoped lang="scss">
 .header {
-  padding: 8px;
+  padding: 8px 16px;
   background-color: hsl(var(--primary-foreground));
   border-bottom: 1px solid hsl(var(--border));
 

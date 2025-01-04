@@ -1,8 +1,10 @@
 <script setup lang="ts">
 import { useLocalStorage } from '@vueuse/core'
 import { provide, watch } from 'vue'
-
-import { type Theme, useThemeInjectionKey } from '../composables/use-theme.js'
+import {
+  type Theme,
+  useThemeInjectionKey,
+} from '../composables/use-theme.js'
 
 const props = defineProps<{
   initialTheme: Theme
