@@ -6,6 +6,7 @@ dist
 *.log
 .DS_Store
 Thumbs.db
+vite.config.ts.timestamp-*
 
 storybook-static
 *storybook.log
