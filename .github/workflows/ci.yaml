@@ -42,7 +42,7 @@ jobs:
           mkdir -p dist/histoire
           touch dist/.nojekyll
           cp -r packages/ui/dist/* dist/histoire
-          cp -r apps/playground/dist/* dist
+          cp -r apps/vue/dist/* dist
 
       - name: Deploy to GitHub Pages
         uses: JamesIves/github-pages-deploy-action@v4.7.2
