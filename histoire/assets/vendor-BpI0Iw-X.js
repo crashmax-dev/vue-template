@@ -2561,9 +2561,9 @@ function doWatch$1(source, cb, { immediate, deep, flush: flush2, onTrack, onTrig
     ssrCleanup.push(unwatch);
   return unwatch;
 }
-function instanceWatch$1(source, value, options) {
+function instanceWatch(source, value, options) {
   const publicThis = this.proxy;
-  const getter = isString$2(source) ? source.includes(".") ? createPathGetter$1(publicThis, source) : () => publicThis[source] : source.bind(publicThis, publicThis);
+  const getter = isString$2(source) ? source.includes(".") ? createPathGetter(publicThis, source) : () => publicThis[source] : source.bind(publicThis, publicThis);
   let cb;
   if (isFunction$2(value)) {
     cb = value;
@@ -2581,7 +2581,7 @@ function instanceWatch$1(source, value, options) {
   }
   return res;
 }
-function createPathGetter$1(ctx, path) {
+function createPathGetter(ctx, path) {
   const segments = path.split(".");
   return () => {
     let cur = ctx;
@@ -3148,13 +3148,13 @@ function createInnerComp$1(comp, parent) {
   return vnode;
 }
 const isKeepAlive$1 = (vnode) => vnode.type.__isKeepAlive;
-function onActivated$1(hook, target) {
-  registerKeepAliveHook$1(hook, "a", target);
+function onActivated(hook, target) {
+  registerKeepAliveHook(hook, "a", target);
 }
-function onDeactivated$1(hook, target) {
-  registerKeepAliveHook$1(hook, "da", target);
+function onDeactivated(hook, target) {
+  registerKeepAliveHook(hook, "da", target);
 }
-function registerKeepAliveHook$1(hook, type, target = currentInstance$1) {
+function registerKeepAliveHook(hook, type, target = currentInstance$1) {
   const wrappedHook = hook.__wdc || (hook.__wdc = () => {
     let current = target;
     while (current) {
@@ -3170,13 +3170,13 @@ function registerKeepAliveHook$1(hook, type, target = currentInstance$1) {
     let current = target.parent;
     while (current && current.parent) {
       if (isKeepAlive$1(current.parent.vnode)) {
-        injectToKeepAliveRoot$1(wrappedHook, type, target, current);
+        injectToKeepAliveRoot(wrappedHook, type, target, current);
       }
       current = current.parent;
     }
   }
 }
-function injectToKeepAliveRoot$1(hook, type, target, keepAliveRoot) {
+function injectToKeepAliveRoot(hook, type, target, keepAliveRoot) {
   const injected = injectHook$1(
     type,
     hook,
@@ -3184,7 +3184,7 @@ function injectToKeepAliveRoot$1(hook, type, target, keepAliveRoot) {
     true
     /* prepend */
   );
-  onUnmounted$1(() => {
+  onUnmounted(() => {
     remove$1(keepAliveRoot[type], injected);
   }, target);
 }
@@ -3219,20 +3219,20 @@ const createHook$1 = (lifecycle) => (hook, target = currentInstance$1) => (
   // post-create lifecycle registrations are noops during SSR (except for serverPrefetch)
   (!isInSSRComponentSetup$1 || lifecycle === "sp") && injectHook$1(lifecycle, (...args) => hook(...args), target)
 );
-const onBeforeMount$1 = createHook$1("bm");
+const onBeforeMount = createHook$1("bm");
 const onMounted$1 = createHook$1("m");
 const onBeforeUpdate$1 = createHook$1("bu");
 const onUpdated$1 = createHook$1("u");
 const onBeforeUnmount$1 = createHook$1("bum");
-const onUnmounted$1 = createHook$1("um");
-const onServerPrefetch$1 = createHook$1("sp");
-const onRenderTriggered$1 = createHook$1(
+const onUnmounted = createHook$1("um");
+const onServerPrefetch = createHook$1("sp");
+const onRenderTriggered = createHook$1(
   "rtg"
 );
-const onRenderTracked$1 = createHook$1(
+const onRenderTracked = createHook$1(
   "rtc"
 );
-function onErrorCaptured$1(hook, target = currentInstance$1) {
+function onErrorCaptured(hook, target = currentInstance$1) {
   injectHook$1("ec", hook, target);
 }
 function renderList(source, renderItem, cache2, index) {
@@ -3341,10 +3341,10 @@ const publicPropertiesMap$1 = (
     $parent: (i2) => getPublicInstance$1(i2.parent),
     $root: (i2) => getPublicInstance$1(i2.root),
     $emit: (i2) => i2.emit,
-    $options: (i2) => resolveMergedOptions$1(i2),
+    $options: (i2) => resolveMergedOptions(i2),
     $forceUpdate: (i2) => i2.f || (i2.f = () => queueJob$1(i2.update)),
     $nextTick: (i2) => i2.n || (i2.n = nextTick$1.bind(i2.proxy)),
-    $watch: (i2) => instanceWatch$1.bind(i2)
+    $watch: (i2) => instanceWatch.bind(i2)
   })
 );
 const isReservedPrefix$1 = (key) => key === "_" || key === "$";
@@ -3385,7 +3385,7 @@ const PublicInstanceProxyHandlers$1 = {
       } else if (ctx !== EMPTY_OBJ$1 && hasOwn$1(ctx, key)) {
         accessCache[key] = 4;
         return ctx[key];
-      } else if (shouldCacheAccess$1) {
+      } else if (shouldCacheAccess) {
         accessCache[key] = 0;
       }
     }
@@ -3542,13 +3542,13 @@ function exposeSetupStateOnRenderContext$1(instance) {
     }
   });
 }
-function normalizePropsOrEmits$1(props) {
+function normalizePropsOrEmits(props) {
   return isArray$2(props) ? props.reduce(
     (normalized, p2) => (normalized[p2] = null, normalized),
     {}
   ) : props;
 }
-function createDuplicateChecker$1() {
+function createDuplicateChecker() {
   const cache2 = /* @__PURE__ */ Object.create(null);
   return (type, key) => {
     if (cache2[key]) {
@@ -3558,12 +3558,12 @@ function createDuplicateChecker$1() {
     }
   };
 }
-let shouldCacheAccess$1 = true;
-function applyOptions$1(instance) {
-  const options = resolveMergedOptions$1(instance);
+let shouldCacheAccess = true;
+function applyOptions(instance) {
+  const options = resolveMergedOptions(instance);
   const publicThis = instance.proxy;
   const ctx = instance.ctx;
-  shouldCacheAccess$1 = false;
+  shouldCacheAccess = false;
   if (options.beforeCreate) {
     callHook$1(options.beforeCreate, instance, "bc");
   }
@@ -3600,7 +3600,7 @@ function applyOptions$1(instance) {
     directives: directives2,
     filters
   } = options;
-  const checkDuplicateProperties = createDuplicateChecker$1();
+  const checkDuplicateProperties = createDuplicateChecker();
   {
     const [propsOptions] = instance.propsOptions;
     if (propsOptions) {
@@ -3610,7 +3610,7 @@ function applyOptions$1(instance) {
     }
   }
   if (injectOptions) {
-    resolveInjections$1(injectOptions, ctx, checkDuplicateProperties);
+    resolveInjections(injectOptions, ctx, checkDuplicateProperties);
   }
   if (methods) {
     for (const key in methods) {
@@ -3665,7 +3665,7 @@ function applyOptions$1(instance) {
       }
     }
   }
-  shouldCacheAccess$1 = true;
+  shouldCacheAccess = true;
   if (computedOptions) {
     for (const key in computedOptions) {
       const opt = computedOptions[key];
@@ -3695,7 +3695,7 @@ function applyOptions$1(instance) {
   }
   if (watchOptions) {
     for (const key in watchOptions) {
-      createWatcher$1(watchOptions[key], ctx, publicThis, key);
+      createWatcher(watchOptions[key], ctx, publicThis, key);
     }
   }
   if (provideOptions) {
@@ -3714,18 +3714,18 @@ function applyOptions$1(instance) {
       register(hook.bind(publicThis));
     }
   }
-  registerLifecycleHook(onBeforeMount$1, beforeMount);
+  registerLifecycleHook(onBeforeMount, beforeMount);
   registerLifecycleHook(onMounted$1, mounted);
   registerLifecycleHook(onBeforeUpdate$1, beforeUpdate);
   registerLifecycleHook(onUpdated$1, updated);
-  registerLifecycleHook(onActivated$1, activated);
-  registerLifecycleHook(onDeactivated$1, deactivated);
-  registerLifecycleHook(onErrorCaptured$1, errorCaptured);
-  registerLifecycleHook(onRenderTracked$1, renderTracked);
-  registerLifecycleHook(onRenderTriggered$1, renderTriggered);
+  registerLifecycleHook(onActivated, activated);
+  registerLifecycleHook(onDeactivated, deactivated);
+  registerLifecycleHook(onErrorCaptured, errorCaptured);
+  registerLifecycleHook(onRenderTracked, renderTracked);
+  registerLifecycleHook(onRenderTriggered, renderTriggered);
   registerLifecycleHook(onBeforeUnmount$1, beforeUnmount);
-  registerLifecycleHook(onUnmounted$1, unmounted);
-  registerLifecycleHook(onServerPrefetch$1, serverPrefetch);
+  registerLifecycleHook(onUnmounted, unmounted);
+  registerLifecycleHook(onServerPrefetch, serverPrefetch);
   if (isArray$2(expose)) {
     if (expose.length) {
       const exposed = instance.exposed || (instance.exposed = {});
@@ -3750,9 +3750,9 @@ function applyOptions$1(instance) {
   if (directives2)
     instance.directives = directives2;
 }
-function resolveInjections$1(injectOptions, ctx, checkDuplicateProperties = NOOP$1) {
+function resolveInjections(injectOptions, ctx, checkDuplicateProperties = NOOP$1) {
   if (isArray$2(injectOptions)) {
-    injectOptions = normalizeInject$1(injectOptions);
+    injectOptions = normalizeInject(injectOptions);
   }
   for (const key in injectOptions) {
     const opt = injectOptions[key];
@@ -3793,8 +3793,8 @@ function callHook$1(hook, instance, type) {
     type
   );
 }
-function createWatcher$1(raw, ctx, publicThis, key) {
-  const getter = key.includes(".") ? createPathGetter$1(publicThis, key) : () => publicThis[key];
+function createWatcher(raw, ctx, publicThis, key) {
+  const getter = key.includes(".") ? createPathGetter(publicThis, key) : () => publicThis[key];
   if (isString$2(raw)) {
     const handler = ctx[raw];
     if (isFunction$2(handler)) {
@@ -3806,7 +3806,7 @@ function createWatcher$1(raw, ctx, publicThis, key) {
     watch$2(getter, raw.bind(publicThis));
   } else if (isObject$1(raw)) {
     if (isArray$2(raw)) {
-      raw.forEach((r2) => createWatcher$1(r2, ctx, publicThis, key));
+      raw.forEach((r2) => createWatcher(r2, ctx, publicThis, key));
     } else {
       const handler = isFunction$2(raw.handler) ? raw.handler.bind(publicThis) : ctx[raw.handler];
       if (isFunction$2(handler)) {
@@ -3819,7 +3819,7 @@ function createWatcher$1(raw, ctx, publicThis, key) {
     warn$4(`Invalid watch option: "${key}"`, raw);
   }
 }
-function resolveMergedOptions$1(instance) {
+function resolveMergedOptions(instance) {
   const base = instance.type;
   const { mixins, extends: extendsOptions } = base;
   const {
@@ -3839,24 +3839,24 @@ function resolveMergedOptions$1(instance) {
     resolved = {};
     if (globalMixins.length) {
       globalMixins.forEach(
-        (m2) => mergeOptions$2(resolved, m2, optionMergeStrategies, true)
+        (m2) => mergeOptions$1(resolved, m2, optionMergeStrategies, true)
       );
     }
-    mergeOptions$2(resolved, base, optionMergeStrategies);
+    mergeOptions$1(resolved, base, optionMergeStrategies);
   }
   if (isObject$1(base)) {
     cache2.set(base, resolved);
   }
   return resolved;
 }
-function mergeOptions$2(to2, from, strats, asMixin = false) {
+function mergeOptions$1(to2, from, strats, asMixin = false) {
   const { mixins, extends: extendsOptions } = from;
   if (extendsOptions) {
-    mergeOptions$2(to2, extendsOptions, strats, true);
+    mergeOptions$1(to2, extendsOptions, strats, true);
   }
   if (mixins) {
     mixins.forEach(
-      (m2) => mergeOptions$2(to2, m2, strats, true)
+      (m2) => mergeOptions$1(to2, m2, strats, true)
     );
   }
   for (const key in from) {
@@ -3865,44 +3865,44 @@ function mergeOptions$2(to2, from, strats, asMixin = false) {
         `"expose" option is ignored when declared in mixins or extends. It should only be declared in the base component itself.`
       );
     } else {
-      const strat = internalOptionMergeStrats$1[key] || strats && strats[key];
+      const strat = internalOptionMergeStrats[key] || strats && strats[key];
       to2[key] = strat ? strat(to2[key], from[key]) : from[key];
     }
   }
   return to2;
 }
-const internalOptionMergeStrats$1 = {
-  data: mergeDataFn$1,
-  props: mergeEmitsOrPropsOptions$1,
-  emits: mergeEmitsOrPropsOptions$1,
+const internalOptionMergeStrats = {
+  data: mergeDataFn,
+  props: mergeEmitsOrPropsOptions,
+  emits: mergeEmitsOrPropsOptions,
   // objects
-  methods: mergeObjectOptions$1,
-  computed: mergeObjectOptions$1,
+  methods: mergeObjectOptions,
+  computed: mergeObjectOptions,
   // lifecycle
-  beforeCreate: mergeAsArray$1,
-  created: mergeAsArray$1,
-  beforeMount: mergeAsArray$1,
-  mounted: mergeAsArray$1,
-  beforeUpdate: mergeAsArray$1,
-  updated: mergeAsArray$1,
-  beforeDestroy: mergeAsArray$1,
-  beforeUnmount: mergeAsArray$1,
-  destroyed: mergeAsArray$1,
-  unmounted: mergeAsArray$1,
-  activated: mergeAsArray$1,
-  deactivated: mergeAsArray$1,
-  errorCaptured: mergeAsArray$1,
-  serverPrefetch: mergeAsArray$1,
+  beforeCreate: mergeAsArray,
+  created: mergeAsArray,
+  beforeMount: mergeAsArray,
+  mounted: mergeAsArray,
+  beforeUpdate: mergeAsArray,
+  updated: mergeAsArray,
+  beforeDestroy: mergeAsArray,
+  beforeUnmount: mergeAsArray,
+  destroyed: mergeAsArray,
+  unmounted: mergeAsArray,
+  activated: mergeAsArray,
+  deactivated: mergeAsArray,
+  errorCaptured: mergeAsArray,
+  serverPrefetch: mergeAsArray,
   // assets
-  components: mergeObjectOptions$1,
-  directives: mergeObjectOptions$1,
+  components: mergeObjectOptions,
+  directives: mergeObjectOptions,
   // watch
-  watch: mergeWatchOptions$1,
+  watch: mergeWatchOptions,
   // provide / inject
-  provide: mergeDataFn$1,
-  inject: mergeInject$1
+  provide: mergeDataFn,
+  inject: mergeInject
 };
-function mergeDataFn$1(to2, from) {
+function mergeDataFn(to2, from) {
   if (!from) {
     return to2;
   }
@@ -3916,10 +3916,10 @@ function mergeDataFn$1(to2, from) {
     );
   };
 }
-function mergeInject$1(to2, from) {
-  return mergeObjectOptions$1(normalizeInject$1(to2), normalizeInject$1(from));
+function mergeInject(to2, from) {
+  return mergeObjectOptions(normalizeInject(to2), normalizeInject(from));
 }
-function normalizeInject$1(raw) {
+function normalizeInject(raw) {
   if (isArray$2(raw)) {
     const res = {};
     for (let i2 = 0; i2 < raw.length; i2++) {
@@ -3929,34 +3929,34 @@ function normalizeInject$1(raw) {
   }
   return raw;
 }
-function mergeAsArray$1(to2, from) {
+function mergeAsArray(to2, from) {
   return to2 ? [...new Set([].concat(to2, from))] : from;
 }
-function mergeObjectOptions$1(to2, from) {
+function mergeObjectOptions(to2, from) {
   return to2 ? extend$1(/* @__PURE__ */ Object.create(null), to2, from) : from;
 }
-function mergeEmitsOrPropsOptions$1(to2, from) {
+function mergeEmitsOrPropsOptions(to2, from) {
   if (to2) {
     if (isArray$2(to2) && isArray$2(from)) {
       return [.../* @__PURE__ */ new Set([...to2, ...from])];
     }
     return extend$1(
       /* @__PURE__ */ Object.create(null),
-      normalizePropsOrEmits$1(to2),
-      normalizePropsOrEmits$1(from != null ? from : {})
+      normalizePropsOrEmits(to2),
+      normalizePropsOrEmits(from != null ? from : {})
     );
   } else {
     return from;
   }
 }
-function mergeWatchOptions$1(to2, from) {
+function mergeWatchOptions(to2, from) {
   if (!to2)
     return from;
   if (!from)
     return to2;
   const merged = extend$1(/* @__PURE__ */ Object.create(null), to2);
   for (const key in from) {
-    merged[key] = mergeAsArray$1(to2[key], from[key]);
+    merged[key] = mergeAsArray(to2[key], from[key]);
   }
   return merged;
 }
@@ -6885,7 +6885,7 @@ function finishComponentSetup$1(instance, isSSR, skipOptions) {
   const Component = instance.type;
   if (!instance.render) {
     if (!isSSR && compile$1 && !Component.render) {
-      const template = Component.template || resolveMergedOptions$1(instance).template;
+      const template = Component.template || resolveMergedOptions(instance).template;
       if (template) {
         {
           startMeasure$1(instance, `compile`);
@@ -6914,7 +6914,7 @@ function finishComponentSetup$1(instance, isSSR, skipOptions) {
     setCurrentInstance$1(instance);
     pauseTracking$1();
     try {
-      applyOptions$1(instance);
+      applyOptions(instance);
     } finally {
       resetTracking$1();
       unsetCurrentInstance$1();
@@ -7352,7 +7352,7 @@ const TransitionPropsValidators = Transition.props = /* @__PURE__ */ extend$1(
   BaseTransitionPropsValidators,
   DOMTransitionPropsValidators
 );
-const callHook$2 = (hook, args = []) => {
+const callHook = (hook, args = []) => {
   if (isArray$2(hook)) {
     hook.forEach((h2) => h2(...args));
   } else if (hook) {
@@ -7415,7 +7415,7 @@ function resolveTransitionProps(rawProps) {
     return (el2, done) => {
       const hook = isAppear ? onAppear : onEnter;
       const resolve2 = () => finishEnter(el2, isAppear, done);
-      callHook$2(hook, [el2, resolve2]);
+      callHook(hook, [el2, resolve2]);
       nextFrame$1(() => {
         removeTransitionClass(el2, isAppear ? appearFromClass : enterFromClass);
         addTransitionClass(el2, isAppear ? appearToClass : enterToClass);
@@ -7427,12 +7427,12 @@ function resolveTransitionProps(rawProps) {
   };
   return extend$1(baseProps, {
     onBeforeEnter(el2) {
-      callHook$2(onBeforeEnter, [el2]);
+      callHook(onBeforeEnter, [el2]);
       addTransitionClass(el2, enterFromClass);
       addTransitionClass(el2, enterActiveClass);
     },
     onBeforeAppear(el2) {
-      callHook$2(onBeforeAppear, [el2]);
+      callHook(onBeforeAppear, [el2]);
       addTransitionClass(el2, appearFromClass);
       addTransitionClass(el2, appearActiveClass);
     },
@@ -7454,19 +7454,19 @@ function resolveTransitionProps(rawProps) {
           whenTransitionEnds(el2, type, leaveDuration, resolve2);
         }
       });
-      callHook$2(onLeave, [el2, resolve2]);
+      callHook(onLeave, [el2, resolve2]);
     },
     onEnterCancelled(el2) {
       finishEnter(el2, false);
-      callHook$2(onEnterCancelled, [el2]);
+      callHook(onEnterCancelled, [el2]);
     },
     onAppearCancelled(el2) {
       finishEnter(el2, true);
-      callHook$2(onAppearCancelled, [el2]);
+      callHook(onAppearCancelled, [el2]);
     },
     onLeaveCancelled(el2) {
       finishLeave(el2);
-      callHook$2(onLeaveCancelled, [el2]);
+      callHook(onLeaveCancelled, [el2]);
     }
   });
 }
@@ -7933,7 +7933,7 @@ function useCssVars(getter) {
   onMounted$1(() => {
     const ob = new MutationObserver(setVars);
     ob.observe(instance.subTree.el.parentNode, { childList: true });
-    onUnmounted$1(() => ob.disconnect());
+    onUnmounted(() => ob.disconnect());
   });
 }
 function setVarsOnVNode(vnode, vars) {
@@ -15469,46 +15469,6 @@ function createInnerComp(comp, parent) {
   return vnode;
 }
 const isKeepAlive = (vnode) => vnode.type.__isKeepAlive;
-function onActivated(hook, target) {
-  registerKeepAliveHook(hook, "a", target);
-}
-function onDeactivated(hook, target) {
-  registerKeepAliveHook(hook, "da", target);
-}
-function registerKeepAliveHook(hook, type, target = currentInstance) {
-  const wrappedHook = hook.__wdc || (hook.__wdc = () => {
-    let current = target;
-    while (current) {
-      if (current.isDeactivated) {
-        return;
-      }
-      current = current.parent;
-    }
-    return hook();
-  });
-  injectHook(type, wrappedHook, target);
-  if (target) {
-    let current = target.parent;
-    while (current && current.parent) {
-      if (isKeepAlive(current.parent.vnode)) {
-        injectToKeepAliveRoot(wrappedHook, type, target, current);
-      }
-      current = current.parent;
-    }
-  }
-}
-function injectToKeepAliveRoot(hook, type, target, keepAliveRoot) {
-  const injected = injectHook(
-    type,
-    hook,
-    keepAliveRoot,
-    true
-    /* prepend */
-  );
-  onUnmounted(() => {
-    remove(keepAliveRoot[type], injected);
-  }, target);
-}
 function injectHook(type, hook, target = currentInstance, prepend = false) {
   if (target) {
     const hooks = target[type] || (target[type] = []);
@@ -15538,7 +15498,6 @@ const createHook = (lifecycle) => (hook, target = currentInstance) => {
     injectHook(lifecycle, (...args) => hook(...args), target);
   }
 };
-const onBeforeMount = createHook("bm");
 const onMounted = createHook("m");
 const onBeforeUpdate = createHook(
   "bu"
@@ -15547,15 +15506,6 @@ const onUpdated = createHook("u");
 const onBeforeUnmount = createHook(
   "bum"
 );
-const onUnmounted = createHook("um");
-const onServerPrefetch = createHook(
-  "sp"
-);
-const onRenderTriggered = createHook("rtg");
-const onRenderTracked = createHook("rtc");
-function onErrorCaptured(hook, target = currentInstance) {
-  injectHook("ec", hook, target);
-}
 const COMPONENTS = "components";
 function resolveComponent(name, maybeSelfReference) {
   return resolveAsset(COMPONENTS, name, true, maybeSelfReference) || name;
@@ -15665,12 +15615,12 @@ const publicPropertiesMap = (
     $root: (i2) => getPublicInstance(i2.root),
     $host: (i2) => i2.ce,
     $emit: (i2) => i2.emit,
-    $options: (i2) => resolveMergedOptions(i2),
+    $options: (i2) => i2.type,
     $forceUpdate: (i2) => i2.f || (i2.f = () => {
       queueJob(i2.update);
     }),
     $nextTick: (i2) => i2.n || (i2.n = nextTick.bind(i2.proxy)),
-    $watch: (i2) => instanceWatch.bind(i2)
+    $watch: (i2) => NOOP
   })
 );
 const isReservedPrefix = (key) => key === "_" || key === "$";
@@ -15714,7 +15664,7 @@ const PublicInstanceProxyHandlers = {
       } else if (ctx !== EMPTY_OBJ && hasOwn(ctx, key)) {
         accessCache[key] = 4;
         return ctx[key];
-      } else if (shouldCacheAccess) {
+      } else {
         accessCache[key] = 0;
       }
     }
@@ -15881,426 +15831,6 @@ function getContext() {
   }
   return i2.setupContext || (i2.setupContext = createSetupContext(i2));
 }
-function normalizePropsOrEmits(props) {
-  return isArray$1(props) ? props.reduce(
-    (normalized, p2) => (normalized[p2] = null, normalized),
-    {}
-  ) : props;
-}
-function createDuplicateChecker() {
-  const cache2 = /* @__PURE__ */ Object.create(null);
-  return (type, key) => {
-    if (cache2[key]) {
-      warn$1(`${type} property "${key}" is already defined in ${cache2[key]}.`);
-    } else {
-      cache2[key] = type;
-    }
-  };
-}
-let shouldCacheAccess = true;
-function applyOptions(instance) {
-  const options = resolveMergedOptions(instance);
-  const publicThis = instance.proxy;
-  const ctx = instance.ctx;
-  shouldCacheAccess = false;
-  if (options.beforeCreate) {
-    callHook(options.beforeCreate, instance, "bc");
-  }
-  const {
-    // state
-    data: dataOptions,
-    computed: computedOptions,
-    methods,
-    watch: watchOptions,
-    provide: provideOptions,
-    inject: injectOptions,
-    // lifecycle
-    created,
-    beforeMount,
-    mounted,
-    beforeUpdate,
-    updated,
-    activated,
-    deactivated,
-    beforeDestroy,
-    beforeUnmount,
-    destroyed,
-    unmounted,
-    render: render2,
-    renderTracked,
-    renderTriggered,
-    errorCaptured,
-    serverPrefetch,
-    // public API
-    expose,
-    inheritAttrs,
-    // assets
-    components,
-    directives: directives2,
-    filters
-  } = options;
-  const checkDuplicateProperties = createDuplicateChecker();
-  {
-    const [propsOptions] = instance.propsOptions;
-    if (propsOptions) {
-      for (const key in propsOptions) {
-        checkDuplicateProperties("Props", key);
-      }
-    }
-  }
-  if (injectOptions) {
-    resolveInjections(injectOptions, ctx, checkDuplicateProperties);
-  }
-  if (methods) {
-    for (const key in methods) {
-      const methodHandler = methods[key];
-      if (isFunction$1(methodHandler)) {
-        {
-          Object.defineProperty(ctx, key, {
-            value: methodHandler.bind(publicThis),
-            configurable: true,
-            enumerable: true,
-            writable: true
-          });
-        }
-        {
-          checkDuplicateProperties("Methods", key);
-        }
-      } else {
-        warn$1(
-          `Method "${key}" has type "${typeof methodHandler}" in the component definition. Did you reference the function correctly?`
-        );
-      }
-    }
-  }
-  if (dataOptions) {
-    if (!isFunction$1(dataOptions)) {
-      warn$1(
-        `The data option must be a function. Plain object usage is no longer supported.`
-      );
-    }
-    const data = dataOptions.call(publicThis, publicThis);
-    if (isPromise(data)) {
-      warn$1(
-        `data() returned a Promise - note data() cannot be async; If you intend to perform data fetching before component renders, use async setup() + <Suspense>.`
-      );
-    }
-    if (!isObject(data)) {
-      warn$1(`data() should return an object.`);
-    } else {
-      instance.data = reactive(data);
-      {
-        for (const key in data) {
-          checkDuplicateProperties("Data", key);
-          if (!isReservedPrefix(key[0])) {
-            Object.defineProperty(ctx, key, {
-              configurable: true,
-              enumerable: true,
-              get: () => data[key],
-              set: NOOP
-            });
-          }
-        }
-      }
-    }
-  }
-  shouldCacheAccess = true;
-  if (computedOptions) {
-    for (const key in computedOptions) {
-      const opt = computedOptions[key];
-      const get2 = isFunction$1(opt) ? opt.bind(publicThis, publicThis) : isFunction$1(opt.get) ? opt.get.bind(publicThis, publicThis) : NOOP;
-      if (get2 === NOOP) {
-        warn$1(`Computed property "${key}" has no getter.`);
-      }
-      const set2 = !isFunction$1(opt) && isFunction$1(opt.set) ? opt.set.bind(publicThis) : () => {
-        warn$1(
-          `Write operation failed: computed property "${key}" is readonly.`
-        );
-      };
-      const c2 = computed({
-        get: get2,
-        set: set2
-      });
-      Object.defineProperty(ctx, key, {
-        enumerable: true,
-        configurable: true,
-        get: () => c2.value,
-        set: (v2) => c2.value = v2
-      });
-      {
-        checkDuplicateProperties("Computed", key);
-      }
-    }
-  }
-  if (watchOptions) {
-    for (const key in watchOptions) {
-      createWatcher(watchOptions[key], ctx, publicThis, key);
-    }
-  }
-  if (provideOptions) {
-    const provides = isFunction$1(provideOptions) ? provideOptions.call(publicThis) : provideOptions;
-    Reflect.ownKeys(provides).forEach((key) => {
-      provide(key, provides[key]);
-    });
-  }
-  if (created) {
-    callHook(created, instance, "c");
-  }
-  function registerLifecycleHook(register, hook) {
-    if (isArray$1(hook)) {
-      hook.forEach((_hook) => register(_hook.bind(publicThis)));
-    } else if (hook) {
-      register(hook.bind(publicThis));
-    }
-  }
-  registerLifecycleHook(onBeforeMount, beforeMount);
-  registerLifecycleHook(onMounted, mounted);
-  registerLifecycleHook(onBeforeUpdate, beforeUpdate);
-  registerLifecycleHook(onUpdated, updated);
-  registerLifecycleHook(onActivated, activated);
-  registerLifecycleHook(onDeactivated, deactivated);
-  registerLifecycleHook(onErrorCaptured, errorCaptured);
-  registerLifecycleHook(onRenderTracked, renderTracked);
-  registerLifecycleHook(onRenderTriggered, renderTriggered);
-  registerLifecycleHook(onBeforeUnmount, beforeUnmount);
-  registerLifecycleHook(onUnmounted, unmounted);
-  registerLifecycleHook(onServerPrefetch, serverPrefetch);
-  if (isArray$1(expose)) {
-    if (expose.length) {
-      const exposed = instance.exposed || (instance.exposed = {});
-      expose.forEach((key) => {
-        Object.defineProperty(exposed, key, {
-          get: () => publicThis[key],
-          set: (val) => publicThis[key] = val
-        });
-      });
-    } else if (!instance.exposed) {
-      instance.exposed = {};
-    }
-  }
-  if (render2 && instance.render === NOOP) {
-    instance.render = render2;
-  }
-  if (inheritAttrs != null) {
-    instance.inheritAttrs = inheritAttrs;
-  }
-  if (components) instance.components = components;
-  if (directives2) instance.directives = directives2;
-  if (serverPrefetch) {
-    markAsyncBoundary(instance);
-  }
-}
-function resolveInjections(injectOptions, ctx, checkDuplicateProperties = NOOP) {
-  if (isArray$1(injectOptions)) {
-    injectOptions = normalizeInject(injectOptions);
-  }
-  for (const key in injectOptions) {
-    const opt = injectOptions[key];
-    let injected;
-    if (isObject(opt)) {
-      if ("default" in opt) {
-        injected = inject(
-          opt.from || key,
-          opt.default,
-          true
-        );
-      } else {
-        injected = inject(opt.from || key);
-      }
-    } else {
-      injected = inject(opt);
-    }
-    if (isRef(injected)) {
-      Object.defineProperty(ctx, key, {
-        enumerable: true,
-        configurable: true,
-        get: () => injected.value,
-        set: (v2) => injected.value = v2
-      });
-    } else {
-      ctx[key] = injected;
-    }
-    {
-      checkDuplicateProperties("Inject", key);
-    }
-  }
-}
-function callHook(hook, instance, type) {
-  callWithAsyncErrorHandling(
-    isArray$1(hook) ? hook.map((h2) => h2.bind(instance.proxy)) : hook.bind(instance.proxy),
-    instance,
-    type
-  );
-}
-function createWatcher(raw, ctx, publicThis, key) {
-  let getter = key.includes(".") ? createPathGetter(publicThis, key) : () => publicThis[key];
-  if (isString$1(raw)) {
-    const handler = ctx[raw];
-    if (isFunction$1(handler)) {
-      {
-        watch(getter, handler);
-      }
-    } else {
-      warn$1(`Invalid watch handler specified by key "${raw}"`, handler);
-    }
-  } else if (isFunction$1(raw)) {
-    {
-      watch(getter, raw.bind(publicThis));
-    }
-  } else if (isObject(raw)) {
-    if (isArray$1(raw)) {
-      raw.forEach((r2) => createWatcher(r2, ctx, publicThis, key));
-    } else {
-      const handler = isFunction$1(raw.handler) ? raw.handler.bind(publicThis) : ctx[raw.handler];
-      if (isFunction$1(handler)) {
-        watch(getter, handler, raw);
-      } else {
-        warn$1(`Invalid watch handler specified by key "${raw.handler}"`, handler);
-      }
-    }
-  } else {
-    warn$1(`Invalid watch option: "${key}"`, raw);
-  }
-}
-function resolveMergedOptions(instance) {
-  const base = instance.type;
-  const { mixins, extends: extendsOptions } = base;
-  const {
-    mixins: globalMixins,
-    optionsCache: cache2,
-    config: { optionMergeStrategies }
-  } = instance.appContext;
-  const cached = cache2.get(base);
-  let resolved;
-  if (cached) {
-    resolved = cached;
-  } else if (!globalMixins.length && !mixins && !extendsOptions) {
-    {
-      resolved = base;
-    }
-  } else {
-    resolved = {};
-    if (globalMixins.length) {
-      globalMixins.forEach(
-        (m2) => mergeOptions$1(resolved, m2, optionMergeStrategies, true)
-      );
-    }
-    mergeOptions$1(resolved, base, optionMergeStrategies);
-  }
-  if (isObject(base)) {
-    cache2.set(base, resolved);
-  }
-  return resolved;
-}
-function mergeOptions$1(to2, from, strats, asMixin = false) {
-  const { mixins, extends: extendsOptions } = from;
-  if (extendsOptions) {
-    mergeOptions$1(to2, extendsOptions, strats, true);
-  }
-  if (mixins) {
-    mixins.forEach(
-      (m2) => mergeOptions$1(to2, m2, strats, true)
-    );
-  }
-  for (const key in from) {
-    if (asMixin && key === "expose") {
-      warn$1(
-        `"expose" option is ignored when declared in mixins or extends. It should only be declared in the base component itself.`
-      );
-    } else {
-      const strat = internalOptionMergeStrats[key] || strats && strats[key];
-      to2[key] = strat ? strat(to2[key], from[key]) : from[key];
-    }
-  }
-  return to2;
-}
-const internalOptionMergeStrats = {
-  data: mergeDataFn,
-  props: mergeEmitsOrPropsOptions,
-  emits: mergeEmitsOrPropsOptions,
-  // objects
-  methods: mergeObjectOptions,
-  computed: mergeObjectOptions,
-  // lifecycle
-  beforeCreate: mergeAsArray,
-  created: mergeAsArray,
-  beforeMount: mergeAsArray,
-  mounted: mergeAsArray,
-  beforeUpdate: mergeAsArray,
-  updated: mergeAsArray,
-  beforeDestroy: mergeAsArray,
-  beforeUnmount: mergeAsArray,
-  destroyed: mergeAsArray,
-  unmounted: mergeAsArray,
-  activated: mergeAsArray,
-  deactivated: mergeAsArray,
-  errorCaptured: mergeAsArray,
-  serverPrefetch: mergeAsArray,
-  // assets
-  components: mergeObjectOptions,
-  directives: mergeObjectOptions,
-  // watch
-  watch: mergeWatchOptions,
-  // provide / inject
-  provide: mergeDataFn,
-  inject: mergeInject
-};
-function mergeDataFn(to2, from) {
-  if (!from) {
-    return to2;
-  }
-  if (!to2) {
-    return from;
-  }
-  return function mergedDataFn() {
-    return extend(
-      isFunction$1(to2) ? to2.call(this, this) : to2,
-      isFunction$1(from) ? from.call(this, this) : from
-    );
-  };
-}
-function mergeInject(to2, from) {
-  return mergeObjectOptions(normalizeInject(to2), normalizeInject(from));
-}
-function normalizeInject(raw) {
-  if (isArray$1(raw)) {
-    const res = {};
-    for (let i2 = 0; i2 < raw.length; i2++) {
-      res[raw[i2]] = raw[i2];
-    }
-    return res;
-  }
-  return raw;
-}
-function mergeAsArray(to2, from) {
-  return to2 ? [...new Set([].concat(to2, from))] : from;
-}
-function mergeObjectOptions(to2, from) {
-  return to2 ? extend(/* @__PURE__ */ Object.create(null), to2, from) : from;
-}
-function mergeEmitsOrPropsOptions(to2, from) {
-  if (to2) {
-    if (isArray$1(to2) && isArray$1(from)) {
-      return [.../* @__PURE__ */ new Set([...to2, ...from])];
-    }
-    return extend(
-      /* @__PURE__ */ Object.create(null),
-      normalizePropsOrEmits(to2),
-      normalizePropsOrEmits(from != null ? from : {})
-    );
-  } else {
-    return from;
-  }
-}
-function mergeWatchOptions(to2, from) {
-  if (!to2) return from;
-  if (!from) return to2;
-  const merged = extend(/* @__PURE__ */ Object.create(null), to2);
-  for (const key in from) {
-    merged[key] = mergeAsArray(to2[key], from[key]);
-  }
-  return merged;
-}
 function createAppContext() {
   return {
     app: null,
@@ -16372,13 +15902,7 @@ function createAppAPI(render2, hydrate) {
       },
       mixin(mixin) {
         {
-          if (!context.mixins.includes(mixin)) {
-            context.mixins.push(mixin);
-          } else {
-            warn$1(
-              "Mixin has already been applied to target app" + (mixin.name ? `: ${mixin.name}` : "")
-            );
-          }
+          warn$1("Mixins are only available in builds supporting Options API");
         }
         return app;
       },
@@ -16737,9 +16261,8 @@ function resolvePropValue(options, props, key, value, instance, isAbsent) {
   }
   return value;
 }
-const mixinPropsCache = /* @__PURE__ */ new WeakMap();
 function normalizePropsOptions(comp, appContext, asMixin = false) {
-  const cache2 = asMixin ? mixinPropsCache : appContext.propsCache;
+  const cache2 = appContext.propsCache;
   const cached = cache2.get(comp);
   if (cached) {
     return cached;
@@ -16748,23 +16271,6 @@ function normalizePropsOptions(comp, appContext, asMixin = false) {
   const normalized = {};
   const needCastKeys = [];
   let hasExtends = false;
-  if (!isFunction$1(comp)) {
-    const extendProps = (raw2) => {
-      hasExtends = true;
-      const [props, keys] = normalizePropsOptions(raw2, appContext, true);
-      extend(normalized, props);
-      if (keys) needCastKeys.push(...keys);
-    };
-    if (!asMixin && appContext.mixins.length) {
-      appContext.mixins.forEach(extendProps);
-    }
-    if (comp.extends) {
-      extendProps(comp.extends);
-    }
-    if (comp.mixins) {
-      comp.mixins.forEach(extendProps);
-    }
-  }
   if (!raw && !hasExtends) {
     if (isObject(comp)) {
       cache2.set(comp, EMPTY_ARR);
@@ -18677,31 +18183,6 @@ function doWatch(source, cb, options = EMPTY_OBJ) {
   }
   return watchHandle;
 }
-function instanceWatch(source, value, options) {
-  const publicThis = this.proxy;
-  const getter = isString$1(source) ? source.includes(".") ? createPathGetter(publicThis, source) : () => publicThis[source] : source.bind(publicThis, publicThis);
-  let cb;
-  if (isFunction$1(value)) {
-    cb = value;
-  } else {
-    cb = value.handler;
-    options = value;
-  }
-  const reset = setCurrentInstance(this);
-  const res = doWatch(getter, cb.bind(publicThis), options);
-  reset();
-  return res;
-}
-function createPathGetter(ctx, path) {
-  const segments = path.split(".");
-  return () => {
-    let cur = ctx;
-    for (let i2 = 0; i2 < segments.length && cur; i2++) {
-      cur = cur[segments[i2]];
-    }
-    return cur;
-  };
-}
 const getModelModifiers = (props, modelName) => {
   return modelName === "modelValue" || modelName === "model-value" ? props.modelModifiers : props[`${modelName}Modifiers`] || props[`${camelize(modelName)}Modifiers`] || props[`${hyphenate(modelName)}Modifiers`];
 };
@@ -18799,24 +18280,6 @@ function normalizeEmitsOptions(comp, appContext, asMixin = false) {
   const raw = comp.emits;
   let normalized = {};
   let hasExtends = false;
-  if (!isFunction$1(comp)) {
-    const extendEmits = (raw2) => {
-      const normalizedFromExtend = normalizeEmitsOptions(raw2, appContext, true);
-      if (normalizedFromExtend) {
-        hasExtends = true;
-        extend(normalized, normalizedFromExtend);
-      }
-    };
-    if (!asMixin && appContext.mixins.length) {
-      appContext.mixins.forEach(extendEmits);
-    }
-    if (comp.extends) {
-      extendEmits(comp.extends);
-    }
-    if (comp.mixins) {
-      comp.mixins.forEach(extendEmits);
-    }
-  }
   if (!raw && !hasExtends) {
     if (isObject(comp)) {
       cache2.set(comp, null);
@@ -20342,7 +19805,7 @@ function finishComponentSetup(instance, isSSR, skipOptions) {
   const Component = instance.type;
   if (!instance.render) {
     if (!isSSR && compile && !Component.render) {
-      const template = Component.template || resolveMergedOptions(instance).template;
+      const template = Component.template || false;
       if (template) {
         {
           startMeasure(instance, `compile`);
@@ -20366,16 +19829,6 @@ function finishComponentSetup(instance, isSSR, skipOptions) {
       }
     }
     instance.render = Component.render || NOOP;
-  }
-  {
-    const reset = setCurrentInstance(instance);
-    pauseTracking();
-    try {
-      applyOptions(instance);
-    } finally {
-      resetTracking();
-      reset();
-    }
   }
   if (!Component.render && instance.render === NOOP && !isSSR) {
     if (Component.template) {
@@ -27088,16 +26541,16 @@ const cva = (base, config2) => (props) => {
   }, []);
   return cx(base, getVariantClassNames, getCompoundVariantClassNames, props === null || props === void 0 ? void 0 : props.class, props === null || props === void 0 ? void 0 : props.className);
 };
-function ai$1(a2) {
+function li$1(a2) {
   let t2 = false, e2;
   const n2 = effectScope(true);
   return (...l) => (t2 || (e2 = n2.run(() => a2(...l)), t2 = true), e2);
 }
 typeof WorkerGlobalScope < "u" && globalThis instanceof WorkerGlobalScope;
-function Ua$1(a2) {
-  return a2 ? a2.flatMap((t2) => t2.type === Fragment ? Ua$1(t2.children) : [t2]) : [];
+function qa$1(a2) {
+  return a2 ? a2.flatMap((t2) => t2.type === Fragment ? qa$1(t2.children) : [t2]) : [];
 }
-const Xn$1 = /* @__PURE__ */ defineComponent({
+const Jn$1 = /* @__PURE__ */ defineComponent({
   name: "PrimitiveSlot",
   inheritAttrs: false,
   setup(a2, { attrs: t2, slots: e2 }) {
@@ -27105,7 +26558,7 @@ const Xn$1 = /* @__PURE__ */ defineComponent({
       var u2, d2;
       if (!e2.default)
         return null;
-      const n2 = Ua$1(e2.default()), l = n2.findIndex((c2) => c2.type !== Comment);
+      const n2 = qa$1(e2.default()), l = n2.findIndex((c2) => c2.type !== Comment);
       if (l === -1)
         return n2;
       const s = n2[l];
@@ -27133,7 +26586,7 @@ const Xn$1 = /* @__PURE__ */ defineComponent({
   },
   setup(a2, { attrs: t2, slots: e2 }) {
     const n2 = a2.asChild ? "template" : a2.as;
-    return typeof n2 == "string" && ["area", "img", "input"].includes(n2) ? () => h$2(n2, t2) : n2 !== "template" ? () => h$2(a2.as, t2, { default: e2.default }) : () => h$2(Xn$1, t2, { default: e2.default });
+    return typeof n2 == "string" && ["area", "img", "input"].includes(n2) ? () => h$2(n2, t2) : n2 !== "template" ? () => h$2(a2.as, t2, { default: e2.default }) : () => h$2(Jn$1, t2, { default: e2.default });
   }
 });
 reactive({
@@ -27141,12 +26594,12 @@ reactive({
   layersWithOutsidePointerEventsDisabled: /* @__PURE__ */ new Set(),
   branches: /* @__PURE__ */ new Set()
 });
-ai$1(() => ref([]));
-function Cp$1() {
+li$1(() => ref([]));
+function xp$1() {
   if (typeof matchMedia == "function")
     return matchMedia("(pointer:coarse)").matches ? "coarse" : "fine";
 }
-Cp$1() === "coarse";
+xp$1() === "coarse";
 const _export_sfc = (sfc, props) => {
   const target = sfc.__vccOpts || sfc;
   for (const [key, val] of props) {
@@ -27464,7 +26917,7 @@ const va = {
     function u2() {
       l.value = false, window.removeEventListener("mousemove", f2), window.removeEventListener("mouseup", u2);
     }
-    return onUnmounted$1(() => {
+    return onUnmounted(() => {
       u2();
     }), (d2, p2) => (openBlock$1(), createBlock$1(Vt, {
       class: normalizeClass$1(["histoire-number htw-cursor-ew-resize htw-items-center", [
@@ -48248,10 +47701,10 @@ function _sfc_render(_ctx, _cache) {
     renderSlot(_ctx.$slots, "default", {}, void 0)
   ]);
 }
-_sfc_main.__file = "src/histoire/wrapper.vue";
-const Wrapper = /* @__PURE__ */ _export_sfc(_sfc_main, [["render", _sfc_render], ["__scopeId", "data-v-2104f4f0"], ["__file", "/home/runner/work/vue-template/vue-template/packages/ui/src/histoire/wrapper.vue"]]);
+_sfc_main.__file = "src/histoire-wrapper.vue";
+const HistoireWrapper = /* @__PURE__ */ _export_sfc(_sfc_main, [["render", _sfc_render], ["__scopeId", "data-v-1573bc26"], ["__file", "/home/runner/work/vue-template/vue-template/packages/ui/src/histoire-wrapper.vue"]]);
 const setupVue3 = defineSetupVue3(({ addWrapper }) => {
-  addWrapper(Wrapper);
+  addWrapper(HistoireWrapper);
 });
 const h$1 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
   __proto__: null,
@@ -48735,7 +48188,7 @@ const R$1 = /* @__PURE__ */ defineComponent$1({
       c$1(), await p2();
     }), onMounted$1(async () => {
       await p2();
-    }), onUnmounted$1(() => {
+    }), onUnmounted(() => {
       c$1();
     }), {
       el: i2
@@ -49203,7 +48656,7 @@ export {
   Am as ah,
   useResizeObserver as ai,
   onBeforeUnmount$1 as aj,
-  onUnmounted$1 as ak,
+  onUnmounted as ak,
   VTooltip as al,
   createStaticVNode as am,
   toRaw$1 as an,
