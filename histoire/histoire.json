@@ -1,7 +1,7 @@
 {
   "stories": [
     {
-      "id": "src-components-button-button-story-vue",
+      "id": "src-button-button-story-vue",
       "title": "Button",
       "layout": {
         "type": "single",
@@ -10,11 +10,17 @@
       "docsOnly": false,
       "variants": [
         {
-          "id": "_default",
-          "title": "default"
+          "id": "src-button-button-story-vue-0",
+          "title": "Variants"
+        },
+        {
+          "id": "src-button-button-story-vue-1",
+          "title": "Sizes"
         }
       ],
-      "relativePath": "src/components/button/button.story.vue",
+      "autoPropsDisabled": true,
+      "responsiveDisabled": true,
+      "relativePath": "src/button/button.story.vue",
       "supportPluginId": "vue3",
       "treePath": [
         "Button"
