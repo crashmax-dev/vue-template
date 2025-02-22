@@ -5,7 +5,7 @@
   "private": true,
   "exports": {
     ".": "./src/index.ts",
-    "./themes/*": "./src/assets/themes/*.css"
+    "./assets/*": "./src/assets/*"
   },
   "files": [
     "src"

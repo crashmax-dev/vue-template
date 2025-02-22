@@ -1,6 +1,5 @@
 import {
   alias,
-  css,
   iconsPlugin,
   staticCopyPlugin,
   vuePlugin,
@@ -9,7 +8,6 @@ import { defineConfig } from 'vite'
 
 export default defineConfig({
   base: './',
-  css,
   plugins: [
     vuePlugin,
     iconsPlugin,

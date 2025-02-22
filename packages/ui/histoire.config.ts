@@ -1,6 +1,5 @@
 import { HstVue } from '@histoire/plugin-vue'
 import {
-  css,
   iconsPlugin,
   staticCopyPlugin,
   vuePlugin,
@@ -23,7 +22,6 @@ export default defineConfig({
   ],
   vite: {
     base: '',
-    css,
     plugins: [
       vuePlugin,
       iconsPlugin,
