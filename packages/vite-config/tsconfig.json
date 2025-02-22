@@ -17,6 +17,7 @@
     "declaration": true,
     "outDir": "dist",
     "isolatedModules": true,
+    "verbatimModuleSyntax": true,
     "skipLibCheck": true
   },
   "include": [

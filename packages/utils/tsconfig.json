@@ -18,6 +18,7 @@
     "outDir": "dist",
     "sourceMap": true,
     "isolatedModules": true,
+    "verbatimModuleSyntax": true,
     "skipLibCheck": true
   },
   "include": [
