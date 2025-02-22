@@ -1,3 +1,4 @@
-export * from './components/index.js'
-export * from './composables/index.js'
-export * from './providers/index.js'
+export { default as VButton } from './button/button.vue'
+
+export { default as VThemeProvider } from './theme/theme-provider.vue'
+export { type Theme, useTheme } from './theme/use-theme.js'

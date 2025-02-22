@@ -42,7 +42,7 @@ function histoireUrl() {
 
       <VButton
         class="toggle-theme"
-        @click="theme.setTheme()"
+        @click="theme.toggleTheme"
       >
         <MoonIcon v-if="theme.theme.value === 'dark'" class="icon" />
         <SunIcon v-else class="icon" />

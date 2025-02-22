@@ -1,0 +1,13 @@
+$text-sizes: (
+  'xs': 4px,
+  'sm': 8px,
+  'md': 12px,
+  'lg': 16px,
+  'xl': 20px,
+);
+
+@each $key, $value in $text-sizes {
+  .text-#{$key} {
+    font-size: $value;
+  }
+}

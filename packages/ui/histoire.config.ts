@@ -14,6 +14,10 @@ export default defineConfig({
   theme: {
     title: 'UI',
   },
+  defaultStoryProps: {
+    autoPropsDisabled: true,
+    responsiveDisabled: true,
+  },
   plugins: [
     HstVue(),
   ],
