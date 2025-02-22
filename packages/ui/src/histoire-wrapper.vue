@@ -18,7 +18,7 @@ function isColumn() {
 }
 </script>
 
-<style lang="scss">
+<style scoped lang="scss">
 .wrapper {
   display: flex;
   flex-wrap: wrap;
