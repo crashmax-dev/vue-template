@@ -1,6 +1,6 @@
-import { inject, type InjectionKey } from 'vue'
-
+import { inject } from 'vue'
 import type { RemovableRef } from '@vueuse/core'
+import type { InjectionKey } from 'vue'
 
 export type Theme = 'light' | 'dark'
 

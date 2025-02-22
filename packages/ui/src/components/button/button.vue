@@ -1,6 +1,8 @@
 <script setup lang="ts">
-import { cva, type VariantProps } from 'class-variance-authority'
-import { Primitive, type PrimitiveProps } from 'radix-vue'
+import { cva } from 'class-variance-authority'
+import { Primitive } from 'radix-vue'
+import type { VariantProps } from 'class-variance-authority'
+import type { PrimitiveProps } from 'radix-vue'
 import type { ButtonHTMLAttributes } from 'vue'
 
 type ButtonClasses = VariantProps<typeof buttonClasses>
