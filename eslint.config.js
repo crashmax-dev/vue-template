@@ -9,6 +9,7 @@ export default antfu({
     'no-alert': 'off',
     'no-console': 'off',
     'no-unused-vars': 'warn',
+    'node/prefer-global/process': 'off',
     'antfu/if-newline': 'off',
     'antfu/no-top-level-await': 'off',
     'unused-imports/no-unused-imports': 'warn',

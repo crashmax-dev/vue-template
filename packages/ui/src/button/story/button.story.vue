@@ -28,7 +28,7 @@
 </template>
 
 <script setup lang="ts">
-import VButton from './button.vue'
+import VButton from '../button.vue'
 
 const sizes = ['medium', 'small'] as const
 </script>
