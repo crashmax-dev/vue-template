@@ -1,7 +1,7 @@
 {
   "stories": [
     {
-      "id": "src-button-button-story-vue",
+      "id": "src-button-story-button-story-vue",
       "title": "Button",
       "layout": {
         "type": "single",
@@ -10,24 +10,36 @@
       "docsOnly": false,
       "variants": [
         {
-          "id": "src-button-button-story-vue-0",
+          "id": "src-button-story-button-story-vue-0",
           "title": "Variants"
         },
         {
-          "id": "src-button-button-story-vue-1",
+          "id": "src-button-story-button-story-vue-1",
           "title": "Sizes"
         }
       ],
       "autoPropsDisabled": true,
       "responsiveDisabled": true,
-      "relativePath": "src/button/button.story.vue",
+      "relativePath": "src/button/story/button.story.vue",
       "supportPluginId": "vue3",
       "treePath": [
         "Button"
       ],
       "virtual": false,
-      "markdownFile": null
+      "markdownFile": {
+        "id": "src-button-story-button-story-md",
+        "relativePath": "src/button/story/button.story.md",
+        "isRelatedToStory": true,
+        "frontmatter": {}
+      }
     }
   ],
-  "markdownFiles": []
+  "markdownFiles": [
+    {
+      "id": "src-button-story-button-story-md",
+      "relativePath": "src/button/story/button.story.md",
+      "isRelatedToStory": true,
+      "frontmatter": {}
+    }
+  ]
 }
