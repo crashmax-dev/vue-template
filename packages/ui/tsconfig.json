@@ -6,8 +6,6 @@
       "ESNext",
       "DOM"
     ],
-    "baseUrl": ".",
-    "rootDir": "src",
     "module": "ESNext",
     "moduleResolution": "Node",
     "resolveJsonModule": true,
@@ -19,6 +17,7 @@
     "noImplicitAny": false,
     "noImplicitThis": true,
     "declaration": false,
+    "noEmit": true,
     "outDir": "dist",
     "allowSyntheticDefaultImports": true,
     "esModuleInterop": true,

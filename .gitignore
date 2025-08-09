@@ -1,15 +1,13 @@
 node_modules
 dist
 .turbo
-
 *.tgz
 *.log
 .DS_Store
 Thumbs.db
 vite.config.ts.timestamp-*
-
+.eslintcache
 storybook-static
 *storybook.log
-
 coverage
 test-results/

@@ -1,6 +1,5 @@
 {
   "typescript.tsdk": "node_modules/typescript/lib",
-  "vue.updateImportsOnFileMove.enabled": true,
 
   // Disable the default formatter, use eslint instead
   "prettier.enable": false,
@@ -34,7 +33,7 @@
     "html",
     "markdown",
     "json",
-    "xml",
+    "yaml",
     "css",
     "scss"
   ]

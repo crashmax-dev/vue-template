@@ -1,8 +1,8 @@
 <script setup lang="ts">
 import { cva } from 'class-variance-authority'
-import { Primitive } from 'radix-vue'
+import { Primitive } from 'reka-ui'
 import type { VariantProps } from 'class-variance-authority'
-import type { PrimitiveProps } from 'radix-vue'
+import type { PrimitiveProps } from 'reka-ui'
 import type { ButtonHTMLAttributes } from 'vue'
 
 type ButtonClasses = VariantProps<typeof buttonClasses>

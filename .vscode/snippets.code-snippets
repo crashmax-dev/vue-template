@@ -1,0 +1,33 @@
+{
+  "vue": {
+    "scope": "vue",
+		"prefix": "vue",
+		"body": [
+      "<template>",
+			"</template>",
+      "",
+			"<script setup lang=\"ts\">",
+			"$1",
+			"</script>",
+			"",
+			"<style scoped lang=\"scss\">",
+			"</style>"
+		]
+	},
+  "pinia": {
+    "scope": "ts",
+    "prefix": "pinia",
+    "body": [
+      "import { acceptHMRUpdate, defineStore } from 'pinia'",
+      "",
+      "export const use$1 = defineStore('', () => {",
+      "",
+      "})",
+      "",
+      "if (import.meta.hot) {",
+      "  import.meta.hot.accept(acceptHMRUpdate(use$1, import.meta.hot))",
+      "}",
+      ""
+    ]
+  }
+}

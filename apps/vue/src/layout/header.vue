@@ -1,10 +1,10 @@
 <script setup lang="ts">
-import { RoutePath } from '@/libs/router'
 import { useTheme, VButton } from '@vue-workspace/ui'
 import { RouterLink, useRoute } from 'vue-router'
 import ExternalLinkIcon from '~icons/heroicons-outline/external-link'
 import MoonIcon from '~icons/heroicons-outline/moon'
 import SunIcon from '~icons/heroicons-outline/sun'
+import { RoutePath } from '@/libs/router'
 
 const route = useRoute()
 const theme = useTheme()

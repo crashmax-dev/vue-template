@@ -15,9 +15,9 @@
   "dependencies": {
     "@vue-workspace/ui": "workspace:*",
     "@vue-workspace/utils": "workspace:*",
-    "@vueuse/core": "13.1.0",
-    "pinia": "3.0.2",
-    "vue": "3.5.13",
+    "@vueuse/core": "13.6.0",
+    "pinia": "3.0.3",
+    "vue": "3.5.18",
     "vue-router": "4.5.1"
   },
   "devDependencies": {
