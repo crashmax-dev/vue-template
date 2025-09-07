@@ -3,6 +3,7 @@ import { createRouter, createWebHashHistory } from 'vue-router'
 export const RoutePath = {
   Home: '/',
   Counter: '/counter',
+  Form: '/form',
 } as const
 
 export const router = createRouter({
@@ -17,6 +18,11 @@ export const router = createRouter({
       path: RoutePath.Counter,
       name: 'counter',
       component: () => import('@/pages/counter/counter.vue'),
+    },
+    {
+      path: RoutePath.Form,
+      name: 'form',
+      component: () => import('@/pages/form/form.vue'),
     },
   ],
 })
