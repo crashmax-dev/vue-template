@@ -1,0 +1,15 @@
+{
+  "name": "@vue-workspace/codemods",
+  "type": "module",
+  "version": "0.0.0",
+  "private": true,
+  "scripts": {
+    "build": "pnpm type-check",
+    "type-check": "tsc",
+    "codemod": "jscodeshift --extensions=\"vue,ts\" --parser=ts ./target"
+  },
+  "devDependencies": {
+    "@vue/compiler-sfc": "3.5.21",
+    "vue-jscodeshift-adapter": "3.0.0"
+  }
+}

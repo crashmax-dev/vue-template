@@ -1,0 +1,27 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`ite-table-bordered('add-borderless') 1`] = `
+"<template>
+  <ite-table  borderless />
+  <ite-table
+    :table-store="store"
+   borderless />
+  <IteTable  borderless />
+  <IteTable
+    :table-store="store"
+   borderless />
+</template>
+"
+`;
+
+exports[`ite-table-bordered('remove-bordered') 1`] = `
+"<template>
+  <ite-table />
+  <ite-table
+  />
+  <IteTable />
+  <IteTable
+  />
+</template>
+"
+`;
