@@ -1,7 +1,7 @@
-const __vite__mapDeps=(i,m=__vite__mapDeps,d=(m.f||(m.f=["./SearchPane.vue-hrueYNR7.js","./vendor-BeLYO1N0.js","./story-DjM03Ft-.js","./mapping-CfWLvZl0.js","./BaseEmpty.vue-CgurTDSQ.js","./responsive-DykX9OG2.js"])))=>i.map(i=>d[i]);
+const __vite__mapDeps=(i,m=__vite__mapDeps,d=(m.f||(m.f=["./SearchPane.vue-B-yQPfaI.js","./vendor-BeLYO1N0.js","./story-CDdRl4ML.js","./mapping-BvuPudB-.js","./BaseEmpty.vue-CgurTDSQ.js","./responsive-DykX9OG2.js"])))=>i.map(i=>d[i]);
 import { u as useEventListener, i as isRef, d as defineComponent, c as computed, a as createElementBlock, o as openBlock, r as resolveDirective, b as createBaseVNode, e as unref, f as createVNode, w as withDirectives, g as createCommentVNode, I as Icon, h as defineStore, j as useStorage, k as watch, l as useCssVars, m as useRoute, n as ref, p as withCtx, q as normalizeClass, t as toDisplayString, s as resolveComponent, v as withKeys, F as Fragment, x as renderList, y as createBlock, z as createTextVNode, A as reactive, B as normalizeStyle, T as Transition, C as vShow, D as defineAsyncComponent, _ as __vitePreload, E as useTitle, G as onMounted, H as createApp, J as createPinia, K as Gt } from "./vendor-BeLYO1N0.js";
-import { i as isDark, c as customLogos, h as histoireConfig, t as toggleDark, r as router, f as files, m as mapFile, _ as _sfc_main$c, a as tree } from "./mapping-CfWLvZl0.js";
-import { u as useStoryStore } from "./story-DjM03Ft-.js";
+import { i as isDark, c as customLogos, h as histoireConfig, t as toggleDark, r as router, f as files, m as mapFile, _ as _sfc_main$c, a as tree } from "./mapping-BvuPudB-.js";
+import { u as useStoryStore } from "./story-CDdRl4ML.js";
 import { u as useScrollOnActive, B as BaseListItemLink, _ as _export_sfc, a as _sfc_main$b, i as isMobile, b as BaseSplitPane } from "./responsive-DykX9OG2.js";
 const isMac = navigator.platform.toLowerCase().includes("mac");
 function onKeyboardShortcut(shortcut, handler, options = {}) {
@@ -638,7 +638,7 @@ const _sfc_main$1 = /* @__PURE__ */ defineComponent({
   },
   setup(__props, { emit: __emit }) {
     const SearchPane = defineAsyncComponent({
-      loader: () => __vitePreload(() => import("./SearchPane.vue-hrueYNR7.js"), true ? __vite__mapDeps([0,1,2,3,4,5]) : void 0, import.meta.url),
+      loader: () => __vitePreload(() => import("./SearchPane.vue-B-yQPfaI.js"), true ? __vite__mapDeps([0,1,2,3,4,5]) : void 0, import.meta.url),
       loadingComponent: _sfc_main$2,
       delay: 0
     });
