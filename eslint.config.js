@@ -4,6 +4,9 @@ export default antfu({
   typescript: true,
   markdown: true,
   yaml: true,
+  ignores: [
+    'packages/api/src/api/*',
+  ],
   rules: {
     'curly': 'off',
     'no-alert': 'off',
