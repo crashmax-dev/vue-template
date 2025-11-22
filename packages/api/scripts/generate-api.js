@@ -15,6 +15,7 @@ await createClient({
     },
     {
       name: '@hey-api/sdk',
+      validator: true,
       auth: false,
     },
     {
@@ -25,7 +26,7 @@ await createClient({
     {
       name: 'valibot',
       requests: false,
-      responses: false,
+      responses: true,
     },
   ],
 })

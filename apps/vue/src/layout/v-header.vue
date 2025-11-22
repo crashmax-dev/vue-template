@@ -1,3 +1,39 @@
+<template>
+  <header class="header">
+    <nav class="header-nav">
+      <v-button
+        v-for="[name, path] of Object.entries(RoutePath)"
+        :key="path"
+        class="header-link"
+        :as="RouterLink"
+        :to="path"
+        :variant="route.path === path ? 'primary' : 'secondary'"
+      >
+        {{ name }}
+      </v-button>
+
+      <v-button
+        as="a"
+        variant="secondary"
+        :href="histoireUrl()"
+        target="_blank"
+        class="header-link header-link__with-icon"
+      >
+        <external-link-icon />
+        Histoire
+      </v-button>
+
+      <v-button
+        class="toggle-theme"
+        @click="theme.toggleTheme"
+      >
+        <moon-icon v-if="theme.theme.value === 'dark'" class="text-xl" />
+        <sun-icon v-else class="text-xl" />
+      </v-button>
+    </nav>
+  </header>
+</template>
+
 <script setup lang="ts">
 import { useTheme, VButton } from '@vue-workspace/ui'
 import { RouterLink, useRoute } from 'vue-router'
@@ -14,42 +50,6 @@ function histoireUrl() {
   return '/vue-template/histoire'
 }
 </script>
-
-<template>
-  <header class="header">
-    <nav class="header-nav">
-      <VButton
-        v-for="[name, path] of Object.entries(RoutePath)"
-        :key="path"
-        class="header-link"
-        :as="RouterLink"
-        :to="path"
-        :variant="route.path === path ? 'primary' : 'secondary'"
-      >
-        {{ name }}
-      </VButton>
-
-      <VButton
-        as="a"
-        variant="secondary"
-        :href="histoireUrl()"
-        target="_blank"
-        class="header-link header-link__with-icon"
-      >
-        <ExternalLinkIcon />
-        Histoire
-      </VButton>
-
-      <VButton
-        class="toggle-theme"
-        @click="theme.toggleTheme"
-      >
-        <MoonIcon v-if="theme.theme.value === 'dark'" class="text-xl" />
-        <SunIcon v-else class="text-xl" />
-      </VButton>
-    </nav>
-  </header>
-</template>
 
 <style scoped lang="scss">
 .header {

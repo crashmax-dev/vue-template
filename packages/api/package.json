@@ -4,7 +4,8 @@
   "version": "0.0.0",
   "private": true,
   "exports": {
-    ".": "./src/index.ts"
+    ".": "./src/api/index.ts",
+    "./schemas": "./src/api/valibot.gen.ts"
   },
   "files": [
     "dist"
@@ -15,7 +16,7 @@
     "generate-api": "node ./scripts/generate-api.js"
   },
   "devDependencies": {
-    "@hey-api/openapi-ts": "0.87.2",
+    "@hey-api/openapi-ts": "0.88.0",
     "valibot": "1.1.0"
   }
 }

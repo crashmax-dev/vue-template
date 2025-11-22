@@ -1,0 +1,20 @@
+{
+  "name": "daisy",
+  "type": "module",
+  "version": "0.0.0",
+  "private": true,
+  "scripts": {
+    "dev": "vite",
+    "build": "vue-tsc -b && vite build",
+    "preview": "vite preview"
+  },
+  "dependencies": {
+    "vue": "3.5.24"
+  },
+  "devDependencies": {
+    "@tailwindcss/vite": "4.1.17",
+    "@vue-workspace/vite-config": "workspace:^",
+    "daisyui": "5.5.5",
+    "tailwindcss": "4.1.17"
+  }
+}

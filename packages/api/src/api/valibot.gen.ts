@@ -9,7 +9,7 @@ export const vTodoStatus = v.picklist([
     'Completed'
 ]);
 
-export const vTodoItem = v.object({
+export const vTodo = v.object({
     id: v.pipe(v.pipe(v.string(), v.uuid()), v.readonly()),
     title: v.pipe(v.string(), v.maxLength(200)),
     status: vTodoStatus
@@ -20,7 +20,30 @@ export const vApiErr = v.object({
     message: v.string()
 });
 
-export const vTodoItemWritable = v.object({
+export const vTodoWritable = v.object({
     title: v.pipe(v.string(), v.maxLength(200)),
     status: vTodoStatus
 });
+
+/**
+ * Get todos
+ */
+export const vGetTodosResponse = v.object({
+    data: v.array(vTodo),
+    total: v.number()
+});
+
+/**
+ * Create todo
+ */
+export const vPostTodosResponse = vTodo;
+
+/**
+ * Get todo by id
+ */
+export const vGetTodoByIdResponse = vTodo;
+
+/**
+ * Update todo by id
+ */
+export const vUpdateTodoByIdResponse = vTodo;

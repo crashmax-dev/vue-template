@@ -1,12 +1,12 @@
+<template>
+  <div class="home">
+    <vue-icon class="vue-icon" />
+  </div>
+</template>
+
 <script setup lang="ts">
 import VueIcon from '~icons/custom-icon/vue'
 </script>
-
-<template>
-  <div class="home">
-    <VueIcon class="vue-icon" />
-  </div>
-</template>
 
 <style scoped>
 .home {

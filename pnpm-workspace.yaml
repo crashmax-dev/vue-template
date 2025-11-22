@@ -5,5 +5,5 @@ packages:
 onlyBuiltDependencies:
   - '@parcel/watcher'
   - esbuild
-  - unrs-resolver
+  - msw
   - vue-demi

@@ -4,7 +4,7 @@ export type ClientOptions = {
     baseUrl: `${string}://${string}` | (string & {});
 };
 
-export type TodoItem = {
+export type Todo = {
     readonly id: string;
     title: string;
     status: TodoStatus;
@@ -24,7 +24,7 @@ export type ApiErr = {
     message: string;
 };
 
-export type TodoItemWritable = {
+export type TodoWritable = {
     title: string;
     status: TodoStatus;
 };
@@ -53,7 +53,7 @@ export type GetTodosResponses = {
      * Get todos
      */
     200: {
-        data: Array<TodoItem>;
+        data: Array<Todo>;
         total: number;
     };
 };
@@ -61,7 +61,7 @@ export type GetTodosResponses = {
 export type GetTodosResponse = GetTodosResponses[keyof GetTodosResponses];
 
 export type PostTodosData = {
-    body: TodoItemWritable;
+    body: TodoWritable;
     path?: never;
     query?: never;
     url: '/todos';
@@ -80,7 +80,70 @@ export type PostTodosResponses = {
     /**
      * Create todo
      */
-    200: TodoItem;
+    200: Todo;
 };
 
 export type PostTodosResponse = PostTodosResponses[keyof PostTodosResponses];
+
+export type DeleteTodoByIdData = {
+    body?: never;
+    path: {
+        id: string;
+    };
+    query?: never;
+    url: '/todos/{id}';
+};
+
+export type GetTodoByIdData = {
+    body?: never;
+    path: {
+        id: string;
+    };
+    query?: never;
+    url: '/todos/{id}';
+};
+
+export type GetTodoByIdErrors = {
+    /**
+     * Bad request
+     */
+    400: ApiErr;
+};
+
+export type GetTodoByIdError = GetTodoByIdErrors[keyof GetTodoByIdErrors];
+
+export type GetTodoByIdResponses = {
+    /**
+     * Get todo by id
+     */
+    200: Todo;
+};
+
+export type GetTodoByIdResponse = GetTodoByIdResponses[keyof GetTodoByIdResponses];
+
+export type UpdateTodoByIdData = {
+    body: TodoWritable;
+    path: {
+        id: string;
+    };
+    query?: never;
+    url: '/todos/{id}';
+};
+
+export type UpdateTodoByIdErrors = {
+    /**
+     * Bad request
+     */
+    400: ApiErr;
+};
+
+export type UpdateTodoByIdError = UpdateTodoByIdErrors[keyof UpdateTodoByIdErrors];
+
+export type UpdateTodoByIdResponses = {
+    /**
+     * Update todo by id
+     */
+    200: Todo;
+};
+
+export type UpdateTodoByIdResponse = UpdateTodoByIdResponses[keyof UpdateTodoByIdResponses];

@@ -11,6 +11,7 @@ tags:
 paths:
   /todos:
     get:
+      operationId: getTodos
       tags:
         - todos
       parameters:
@@ -35,7 +36,7 @@ paths:
                   data:
                     type: array
                     items:
-                      $ref: '#/components/schemas/TodoItem'
+                      $ref: '#/components/schemas/Todo'
                   total:
                     type: number
                 required:
@@ -43,6 +44,7 @@ paths:
                   - total
         '400':
           $ref: './api.yaml#/components/responses/BadRequest'
+
     post:
       tags:
         - todos
@@ -51,20 +53,81 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/TodoItem'
+              $ref: '#/components/schemas/Todo'
       responses:
         '200':
           description: Create todo
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/TodoItem'
+                $ref: '#/components/schemas/Todo'
+        '400':
+          $ref: './api.yaml#/components/responses/BadRequest'
+
+  /todos/{id}:
+    get:
+      operationId: getTodoById
+      tags:
+        - todos
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: string
+            format: uuid
+      responses:
+        '200':
+          description: Get todo by id
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Todo'
+        '400':
+          $ref: './api.yaml#/components/responses/BadRequest'
+
+    delete:
+      operationId: deleteTodoById
+      tags:
+        - todos
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: string
+            format: uuid
+
+    patch:
+      operationId: updateTodoById
+      tags:
+        - todos
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: string
+            format: uuid
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Todo'
+      responses:
+        '200':
+          description: Update todo by id
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Todo'
         '400':
           $ref: './api.yaml#/components/responses/BadRequest'
 
 components:
   schemas:
-    TodoItem:
+    Todo:
       type: object
       properties:
         id:
