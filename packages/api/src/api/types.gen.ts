@@ -19,11 +19,6 @@ export const TodoStatus = {
 
 export type TodoStatus = typeof TodoStatus[keyof typeof TodoStatus];
 
-export type ApiErr = {
-    code: string;
-    message: string;
-};
-
 export type TodoWritable = {
     title: string;
     status: TodoStatus;
@@ -38,15 +33,6 @@ export type GetTodosData = {
     };
     url: '/todos';
 };
-
-export type GetTodosErrors = {
-    /**
-     * Bad request
-     */
-    400: ApiErr;
-};
-
-export type GetTodosError = GetTodosErrors[keyof GetTodosErrors];
 
 export type GetTodosResponses = {
     /**
@@ -66,15 +52,6 @@ export type PostTodosData = {
     query?: never;
     url: '/todos';
 };
-
-export type PostTodosErrors = {
-    /**
-     * Bad request
-     */
-    400: ApiErr;
-};
-
-export type PostTodosError = PostTodosErrors[keyof PostTodosErrors];
 
 export type PostTodosResponses = {
     /**
@@ -103,15 +80,6 @@ export type GetTodoByIdData = {
     url: '/todos/{id}';
 };
 
-export type GetTodoByIdErrors = {
-    /**
-     * Bad request
-     */
-    400: ApiErr;
-};
-
-export type GetTodoByIdError = GetTodoByIdErrors[keyof GetTodoByIdErrors];
-
 export type GetTodoByIdResponses = {
     /**
      * Get todo by id
@@ -129,15 +97,6 @@ export type UpdateTodoByIdData = {
     query?: never;
     url: '/todos/{id}';
 };
-
-export type UpdateTodoByIdErrors = {
-    /**
-     * Bad request
-     */
-    400: ApiErr;
-};
-
-export type UpdateTodoByIdError = UpdateTodoByIdErrors[keyof UpdateTodoByIdErrors];
 
 export type UpdateTodoByIdResponses = {
     /**

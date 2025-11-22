@@ -1,5 +1,5 @@
 import { inject } from 'vue'
-import type { GetTodosData } from '@vue-workspace/api'
+import type { GetTodosData } from '@vue-workspace/api/types'
 import type { InjectionKey, ShallowRef } from 'vue'
 
 export type PaginationContext = ShallowRef<GetTodosData['query']>

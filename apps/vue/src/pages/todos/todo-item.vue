@@ -46,7 +46,7 @@ import { ref } from 'vue'
 import TodoButton from './todo-button.vue'
 import TodoForm from './todo-form.vue'
 import { usePagination } from './use-pagination'
-import type { GetTodosResponses, Todo } from '@vue-workspace/api'
+import type { GetTodosResponses, Todo } from '@vue-workspace/api/types'
 
 const props = defineProps<{
   todo: Todo

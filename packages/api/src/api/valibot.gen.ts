@@ -15,11 +15,6 @@ export const vTodo = v.object({
     status: vTodoStatus
 });
 
-export const vApiErr = v.object({
-    code: v.string(),
-    message: v.string()
-});
-
 export const vTodoWritable = v.object({
     title: v.pipe(v.string(), v.maxLength(200)),
     status: vTodoStatus

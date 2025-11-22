@@ -7,4 +7,7 @@ export default defineConfig({
     vuePlugin,
     tailwindcss(),
   ],
+  server: {
+    port: 3000,
+  },
 })

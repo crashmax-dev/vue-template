@@ -10,7 +10,7 @@ import type {
   PostTodosResponses,
   UpdateTodoByIdData,
   UpdateTodoByIdResponses,
-} from '@vue-workspace/api'
+} from '@vue-workspace/api/types'
 
 const BASE_URL = '/api/todos'
 

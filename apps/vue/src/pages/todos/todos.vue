@@ -57,7 +57,7 @@ import { useTodos } from './use-todos'
 import type {
   GetTodosData,
   TodoWritable,
-} from '@vue-workspace/api'
+} from '@vue-workspace/api/types'
 
 const pageSize = 10
 const pagination = shallowRef<GetTodosData['query']>({

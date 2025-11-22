@@ -21,8 +21,8 @@
 </template>
 
 <script setup lang="ts">
-import { TodoStatus } from '@vue-workspace/api'
-import type { TodoWritable } from '@vue-workspace/api'
+import { TodoStatus } from '@vue-workspace/api/types'
+import type { TodoWritable } from '@vue-workspace/api/types'
 
 withDefaults(defineProps<{
   todo?: TodoWritable

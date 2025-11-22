@@ -17,9 +17,6 @@ importers:
       '@pinia/testing':
         specifier: 1.0.3
         version: 1.0.3(pinia@3.0.4(typescript@5.9.3)(vue@3.5.24(typescript@5.9.3)))
-      '@tsconfig/node22':
-        specifier: 22.0.5
-        version: 22.0.5
       '@types/jscodeshift':
         specifier: 17.3.0
         version: 17.3.0
@@ -1336,9 +1333,6 @@ packages:
     resolution: {integrity: sha512-vhF7kEU9EXWXh+HdAwKJ2m3xaOnTTmgcdXcF2pim8g4GvI7eRrk2YRuV5nUlZnd/NbCIX4/Ja2OZu5EjJL06Ww==}
     peerDependencies:
       vue: ^2.7.0 || ^3.0.0
-
-  '@tsconfig/node22@22.0.5':
-    resolution: {integrity: sha512-hLf2ld+sYN/BtOJjHUWOk568dvjFQkHnLNa6zce25GIH+vxKfvTgm3qpaH6ToF5tu/NN0IH66s+Bb5wElHrLcw==}
 
   '@types/chai@5.2.3':
     resolution: {integrity: sha512-Mw558oeA9fFbv65/y4mHtXDs9bPnFMZAL/jxdPFUpOHHIXX91mcgEHbS5Lahr+pwZFR8A7GQleRWeI6cGFC2UA==}
@@ -5555,8 +5549,6 @@ snapshots:
     dependencies:
       '@tanstack/virtual-core': 3.13.12
       vue: 3.5.24(typescript@5.9.3)
-
-  '@tsconfig/node22@22.0.5': {}
 
   '@types/chai@5.2.3':
     dependencies:
