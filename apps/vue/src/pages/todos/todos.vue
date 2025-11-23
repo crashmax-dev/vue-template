@@ -1,6 +1,9 @@
 <template>
   <div class="todo-app">
-    <form class="todo-form" @submit.prevent="createTodo">
+    <form
+      class="todo-form"
+      @submit.prevent="createTodo"
+    >
       <div class="form-row">
         <todo-form />
       </div>
@@ -23,6 +26,13 @@
         </h2>
         <div class="pagination-controls">
           <todo-button
+            variant="danger"
+            @click="resetTodos"
+          >
+            Reset todos
+          </todo-button>
+
+          <todo-button
             variant="icon"
             :disabled="isPagePrevDisabled"
             @click="updatePagination('prev')"
@@ -40,7 +50,11 @@
       </div>
 
       <ul class="todos-list">
-        <todo-item v-for="todo of todos.data" :key="todo.id" :todo="todo" />
+        <todo-item
+          v-for="todo of todos.data"
+          :key="todo.id"
+          :todo="todo"
+        />
       </ul>
     </div>
   </div>
@@ -60,10 +74,8 @@ import type {
 } from '@vue-workspace/api/types'
 
 const pageSize = 10
-const pagination = shallowRef<GetTodosData['query']>({
-  start: 0,
-  limit: pageSize,
-})
+const paginationInitial = { start: 0, limit: pageSize }
+const pagination = shallowRef<GetTodosData['query']>({ ...paginationInitial })
 
 const { isFetching, todos, refetchTodos } = useTodos(pagination)
 
@@ -99,6 +111,11 @@ function createTodo(event: SubmitEvent) {
     form.reset()
     refetchTodos()
   })
+}
+
+function resetTodos() {
+  window.__MSW__.todos?.setupMocks()
+  pagination.value = { ...paginationInitial }
 }
 
 provide(paginationInjectionKey, pagination)

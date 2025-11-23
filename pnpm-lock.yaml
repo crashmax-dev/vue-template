@@ -4,6 +4,11 @@ settings:
   autoInstallPeers: true
   excludeLinksFromLockfile: false
 
+patchedDependencies:
+  '@msw/data':
+    hash: 765493977e55b516f8f5bcf036ae50d8a85999ca1e2cbc46d116586e95446b40
+    path: patches/@msw__data.patch
+
 importers:
 
   .:
@@ -117,9 +122,15 @@ importers:
       '@vueuse/core':
         specifier: 14.0.0
         version: 14.0.0(vue@3.5.24(typescript@5.9.3))
+      '@zero-dependency/emitter':
+        specifier: 1.2.5
+        version: 1.2.5
       pinia:
         specifier: 3.0.4
         version: 3.0.4(typescript@5.9.3)(vue@3.5.24(typescript@5.9.3))
+      valibot:
+        specifier: 1.1.0
+        version: 1.1.0(typescript@5.9.3)
       vue:
         specifier: 3.5.24
         version: 3.5.24(typescript@5.9.3)
@@ -127,9 +138,12 @@ importers:
         specifier: 4.6.3
         version: 4.6.3(vue@3.5.24(typescript@5.9.3))
     devDependencies:
+      '@faker-js/faker':
+        specifier: 10.1.0
+        version: 10.1.0
       '@msw/data':
         specifier: 1.1.2
-        version: 1.1.2
+        version: 1.1.2(patch_hash=765493977e55b516f8f5bcf036ae50d8a85999ca1e2cbc46d116586e95446b40)
       '@vue-workspace/vite-config':
         specifier: workspace:*
         version: link:../../packages/vite-config
@@ -780,6 +794,10 @@ packages:
   '@eslint/plugin-kit@0.4.1':
     resolution: {integrity: sha512-43/qtrDUokr7LJqoF2c3+RInu/t4zfrpYdoSDfYyhg52rwLV6TnOvdG4fXm7IkSB3wErkcmJS9iEhjVtOSEjjA==}
     engines: {node: ^18.18.0 || ^20.9.0 || >=21.1.0}
+
+  '@faker-js/faker@10.1.0':
+    resolution: {integrity: sha512-C3mrr3b5dRVlKPJdfrAXS8+dq+rq8Qm5SNRazca0JKgw1HQERFmrVb0towvMmw5uu8hHKNiQasMaR/tydf3Zsg==}
+    engines: {node: ^20.19.0 || ^22.13.0 || ^23.5.0 || >=24.0.0, npm: '>=10'}
 
   '@floating-ui/core@1.7.3':
     resolution: {integrity: sha512-sGnvb5dmrJaKEZ+LDIpguvdX3bDlEllmv4/ClQ9awcmCZrlx5jQyyMWFM5kBI+EyNOCDDiKk8il0zeuX3Zlg/w==}
@@ -1630,6 +1648,9 @@ packages:
     resolution: {integrity: sha512-mTCA0uczBgurRlwVaQHfG0Ja7UdGe4g9mwffiJmvLiTtp1G4AQyIjej6si/k8c8pUwTfVpNufck+23gXptPAkw==}
     peerDependencies:
       vue: ^3.5.0
+
+  '@zero-dependency/emitter@1.2.5':
+    resolution: {integrity: sha512-0Gwufabf47YDNvDSdqBiKXBnqhsKHPjD2GMSXNGi1iDAAB+IKssp4VspYW0RV5UMHFN8asJZL1usoNUpRP2JqA==}
 
   abbrev@2.0.0:
     resolution: {integrity: sha512-6/mh1E2u2YgEsCHdY0Yx5oW+61gZU+1vXaoiHHrpKeuRNNgFvS+/jrwHiQhB5apAf5oB7UB7E19ol2R2LKH8hQ==}
@@ -5014,6 +5035,8 @@ snapshots:
       '@eslint/core': 0.17.0
       levn: 0.4.1
 
+  '@faker-js/faker@10.1.0': {}
+
   '@floating-ui/core@1.7.3':
     dependencies:
       '@floating-ui/utils': 0.2.10
@@ -5228,7 +5251,7 @@ snapshots:
 
   '@marijn/find-cluster-break@1.0.2': {}
 
-  '@msw/data@1.1.2':
+  '@msw/data@1.1.2(patch_hash=765493977e55b516f8f5bcf036ae50d8a85999ca1e2cbc46d116586e95446b40)':
     dependencies:
       '@standard-schema/spec': 1.0.0
       es-toolkit: 1.42.0
@@ -5969,6 +5992,8 @@ snapshots:
   '@vueuse/shared@14.0.0(vue@3.5.24(typescript@5.9.3))':
     dependencies:
       vue: 3.5.24(typescript@5.9.3)
+
+  '@zero-dependency/emitter@1.2.5': {}
 
   abbrev@2.0.0: {}
 

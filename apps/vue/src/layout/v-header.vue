@@ -27,8 +27,14 @@
         class="toggle-theme"
         @click="theme.toggleTheme"
       >
-        <moon-icon v-if="theme.theme.value === 'dark'" class="text-xl" />
-        <sun-icon v-else class="text-xl" />
+        <moon-icon
+          v-if="theme.theme.value === 'dark'"
+          class="text-xl"
+        />
+        <sun-icon
+          v-else
+          class="text-xl"
+        />
       </v-button>
     </nav>
   </header>

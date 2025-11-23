@@ -1,7 +1,13 @@
 <template>
   <router-view v-slot="{ Component, route }">
-    <transition name="section" mode="out-in">
-      <section :key="route.path" class="section">
+    <transition
+      name="section"
+      mode="out-in"
+    >
+      <section
+        :key="route.path"
+        class="section"
+      >
         <component :is="Component" />
       </section>
     </transition>

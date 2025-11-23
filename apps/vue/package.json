@@ -18,11 +18,14 @@
     "@vue-workspace/ui": "workspace:*",
     "@vue-workspace/utils": "workspace:*",
     "@vueuse/core": "14.0.0",
+    "@zero-dependency/emitter": "1.2.5",
     "pinia": "3.0.4",
+    "valibot": "1.1.0",
     "vue": "3.5.24",
     "vue-router": "4.6.3"
   },
   "devDependencies": {
+    "@faker-js/faker": "10.1.0",
     "@msw/data": "1.1.2",
     "@vue-workspace/vite-config": "workspace:*",
     "@vue/test-utils": "2.4.6",

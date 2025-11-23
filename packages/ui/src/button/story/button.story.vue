@@ -10,7 +10,10 @@
       <v-button variant="danger">
         Danger
       </v-button>
-      <v-button variant="secondary" disabled>
+      <v-button
+        variant="secondary"
+        disabled
+      >
         Disabled
       </v-button>
     </Variant>

@@ -1,5 +1,5 @@
 import { http } from 'msw'
-import { parseResolver } from '@/mocks/parse-resolver'
+import { parseResolver } from '@/libs/msw/parse-resolver'
 import { todosData } from './todos-data'
 import type {
   GetTodoByIdData,

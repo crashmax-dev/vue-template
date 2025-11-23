@@ -1,13 +1,14 @@
 import { isCommonAssetRequest } from 'msw'
+import { mswEmitter } from './msw-emitter'
 
-export async function enableMsw() {
+export async function mswSetup() {
   if (import.meta.env.PROD) return
 
-  const { worker } = await import('@/mocks/worker')
+  const { mswWorker } = await import('@/libs/msw/msw-worker')
 
   // `worker.start()` returns a Promise that resolves
   // once the Service Worker is up and ready to intercept requests.
-  return worker.start({
+  const msw = await mswWorker.start({
     onUnhandledRequest(request, print) {
       if (isVue(request) || isUnpluginIcons(request)) return
 
@@ -19,6 +20,10 @@ export async function enableMsw() {
       print.warning()
     },
   })
+
+  mswEmitter.emit('msw:setup')
+
+  return msw
 }
 
 function isVue(request: Request) {

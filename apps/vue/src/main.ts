@@ -2,11 +2,11 @@ import { VueQueryPlugin } from '@tanstack/vue-query'
 import { createPinia } from 'pinia'
 import { createApp } from 'vue'
 import App from './app.vue'
-import { enableMsw } from './libs/msw'
+import { mswSetup } from './libs/msw/msw-setup'
 import { router } from './libs/router'
 import './main.scss'
 
-enableMsw().then(() => {
+mswSetup().then(() => {
   const app = createApp(App)
 
   app.use(createPinia())

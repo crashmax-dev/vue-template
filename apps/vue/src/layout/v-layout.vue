@@ -1,5 +1,8 @@
 <template>
-  <v-theme-provider v-if="isRouterReady" initial-theme="dark">
+  <v-theme-provider
+    v-if="isRouterReady"
+    initial-theme="dark"
+  >
     <v-header />
     <v-section />
   </v-theme-provider>

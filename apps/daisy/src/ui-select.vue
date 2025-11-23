@@ -3,8 +3,14 @@
     <label class="label">
       <span class="label-text">Выберите опцию</span>
     </label>
-    <select v-model="selectedValue" class="select select-bordered w-full">
-      <option disabled value="">
+    <select
+      v-model="selectedValue"
+      class="select select-bordered w-full"
+    >
+      <option
+        disabled
+        value=""
+      >
         Пожалуйста, выберите...
       </option>
       <option

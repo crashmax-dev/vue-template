@@ -1,5 +1,8 @@
 <template>
-  <auto-form :fields="formFields" @submit="console.log">
+  <auto-form
+    :fields="formFields"
+    @submit="console.log"
+  >
     <template #description_append="{ field }">
       <span>This is a description ({{ field.type }})</span>
     </template>

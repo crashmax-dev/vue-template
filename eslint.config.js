@@ -9,6 +9,14 @@ export default antfu({
     'packages/api/src/api/*',
   ],
   rules: {
+    'vue/max-attributes-per-line': ['error', {
+      singleline: {
+        max: 1,
+      },
+      multiline: {
+        max: 1,
+      },
+    }],
     'vue/block-order': ['error', {
       order: ['template', 'script', 'style'],
     }],
