@@ -3,7 +3,7 @@ import { vTodo } from '@vue-workspace/api/schemas'
 import { TodoStatus } from '@vue-workspace/api/types'
 import { createCollection } from '@/libs/msw/create-collection'
 
-export const todosData = createCollection({
+export const todosCollection = createCollection({
   name: 'todos',
   schema: vTodo,
   setupMocks: {

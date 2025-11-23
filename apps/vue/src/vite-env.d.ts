@@ -6,7 +6,7 @@ declare global {
   interface Window {
     __MSW__: Record<string, {
       collection: Collection
-      setupMocks: () => void
+      createInitialData: () => void
     }>
   }
 }

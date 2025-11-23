@@ -59,7 +59,7 @@ const queryClient = useQueryClient()
 
 async function invalidateTodos() {
   await queryClient.invalidateQueries({ queryKey: ['todos'] })
-  return queryClient.getQueryData<GetTodosResponses[200]>(['todos', pagination.value])
+  return queryClient.getQueryData<GetTodosResponses[200]>(['todos', pagination.pagination])
 }
 
 function toggleEdit() {
@@ -72,10 +72,7 @@ function deleteTodo(todo: Todo) {
 
     // If the deleted todo was the last one, go back one page
     if (data && data.data.length === 0 && data.total !== 0) {
-      pagination.value = {
-        ...pagination.value,
-        start: pagination.value.start - pagination.value.limit,
-      }
+      pagination.updatePagination({ target: 'prev', total: data.total })
     }
   })
 }

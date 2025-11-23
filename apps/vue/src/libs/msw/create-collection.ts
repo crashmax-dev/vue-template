@@ -1,6 +1,6 @@
 import { Collection, kCollectionId } from '@msw/data/collection'
 import { persist } from '@msw/data/extensions/persist'
-
+import { Logger, pluralize } from '@zero-dependency/utils'
 import { mswEmitter } from './msw-emitter'
 import type {
   BaseIssue,
@@ -26,29 +26,39 @@ export function createCollection<Schema extends CollectionSchema>(params: {
     extensions: [persist()],
   })
 
+  const collectionLogger = new Logger(params.name)
+
+  // https://github.com/mswjs/data/blob/ff6721177ddd0f37c60cfb5ee8c3a7468dd683ac/src/collection.ts#L71
   const collectionId = collection[kCollectionId]
+
+  // https://github.com/mswjs/data/blob/ff6721177ddd0f37c60cfb5ee8c3a7468dd683ac/src/extensions/persist.ts#L14
   const collectionStorage = localStorage.getItem(`msw/data/storage/${collectionId}`)
 
-  function setupMocks() {
+  async function createInitialData() {
     if (!params.setupMocks) return
     collection.clear()
-    collection.createMany(
+    const result = await collection.createMany(
       params.setupMocks.count,
       params.setupMocks.createData,
+    )
+    collectionLogger.info(
+      pluralize(result.length)`Created ${(count) => count} record${['', 's']}`,
+      result,
     )
   }
 
   mswEmitter.once('msw:setup', () => {
+    collectionLogger.info('Setting up collection...')
     const count = collection.count()
     if (count === 0 && !collectionStorage) {
-      setupMocks()
+      createInitialData()
     }
   })
 
   window.__MSW__ ??= {}
   window.__MSW__[params.name] = {
-    setupMocks,
     collection,
+    createInitialData,
   }
 
   return collection

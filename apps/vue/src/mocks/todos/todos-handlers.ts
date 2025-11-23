@@ -1,6 +1,6 @@
 import { http } from 'msw'
 import { parseResolver } from '@/libs/msw/parse-resolver'
-import { todosData } from './todos-data'
+import { todosCollection } from './todos-collection'
 import type {
   GetTodoByIdData,
   GetTodoByIdResponses,
@@ -16,33 +16,45 @@ const BASE_URL = '/api/todos'
 
 export const todosHandlers = [
   http.get(BASE_URL, async (resolver) => {
-    const req = await parseResolver<GetTodosData, GetTodosResponses>(resolver)
+    const req = await parseResolver<{
+      request: GetTodosData
+      response: GetTodosResponses
+    }>(resolver)
+
     const start = req.getQuery('start', { default: 0 })
     const limit = req.getQuery('limit', { default: 10 })
-    const todos = todosData.findMany(undefined, {
+    const todos = todosCollection.findMany(undefined, {
       skip: start,
       take: limit,
     })
 
     return req.responseJson({
       data: todos,
-      total: todosData.count(),
+      total: todosCollection.count(),
     })
   }),
 
   http.get(`${BASE_URL}/:id`, async (resolver) => {
-    const req = await parseResolver<GetTodoByIdData, GetTodoByIdResponses>(resolver)
-    const id = req.getPath('id')
-    const todo = todosData.findFirst((q) => q.where({ id }))
+    const req = await parseResolver<{
+      request: GetTodoByIdData
+      response: GetTodoByIdResponses
+    }>(resolver)
 
-    if (!todo) return req.notFound()
+    const id = req.getPath('id')
+    const todo = todosCollection.findFirst((q) => q.where({ id }))
+
+    if (!todo) return req.responseNotFound()
     return req.responseJson(todo)
   }),
 
   http.post(BASE_URL, async (resolver) => {
-    const req = await parseResolver<PostTodosData, PostTodosResponses>(resolver)
+    const req = await parseResolver<{
+      request: PostTodosData
+      response: PostTodosResponses
+    }>(resolver)
+
     const body = await req.getBody()
-    const todo = await todosData.create({
+    const todo = await todosCollection.create({
       id: crypto.randomUUID(),
       ...body,
     })
@@ -51,28 +63,35 @@ export const todosHandlers = [
   }),
 
   http.patch(`${BASE_URL}/:id`, async (resolver) => {
-    const req = await parseResolver<UpdateTodoByIdData, UpdateTodoByIdResponses>(resolver)
+    const req = await parseResolver<{
+      request: UpdateTodoByIdData
+      response: UpdateTodoByIdResponses
+    }>(resolver)
+
     const id = req.getPath('id')
     const body = await req.getBody()
 
-    const todo = await todosData.update((q) => q.where({ id }), {
+    const todo = await todosCollection.update((q) => q.where({ id }), {
       data(todo) {
         todo.title = body.title
         todo.status = body.status
       },
     })
 
-    if (!todo) return req.notFound()
+    if (!todo) return req.responseNotFound()
     return req.responseJson(todo)
   }),
 
   http.delete(`${BASE_URL}/:id`, async (resolver) => {
-    const req = await parseResolver<GetTodoByIdData>(resolver)
-    const id = req.getPath('id')
-    const todo = todosData.findFirst((q) => q.where({ id }))
+    const req = await parseResolver<{
+      request: GetTodoByIdData
+    }>(resolver)
 
-    if (!todo) return req.notFound()
-    todosData.delete(todo)
+    const id = req.getPath('id')
+    const todo = todosCollection.findFirst((q) => q.where({ id }))
+
+    if (!todo) return req.responseNotFound()
+    todosCollection.delete(todo)
     return req.responseSuccess()
   }),
 ]

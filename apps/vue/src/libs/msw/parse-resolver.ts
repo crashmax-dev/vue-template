@@ -1,28 +1,32 @@
 import { HttpResponse } from 'msw'
 import type { HttpResponseResolver } from 'msw'
 
-export async function parseResolver<
-  ResolverInput extends {
+interface ResolverTypes {
+  request?: {
     body?: unknown
     query?: unknown
     path?: unknown
-  },
-  ResolverOutput extends {
+  }
+  response?: {
     200: unknown
-  } = any,
+  }
+}
+
+export async function parseResolver<
+  TResolver extends ResolverTypes = ResolverTypes,
 >(resolver: Parameters<HttpResponseResolver>[0]) {
   const url = new URL(resolver.request.url)
 
-  function getPath(key: keyof ResolverInput['path']) {
+  function getPath(key: keyof NonNullable<TResolver['request']>['path']) {
     return resolver.params[key as string] as string | undefined
   }
 
   async function getBody() {
-    return resolver.request.clone().json() as ResolverInput['body']
+    return resolver.request.clone().json() as NonNullable<TResolver['request']>['body']
   }
 
   function getQuery<T extends string | number = string>(
-    key: keyof ResolverInput['query'],
+    key: keyof NonNullable<TResolver['request']>['query'],
     options?: { default?: T },
   ): T extends number ? number : string | undefined {
     const queryValue = url.searchParams.get(key as string)
@@ -39,11 +43,11 @@ export async function parseResolver<
     return queryValue as any
   }
 
-  function responseJson(data: ResolverOutput[200]) {
+  function responseJson(data: NonNullable<TResolver['response']>[200]) {
     return HttpResponse.json(data as any)
   }
 
-  function notFound() {
+  function responseNotFound() {
     return new HttpResponse(undefined, { status: 404 })
   }
 
@@ -53,11 +57,13 @@ export async function parseResolver<
 
   return {
     url,
+
     getPath,
     getBody,
     getQuery,
+
     responseJson,
     responseSuccess,
-    notFound,
+    responseNotFound,
   }
 }

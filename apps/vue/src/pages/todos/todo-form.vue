@@ -50,9 +50,6 @@ withDefaults(defineProps<{
     border-color: hsl(var(--ring));
     outline: 2px solid transparent;
     outline-offset: 2px;
-    ring: 2px;
-    ring-color: hsl(var(--ring));
-    ring-offset: 2px;
   }
 
   &::placeholder {

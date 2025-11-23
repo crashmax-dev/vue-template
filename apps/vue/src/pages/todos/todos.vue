@@ -22,7 +22,7 @@
     <div class="todos-section">
       <div class="todos-header">
         <h2 class="todos-title">
-          Todos (total: {{ todos.total }})
+          Todos (total: {{ todos.data.total }})
         </h2>
         <div class="pagination-controls">
           <todo-button
@@ -34,15 +34,21 @@
 
           <todo-button
             variant="icon"
-            :disabled="isPagePrevDisabled"
-            @click="updatePagination('prev')"
+            :disabled="todos.isPagePrevDisabled"
+            @click="pagination.updatePagination({
+              target: 'prev',
+              total: todos.data.total,
+            })"
           >
             Prev
           </todo-button>
           <todo-button
             variant="icon"
-            :disabled="isPageNextDisabled"
-            @click="updatePagination('next')"
+            :disabled="todos.isPageNextDisabled"
+            @click="pagination.updatePagination({
+              target: 'next',
+              total: todos.data.total,
+            })"
           >
             Next
           </todo-button>
@@ -51,7 +57,7 @@
 
       <ul class="todos-list">
         <todo-item
-          v-for="todo of todos.data"
+          v-for="todo of todos.data.data"
           :key="todo.id"
           :todo="todo"
         />
@@ -62,44 +68,15 @@
 
 <script setup lang="ts">
 import { postTodos } from '@vue-workspace/api'
-import { computed, provide, shallowRef } from 'vue'
 import TodoButton from './todo-button.vue'
 import TodoForm from './todo-form.vue'
 import TodoItem from './todo-item.vue'
-import { paginationInjectionKey } from './use-pagination'
+import { usePagination } from './use-pagination'
 import { useTodos } from './use-todos'
-import type {
-  GetTodosData,
-  TodoWritable,
-} from '@vue-workspace/api/types'
+import type { TodoWritable } from '@vue-workspace/api/types'
 
-const pageSize = 10
-const paginationInitial = { start: 0, limit: pageSize }
-const pagination = shallowRef<GetTodosData['query']>({ ...paginationInitial })
-
-const { isFetching, todos, refetchTodos } = useTodos(pagination)
-
-const isPagePrevDisabled = computed(() => {
-  return pagination.value.start === 0 || isFetching.value
-})
-
-const isPageNextDisabled = computed(() => {
-  return pagination.value.start + pageSize >= todos.value.total || isFetching.value
-})
-
-function updatePagination(target: 'prev' | 'next') {
-  if (isFetching.value) return
-
-  if (target === 'prev' && pagination.value.start === 0) return
-  if (target === 'next' && pagination.value.start + pageSize >= todos.value.total) return
-
-  pagination.value = {
-    ...pagination.value,
-    start: target === 'prev'
-      ? pagination.value.start - pageSize
-      : pagination.value.start + pageSize,
-  }
-}
+const todos = useTodos()
+const pagination = usePagination()
 
 function createTodo(event: SubmitEvent) {
   const form = event.target as HTMLFormElement
@@ -109,16 +86,16 @@ function createTodo(event: SubmitEvent) {
 
   postTodos({ body: todo }).then(() => {
     form.reset()
-    refetchTodos()
+    todos.refetchTodos()
   })
 }
 
 function resetTodos() {
-  window.__MSW__.todos?.setupMocks()
-  pagination.value = { ...paginationInitial }
+  const isConfirm = confirm('Reset todos?')
+  if (!isConfirm) return
+  window.__MSW__.todos?.createInitialData()
+  pagination.resetPagination()
 }
-
-provide(paginationInjectionKey, pagination)
 </script>
 
 <style scoped lang="scss">
