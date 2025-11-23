@@ -67,7 +67,7 @@ function toggleEdit() {
 }
 
 function deleteTodo(todo: Todo) {
-  deleteTodoById({ path: { id: todo.id } }).then(async () => {
+  deleteTodoById({ path: { uuid: todo.uuid } }).then(async () => {
     const data = await invalidateTodos()
 
     // If the deleted todo was the last one, go back one page
@@ -83,7 +83,7 @@ function updateTodo(event: SubmitEvent) {
   if (!todo.title) return
 
   updateTodoById({
-    path: { id: props.todo.id },
+    path: { uuid: props.todo.uuid },
     body: todo,
   }).then(() => {
     toggleEdit()

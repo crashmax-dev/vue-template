@@ -1,5 +1,7 @@
 import { HttpResponse } from 'msw'
-import type { HttpResponseResolver } from 'msw'
+import type { HttpResponseResolver, JsonBodyType } from 'msw'
+
+type HTTPStatuses = 200 | 400 | 404 | 502 | 503
 
 interface ResolverTypes {
   request?: {
@@ -7,26 +9,41 @@ interface ResolverTypes {
     query?: unknown
     path?: unknown
   }
-  response?: {
-    200: unknown
-  }
+  response?: Partial<Record<HTTPStatuses, unknown>>
+}
+
+interface ResolverContext<Resolver extends ResolverTypes> {
+  url: URL
+  getPath: (key: keyof NonNullable<Resolver['request']>['path']) => string | undefined
+  getBody: () => Promise<NonNullable<Resolver['request']>['body']>
+  getQuery: <T extends string | number = string>(
+    key: keyof NonNullable<Resolver['request']>['query'],
+    options?: { default?: T },
+  ) => T extends number ? number : string | undefined
+  response: <T extends keyof Resolver['response']>(
+    status: T,
+    data?: NonNullable<Resolver['response']>[T],
+  ) => HttpResponse<JsonBodyType>
 }
 
 export async function parseResolver<
-  TResolver extends ResolverTypes = ResolverTypes,
->(resolver: Parameters<HttpResponseResolver>[0]) {
+  Resolver extends ResolverTypes = ResolverTypes,
+>(
+  resolver: Parameters<HttpResponseResolver>[0],
+  resolverFn: (ctx: ResolverContext<Resolver>) => Promise<HttpResponse<JsonBodyType>>,
+) {
   const url = new URL(resolver.request.url)
 
-  function getPath(key: keyof NonNullable<TResolver['request']>['path']) {
+  function getPath(key: keyof NonNullable<Resolver['request']>['path']) {
     return resolver.params[key as string] as string | undefined
   }
 
   async function getBody() {
-    return resolver.request.clone().json() as NonNullable<TResolver['request']>['body']
+    return resolver.request.clone().json() as NonNullable<Resolver['request']>['body']
   }
 
   function getQuery<T extends string | number = string>(
-    key: keyof NonNullable<TResolver['request']>['query'],
+    key: keyof NonNullable<Resolver['request']>['query'],
     options?: { default?: T },
   ): T extends number ? number : string | undefined {
     const queryValue = url.searchParams.get(key as string)
@@ -43,27 +60,18 @@ export async function parseResolver<
     return queryValue as any
   }
 
-  function responseJson(data: NonNullable<TResolver['response']>[200]) {
-    return HttpResponse.json(data as any)
+  function response<T extends keyof Resolver['response']>(
+    status: T,
+    data?: NonNullable<Resolver['response']>[T],
+  ): HttpResponse<JsonBodyType> {
+    return HttpResponse.json(data ?? undefined, { status: status as any })
   }
 
-  function responseNotFound() {
-    return new HttpResponse(undefined, { status: 404 })
-  }
-
-  function responseSuccess() {
-    return new HttpResponse(undefined, { status: 200 })
-  }
-
-  return {
+  return resolverFn({
     url,
-
     getPath,
     getBody,
     getQuery,
-
-    responseJson,
-    responseSuccess,
-    responseNotFound,
-  }
+    response,
+  })
 }

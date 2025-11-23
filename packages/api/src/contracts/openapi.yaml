@@ -60,13 +60,13 @@ paths:
               schema:
                 $ref: '#/components/schemas/Todo'
 
-  /todos/{id}:
+  /todos/{uuid}:
     get:
       operationId: getTodoById
       tags:
         - todos
       parameters:
-        - name: id
+        - name: uuid
           in: path
           required: true
           schema:
@@ -74,30 +74,57 @@ paths:
             format: uuid
       responses:
         '200':
-          description: Get todo by id
+          description: Get todo by UUID
           content:
             application/json:
               schema:
                 $ref: '#/components/schemas/Todo'
+        '400':
+          description: Validation error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ValidationError'
+        '404':
+          description: Todo not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/NotFoundError'
 
     delete:
       operationId: deleteTodoById
       tags:
         - todos
       parameters:
-        - name: id
+        - name: uuid
           in: path
           required: true
           schema:
             type: string
             format: uuid
+      responses:
+        '200':
+          description: Delete todo by id
+        '400':
+          description: Validation error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ValidationError'
+        '404':
+          description: Todo not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/NotFoundError'
 
     patch:
       operationId: updateTodoById
       tags:
         - todos
       parameters:
-        - name: id
+        - name: uuid
           in: path
           required: true
           schema:
@@ -116,13 +143,24 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/Todo'
-
+        '400':
+          description: Validation error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ValidationError'
+        '404':
+          description: Todo not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/NotFoundError'
 components:
   schemas:
     Todo:
       type: object
       properties:
-        id:
+        uuid:
           type: string
           format: uuid
           readOnly: true
@@ -131,10 +169,20 @@ components:
           maxLength: 200
         status:
           $ref: '#/components/schemas/TodoStatus'
+        createdAt:
+          type: string
+          format: date-time
+          readOnly: true
+        updatedAt:
+          type: string
+          format: date-time
+          readOnly: true
       required:
-        - id
+        - uuid
         - title
         - status
+        - createdAt
+        - updatedAt
 
     TodoStatus:
       type: string
@@ -143,3 +191,17 @@ components:
         - Cancelled
         - Paused
         - Completed
+
+    NotFoundError:
+      type: object
+      properties:
+        message:
+          type: string
+
+    ValidationError:
+      type: object
+      properties:
+        errors:
+          type: array
+          items:
+            type: string

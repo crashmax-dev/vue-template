@@ -1,4 +1,5 @@
 import { VueQueryPlugin } from '@tanstack/vue-query'
+import { client } from '@vue-workspace/api/client'
 import { createPinia } from 'pinia'
 import { createApp } from 'vue'
 import App from './app.vue'
@@ -20,6 +21,10 @@ mswSetup().then(() => {
         },
       },
     },
+  })
+
+  client.interceptors.error.use((error) => {
+    console.log({ error })
   })
 
   app.mount('#app')

@@ -1,97 +1,141 @@
+import { vTodo } from '@vue-workspace/api/schemas'
 import { http } from 'msw'
+import * as v from 'valibot'
 import { parseResolver } from '@/libs/msw/parse-resolver'
 import { todosCollection } from './todos-collection'
 import type {
+  DeleteTodoByIdErrors,
+  DeleteTodoByIdResponses,
   GetTodoByIdData,
+  GetTodoByIdErrors,
   GetTodoByIdResponses,
   GetTodosData,
   GetTodosResponses,
   PostTodosData,
   PostTodosResponses,
   UpdateTodoByIdData,
+  UpdateTodoByIdErrors,
   UpdateTodoByIdResponses,
 } from '@vue-workspace/api/types'
 
 const BASE_URL = '/api/todos'
 
+function uuidValidation(uuid?: string) {
+  const validation = v.safeParse(v.pick(vTodo, ['uuid']), { uuid })
+  if (validation.success) return
+  return validation.issues.map((issue) => issue.message)
+}
+
+function todoNotFound(uuid?: string) {
+  return {
+    message: `Todo "${uuid}" not found`,
+  }
+}
+
 export const todosHandlers = [
   http.get(BASE_URL, async (resolver) => {
-    const req = await parseResolver<{
+    return parseResolver<{
       request: GetTodosData
       response: GetTodosResponses
-    }>(resolver)
+    }>(resolver, async (ctx) => {
+      const start = ctx.getQuery('start', { default: 0 })
+      const limit = ctx.getQuery('limit', { default: 10 })
+      const todos = todosCollection.findMany(undefined, {
+        skip: start,
+        take: limit,
+      })
 
-    const start = req.getQuery('start', { default: 0 })
-    const limit = req.getQuery('limit', { default: 10 })
-    const todos = todosCollection.findMany(undefined, {
-      skip: start,
-      take: limit,
-    })
-
-    return req.responseJson({
-      data: todos,
-      total: todosCollection.count(),
+      return ctx.response(200, {
+        data: todos,
+        total: todosCollection.count(),
+      })
     })
   }),
 
-  http.get(`${BASE_URL}/:id`, async (resolver) => {
-    const req = await parseResolver<{
+  http.get(`${BASE_URL}/:uuid`, async (resolver) => {
+    return parseResolver<{
       request: GetTodoByIdData
-      response: GetTodoByIdResponses
-    }>(resolver)
+      response: GetTodoByIdResponses & GetTodoByIdErrors
+    }>(resolver, async (ctx) => {
+      const uuid = ctx.getPath('uuid')
+      const uuidErrors = uuidValidation(uuid)
+      if (uuidErrors) {
+        return ctx.response(400, { errors: uuidErrors })
+      }
 
-    const id = req.getPath('id')
-    const todo = todosCollection.findFirst((q) => q.where({ id }))
+      const todo = todosCollection.findFirst((q) => q.where({ uuid }))
+      if (!todo) {
+        return ctx.response(404, todoNotFound(uuid))
+      }
 
-    if (!todo) return req.responseNotFound()
-    return req.responseJson(todo)
+      return ctx.response(200, todo)
+    })
   }),
 
   http.post(BASE_URL, async (resolver) => {
-    const req = await parseResolver<{
+    return parseResolver<{
       request: PostTodosData
       response: PostTodosResponses
-    }>(resolver)
+    }>(resolver, async (ctx) => {
+      const body = await ctx.getBody()
 
-    const body = await req.getBody()
-    const todo = await todosCollection.create({
-      id: crypto.randomUUID(),
-      ...body,
+      const currentDate = new Date().toISOString()
+      const todo = await todosCollection.create({
+        uuid: crypto.randomUUID(),
+        ...body,
+        createdAt: currentDate,
+        updatedAt: currentDate,
+      })
+
+      return ctx.response(200, todo)
     })
-
-    return req.responseJson(todo)
   }),
 
-  http.patch(`${BASE_URL}/:id`, async (resolver) => {
-    const req = await parseResolver<{
+  http.patch(`${BASE_URL}/:uuid`, async (resolver) => {
+    return parseResolver<{
       request: UpdateTodoByIdData
-      response: UpdateTodoByIdResponses
-    }>(resolver)
+      response: UpdateTodoByIdResponses & UpdateTodoByIdErrors
+    }>(resolver, async (ctx) => {
+      const uuid = ctx.getPath('uuid')
+      const uuidErrors = uuidValidation(uuid)
+      if (uuidErrors) {
+        return ctx.response(400, { errors: uuidErrors })
+      }
 
-    const id = req.getPath('id')
-    const body = await req.getBody()
+      const body = await ctx.getBody()
+      const todo = await todosCollection.update((q) => q.where({ uuid }), {
+        data(todo) {
+          todo.title = body.title
+          todo.status = body.status
+          todo.updatedAt = new Date().toISOString()
+        },
+      })
+      if (!todo) {
+        return ctx.response(404, todoNotFound(uuid))
+      }
 
-    const todo = await todosCollection.update((q) => q.where({ id }), {
-      data(todo) {
-        todo.title = body.title
-        todo.status = body.status
-      },
+      return ctx.response(200, todo)
     })
-
-    if (!todo) return req.responseNotFound()
-    return req.responseJson(todo)
   }),
 
-  http.delete(`${BASE_URL}/:id`, async (resolver) => {
-    const req = await parseResolver<{
+  http.delete(`${BASE_URL}/:uuid`, async (resolver) => {
+    return parseResolver<{
       request: GetTodoByIdData
-    }>(resolver)
+      response: DeleteTodoByIdResponses & DeleteTodoByIdErrors
+    }>(resolver, async (ctx) => {
+      const uuid = ctx.getPath('uuid')
+      const uuidErrors = uuidValidation(uuid)
+      if (uuidErrors) {
+        return ctx.response(400, { errors: uuidErrors })
+      }
 
-    const id = req.getPath('id')
-    const todo = todosCollection.findFirst((q) => q.where({ id }))
+      const todo = todosCollection.findFirst((q) => q.where({ uuid }))
+      if (!todo) {
+        return ctx.response(404, todoNotFound(uuid))
+      }
 
-    if (!todo) return req.responseNotFound()
-    todosCollection.delete(todo)
-    return req.responseSuccess()
+      todosCollection.delete(todo)
+      return ctx.response(200)
+    })
   }),
 ]

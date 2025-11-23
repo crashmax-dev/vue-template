@@ -9,10 +9,18 @@ export const todosCollection = createCollection({
   setupMocks: {
     count: 42,
     createData() {
+      const [createdAt, updatedAt] = faker.date.betweens({
+        from: '2007-01-01T00:00:00.000Z',
+        to: new Date().toISOString(),
+        count: 2,
+      })
+
       return {
-        id: crypto.randomUUID(),
+        uuid: crypto.randomUUID(),
         status: faker.helpers.enumValue(TodoStatus),
         title: faker.lorem.sentence({ min: 1, max: 5 }),
+        createdAt: createdAt!.toISOString(),
+        updatedAt: updatedAt!.toISOString(),
       }
     },
   },

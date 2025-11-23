@@ -10,9 +10,19 @@ export const vTodoStatus = v.picklist([
 ]);
 
 export const vTodo = v.object({
-    id: v.pipe(v.pipe(v.string(), v.uuid()), v.readonly()),
+    uuid: v.pipe(v.pipe(v.string(), v.uuid()), v.readonly()),
     title: v.pipe(v.string(), v.maxLength(200)),
-    status: vTodoStatus
+    status: vTodoStatus,
+    createdAt: v.pipe(v.pipe(v.string(), v.isoTimestamp()), v.readonly()),
+    updatedAt: v.pipe(v.pipe(v.string(), v.isoTimestamp()), v.readonly())
+});
+
+export const vNotFoundError = v.object({
+    message: v.optional(v.string())
+});
+
+export const vValidationError = v.object({
+    errors: v.optional(v.array(v.string()))
 });
 
 export const vTodoWritable = v.object({
@@ -34,7 +44,7 @@ export const vGetTodosResponse = v.object({
 export const vPostTodosResponse = vTodo;
 
 /**
- * Get todo by id
+ * Get todo by UUID
  */
 export const vGetTodoByIdResponse = vTodo;
 

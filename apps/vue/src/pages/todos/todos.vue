@@ -58,7 +58,7 @@
       <ul class="todos-list">
         <todo-item
           v-for="todo of todos.data.data"
-          :key="todo.id"
+          :key="todo.uuid"
           :todo="todo"
         />
       </ul>

@@ -12,7 +12,7 @@ export const useTodos = defineStore('todos/use-todos', () => {
     data,
     refetch: refetchTodos,
   } = useQuery({
-    queryKey: ['todos', pagination.value],
+    queryKey: ['todos', pagination],
     initialData: () => ({ data: [], total: 0 }),
     queryFn: async () => {
       const { data } = await getTodos({ query: pagination.value })

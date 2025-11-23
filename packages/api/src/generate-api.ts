@@ -24,16 +24,23 @@ function generateApi() {
         name: '@hey-api/client-fetch',
         baseUrl: '/api',
         throwOnError: true,
+        exportFromIndex: false,
       },
       {
         name: '@hey-api/sdk',
         validator: true,
         auth: false,
+        exportFromIndex: false,
+        // responseStyle: 'data',
       },
+      // {
+      //   name: '@tanstack/vue-query',
+      // },
       {
         name: '@hey-api/typescript',
         enums: 'javascript',
         case: 'PascalCase',
+        exportFromIndex: false,
       },
       {
         name: 'valibot',

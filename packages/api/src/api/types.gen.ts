@@ -5,9 +5,11 @@ export type ClientOptions = {
 };
 
 export type Todo = {
-    readonly id: string;
+    readonly uuid: string;
     title: string;
     status: TodoStatus;
+    readonly createdAt: string;
+    readonly updatedAt: string;
 };
 
 export const TodoStatus = {
@@ -18,6 +20,14 @@ export const TodoStatus = {
 } as const;
 
 export type TodoStatus = typeof TodoStatus[keyof typeof TodoStatus];
+
+export type NotFoundError = {
+    message?: string;
+};
+
+export type ValidationError = {
+    errors?: Array<string>;
+};
 
 export type TodoWritable = {
     title: string;
@@ -65,24 +75,57 @@ export type PostTodosResponse = PostTodosResponses[keyof PostTodosResponses];
 export type DeleteTodoByIdData = {
     body?: never;
     path: {
-        id: string;
+        uuid: string;
     };
     query?: never;
-    url: '/todos/{id}';
+    url: '/todos/{uuid}';
+};
+
+export type DeleteTodoByIdErrors = {
+    /**
+     * Validation error
+     */
+    400: ValidationError;
+    /**
+     * Todo not found
+     */
+    404: NotFoundError;
+};
+
+export type DeleteTodoByIdError = DeleteTodoByIdErrors[keyof DeleteTodoByIdErrors];
+
+export type DeleteTodoByIdResponses = {
+    /**
+     * Delete todo by id
+     */
+    200: unknown;
 };
 
 export type GetTodoByIdData = {
     body?: never;
     path: {
-        id: string;
+        uuid: string;
     };
     query?: never;
-    url: '/todos/{id}';
+    url: '/todos/{uuid}';
 };
+
+export type GetTodoByIdErrors = {
+    /**
+     * Validation error
+     */
+    400: ValidationError;
+    /**
+     * Todo not found
+     */
+    404: NotFoundError;
+};
+
+export type GetTodoByIdError = GetTodoByIdErrors[keyof GetTodoByIdErrors];
 
 export type GetTodoByIdResponses = {
     /**
-     * Get todo by id
+     * Get todo by UUID
      */
     200: Todo;
 };
@@ -92,11 +135,24 @@ export type GetTodoByIdResponse = GetTodoByIdResponses[keyof GetTodoByIdResponse
 export type UpdateTodoByIdData = {
     body: TodoWritable;
     path: {
-        id: string;
+        uuid: string;
     };
     query?: never;
-    url: '/todos/{id}';
+    url: '/todos/{uuid}';
 };
+
+export type UpdateTodoByIdErrors = {
+    /**
+     * Validation error
+     */
+    400: ValidationError;
+    /**
+     * Todo not found
+     */
+    404: NotFoundError;
+};
+
+export type UpdateTodoByIdError = UpdateTodoByIdErrors[keyof UpdateTodoByIdErrors];
 
 export type UpdateTodoByIdResponses = {
     /**

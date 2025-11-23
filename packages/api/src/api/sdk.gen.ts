@@ -4,7 +4,7 @@ import * as v from 'valibot';
 
 import type { Client, Options as Options2, TDataShape } from './client';
 import { client } from './client.gen';
-import type { DeleteTodoByIdData, GetTodoByIdData, GetTodoByIdResponses, GetTodosData, GetTodosResponses, PostTodosData, PostTodosResponses, UpdateTodoByIdData, UpdateTodoByIdResponses } from './types.gen';
+import type { DeleteTodoByIdData, DeleteTodoByIdErrors, DeleteTodoByIdResponses, GetTodoByIdData, GetTodoByIdErrors, GetTodoByIdResponses, GetTodosData, GetTodosResponses, PostTodosData, PostTodosResponses, UpdateTodoByIdData, UpdateTodoByIdErrors, UpdateTodoByIdResponses } from './types.gen';
 import { vGetTodoByIdResponse, vGetTodosResponse, vPostTodosResponse, vUpdateTodoByIdResponse } from './valibot.gen';
 
 export type Options<TData extends TDataShape = TDataShape, ThrowOnError extends boolean = boolean> = Options2<TData, ThrowOnError> & {
@@ -37,17 +37,17 @@ export const postTodos = <ThrowOnError extends boolean = true>(options: Options<
     }
 });
 
-export const deleteTodoById = <ThrowOnError extends boolean = true>(options: Options<DeleteTodoByIdData, ThrowOnError>) => (options.client ?? client).delete<unknown, unknown, ThrowOnError>({ url: '/todos/{id}', ...options });
+export const deleteTodoById = <ThrowOnError extends boolean = true>(options: Options<DeleteTodoByIdData, ThrowOnError>) => (options.client ?? client).delete<DeleteTodoByIdResponses, DeleteTodoByIdErrors, ThrowOnError>({ url: '/todos/{uuid}', ...options });
 
-export const getTodoById = <ThrowOnError extends boolean = true>(options: Options<GetTodoByIdData, ThrowOnError>) => (options.client ?? client).get<GetTodoByIdResponses, unknown, ThrowOnError>({
+export const getTodoById = <ThrowOnError extends boolean = true>(options: Options<GetTodoByIdData, ThrowOnError>) => (options.client ?? client).get<GetTodoByIdResponses, GetTodoByIdErrors, ThrowOnError>({
     responseValidator: async (data) => await v.parseAsync(vGetTodoByIdResponse, data),
-    url: '/todos/{id}',
+    url: '/todos/{uuid}',
     ...options
 });
 
-export const updateTodoById = <ThrowOnError extends boolean = true>(options: Options<UpdateTodoByIdData, ThrowOnError>) => (options.client ?? client).patch<UpdateTodoByIdResponses, unknown, ThrowOnError>({
+export const updateTodoById = <ThrowOnError extends boolean = true>(options: Options<UpdateTodoByIdData, ThrowOnError>) => (options.client ?? client).patch<UpdateTodoByIdResponses, UpdateTodoByIdErrors, ThrowOnError>({
     responseValidator: async (data) => await v.parseAsync(vUpdateTodoByIdResponse, data),
-    url: '/todos/{id}',
+    url: '/todos/{uuid}',
     ...options,
     headers: {
         'Content-Type': 'application/json',
