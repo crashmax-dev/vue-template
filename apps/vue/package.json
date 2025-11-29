@@ -10,7 +10,7 @@
     "test": "vitest run",
     "test:unit": "vitest",
     "test:unit-ui": "vitest --ui",
-    "type-check": "vue-tsc -b tsconfig.app.json"
+    "type-check": "vue-tsc --build tsconfig.app.json"
   },
   "dependencies": {
     "@tanstack/vue-query": "5.92.0",

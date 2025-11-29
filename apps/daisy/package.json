@@ -4,12 +4,14 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
-    "dev": "vite",
+    "dev": "vite --host",
     "build": "pnpm type-check && vite build",
     "preview": "vite preview",
-    "type-check": "vue-tsc -b tsconfig.app.json"
+    "type-check": "vue-tsc --build"
   },
   "dependencies": {
+    "@vue-workspace/daisy-ui": "workspace:^",
+    "@vueuse/core": "14.1.0",
     "vue": "3.5.25"
   },
   "devDependencies": {

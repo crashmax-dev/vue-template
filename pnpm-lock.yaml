@@ -88,6 +88,12 @@ importers:
 
   apps/daisy:
     dependencies:
+      '@vue-workspace/daisy-ui':
+        specifier: workspace:^
+        version: link:../../packages/daisy-ui
+      '@vueuse/core':
+        specifier: 14.1.0
+        version: 14.1.0(vue@3.5.25(typescript@5.9.3))
       vue:
         specifier: 3.5.25
         version: 3.5.25(typescript@5.9.3)
@@ -175,6 +181,18 @@ importers:
         specifier: 3.0.0
         version: 3.0.0
 
+  packages/daisy-ui:
+    devDependencies:
+      daisyui:
+        specifier: 5.5.5
+        version: 5.5.5
+      tailwindcss:
+        specifier: 4.1.17
+        version: 4.1.17
+      vue:
+        specifier: 3.5.25
+        version: 3.5.25(typescript@5.9.3)
+
   packages/ui:
     dependencies:
       '@vueuse/core':
@@ -202,7 +220,11 @@ importers:
 
   packages/utils: {}
 
-  packages/vite-config: {}
+  packages/vite-config:
+    devDependencies:
+      '@tailwindcss/vite':
+        specifier: 4.1.17
+        version: 4.1.17(vite@7.2.4(@types/node@24.10.1)(jiti@2.6.1)(lightningcss@1.30.2)(sass-embedded@1.93.3)(sass@1.93.3)(tsx@4.20.6)(yaml@2.8.1))
 
 packages:
 
@@ -4473,7 +4495,7 @@ snapshots:
 
   '@babel/generator@7.28.3':
     dependencies:
-      '@babel/parser': 7.28.4
+      '@babel/parser': 7.28.5
       '@babel/types': 7.28.4
       '@jridgewell/gen-mapping': 0.3.13
       '@jridgewell/trace-mapping': 0.3.30
@@ -4762,7 +4784,7 @@ snapshots:
   '@babel/template@7.27.2':
     dependencies:
       '@babel/code-frame': 7.27.1
-      '@babel/parser': 7.28.4
+      '@babel/parser': 7.28.5
       '@babel/types': 7.28.4
 
   '@babel/traverse@7.28.4':
@@ -4770,7 +4792,7 @@ snapshots:
       '@babel/code-frame': 7.27.1
       '@babel/generator': 7.28.3
       '@babel/helper-globals': 7.28.0
-      '@babel/parser': 7.28.4
+      '@babel/parser': 7.28.5
       '@babel/template': 7.27.2
       '@babel/types': 7.28.4
       debug: 4.4.1
@@ -5220,12 +5242,12 @@ snapshots:
   '@jridgewell/gen-mapping@0.3.13':
     dependencies:
       '@jridgewell/sourcemap-codec': 1.5.5
-      '@jridgewell/trace-mapping': 0.3.30
+      '@jridgewell/trace-mapping': 0.3.31
 
   '@jridgewell/remapping@2.3.5':
     dependencies:
       '@jridgewell/gen-mapping': 0.3.13
-      '@jridgewell/trace-mapping': 0.3.30
+      '@jridgewell/trace-mapping': 0.3.31
 
   '@jridgewell/resolve-uri@3.1.2': {}
 
