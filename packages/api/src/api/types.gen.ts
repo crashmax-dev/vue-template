@@ -4,10 +4,12 @@ export type ClientOptions = {
     baseUrl: `${string}://${string}` | (string & {});
 };
 
-export type TodoItem = {
-    readonly id: string;
+export type Todo = {
+    readonly uuid: string;
     title: string;
     status: TodoStatus;
+    readonly createdAt: string;
+    readonly updatedAt: string;
 };
 
 export const TodoStatus = {
@@ -19,12 +21,15 @@ export const TodoStatus = {
 
 export type TodoStatus = typeof TodoStatus[keyof typeof TodoStatus];
 
-export type ApiErr = {
-    code: string;
-    message: string;
+export type NotFoundError = {
+    message?: string;
 };
 
-export type TodoItemWritable = {
+export type ValidationError = {
+    errors?: Array<string>;
+};
+
+export type TodoWritable = {
     title: string;
     status: TodoStatus;
 };
@@ -39,21 +44,12 @@ export type GetTodosData = {
     url: '/todos';
 };
 
-export type GetTodosErrors = {
-    /**
-     * Bad request
-     */
-    400: ApiErr;
-};
-
-export type GetTodosError = GetTodosErrors[keyof GetTodosErrors];
-
 export type GetTodosResponses = {
     /**
      * Get todos
      */
     200: {
-        data: Array<TodoItem>;
+        data: Array<Todo>;
         total: number;
     };
 };
@@ -61,26 +57,108 @@ export type GetTodosResponses = {
 export type GetTodosResponse = GetTodosResponses[keyof GetTodosResponses];
 
 export type PostTodosData = {
-    body: TodoItemWritable;
+    body: TodoWritable;
     path?: never;
     query?: never;
     url: '/todos';
 };
 
-export type PostTodosErrors = {
-    /**
-     * Bad request
-     */
-    400: ApiErr;
-};
-
-export type PostTodosError = PostTodosErrors[keyof PostTodosErrors];
-
 export type PostTodosResponses = {
     /**
      * Create todo
      */
-    200: TodoItem;
+    200: Todo;
 };
 
 export type PostTodosResponse = PostTodosResponses[keyof PostTodosResponses];
+
+export type DeleteTodoByIdData = {
+    body?: never;
+    path: {
+        uuid: string;
+    };
+    query?: never;
+    url: '/todos/{uuid}';
+};
+
+export type DeleteTodoByIdErrors = {
+    /**
+     * Validation error
+     */
+    400: ValidationError;
+    /**
+     * Todo not found
+     */
+    404: NotFoundError;
+};
+
+export type DeleteTodoByIdError = DeleteTodoByIdErrors[keyof DeleteTodoByIdErrors];
+
+export type DeleteTodoByIdResponses = {
+    /**
+     * Delete todo by id
+     */
+    200: unknown;
+};
+
+export type GetTodoByIdData = {
+    body?: never;
+    path: {
+        uuid: string;
+    };
+    query?: never;
+    url: '/todos/{uuid}';
+};
+
+export type GetTodoByIdErrors = {
+    /**
+     * Validation error
+     */
+    400: ValidationError;
+    /**
+     * Todo not found
+     */
+    404: NotFoundError;
+};
+
+export type GetTodoByIdError = GetTodoByIdErrors[keyof GetTodoByIdErrors];
+
+export type GetTodoByIdResponses = {
+    /**
+     * Get todo by UUID
+     */
+    200: Todo;
+};
+
+export type GetTodoByIdResponse = GetTodoByIdResponses[keyof GetTodoByIdResponses];
+
+export type UpdateTodoByIdData = {
+    body: TodoWritable;
+    path: {
+        uuid: string;
+    };
+    query?: never;
+    url: '/todos/{uuid}';
+};
+
+export type UpdateTodoByIdErrors = {
+    /**
+     * Validation error
+     */
+    400: ValidationError;
+    /**
+     * Todo not found
+     */
+    404: NotFoundError;
+};
+
+export type UpdateTodoByIdError = UpdateTodoByIdErrors[keyof UpdateTodoByIdErrors];
+
+export type UpdateTodoByIdResponses = {
+    /**
+     * Update todo by id
+     */
+    200: Todo;
+};
+
+export type UpdateTodoByIdResponse = UpdateTodoByIdResponses[keyof UpdateTodoByIdResponses];

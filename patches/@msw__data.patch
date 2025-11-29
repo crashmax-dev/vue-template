@@ -1,0 +1,15 @@
+diff --git a/package.json b/package.json
+index 652286fb262e3795af837daa6b6b23baec5aa992..e3ec92b6bc5f4e4d4c193d952fcc2ec0120db526 100644
+--- a/package.json
++++ b/package.json
+@@ -11,6 +11,10 @@
+       "types": "./build/index.d.ts",
+       "default": "./build/index.js"
+     },
++    "./collection": {
++      "types": "./build/collection.d.ts",
++      "default": "./build/collection.js"
++    },
+     "./extensions": {
+       "types": "./build/extensions/index.d.ts",
+       "default": "./build/extensions/index.js"

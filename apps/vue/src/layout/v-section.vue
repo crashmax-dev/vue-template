@@ -1,11 +1,17 @@
 <template>
-  <RouterView v-slot="{ Component, route }">
-    <Transition name="section" mode="out-in">
-      <section :key="route.path" class="section">
+  <router-view v-slot="{ Component, route }">
+    <transition
+      name="section"
+      mode="out-in"
+    >
+      <section
+        :key="route.path"
+        class="section"
+      >
         <component :is="Component" />
       </section>
-    </Transition>
-  </RouterView>
+    </transition>
+  </router-view>
 </template>
 
 <style scoped lang="scss">

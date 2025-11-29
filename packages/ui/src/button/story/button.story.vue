@@ -1,28 +1,31 @@
 <template>
   <Story title="Button">
     <Variant title="Variants">
-      <VButton variant="primary">
+      <v-button variant="primary">
         Primary
-      </VButton>
-      <VButton variant="secondary">
+      </v-button>
+      <v-button variant="secondary">
         Secondary
-      </VButton>
-      <VButton variant="danger">
+      </v-button>
+      <v-button variant="danger">
         Danger
-      </VButton>
-      <VButton variant="secondary" disabled>
+      </v-button>
+      <v-button
+        variant="secondary"
+        disabled
+      >
         Disabled
-      </VButton>
+      </v-button>
     </Variant>
 
     <Variant title="Sizes">
-      <VButton
+      <v-button
         v-for="size of sizes"
         :key="size"
         :size="size"
       >
         {{ size }}
-      </VButton>
+      </v-button>
     </Variant>
   </Story>
 </template>

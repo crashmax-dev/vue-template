@@ -2,10 +2,9 @@
 
 ```vue
 <template>
-  <Button>Button</Button>
+  <button>Button</button>
 </template>
 
 <script setup lang="ts">
-import { Button } from '@vue-workspace/ui'
 </script>
 ```

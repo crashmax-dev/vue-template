@@ -9,18 +9,46 @@ export const vTodoStatus = v.picklist([
     'Completed'
 ]);
 
-export const vTodoItem = v.object({
-    id: v.pipe(v.pipe(v.string(), v.uuid()), v.readonly()),
+export const vTodo = v.object({
+    uuid: v.pipe(v.pipe(v.string(), v.uuid()), v.readonly()),
+    title: v.pipe(v.string(), v.maxLength(200)),
+    status: vTodoStatus,
+    createdAt: v.pipe(v.pipe(v.string(), v.isoTimestamp()), v.readonly()),
+    updatedAt: v.pipe(v.pipe(v.string(), v.isoTimestamp()), v.readonly())
+});
+
+export const vNotFoundError = v.object({
+    message: v.optional(v.string())
+});
+
+export const vValidationError = v.object({
+    errors: v.optional(v.array(v.string()))
+});
+
+export const vTodoWritable = v.object({
     title: v.pipe(v.string(), v.maxLength(200)),
     status: vTodoStatus
 });
 
-export const vApiErr = v.object({
-    code: v.string(),
-    message: v.string()
+/**
+ * Get todos
+ */
+export const vGetTodosResponse = v.object({
+    data: v.array(vTodo),
+    total: v.number()
 });
 
-export const vTodoItemWritable = v.object({
-    title: v.pipe(v.string(), v.maxLength(200)),
-    status: vTodoStatus
-});
+/**
+ * Create todo
+ */
+export const vPostTodosResponse = vTodo;
+
+/**
+ * Get todo by UUID
+ */
+export const vGetTodoByIdResponse = vTodo;
+
+/**
+ * Update todo by id
+ */
+export const vUpdateTodoByIdResponse = vTodo;

@@ -4,7 +4,10 @@
       v-for="[fieldName, field] of entries(fields)"
       :key="fieldName"
     >
-      <slot :name="`${fieldName}_prepend`" :field="field" />
+      <slot
+        :name="`${fieldName}_prepend`"
+        :field="field"
+      />
 
       <label :for="fieldName">
         {{ field.label }}
@@ -23,7 +26,10 @@
         />
       </label>
 
-      <slot :name="`${fieldName}_append`" :field="field" />
+      <slot
+        :name="`${fieldName}_append`"
+        :field="field"
+      />
     </template>
 
     <button type="submit">

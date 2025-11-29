@@ -2,8 +2,10 @@ packages:
   - apps/*
   - packages/*
 
+patchedDependencies:
+  '@msw/data': patches/@msw__data.patch
 onlyBuiltDependencies:
   - '@parcel/watcher'
   - esbuild
-  - unrs-resolver
+  - msw
   - vue-demi

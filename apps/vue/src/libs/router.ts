@@ -4,6 +4,7 @@ export const RoutePath = {
   Home: '/',
   Counter: '/counter',
   Form: '/form',
+  Todos: '/todos',
 } as const
 
 export const router = createRouter({
@@ -23,6 +24,11 @@ export const router = createRouter({
       path: RoutePath.Form,
       name: 'form',
       component: () => import('@/pages/form/form.vue'),
+    },
+    {
+      path: RoutePath.Todos,
+      name: 'todos',
+      component: () => import('@/pages/todos/todos.vue'),
     },
   ],
 })
