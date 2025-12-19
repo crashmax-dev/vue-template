@@ -1,7 +1,7 @@
-<script setup lang="ts">
-import Layout from './layout/layout.vue'
-</script>
-
 <template>
-  <Layout />
+  <v-layout />
 </template>
+
+<script setup lang="ts">
+import VLayout from './layout/v-layout.vue'
+</script>

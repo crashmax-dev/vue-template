@@ -1,0 +1,36 @@
+{
+  "compilerOptions": {
+    "target": "ESNext",
+    "jsx": "preserve",
+    "lib": [
+      "ESNext",
+      "DOM"
+    ],
+    "module": "ESNext",
+    "moduleResolution": "Node",
+    "resolveJsonModule": true,
+    "types": [
+      "unplugin-icons/types/vue"
+    ],
+    "strict": true,
+    "strictPropertyInitialization": false,
+    "noImplicitAny": false,
+    "noImplicitThis": true,
+    "declaration": false,
+    "noEmit": true,
+    "outDir": "dist",
+    "allowSyntheticDefaultImports": true,
+    "esModuleInterop": true,
+    "verbatimModuleSyntax": true,
+    "skipLibCheck": true
+  },
+  "include": [
+    "src/**/*",
+    "src/**/*.vue"
+  ],
+  "exclude": [
+    "node_modules",
+    "dist/**/*",
+    "src/**/*.spec.ts"
+  ]
+}

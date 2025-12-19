@@ -4,18 +4,21 @@
   "version": "0.0.0",
   "private": true,
   "exports": {
-    ".": "./src/index.ts"
+    ".": "./src/api/sdk.gen.ts",
+    "./types": "./src/api/types.gen.ts",
+    "./client": "./src/api/client.gen.ts",
+    "./schemas": "./src/api/valibot.gen.ts"
   },
   "files": [
-    "dist"
+    "src"
   ],
   "scripts": {
-    "dev": "tsc --watch",
-    "build": "tsc",
-    "generate-api": "node ./scripts/generate-api.js"
+    "dev": "pnpm generate-api --watch",
+    "build": "pnpm generate-api",
+    "generate-api": "tsx ./src/generate-api.ts"
   },
   "devDependencies": {
-    "@hey-api/openapi-ts": "0.87.2",
-    "valibot": "1.1.0"
+    "@hey-api/openapi-ts": "0.88.0",
+    "valibot": "1.2.0"
   }
 }

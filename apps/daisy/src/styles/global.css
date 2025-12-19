@@ -1,0 +1,5 @@
+select, input {
+  &:focus, &:focus-within {
+    border-color: color-mix(in oklab, var(--color-base-content) 20%, #0000);
+  }
+}

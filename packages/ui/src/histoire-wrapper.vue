@@ -1,5 +1,8 @@
 <template>
-  <div class="wrapper" :class="{ column: isColumn() }">
+  <div
+    class="wrapper"
+    :class="{ column: isColumn() }"
+  >
     <slot />
   </div>
 </template>

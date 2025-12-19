@@ -4,10 +4,30 @@ export default antfu({
   typescript: true,
   markdown: true,
   yaml: true,
+  vue: true,
   ignores: [
     'packages/api/src/api/*',
   ],
   rules: {
+    'vue/max-attributes-per-line': ['error', {
+      singleline: {
+        max: 1,
+      },
+      multiline: {
+        max: 1,
+      },
+    }],
+    'vue/block-order': ['error', {
+      order: ['template', 'script', 'style'],
+    }],
+    'vue/first-attribute-linebreak': ['error', {
+      singleline: 'beside',
+      multiline: 'below',
+    }],
+    'vue/component-name-in-template-casing': ['error', 'kebab-case'],
+    'vue/custom-event-name-casing': ['error', 'kebab-case', {
+      ignores: [],
+    }],
     'curly': 'off',
     'no-alert': 'off',
     'no-console': 'off',
@@ -35,14 +55,6 @@ export default antfu({
       order: 'asc',
       type: 'natural',
     }],
-  },
-  vue: {
-    overrides: {
-      'vue/block-order': ['warn', {
-        order: [['template', 'script'], 'style'],
-      }],
-      'vue/custom-event-name-casing': ['error', 'kebab-case'],
-    },
   },
   stylistic: {
     overrides: {

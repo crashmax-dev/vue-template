@@ -1,3 +1,13 @@
+<template>
+  <primitive
+    :as="as"
+    :as-child="asChild"
+    :class="buttonClasses({ variant, size })"
+  >
+    <slot />
+  </primitive>
+</template>
+
 <script setup lang="ts">
 import { cva } from 'class-variance-authority'
 import { Primitive } from 'reka-ui'
@@ -36,16 +46,6 @@ const buttonClasses = cva('button', {
   },
 })
 </script>
-
-<template>
-  <Primitive
-    :as="as"
-    :as-child="asChild"
-    :class="buttonClasses({ variant, size })"
-  >
-    <slot />
-  </Primitive>
-</template>
 
 <style scoped lang="scss">
 .button {

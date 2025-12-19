@@ -4,9 +4,9 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
-    "dev": "vite --host",
-    "build": "vue-tsc -b && vite build",
-    "preview": "vite preview"
+    "_dev": "vite --host",
+    "_build": "vue-tsc -b && vite build",
+    "_preview": "vite preview"
   },
   "dependencies": {
     "@vueuse/core": "14.0.0",

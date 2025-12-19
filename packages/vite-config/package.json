@@ -28,5 +28,8 @@
   "scripts": {
     "dev": "tsc --watch",
     "build": "tsc"
+  },
+  "devDependencies": {
+    "@tailwindcss/vite": "4.1.17"
   }
 }

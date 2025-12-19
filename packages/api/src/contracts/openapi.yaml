@@ -1,0 +1,207 @@
+openapi: 3.1.0
+
+info:
+  title: Todos
+  version: '1.0'
+
+tags:
+  - name: todos
+    description: Todo list
+
+paths:
+  /todos:
+    get:
+      operationId: getTodos
+      tags:
+        - todos
+      parameters:
+        - name: start
+          in: query
+          required: true
+          schema:
+            type: number
+        - name: limit
+          in: query
+          required: true
+          schema:
+            type: number
+      responses:
+        '200':
+          description: Get todos
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/Todo'
+                  total:
+                    type: number
+                required:
+                  - data
+                  - total
+
+    post:
+      tags:
+        - todos
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Todo'
+      responses:
+        '200':
+          description: Create todo
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Todo'
+
+  /todos/{uuid}:
+    get:
+      operationId: getTodoById
+      tags:
+        - todos
+      parameters:
+        - name: uuid
+          in: path
+          required: true
+          schema:
+            type: string
+            format: uuid
+      responses:
+        '200':
+          description: Get todo by UUID
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Todo'
+        '400':
+          description: Validation error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ValidationError'
+        '404':
+          description: Todo not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/NotFoundError'
+
+    delete:
+      operationId: deleteTodoById
+      tags:
+        - todos
+      parameters:
+        - name: uuid
+          in: path
+          required: true
+          schema:
+            type: string
+            format: uuid
+      responses:
+        '200':
+          description: Delete todo by id
+        '400':
+          description: Validation error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ValidationError'
+        '404':
+          description: Todo not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/NotFoundError'
+
+    patch:
+      operationId: updateTodoById
+      tags:
+        - todos
+      parameters:
+        - name: uuid
+          in: path
+          required: true
+          schema:
+            type: string
+            format: uuid
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Todo'
+      responses:
+        '200':
+          description: Update todo by id
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Todo'
+        '400':
+          description: Validation error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ValidationError'
+        '404':
+          description: Todo not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/NotFoundError'
+components:
+  schemas:
+    Todo:
+      type: object
+      properties:
+        uuid:
+          type: string
+          format: uuid
+          readOnly: true
+        title:
+          type: string
+          maxLength: 200
+        status:
+          $ref: '#/components/schemas/TodoStatus'
+        createdAt:
+          type: string
+          format: date-time
+          readOnly: true
+        updatedAt:
+          type: string
+          format: date-time
+          readOnly: true
+      required:
+        - uuid
+        - title
+        - status
+        - createdAt
+        - updatedAt
+
+    TodoStatus:
+      type: string
+      enum:
+        - Active
+        - Cancelled
+        - Paused
+        - Completed
+
+    NotFoundError:
+      type: object
+      properties:
+        message:
+          type: string
+
+    ValidationError:
+      type: object
+      properties:
+        errors:
+          type: array
+          items:
+            type: string

@@ -1,3 +1,7 @@
+<template>
+  <slot />
+</template>
+
 <script setup lang="ts">
 import { useLocalStorage } from '@vueuse/core'
 import { provide, watch } from 'vue'
@@ -27,7 +31,3 @@ provide(useThemeInjectionKey, {
   toggleTheme,
 })
 </script>
-
-<template>
-  <slot />
-</template>
