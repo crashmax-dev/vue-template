@@ -4,6 +4,7 @@ packages:
 
 patchedDependencies:
   '@msw/data': patches/@msw__data.patch
+
 onlyBuiltDependencies:
   - '@parcel/watcher'
   - esbuild
