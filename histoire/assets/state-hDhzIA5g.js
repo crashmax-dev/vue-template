@@ -1,4 +1,4 @@
-import { b as clientSupportPlugins, h as histoireConfig } from "./mapping-DPOJIIcu.js";
+import { b as clientSupportPlugins, h as histoireConfig } from "./mapping-Bn23AD6k.js";
 import { d as defineComponent, n as ref, V as watchEffect, W as markRaw, y as createBlock, g as createCommentVNode, o as openBlock, X as mergeProps, Y as resolveDynamicComponent, A as reactive, i as isRef, e as unref } from "./vendor-dvzGQhgd.js";
 const __default__ = {
   inheritAttrs: false

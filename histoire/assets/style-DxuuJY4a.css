@@ -1,9 +1,9 @@
 @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+Display&display=swap');.wrapper[data-v-1573bc26] {
   display: flex;
   flex-wrap: wrap;
+  align-items: flex-start;
   gap: 8px;
   padding: 8px;
-  align-items: flex-start;
 }
 .wrapper.column[data-v-1573bc26] {
   flex-direction: column;
@@ -89,9 +89,11 @@
   font-size: 20px;
 }
 
-*, *::before, *::after {
-  margin: 0;
+*,
+*::before,
+*::after {
   box-sizing: border-box;
+  margin: 0;
 }
 
 html {
@@ -3091,20 +3093,20 @@ body {
 }
 .button[data-v-117fda88] {
   --button-padding: 0.5rem 1rem;
-  font-family: inherit;
   display: inline-flex;
-  cursor: pointer;
-  touch-action: manipulation;
-  user-select: none;
-  inline-size: fit-content;
-  border: none;
-  border-radius: calc(var(--radius) - 2px);
+  transition-duration: 0.15s;
   transition-property: all;
   transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
-  transition-duration: 0.15s;
-  color: var(--button-color);
+  cursor: pointer;
+  border: none;
+  border-radius: calc(var(--radius) - 2px);
   background-color: var(--button-background);
   padding: var(--button-padding);
+  inline-size: fit-content;
+  touch-action: manipulation;
+  color: var(--button-color);
+  font-family: inherit;
+  user-select: none;
   /** variants */
 }
 .button.variant-primary[data-v-117fda88] {
@@ -3112,21 +3114,21 @@ body {
   --button-background: hsl(var(--primary));
 }
 .button.variant-primary[data-v-117fda88]:hover {
-  --button-background: hsl(var(--primary) / .9);
+  --button-background: hsl(var(--primary) / 0.9);
 }
 .button.variant-secondary[data-v-117fda88] {
   --button-color: hsl(var(--accent-foreground));
   --button-background: hsl(var(--accent));
 }
 .button.variant-secondary[data-v-117fda88]:hover {
-  --button-background: hsl(var(--accent) / .9);
+  --button-background: hsl(var(--accent) / 0.9);
 }
 .button.variant-danger[data-v-117fda88] {
   --button-color: hsl(var(--destructive-foreground));
   --button-background: hsl(var(--destructive));
 }
 .button.variant-danger[data-v-117fda88]:hover {
-  --button-background: hsl(var(--destructive) / .9);
+  --button-background: hsl(var(--destructive) / 0.9);
 }
 .button[data-v-117fda88] {
   /** sizes */
@@ -3148,6 +3150,6 @@ body {
   /* attributes */
 }
 .button[disabled][data-v-117fda88] {
-  cursor: not-allowed;
   opacity: 0.5;
+  cursor: not-allowed;
 }

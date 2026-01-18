@@ -1,5 +1,5 @@
 import { h as defineStore, n as ref, c as computed } from "./vendor-dvzGQhgd.js";
-import { r as router } from "./mapping-DPOJIIcu.js";
+import { r as router } from "./mapping-Bn23AD6k.js";
 const useStoryStore = defineStore("story", () => {
   const stories = ref([]);
   function setStories(value) {
