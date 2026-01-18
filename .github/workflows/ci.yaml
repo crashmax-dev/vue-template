@@ -13,22 +13,22 @@ env:
   TURBO_TELEMETRY_DISABLED: 1
 
 jobs:
-  cache-and-install:
+  build-and-deploy:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
-        uses: actions/checkout@v4
+        uses: actions/checkout@v6
 
-      - name: Setup turborepo cache
-        uses: dtinth/setup-github-actions-caching-for-turbo@v1
+      - name: Caching for Turborepo
+        uses: rharkor/caching-for-turbo@v2
 
       - name: Install pnpm
         uses: pnpm/action-setup@v4
 
       - name: Install Node.js
-        uses: actions/setup-node@v4
+        uses: actions/setup-node@v6
         with:
-          node-version: 20
+          node-version: 22
           cache: pnpm
 
       - name: Install dependencies
@@ -45,7 +45,7 @@ jobs:
           cp -r apps/vue/dist/* dist
 
       - name: Deploy to GitHub Pages
-        uses: JamesIves/github-pages-deploy-action@v4.7.2
+        uses: JamesIves/github-pages-deploy-action@v4
         with:
           branch: gh-pages
           folder: dist
