@@ -2,8 +2,8 @@
 
 ## Requirements
 
-- Node.js 22.18.x
-- PNPM 10.14.x
+- Node.js 22.22.x
+- PNPM 10.28.x
 
 ## Stack
 

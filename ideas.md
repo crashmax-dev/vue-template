@@ -61,8 +61,7 @@ class TypedEvent<T extends EventSchema> {
 
   async emit(data: v.InferInput<T>): Promise<void> {
     const validatedData = v.parse(this.schema, data)
-    const promises = Array.from(this.listeners).map(listener =>
-      Promise.resolve(listener(validatedData)),
+    const promises = Array.from(this.listeners).map(listener => Promise.resolve(listener(validatedData)),
     )
     await Promise.all(promises)
   }
@@ -117,7 +116,7 @@ messageEvent.on(getMessage)
 messageEvent.emit({ text: '1' })
 
 // Невалидное событие - выбросит ошибку с описанием
-// eslint-disable-next-line ts/ban-ts-comment
+
 // @ts-ignore
 messageEvent.emit({ text: 123 }).catch((err) => {
   console.dir(err)
