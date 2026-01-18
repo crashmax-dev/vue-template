@@ -50,21 +50,21 @@ const buttonClasses = cva('button', {
 <style scoped lang="scss">
 .button {
   --button-padding: 0.5rem 1rem;
-
-  font-family: inherit;
   display: inline-flex;
+  transition-duration: 0.15s;
+  transition-property: all;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
   cursor: pointer;
-  touch-action: manipulation;
-  user-select: none;
-  inline-size: fit-content;
   border: none;
   border-radius: calc(var(--radius) - 2px);
-  transition-property: all;
-  transition-timing-function: cubic-bezier(.4, 0, .2, 1);
-  transition-duration: .15s;
-  color: var(--button-color);
   background-color: var(--button-background);
   padding: var(--button-padding);
+  inline-size: fit-content;
+  touch-action: manipulation;
+  color: var(--button-color);
+
+  font-family: inherit;
+  user-select: none;
 
   /** variants */
   &.variant {
@@ -73,7 +73,7 @@ const buttonClasses = cva('button', {
       --button-background: hsl(var(--primary));
 
       &:hover {
-        --button-background: hsl(var(--primary) / .9);
+        --button-background: hsl(var(--primary) / 0.9);
       }
     }
 
@@ -82,7 +82,7 @@ const buttonClasses = cva('button', {
       --button-background: hsl(var(--accent));
 
       &:hover {
-        --button-background: hsl(var(--accent) / .9);
+        --button-background: hsl(var(--accent) / 0.9);
       }
     }
 
@@ -91,7 +91,7 @@ const buttonClasses = cva('button', {
       --button-background: hsl(var(--destructive));
 
       &:hover {
-        --button-background: hsl(var(--destructive) / .9);
+        --button-background: hsl(var(--destructive) / 0.9);
       }
     }
   }
@@ -116,8 +116,8 @@ const buttonClasses = cva('button', {
 
   /* attributes */
   &[disabled] {
+    opacity: 0.5;
     cursor: not-allowed;
-    opacity: .5;
   }
 }
 </style>

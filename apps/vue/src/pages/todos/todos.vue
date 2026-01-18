@@ -100,12 +100,14 @@ function resetTodos() {
 
 <style scoped lang="scss">
 .todo-app {
-  width: 100%;
-  background: hsl(var(--card));
-  border-radius: var(--radius);
-  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
-  padding: 2.5rem;
+  box-shadow:
+    0 4px 6px -1px rgba(0, 0, 0, 0.1),
+    0 2px 4px -1px rgba(0, 0, 0, 0.06);
   border: 1px solid hsl(var(--border));
+  border-radius: var(--radius);
+  background: hsl(var(--card));
+  padding: 2.5rem;
+  width: 100%;
 }
 
 .todo-form {
@@ -128,26 +130,26 @@ function resetTodos() {
 }
 
 .todos-section {
-  background: hsl(var(--muted) / 0.3);
-  border-radius: var(--radius);
-  padding: 1.5rem;
   border: 1px solid hsl(var(--border));
+  border-radius: var(--radius);
+  background: hsl(var(--muted) / 0.3);
+  padding: 1.5rem;
 }
 
 .todos-header {
   display: flex;
+  flex-wrap: wrap;
   justify-content: space-between;
   align-items: center;
-  margin-bottom: 1.5rem;
-  flex-wrap: wrap;
   gap: 1rem;
+  margin-bottom: 1.5rem;
 }
 
 .todos-title {
-  font-size: 1.25rem;
-  font-weight: 600;
-  color: hsl(var(--foreground));
   margin: 0;
+  color: hsl(var(--foreground));
+  font-weight: 600;
+  font-size: 1.25rem;
 }
 
 .pagination-controls {
@@ -156,11 +158,11 @@ function resetTodos() {
 }
 
 .todos-list {
-  list-style: none;
-  padding: 0;
-  margin: 0;
   display: flex;
   flex-direction: column;
   gap: 0.75rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
 }
 </style>

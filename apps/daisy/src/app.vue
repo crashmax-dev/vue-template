@@ -99,7 +99,6 @@ function generateEmojiGrid() {
 
   for (let i = pairs.length - 1; i > 0; i--) {
     const j = Math.floor(Math.random() * (i + 1));
-    // eslint-disable-next-line ts/ban-ts-comment
     // @ts-ignore
     [pairs[i], pairs[j]] = [pairs[j], pairs[i]]
   }

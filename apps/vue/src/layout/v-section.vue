@@ -16,9 +16,9 @@
 
 <style scoped lang="scss">
 .section {
-  max-width: 1024px;
   margin: 0 auto;
   padding: 16px;
+  max-width: 1024px;
 
   &-enter-active,
   &-leave-active {
@@ -27,8 +27,8 @@
 
   &-enter-from,
   &-leave-to {
-    opacity: 0;
     transform: scale(0.98);
+    opacity: 0;
   }
 }
 </style>

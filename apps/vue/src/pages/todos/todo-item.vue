@@ -94,22 +94,22 @@ function updateTodo(event: SubmitEvent) {
 
 <style scoped lang="scss">
 .todo-item {
-  background: hsl(var(--card));
-  border-radius: var(--radius);
-  padding: 1rem 1.25rem;
   display: flex;
   justify-content: space-between;
   align-items: center;
   gap: 8px;
-  border: 1px solid hsl(var(--border));
   transition: all 0.2s ease;
+  border: 1px solid hsl(var(--border));
+  border-radius: var(--radius);
+  background: hsl(var(--card));
+  padding: 1rem 1.25rem;
 
   &__status {
-    color: hsl(var(--muted-foreground));
-    font-size: 0.875rem;
+    border-radius: 4px;
     background-color: hsl(var(--muted));
     padding: 4px;
-    border-radius: 4px;
+    color: hsl(var(--muted-foreground));
+    font-size: 0.875rem;
   }
 
   &__form {

@@ -1,10 +1,10 @@
-@import "tailwindcss";
+@import 'tailwindcss';
 @plugin "daisyui";
 @plugin "daisyui/theme" {
-  name: "daisy-ui";
+  name: 'daisy-ui';
   default: true;
   prefersdark: false;
-  color-scheme: "dark";
+  color-scheme: 'dark';
   --color-base-100: oklch(14% 0.005 285.823);
   --color-base-200: oklch(21% 0.006 285.885);
   --color-base-300: oklch(27% 0.006 286.033);
@@ -40,4 +40,4 @@
   @apply h-dvh h-screen;
 }
 
-@import "./global.css";
+@import './global.css';

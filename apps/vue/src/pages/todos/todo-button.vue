@@ -16,16 +16,16 @@ defineProps<{
 <style scoped lang="scss">
 .btn {
   display: inline-flex;
-  align-items: center;
   justify-content: center;
-  padding: 0.625rem 1rem;
+  align-items: center;
+  transition: all 0.2s ease;
+  cursor: pointer;
+  outline: none;
   border: 1px solid transparent;
   border-radius: var(--radius);
-  font-size: 0.875rem;
+  padding: 0.625rem 1rem;
   font-weight: 500;
-  cursor: pointer;
-  transition: all 0.2s ease;
-  outline: none;
+  font-size: 0.875rem;
   white-space: nowrap;
 
   &:focus-visible {
@@ -62,9 +62,9 @@ defineProps<{
   }
 
   &-icon {
+    border: 1px solid hsl(var(--border));
     background: hsl(var(--background));
     color: hsl(var(--foreground));
-    border: 1px solid hsl(var(--border));
 
     &:hover:not(:disabled) {
       background: hsl(var(--accent));
@@ -73,10 +73,10 @@ defineProps<{
   }
 
   &-danger {
+    border: 1px solid hsl(var(--destructive));
     background: hsl(var(--destructive));
     color: hsl(var(--destructive-foreground));
     white-space: nowrap;
-    border: 1px solid hsl(var(--destructive));
 
     &:hover:not(:disabled) {
       opacity: 0.9;

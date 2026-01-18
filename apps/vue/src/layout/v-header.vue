@@ -59,16 +59,16 @@ function histoireUrl() {
 
 <style scoped lang="scss">
 .header {
-  padding: 8px 16px;
-  background-color: hsl(var(--primary-foreground));
   border-bottom: 1px solid hsl(var(--border));
+  background-color: hsl(var(--primary-foreground));
+  padding: 8px 16px;
 
   &-nav {
     display: flex;
     flex-wrap: wrap;
+    align-items: center;
     gap: 8px;
     height: 100%;
-    align-items: center;
   }
 
   &-link {

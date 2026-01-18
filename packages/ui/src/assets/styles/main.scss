@@ -1,13 +1,15 @@
 @forward 'sizes';
 
-*, *::before, *::after {
-  margin: 0;
+*,
+*::before,
+*::after {
   box-sizing: border-box;
+  margin: 0;
 }
 
 html {
   -webkit-text-size-adjust: 100%;
-  font-variation-settings: normal
+  font-variation-settings: normal;
 }
 
 body {
@@ -16,5 +18,5 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   font-synthesis-weight: none;
-  text-rendering: optimizeLegibility
+  text-rendering: optimizeLegibility;
 }

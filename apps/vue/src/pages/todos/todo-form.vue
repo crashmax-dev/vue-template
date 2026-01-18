@@ -37,19 +37,19 @@ withDefaults(defineProps<{
 <style scoped lang="scss">
 .input-field,
 .select-field {
-  padding: 0.625rem 0.875rem;
-  border: 1px solid hsl(var(--input));
-  border-radius: var(--radius);
-  font-size: 0.875rem;
-  color: hsl(var(--foreground));
-  background: hsl(var(--background));
   transition: all 0.2s ease;
   outline: none;
+  border: 1px solid hsl(var(--input));
+  border-radius: var(--radius);
+  background: hsl(var(--background));
+  padding: 0.625rem 0.875rem;
+  color: hsl(var(--foreground));
+  font-size: 0.875rem;
 
   &:focus {
-    border-color: hsl(var(--ring));
     outline: 2px solid transparent;
     outline-offset: 2px;
+    border-color: hsl(var(--ring));
   }
 
   &::placeholder {
@@ -62,14 +62,14 @@ withDefaults(defineProps<{
 }
 
 .select-field {
-  min-width: 140px;
-  cursor: pointer;
-  padding-right: 2.5rem;
-  background-image: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 12 12"><path fill="gray" d="M6 9L1 4h10z"/></svg>');
-  background-repeat: no-repeat;
-  background-position: calc(100% - 0.875rem) center;
   appearance: none;
   -webkit-appearance: none;
   -moz-appearance: none;
+  cursor: pointer;
+  background-image: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 12 12"><path fill="gray" d="M6 9L1 4h10z"/></svg>');
+  background-position: calc(100% - 0.875rem) center;
+  background-repeat: no-repeat;
+  padding-right: 2.5rem;
+  min-width: 140px;
 }
 </style>

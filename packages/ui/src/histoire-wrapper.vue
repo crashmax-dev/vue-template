@@ -25,9 +25,9 @@ function isColumn() {
 .wrapper {
   display: flex;
   flex-wrap: wrap;
+  align-items: flex-start;
   gap: 8px;
   padding: 8px;
-  align-items: flex-start;
 
   &.column {
     flex-direction: column;
