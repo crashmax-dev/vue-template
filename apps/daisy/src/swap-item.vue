@@ -5,7 +5,7 @@
   >
     <input
       v-model="isOpen"
-      :disabled="disabled"
+      :disabled="isDisabled"
       type="checkbox"
     >
     <div class="swap-on text-center">{{ emoji }}</div>
@@ -14,10 +14,16 @@
 </template>
 
 <script setup lang="ts">
-defineProps<{
+import { computed } from 'vue'
+
+const props = defineProps<{
   emoji: string
   disabled: boolean
 }>()
 
 const isOpen = defineModel<boolean>('isOpen')
+
+const isDisabled = computed(() => {
+  return props.disabled || isOpen.value
+})
 </script>
