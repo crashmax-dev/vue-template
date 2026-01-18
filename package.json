@@ -8,18 +8,21 @@
     "node": ">=22.22"
   },
   "scripts": {
-    "dev": "turbo dev",
-    "dev:ui": "turbo dev --filter=./packages/ui",
-    "build": "turbo build",
-    "build:apps": "turbo build --filter=./apps/*",
-    "build:packages": "turbo build --filter=./packages/*",
-    "type-check": "turbo type-check",
+    "dev": "turbo run dev --parallel",
+    "dev:apps": "turbo run dev --filter=./apps/*",
+    "dev:ui": "turbo run dev --filter=./packages/ui",
+    "dev:packages": "turbo run dev --filter=./packages/*",
+    "build": "turbo run build --filter=./apps/*",
+    "build:ui": "turbo run build --filter=./packages/ui",
+    "build:packages": "turbo run build --filter=./packages/*",
+    "type-check": "turbo run type-check",
     "test": "vitest run",
     "test:unit": "vitest",
     "test:unit-ui": "vitest --ui",
     "lint": "eslint . --cache",
     "lint:fix": "eslint . --fix --cache",
     "generate-api": "pnpm --filter=@vue-workspace/api generate-api",
+    "clean": "turbo run clean && rm -rf .turbo",
     "check-update": "pnpm update -i -r -L"
   },
   "devDependencies": {

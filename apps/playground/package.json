@@ -1,10 +1,10 @@
 {
-  "name": "@vue-workspace/vue",
+  "name": "@vue-workspace/playground",
   "type": "module",
   "version": "0.0.0",
   "private": true,
   "scripts": {
-    "dev": "vite",
+    "dev": "vite --host --port 3000",
     "build": "pnpm type-check && vite build",
     "preview": "vite preview",
     "test": "vitest run",
