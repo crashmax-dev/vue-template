@@ -1,5 +1,8 @@
 <template>
-  <v-button @click="counter.increment()">
+  <v-button
+    data-testid="counter"
+    @click="counter.increment()"
+  >
     Count {{ counter.count }} * 2 = {{ counter.doubleCount }}
   </v-button>
 </template>
