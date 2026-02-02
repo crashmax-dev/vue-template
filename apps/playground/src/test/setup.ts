@@ -2,7 +2,7 @@ import { enableAutoUnmount } from '@vue/test-utils'
 import { createPinia, setActivePinia } from 'pinia'
 import { afterEach, beforeEach } from 'vitest'
 
-import './src/main.scss'
+// import '../main.scss'
 
 beforeEach(() => {
   // creates a fresh pinia and makes it active
@@ -11,4 +11,4 @@ beforeEach(() => {
   setActivePinia(createPinia())
 })
 
-// enableAutoUnmount(afterEach)
+enableAutoUnmount(afterEach)

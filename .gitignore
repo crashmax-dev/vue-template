@@ -11,3 +11,4 @@ storybook-static
 *storybook.log
 coverage
 test-results/
+__screenshots__

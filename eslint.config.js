@@ -97,6 +97,7 @@ export default antfu({
     'no-alert': 'off',
     'no-console': 'off',
     'no-cond-assign': 'off',
+    'no-unused-vars': 'off',
     'no-template-curly-in-string': 'off',
     'ts/no-redeclare': 'off',
     'ts/ban-ts-comment': 'off',
@@ -111,7 +112,6 @@ export default antfu({
     'regexp/no-super-linear-backtracking': 'off',
 
     // warns
-    'no-unused-vars': 'warn',
     'unused-imports/no-unused-imports': 'warn',
 
     // errors
