@@ -7,9 +7,9 @@
     "dev": "vite --host --port 3000",
     "build": "pnpm type-check && vite build",
     "preview": "vite preview",
-    "test": "vitest run",
-    "test:unit": "vitest",
-    "test:unit-ui": "vitest --ui",
+    "test": "vitest",
+    "test:unit": "vitest --project unit",
+    "test:browser": "vitest --project browser",
     "type-check": "vue-tsc --build tsconfig.app.json"
   },
   "dependencies": {

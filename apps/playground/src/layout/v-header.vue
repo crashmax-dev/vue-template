@@ -25,6 +25,7 @@
 
       <v-button
         class="toggle-theme"
+        data-testid="toggle-theme"
         @click="theme.toggleTheme"
       >
         <moon-icon
