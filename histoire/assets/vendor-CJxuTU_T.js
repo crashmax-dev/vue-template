@@ -1,11 +1,11 @@
-import { t as __exportAll } from "./rolldown-runtime-D9VfunvA.js";
+import { t as __exportAll } from "./rolldown-runtime-D7D4PA-g.js";
 //#region ../../node_modules/.pnpm/@histoire+vendors@1.0.0-beta.1/node_modules/@histoire/vendors/dist/client/vue.runtime.esm-bundler.js
 /**
 * @vue/shared v3.5.26
 * (c) 2018-present Yuxi (Evan) You and Vue contributors
 * @license MIT
 **/
-/* @__NO_SIDE_EFFECTS__ */
+// @__NO_SIDE_EFFECTS__
 function makeMap$1(str) {
 	const map = /* @__PURE__ */ Object.create(null);
 	for (const key of str.split(",")) map[key] = 1;
@@ -1155,7 +1155,7 @@ function targetTypeMap$1(rawType) {
 		default: return 0;
 	}
 }
-function getTargetType$1(value) {
+function getTargetType(value) {
 	return value["__v_skip"] || !Object.isExtensible(value) ? 0 : targetTypeMap$1(toRawType$1(value));
 }
 function reactive$1(target) {
@@ -1177,7 +1177,7 @@ function createReactiveObject$1(target, isReadonly2, baseHandlers, collectionHan
 		return target;
 	}
 	if (target["__v_raw"] && !(isReadonly2 && target["__v_isReactive"])) return target;
-	const targetType = getTargetType$1(target);
+	const targetType = getTargetType(target);
 	if (targetType === 0) return target;
 	const existingProxy = proxyMap.get(target);
 	if (existingProxy) return existingProxy;
@@ -2041,7 +2041,7 @@ var _devtoolsComponentRemoved$1 = /* @__PURE__ */ createDevtoolsComponentHook$1(
 var devtoolsComponentRemoved$1 = (component) => {
 	if (devtools$1$1 && typeof devtools$1$1.cleanupBuffer === "function" && !devtools$1$1.cleanupBuffer(component)) _devtoolsComponentRemoved$1(component);
 };
-/* @__NO_SIDE_EFFECTS__ */
+// @__NO_SIDE_EFFECTS__
 function createDevtoolsComponentHook$1(hook) {
 	return (component) => {
 		emit$1$1(hook, component.appContext.app, component.uid, component.parent ? component.parent.uid : void 0, component);
@@ -2487,9 +2487,9 @@ function getTransitionRawChildren(children, keepComment = false, parentKey) {
 	if (keyedFragmentCount > 1) for (let i = 0; i < ret.length; i++) ret[i].patchFlag = -2;
 	return ret;
 }
-/* @__NO_SIDE_EFFECTS__ */
+// @__NO_SIDE_EFFECTS__
 function defineComponent$1(options, extraOptions) {
-	return isFunction$1(options) ? extend$1({ name: options.name }, extraOptions, { setup: options }) : options;
+	return isFunction$1(options) ? /* @__PURE__ */ (() => extend$1({ name: options.name }, extraOptions, { setup: options }))() : options;
 }
 function markAsyncBoundary$1(instance) {
 	instance.ids = [
@@ -2607,7 +2607,7 @@ function forEachElement$1(node, cb) {
 	} else cb(node);
 }
 var isAsyncWrapper$1 = (i) => !!i.type.__asyncLoader;
-/* @__NO_SIDE_EFFECTS__ */
+// @__NO_SIDE_EFFECTS__
 function defineAsyncComponent$1(source) {
 	if (isFunction$1(source)) source = { loader: source };
 	const { loader, loadingComponent, errorComponent, delay = 200, hydrate: hydrateStrategy, timeout, suspensible = true, onError: userOnError } = source;
@@ -3882,7 +3882,7 @@ function getInvalidTypeMessage$1(name, value, expectedTypes) {
 	const receivedType = toRawType$1(value);
 	const expectedValue = styleValue$1(value, expectedType);
 	const receivedValue = styleValue$1(value, receivedType);
-	if (expectedTypes.length === 1 && isExplicable$1(expectedType) && !isBoolean$2(expectedType, receivedType)) message += ` with value ${expectedValue}`;
+	if (expectedTypes.length === 1 && isExplicable$1(expectedType) && !isBoolean$1(expectedType, receivedType)) message += ` with value ${expectedValue}`;
 	message += `, got ${receivedType} `;
 	if (isExplicable$1(receivedType)) message += `with value ${receivedValue}.`;
 	return message;
@@ -3899,7 +3899,7 @@ function isExplicable$1(type) {
 		"boolean"
 	].some((elem) => type.toLowerCase() === elem);
 }
-function isBoolean$2(...args) {
+function isBoolean$1(...args) {
 	return args.some((elem) => elem.toLowerCase() === "boolean");
 }
 var isInternalKey$1 = (key) => key === "_" || key === "_ctx" || key === "$stable";
@@ -6037,7 +6037,7 @@ function createInvoker$1(initialValue, instance) {
 	const invoker = (e) => {
 		if (!e._vts) e._vts = Date.now();
 		else if (e._vts <= invoker.attached) return;
-		callWithAsyncErrorHandling$1(patchStopImmediatePropagation$1(e, invoker.value), instance, 5, [e]);
+		callWithAsyncErrorHandling$1(patchStopImmediatePropagation(e, invoker.value), instance, 5, [e]);
 	};
 	invoker.value = initialValue;
 	invoker.attached = getNow$1();
@@ -6049,7 +6049,7 @@ function sanitizeEventValue$1(value, propName) {
 Expected function or array of functions, received type ${typeof value}.`);
 	return NOOP$1;
 }
-function patchStopImmediatePropagation$1(e, value) {
+function patchStopImmediatePropagation(e, value) {
 	if (isArray$3(value)) {
 		const originalStop = e.stopImmediatePropagation;
 		e.stopImmediatePropagation = () => {
@@ -6288,7 +6288,7 @@ var sides = [
 	"left"
 ];
 var alignments = ["start", "end"];
-var placements = /* @__PURE__ */ sides.reduce((acc, side) => acc.concat(side, side + "-" + alignments[0], side + "-" + alignments[1]), []);
+var placements = /*#__PURE__*/ sides.reduce((acc, side) => acc.concat(side, side + "-" + alignments[0], side + "-" + alignments[1]), []);
 var min$1 = Math.min;
 var max$1 = Math.max;
 var oppositeSideMap = {
@@ -6319,7 +6319,7 @@ function getOppositeAxis(axis) {
 function getAxisLength(axis) {
 	return axis === "y" ? "height" : "width";
 }
-var yAxisSides = /* @__PURE__ */ new Set(["top", "bottom"]);
+var yAxisSides = /*#__PURE__*/ new Set(["top", "bottom"]);
 function getSideAxis(placement) {
 	return yAxisSides.has(getSide(placement)) ? "y" : "x";
 }
@@ -6757,7 +6757,7 @@ var flip = function(options) {
 		}
 	};
 };
-var originSides = /* @__PURE__ */ new Set(["left", "top"]);
+var originSides = /*#__PURE__*/ new Set(["left", "top"]);
 async function convertValueToCoords(state, options) {
 	const { placement, platform, elements } = state;
 	const rtl = await (platform.isRTL == null ? void 0 : platform.isRTL(elements.floating));
@@ -7362,6 +7362,9 @@ var h$3 = {
 	overflowPadding: 0,
 	arrowPadding: 0,
 	arrowOverflow: !0,
+	/**
+	* By default, compute autohide on 'click'.
+	*/
 	autoHideOnMousedown: !1,
 	themes: {
 		tooltip: {
@@ -7610,6 +7613,9 @@ var q = "__floating-vue__popper", Q = () => /* @__PURE__ */ defineComponent$1({
 			type: Boolean,
 			default: n$2("computeTransformOrigin")
 		},
+		/**
+		* @deprecated
+		*/
 		autoMinSize: {
 			type: Boolean,
 			default: n$2("autoMinSize")
@@ -7618,6 +7624,9 @@ var q = "__floating-vue__popper", Q = () => /* @__PURE__ */ defineComponent$1({
 			type: [Boolean, String],
 			default: n$2("autoSize")
 		},
+		/**
+		* @deprecated
+		*/
 		autoMaxSize: {
 			type: Boolean,
 			default: n$2("autoMaxSize")
@@ -8381,6 +8390,9 @@ var gt$1 = /* @__PURE__ */ defineComponent$1({
 			type: Boolean,
 			default: void 0
 		},
+		/**
+		* @deprecated
+		*/
 		autoMinSize: {
 			type: Boolean,
 			default: void 0
@@ -8389,6 +8401,9 @@ var gt$1 = /* @__PURE__ */ defineComponent$1({
 			type: [Boolean, String],
 			default: void 0
 		},
+		/**
+		* @deprecated
+		*/
 		autoMaxSize: {
 			type: Boolean,
 			default: void 0
@@ -8960,7 +8975,7 @@ var MutationType;
 	MutationType["patchFunction"] = "patch function";
 })(MutationType || (MutationType = {}));
 var IS_CLIENT = typeof window !== "undefined";
-var _global$1 = typeof window === "object" && window.window === window ? window : typeof self === "object" && self.self === self ? self : typeof global === "object" && global.global === global ? global : typeof globalThis === "object" ? globalThis : { HTMLElement: null };
+var _global$1 = /*#__PURE__*/ (() => typeof window === "object" && window.window === window ? window : typeof self === "object" && self.self === self ? self : typeof global === "object" && global.global === global ? global : typeof globalThis === "object" ? globalThis : { HTMLElement: null })();
 function bom(blob, { autoBom = false } = {}) {
 	if (autoBom && /^\s*(?:text\/\S*|application\/xml|\S*\/\S*\+xml)\s*;.*charset\s*=\s*utf-8/i.test(blob.type)) return new Blob([String.fromCharCode(65279), blob], { type: blob.type });
 	return blob;
@@ -8995,7 +9010,7 @@ function click(node) {
 	}
 }
 var _navigator = typeof navigator === "object" ? navigator : { userAgent: "" };
-var isMacOSWebView = /Macintosh/.test(_navigator.userAgent) && /AppleWebKit/.test(_navigator.userAgent) && !/Safari/.test(_navigator.userAgent);
+var isMacOSWebView = /*#__PURE__*/ (() => /Macintosh/.test(_navigator.userAgent) && /AppleWebKit/.test(_navigator.userAgent) && !/Safari/.test(_navigator.userAgent))();
 var saveAs = !IS_CLIENT ? () => {} : typeof HTMLAnchorElement !== "undefined" && "download" in HTMLAnchorElement.prototype && !isMacOSWebView ? downloadSaveAs : "msSaveOrOpenBlob" in _navigator ? msSaveAs : fileSaverSaveAs;
 function downloadSaveAs(blob, name = "download", opts) {
 	const a = document.createElement("a");
@@ -9875,7 +9890,7 @@ function createSetupStore($id, setup, options = {}, pinia, hot, isOptionsStore) 
 		wrappedAction[ACTION_NAME] = name;
 		return wrappedAction;
 	};
-	const _hmrPayload = /* @__PURE__ */ markRaw$1({
+	const _hmrPayload = /*#__PURE__*/ markRaw$1({
 		actions: {},
 		getters: {},
 		state: [],
@@ -10181,18 +10196,6 @@ function pausableFilter(extendFilter = bypassFilter, options = {}) {
 		eventFilter
 	};
 }
-function cacheStringFunction$1(fn) {
-	const cache = /* @__PURE__ */ Object.create(null);
-	return (str) => {
-		return cache[str] || (cache[str] = fn(str));
-	};
-}
-var hyphenateRE$1 = /\B([A-Z])/g;
-cacheStringFunction$1((str) => str.replace(hyphenateRE$1, "-$1").toLowerCase());
-var camelizeRE$1 = /-(\w)/g;
-cacheStringFunction$1((str) => {
-	return str.replace(camelizeRE$1, (_, c) => c ? c.toUpperCase() : "");
-});
 function createSingletonPromise(fn) {
 	let _promise;
 	function wrapper() {
@@ -10953,13 +10956,13 @@ function useTitle(newTitle = null, options = {}) {
 	return title;
 }
 //#endregion
-//#region ../../node_modules/.pnpm/@vue+shared@3.5.30/node_modules/@vue/shared/dist/shared.esm-bundler.js
+//#region ../../node_modules/.pnpm/@vue+shared@3.5.38/node_modules/@vue/shared/dist/shared.esm-bundler.js
 /**
-* @vue/shared v3.5.30
+* @vue/shared v3.5.38
 * (c) 2018-present Yuxi (Evan) You and Vue contributors
 * @license MIT
 **/
-/* @__NO_SIDE_EFFECTS__ */
+// @__NO_SIDE_EFFECTS__
 function makeMap(str) {
 	const map = /* @__PURE__ */ Object.create(null);
 	for (const key of str.split(",")) map[key] = 1;
@@ -11143,9 +11146,9 @@ var stringifySymbol = (v, i = "") => {
 	return isSymbol(v) ? `Symbol(${(_a = v.description) != null ? _a : i})` : v;
 };
 //#endregion
-//#region ../../node_modules/.pnpm/@vue+reactivity@3.5.30/node_modules/@vue/reactivity/dist/reactivity.esm-bundler.js
+//#region ../../node_modules/.pnpm/@vue+reactivity@3.5.38/node_modules/@vue/reactivity/dist/reactivity.esm-bundler.js
 /**
-* @vue/reactivity v3.5.30
+* @vue/reactivity v3.5.38
 * (c) 2018-present Yuxi (Evan) You and Vue contributors
 * @license MIT
 **/
@@ -11173,9 +11176,15 @@ var EffectScope = class {
 		*/
 		this.cleanups = [];
 		this._isPaused = false;
+		this._warnOnRun = true;
 		this.__v_skip = true;
-		this.parent = activeEffectScope;
-		if (!detached && activeEffectScope) this.index = (activeEffectScope.scopes || (activeEffectScope.scopes = [])).push(this) - 1;
+		if (!detached && activeEffectScope) if (activeEffectScope.active) {
+			this.parent = activeEffectScope;
+			this.index = (activeEffectScope.scopes || (activeEffectScope.scopes = [])).push(this) - 1;
+		} else {
+			this._active = false;
+			this._warnOnRun = false;
+		}
 	}
 	get active() {
 		return this._active;
@@ -11210,7 +11219,7 @@ var EffectScope = class {
 			} finally {
 				activeEffectScope = currentEffectScope;
 			}
-		} else warn$2(`cannot run an inactive effect scope.`);
+		} else if (this._warnOnRun) warn$2(`cannot run an inactive effect scope.`);
 	}
 	/**
 	* This should only be called on non-detached scopes
@@ -11228,7 +11237,17 @@ var EffectScope = class {
 	*/
 	off() {
 		if (this._on > 0 && --this._on === 0) {
-			activeEffectScope = this.prevScope;
+			if (activeEffectScope === this) activeEffectScope = this.prevScope;
+			else {
+				let current = activeEffectScope;
+				while (current) {
+					if (current.prevScope === this) {
+						current.prevScope = this.prevScope;
+						break;
+					}
+					current = current.prevScope;
+				}
+			}
 			this.prevScope = void 0;
 		}
 	}
@@ -11284,7 +11303,8 @@ var ReactiveEffect = class {
 		*/
 		this.cleanup = void 0;
 		this.scheduler = void 0;
-		if (activeEffectScope && activeEffectScope.active) activeEffectScope.effects.push(this);
+		if (activeEffectScope) if (activeEffectScope.active) activeEffectScope.effects.push(this);
+		else this.flags &= -2;
 	}
 	pause() {
 		this.flags |= 64;
@@ -12128,23 +12148,20 @@ function targetTypeMap(rawType) {
 		default: return 0;
 	}
 }
-function getTargetType(value) {
-	return value["__v_skip"] || !Object.isExtensible(value) ? 0 : targetTypeMap(toRawType(value));
-}
-/* @__NO_SIDE_EFFECTS__ */
+// @__NO_SIDE_EFFECTS__
 function reactive(target) {
 	if (/* @__PURE__ */ isReadonly(target)) return target;
 	return createReactiveObject(target, false, mutableHandlers, mutableCollectionHandlers, reactiveMap);
 }
-/* @__NO_SIDE_EFFECTS__ */
+// @__NO_SIDE_EFFECTS__
 function shallowReactive(target) {
 	return createReactiveObject(target, false, shallowReactiveHandlers, shallowCollectionHandlers, shallowReactiveMap);
 }
-/* @__NO_SIDE_EFFECTS__ */
+// @__NO_SIDE_EFFECTS__
 function readonly(target) {
 	return createReactiveObject(target, true, readonlyHandlers, readonlyCollectionHandlers, readonlyMap);
 }
-/* @__NO_SIDE_EFFECTS__ */
+// @__NO_SIDE_EFFECTS__
 function shallowReadonly(target) {
 	return createReactiveObject(target, true, shallowReadonlyHandlers, shallowReadonlyCollectionHandlers, shallowReadonlyMap);
 }
@@ -12154,32 +12171,33 @@ function createReactiveObject(target, isReadonly2, baseHandlers, collectionHandl
 		return target;
 	}
 	if (target["__v_raw"] && !(isReadonly2 && target["__v_isReactive"])) return target;
-	const targetType = getTargetType(target);
-	if (targetType === 0) return target;
+	if (target["__v_skip"] || !Object.isExtensible(target)) return target;
 	const existingProxy = proxyMap.get(target);
 	if (existingProxy) return existingProxy;
+	const targetType = targetTypeMap(toRawType(target));
+	if (targetType === 0) return target;
 	const proxy = new Proxy(target, targetType === 2 ? collectionHandlers : baseHandlers);
 	proxyMap.set(target, proxy);
 	return proxy;
 }
-/* @__NO_SIDE_EFFECTS__ */
+// @__NO_SIDE_EFFECTS__
 function isReactive(value) {
 	if (/* @__PURE__ */ isReadonly(value)) return /* @__PURE__ */ isReactive(value["__v_raw"]);
 	return !!(value && value["__v_isReactive"]);
 }
-/* @__NO_SIDE_EFFECTS__ */
+// @__NO_SIDE_EFFECTS__
 function isReadonly(value) {
 	return !!(value && value["__v_isReadonly"]);
 }
-/* @__NO_SIDE_EFFECTS__ */
+// @__NO_SIDE_EFFECTS__
 function isShallow(value) {
 	return !!(value && value["__v_isShallow"]);
 }
-/* @__NO_SIDE_EFFECTS__ */
+// @__NO_SIDE_EFFECTS__
 function isProxy(value) {
 	return value ? !!value["__v_raw"] : false;
 }
-/* @__NO_SIDE_EFFECTS__ */
+// @__NO_SIDE_EFFECTS__
 function toRaw(observed) {
 	const raw = observed && observed["__v_raw"];
 	return raw ? /* @__PURE__ */ toRaw(raw) : observed;
@@ -12190,11 +12208,11 @@ function markRaw(value) {
 }
 var toReactive = (value) => isObject$1(value) ? /* @__PURE__ */ reactive(value) : value;
 var toReadonly = (value) => isObject$1(value) ? /* @__PURE__ */ readonly(value) : value;
-/* @__NO_SIDE_EFFECTS__ */
+// @__NO_SIDE_EFFECTS__
 function isRef(r) {
 	return r ? r["__v_isRef"] === true : false;
 }
-/* @__NO_SIDE_EFFECTS__ */
+// @__NO_SIDE_EFFECTS__
 function ref(value) {
 	return createRef(value, false);
 }
@@ -12317,7 +12335,7 @@ var ComputedRefImpl = class {
 		else warn$2("Write operation failed: computed value is readonly");
 	}
 };
-/* @__NO_SIDE_EFFECTS__ */
+// @__NO_SIDE_EFFECTS__
 function computed$1(getterOrOptions, debugOptions, isSSR = false) {
 	let getter;
 	let setter;
@@ -12409,8 +12427,9 @@ function watch$1(source, cb, options = EMPTY_OBJ) {
 	if (once && cb) {
 		const _cb = cb;
 		cb = (...args) => {
-			_cb(...args);
+			const res = _cb(...args);
 			watchHandle();
+			return res;
 		};
 	}
 	let oldValue = isMultiSource ? new Array(source.length).fill(INITIAL_WATCHER_VALUE) : INITIAL_WATCHER_VALUE;
@@ -12418,7 +12437,7 @@ function watch$1(source, cb, options = EMPTY_OBJ) {
 		if (!(effect.flags & 1) || !effect.dirty && !immediateFirstRun) return;
 		if (cb) {
 			const newValue = effect.run();
-			if (deep || forceTrigger || (isMultiSource ? newValue.some((v, i) => hasChanged(v, oldValue[i])) : hasChanged(newValue, oldValue))) {
+			if (immediateFirstRun || deep || forceTrigger || (isMultiSource ? newValue.some((v, i) => hasChanged(v, oldValue[i])) : hasChanged(newValue, oldValue))) {
 				if (cleanup) cleanup();
 				const currentWatcher = activeWatcher;
 				activeWatcher = effect;
@@ -12477,9 +12496,9 @@ function traverse(value, depth = Infinity, seen) {
 	return value;
 }
 //#endregion
-//#region ../../node_modules/.pnpm/@vue+runtime-core@3.5.30/node_modules/@vue/runtime-core/dist/runtime-core.esm-bundler.js
+//#region ../../node_modules/.pnpm/@vue+runtime-core@3.5.38/node_modules/@vue/runtime-core/dist/runtime-core.esm-bundler.js
 /**
-* @vue/runtime-core v3.5.30
+* @vue/runtime-core v3.5.38
 * (c) 2018-present Yuxi (Evan) You and Vue contributors
 * @license MIT
 **/
@@ -12795,6 +12814,13 @@ function checkRecursiveUpdates(seen, fn) {
 	return false;
 }
 var isHmrUpdating = false;
+var setHmrUpdating = (v) => {
+	try {
+		return isHmrUpdating;
+	} finally {
+		isHmrUpdating = v;
+	}
+};
 var hmrDirtyComponents = /* @__PURE__ */ new Map();
 getGlobalThis().__VUE_HMR_RUNTIME__ = {
 	createRecord: tryWrap(createRecord),
@@ -12943,7 +12969,7 @@ var _devtoolsComponentRemoved = /* @__PURE__ */ createDevtoolsComponentHook("com
 var devtoolsComponentRemoved = (component) => {
 	if (devtools$1 && typeof devtools$1.cleanupBuffer === "function" && !devtools$1.cleanupBuffer(component)) _devtoolsComponentRemoved(component);
 };
-/* @__NO_SIDE_EFFECTS__ */
+// @__NO_SIDE_EFFECTS__
 function createDevtoolsComponentHook(hook) {
 	return (component) => {
 		emit$1(hook, component.appContext.app, component.uid, component.parent ? component.parent.uid : void 0, component);
@@ -13105,9 +13131,9 @@ function setTransitionHooks(vnode, hooks) {
 		vnode.ssFallback.transition = hooks.clone(vnode.ssFallback);
 	} else vnode.transition = hooks;
 }
-/* @__NO_SIDE_EFFECTS__ */
+// @__NO_SIDE_EFFECTS__
 function defineComponent(options, extraOptions) {
-	return isFunction(options) ? extend({ name: options.name }, extraOptions, { setup: options }) : options;
+	return isFunction(options) ? /* @__PURE__ */ (() => extend({ name: options.name }, extraOptions, { setup: options }))() : options;
 }
 function markAsyncBoundary(instance) {
 	instance.ids = [
@@ -13232,7 +13258,7 @@ function forEachElement(node, cb) {
 	} else cb(node);
 }
 var isAsyncWrapper = (i) => !!i.type.__asyncLoader;
-/* @__NO_SIDE_EFFECTS__ */
+// @__NO_SIDE_EFFECTS__
 function defineAsyncComponent(source) {
 	if (isFunction(source)) source = { loader: source };
 	const { loader, loadingComponent, errorComponent, delay = 200, hydrate: hydrateStrategy, timeout, suspensible = true, onError: userOnError } = source;
@@ -13303,10 +13329,18 @@ function defineAsyncComponent(source) {
 			const loaded = /* @__PURE__ */ ref(false);
 			const error = /* @__PURE__ */ ref();
 			const delayed = /* @__PURE__ */ ref(!!delay);
-			if (delay) setTimeout(() => {
+			let timeoutTimer;
+			let delayTimer;
+			onUnmounted(() => {
+				if (timeoutTimer != null) clearTimeout(timeoutTimer);
+				if (delayTimer != null) clearTimeout(delayTimer);
+			});
+			if (delay) delayTimer = setTimeout(() => {
+				if (instance.isUnmounted) return;
 				delayed.value = false;
 			}, delay);
-			if (timeout != null) setTimeout(() => {
+			if (timeout != null) timeoutTimer = setTimeout(() => {
+				if (instance.isUnmounted) return;
 				if (!loaded.value && !error.value) {
 					const err = /* @__PURE__ */ new Error(`Async component timed out after ${timeout}ms.`);
 					onError(err);
@@ -13314,9 +13348,14 @@ function defineAsyncComponent(source) {
 				}
 			}, timeout);
 			load().then(() => {
+				if (instance.isUnmounted) return;
 				loaded.value = true;
 				if (instance.parent && isKeepAlive(instance.parent.vnode)) instance.parent.update();
 			}).catch((err) => {
+				if (instance.isUnmounted) {
+					pendingRequest = null;
+					return;
+				}
 				onError(err);
 				error.value = err;
 			});
@@ -13356,15 +13395,11 @@ function injectHook(type, hook, target = currentInstance, prepend = false) {
 var createHook = (lifecycle) => (hook, target = currentInstance) => {
 	if (!isInSSRComponentSetup || lifecycle === "sp") injectHook(lifecycle, (...args) => hook(...args), target);
 };
-createHook("bm");
 var onMounted = createHook("m");
 var onBeforeUpdate = createHook("bu");
 var onUpdated = createHook("u");
 var onBeforeUnmount = createHook("bum");
-createHook("um");
-createHook("sp");
-createHook("rtg");
-createHook("rtc");
+var onUnmounted = createHook("um");
 var COMPONENTS = "components";
 function resolveComponent(name, maybeSelfReference) {
 	return resolveAsset(COMPONENTS, name, true, maybeSelfReference) || name;
@@ -13970,15 +14005,19 @@ function hasPropValueChanged(nextProps, prevProps, key) {
 	if (key === "style" && isObject$1(nextProp) && isObject$1(prevProp)) return !looseEqual(nextProp, prevProp);
 	return nextProp !== prevProp;
 }
-function updateHOCHostEl({ vnode, parent }, el) {
+function updateHOCHostEl({ vnode, parent, suspense }, el) {
 	while (parent) {
 		const root = parent.subTree;
-		if (root.suspense && root.suspense.activeBranch === vnode) root.el = vnode.el;
+		if (root.suspense && root.suspense.activeBranch === vnode) {
+			root.suspense.vnode.el = root.el = el;
+			vnode = root;
+		}
 		if (root === vnode) {
 			(vnode = parent.vnode).el = el;
 			parent = parent.parent;
 		} else break;
 	}
+	if (suspense && suspense.activeBranch === vnode) suspense.vnode.el = el;
 }
 var internalObjectProto = {};
 var createInternalObject = () => Object.create(internalObjectProto);
@@ -14208,13 +14247,14 @@ function getInvalidTypeMessage(name, value, expectedTypes) {
 	const receivedType = toRawType(value);
 	const expectedValue = styleValue(value, expectedType);
 	const receivedValue = styleValue(value, receivedType);
-	if (expectedTypes.length === 1 && isExplicable(expectedType) && !isBoolean$1(expectedType, receivedType)) message += ` with value ${expectedValue}`;
+	if (expectedTypes.length === 1 && isExplicable(expectedType) && isCoercible(expectedType, receivedType)) message += ` with value ${expectedValue}`;
 	message += `, got ${receivedType} `;
 	if (isExplicable(receivedType)) message += `with value ${receivedValue}.`;
 	return message;
 }
 function styleValue(value, type) {
-	if (type === "String") return `"${value}"`;
+	if (isSymbol(value)) return value.toString();
+	else if (type === "String") return `"${value}"`;
 	else if (type === "Number") return `${Number(value)}`;
 	else return `${value}`;
 }
@@ -14225,8 +14265,11 @@ function isExplicable(type) {
 		"boolean"
 	].some((elem) => type.toLowerCase() === elem);
 }
-function isBoolean$1(...args) {
-	return args.some((elem) => elem.toLowerCase() === "boolean");
+function isCoercible(...args) {
+	return args.every((elem) => {
+		const value = elem.toLowerCase();
+		return value !== "boolean" && value !== "symbol";
+	});
 }
 var isInternalKey = (key) => key === "_" || key === "_ctx" || key === "$stable";
 var normalizeSlotValue = (value) => isArray$2(value) ? value.map(normalizeVNode) : [normalizeVNode(value)];
@@ -14451,11 +14494,20 @@ function baseCreateRenderer(options, createHydrationFns) {
 		const needCallTransitionHooks = needTransition(parentSuspense, transition);
 		if (needCallTransitionHooks) transition.beforeEnter(el);
 		hostInsert(el, container, anchor);
-		if ((vnodeHook = props && props.onVnodeMounted) || needCallTransitionHooks || dirs) queuePostRenderEffect(() => {
-			vnodeHook && invokeVNodeHook(vnodeHook, parentComponent, vnode);
-			needCallTransitionHooks && transition.enter(el);
-			dirs && invokeDirectiveHook(vnode, null, parentComponent, "mounted");
-		}, parentSuspense);
+		if ((vnodeHook = props && props.onVnodeMounted) || needCallTransitionHooks || dirs) {
+			const isHmr = isHmrUpdating;
+			queuePostRenderEffect(() => {
+				let prev;
+				prev = setHmrUpdating(isHmr);
+				try {
+					vnodeHook && invokeVNodeHook(vnodeHook, parentComponent, vnode);
+					needCallTransitionHooks && transition.enter(el);
+					dirs && invokeDirectiveHook(vnode, null, parentComponent, "mounted");
+				} finally {
+					setHmrUpdating(prev);
+				}
+			}, parentSuspense);
+		}
 	};
 	const setScopeId = (el, vnode, scopeId, slotScopeIds, parentComponent) => {
 		if (scopeId) hostSetScopeId(el, scopeId);
@@ -14859,19 +14911,23 @@ function baseCreateRenderer(options, createHydrationFns) {
 			moveStaticNode(vnode, container, anchor);
 			return;
 		}
-		if (moveType !== 2 && shapeFlag & 1 && transition) if (moveType === 0) {
+		if (moveType !== 2 && shapeFlag & 1 && transition) if (moveType === 0) if (transition.persisted && !el[leaveCbKey]) hostInsert(el, container, anchor);
+		else {
 			transition.beforeEnter(el);
 			hostInsert(el, container, anchor);
 			queuePostRenderEffect(() => transition.enter(el), parentSuspense);
-		} else {
+		}
+		else {
 			const { leave, delayLeave, afterLeave } = transition;
 			const remove2 = () => {
 				if (vnode.ctx.isUnmounted) hostRemove(el);
 				else hostInsert(el, container, anchor);
 			};
 			const performLeave = () => {
+				const wasLeaving = el._isLeaving || !!el[leaveCbKey];
 				if (el._isLeaving) el[leaveCbKey](true);
-				leave(el, () => {
+				if (transition.persisted && !wasLeaving) remove2();
+				else leave(el, () => {
 					remove2();
 					afterLeave && afterLeave();
 				});
@@ -14882,7 +14938,7 @@ function baseCreateRenderer(options, createHydrationFns) {
 		else hostInsert(el, container, anchor);
 	};
 	const unmount = (vnode, parentComponent, parentSuspense, doRemove = false, optimized = false) => {
-		const { type, props, ref, children, dynamicChildren, shapeFlag, patchFlag, dirs, cacheIndex } = vnode;
+		const { type, props, ref, children, dynamicChildren, shapeFlag, patchFlag, dirs, cacheIndex, memo } = vnode;
 		if (patchFlag === -2) optimized = false;
 		if (ref != null) {
 			pauseTracking();
@@ -14910,9 +14966,11 @@ function baseCreateRenderer(options, createHydrationFns) {
 			else if (type === Fragment && patchFlag & 384 || !optimized && shapeFlag & 16) unmountChildren(children, parentComponent, parentSuspense);
 			if (doRemove) remove(vnode);
 		}
-		if (shouldInvokeVnodeHook && (vnodeHook = props && props.onVnodeUnmounted) || shouldInvokeDirs) queuePostRenderEffect(() => {
+		const shouldInvalidateMemo = memo != null && cacheIndex == null;
+		if (shouldInvokeVnodeHook && (vnodeHook = props && props.onVnodeUnmounted) || shouldInvokeDirs || shouldInvalidateMemo) queuePostRenderEffect(() => {
 			vnodeHook && invokeVNodeHook(vnodeHook, parentComponent, vnode);
 			shouldInvokeDirs && invokeDirectiveHook(vnode, null, parentComponent, "unmounted");
+			if (shouldInvalidateMemo) vnode.el = null;
 		}, parentSuspense);
 	};
 	const remove = (vnode) => {
@@ -15225,6 +15283,7 @@ function createSuspenseBoundary(vnode, parentSuspense, parentComponent, containe
 		pendingId: suspenseId++,
 		timeout: typeof timeout === "number" ? timeout : -1,
 		activeBranch: null,
+		isFallbackMountPending: false,
 		pendingBranch: null,
 		isInFallback: !isHydrating,
 		isHydrating,
@@ -15238,20 +15297,25 @@ function createSuspenseBoundary(vnode, parentSuspense, parentComponent, containe
 			if (suspense.isHydrating) suspense.isHydrating = false;
 			else if (!resume) {
 				delayEnter = activeBranch && pendingBranch.transition && pendingBranch.transition.mode === "out-in";
+				let hasUpdatedAnchor = false;
 				if (delayEnter) activeBranch.transition.afterLeave = () => {
 					if (pendingId === suspense.pendingId) {
-						move(pendingBranch, container2, anchor === initialAnchor ? next(activeBranch) : anchor, 0);
+						move(pendingBranch, container2, anchor === initialAnchor && !hasUpdatedAnchor ? next(activeBranch) : anchor, 0);
 						queuePostFlushCb(effects);
 						if (isInFallback && vnode2.ssFallback) vnode2.ssFallback.el = null;
 					}
 				};
-				if (activeBranch) {
-					if (parentNode(activeBranch.el) === container2) anchor = next(activeBranch);
+				if (activeBranch && !suspense.isFallbackMountPending) {
+					if (parentNode(activeBranch.el) === container2) {
+						anchor = next(activeBranch);
+						hasUpdatedAnchor = true;
+					}
 					unmount(activeBranch, parentComponent2, suspense, true);
 					if (!delayEnter && isInFallback && vnode2.ssFallback) queuePostRenderEffect(() => vnode2.ssFallback.el = null, suspense);
 				}
 				if (!delayEnter) move(pendingBranch, container2, anchor, 0);
 			}
+			suspense.isFallbackMountPending = false;
 			setActiveBranch(suspense, pendingBranch);
 			suspense.pendingBranch = null;
 			suspense.isInFallback = false;
@@ -15281,12 +15345,16 @@ function createSuspenseBoundary(vnode, parentSuspense, parentComponent, containe
 			triggerEvent(vnode2, "onFallback");
 			const anchor2 = next(activeBranch);
 			const mountFallback = () => {
+				suspense.isFallbackMountPending = false;
 				if (!suspense.isInFallback) return;
 				patch(null, fallbackVNode, container2, anchor2, parentComponent2, null, namespace2, slotScopeIds, optimized);
 				setActiveBranch(suspense, fallbackVNode);
 			};
 			const delayEnter = fallbackVNode.transition && fallbackVNode.transition.mode === "out-in";
-			if (delayEnter) activeBranch.transition.afterLeave = mountFallback;
+			if (delayEnter) {
+				suspense.isFallbackMountPending = true;
+				activeBranch.transition.afterLeave = mountFallback;
+			}
 			suspense.isInFallback = true;
 			unmount(activeBranch, parentComponent2, null, true);
 			if (!delayEnter) mountFallback();
@@ -15306,6 +15374,7 @@ function createSuspenseBoundary(vnode, parentSuspense, parentComponent, containe
 				handleError(err, instance, 0);
 			}).then((asyncSetupResult) => {
 				if (instance.isUnmounted || suspense.isUnmounted || suspense.pendingId !== instance.suspenseId) return;
+				unsetCurrentInstance();
 				instance.asyncResolved = true;
 				const { vnode: vnode2 } = instance;
 				pushWarningContext(vnode2);
@@ -15625,6 +15694,7 @@ function mergeProps(...args) {
 			const existing = ret[key];
 			const incoming = toMerge[key];
 			if (incoming && existing !== incoming && !(isArray$2(existing) && existing.includes(incoming))) ret[key] = existing ? [].concat(existing, incoming) : incoming;
+			else if (incoming == null && existing == null && !isModelListener(key)) ret[key] = incoming;
 		} else if (key !== "") ret[key] = toMerge[key];
 	}
 	return ret;
@@ -16103,12 +16173,12 @@ function initCustomFormatter() {
 	if (window.devtoolsFormatters) window.devtoolsFormatters.push(formatter);
 	else window.devtoolsFormatters = [formatter];
 }
-var version = "3.5.30";
+var version = "3.5.38";
 var warn = warn$1$1;
 //#endregion
-//#region ../../node_modules/.pnpm/@vue+runtime-dom@3.5.30/node_modules/@vue/runtime-dom/dist/runtime-dom.esm-bundler.js
+//#region ../../node_modules/.pnpm/@vue+runtime-dom@3.5.38/node_modules/@vue/runtime-dom/dist/runtime-dom.esm-bundler.js
 /**
-* @vue/runtime-dom v3.5.30
+* @vue/runtime-dom v3.5.38
 * (c) 2018-present Yuxi (Evan) You and Vue contributors
 * @license MIT
 **/
@@ -16195,7 +16265,10 @@ function patchStyle(el, prev, next) {
 		}
 		for (const key in next) {
 			if (key === "display") hasControlledDisplay = true;
-			setStyle(style, key, next[key]);
+			const value = next[key];
+			if (value != null) {
+				if (!shouldPreserveTextareaResizeStyle(el, key, !isString$1(prev) && prev ? prev[key] : void 0, value)) setStyle(style, key, value);
+			} else setStyle(style, key, "");
 		}
 	} else if (isCssString) {
 		if (prev !== next) {
@@ -16242,6 +16315,9 @@ function autoPrefix(style, rawName) {
 		if (prefixed in style) return prefixCache[rawName] = prefixed;
 	}
 	return rawName;
+}
+function shouldPreserveTextareaResizeStyle(el, key, prev, next) {
+	return el.tagName === "TEXTAREA" && (key === "width" || key === "height") && isString$1(next) && prev === next;
 }
 var xlinkNS = "http://www.w3.org/1999/xlink";
 function patchAttr(el, key, value, isSVG, instance, isBoolean = isSpecialBooleanAttr(key)) {
@@ -16323,7 +16399,21 @@ function createInvoker(initialValue, instance) {
 	const invoker = (e) => {
 		if (!e._vts) e._vts = Date.now();
 		else if (e._vts <= invoker.attached) return;
-		callWithAsyncErrorHandling(patchStopImmediatePropagation(e, invoker.value), instance, 5, [e]);
+		const value = invoker.value;
+		if (isArray$2(value)) {
+			const originalStop = e.stopImmediatePropagation;
+			e.stopImmediatePropagation = () => {
+				originalStop.call(e);
+				e._stopped = true;
+			};
+			const handlers = value.slice();
+			const args = [e];
+			for (let i = 0; i < handlers.length; i++) {
+				if (e._stopped) break;
+				const handler = handlers[i];
+				if (handler) callWithAsyncErrorHandling(handler, instance, 5, args);
+			}
+		} else callWithAsyncErrorHandling(value, instance, 5, [e]);
 	};
 	invoker.value = initialValue;
 	invoker.attached = getNow();
@@ -16334,16 +16424,6 @@ function sanitizeEventValue(value, propName) {
 	warn(`Wrong type passed as event handler to ${propName} - did you forget @ or : in front of your prop?
 Expected function or array of functions, received type ${typeof value}.`);
 	return NOOP;
-}
-function patchStopImmediatePropagation(e, value) {
-	if (isArray$2(value)) {
-		const originalStop = e.stopImmediatePropagation;
-		e.stopImmediatePropagation = () => {
-			originalStop.call(e);
-			e._stopped = true;
-		};
-		return value.map((fn) => (e2) => !e2._stopped && fn && fn(e2));
-	} else return value;
 }
 var isNativeOn = (key) => key.charCodeAt(0) === 111 && key.charCodeAt(1) === 110 && key.charCodeAt(2) > 96 && key.charCodeAt(2) < 123;
 var patchProp = (el, key, prevValue, nextValue, namespace, parentComponent) => {
@@ -16432,7 +16512,8 @@ var vModelText = {
 		const elValue = (number || el.type === "number") && !/^0\d/.test(el.value) ? looseToNumber(el.value) : el.value;
 		const newValue = value == null ? "" : value;
 		if (elValue === newValue) return;
-		if (document.activeElement === el && el.type !== "range") {
+		const rootNode = el.getRootNode();
+		if ((rootNode instanceof Document || rootNode instanceof ShadowRoot) && rootNode.activeElement === el && el.type !== "range") {
 			if (lazy && value === oldValue) return;
 			if (trim && el.value.trim() === newValue) return;
 		}
@@ -16649,9 +16730,9 @@ function normalizeContainer(container) {
 	return container;
 }
 //#endregion
-//#region ../../node_modules/.pnpm/vue@3.5.30_typescript@5.9.3/node_modules/vue/dist/vue.runtime.esm-bundler.js
+//#region ../../node_modules/.pnpm/vue@3.5.38_typescript@6.0.3/node_modules/vue/dist/vue.runtime.esm-bundler.js
 /**
-* vue v3.5.30
+* vue v3.5.38
 * (c) 2018-present Yuxi (Evan) You and Vue contributors
 * @license MIT
 **/
@@ -20645,7 +20726,7 @@ function e(e, r$1) {
 	}
 }
 //#endregion
-//#region ../../node_modules/.pnpm/@histoire+shared@1.0.0-beta.1_vite@8.0.1_@types+node@24.10.9_esbuild@0.27.4_jiti@2.6.1__69b6e5feed4f9e27c5c8978971b84f5b/node_modules/@histoire/shared/dist/codegen/const.js
+//#region ../../node_modules/.pnpm/@histoire+shared@1.0.0-beta.1_vite@8.0.16_@types+node@26.0.0_esbuild@0.28.1_jiti@2.6.1__8c00ea21f7153bc859c5ae166e5a7ee1/node_modules/@histoire/shared/dist/codegen/const.js
 var voidElements = [
 	"area",
 	"base",
@@ -20664,7 +20745,7 @@ var voidElements = [
 	"wbr"
 ];
 //#endregion
-//#region ../../node_modules/.pnpm/@histoire+shared@1.0.0-beta.1_vite@8.0.1_@types+node@24.10.9_esbuild@0.27.4_jiti@2.6.1__69b6e5feed4f9e27c5c8978971b84f5b/node_modules/@histoire/shared/dist/codegen/serialize-js.js
+//#region ../../node_modules/.pnpm/@histoire+shared@1.0.0-beta.1_vite@8.0.16_@types+node@26.0.0_esbuild@0.28.1_jiti@2.6.1__8c00ea21f7153bc859c5ae166e5a7ee1/node_modules/@histoire/shared/dist/codegen/serialize-js.js
 var KEY_ESCAPE_REG = /[\s\-.:|#@$£*%]/;
 var MAX_SINGLE_LINE_ARRAY_LENGTH = 3;
 function serializeJs(value) {
@@ -20750,7 +20831,7 @@ function wrap(lines, before, after) {
 	return lines;
 }
 //#endregion
-//#region ../../node_modules/.pnpm/@histoire+shared@1.0.0-beta.1_vite@8.0.1_@types+node@24.10.9_esbuild@0.27.4_jiti@2.6.1__69b6e5feed4f9e27c5c8978971b84f5b/node_modules/@histoire/shared/dist/codegen/util.js
+//#region ../../node_modules/.pnpm/@histoire+shared@1.0.0-beta.1_vite@8.0.16_@types+node@26.0.0_esbuild@0.28.1_jiti@2.6.1__8c00ea21f7153bc859c5ae166e5a7ee1/node_modules/@histoire/shared/dist/codegen/util.js
 function indent(lines, count = 1) {
 	return lines.map((line) => `${"  ".repeat(count)}${line}`);
 }
@@ -20816,7 +20897,7 @@ function createAutoBuildingObject(format, specialKeysHandler, key = "", depth = 
 	};
 }
 //#endregion
-//#region ../../node_modules/.pnpm/@histoire+shared@1.0.0-beta.1_vite@8.0.1_@types+node@24.10.9_esbuild@0.27.4_jiti@2.6.1__69b6e5feed4f9e27c5c8978971b84f5b/node_modules/@histoire/shared/dist/state.js
+//#region ../../node_modules/.pnpm/@histoire+shared@1.0.0-beta.1_vite@8.0.16_@types+node@26.0.0_esbuild@0.28.1_jiti@2.6.1__8c00ea21f7153bc859c5ae166e5a7ee1/node_modules/@histoire/shared/dist/state.js
 function clone$1(data) {
 	try {
 		return structuredClone(data);
@@ -20842,7 +20923,7 @@ function applyState(target, state, override = false) {
 	} catch (e) {}
 }
 //#endregion
-//#region ../../node_modules/.pnpm/@histoire+shared@1.0.0-beta.1_vite@8.0.1_@types+node@24.10.9_esbuild@0.27.4_jiti@2.6.1__69b6e5feed4f9e27c5c8978971b84f5b/node_modules/@histoire/shared/dist/story.js
+//#region ../../node_modules/.pnpm/@histoire+shared@1.0.0-beta.1_vite@8.0.16_@types+node@26.0.0_esbuild@0.28.1_jiti@2.6.1__8c00ea21f7153bc859c5ae166e5a7ee1/node_modules/@histoire/shared/dist/story.js
 var omitInheritStoryProps = [
 	"id",
 	"title",
@@ -20866,11 +20947,10 @@ var omitInheritStoryProps = [
 function isArray(value) {
 	return !Array.isArray ? getTag(value) === "[object Array]" : Array.isArray(value);
 }
-var INFINITY = Infinity;
 function baseToString(value) {
 	if (typeof value == "string") return value;
 	let result = value + "";
-	return result == "0" && 1 / value == -INFINITY ? "-0" : result;
+	return result == "0" && 1 / value == -Infinity ? "-0" : result;
 }
 function toString(value) {
 	return value == null ? "" : baseToString(value);
@@ -22071,7 +22151,7 @@ function splitPrefixSuffix(input, options = {}) {
 	];
 }
 //#endregion
-//#region ../../node_modules/.pnpm/histoire@1.0.0-beta.1_@types+node@24.10.9_lightningcss@1.32.0_sass-embedded@1.98.0_sass_231b08bc65af7d7bed0a4b7bbb4e9231/node_modules/histoire/plugin.js
+//#region ../../node_modules/.pnpm/histoire@1.0.0-beta.1_@types+node@26.0.0_lightningcss@1.32.0_sass-embedded@1.100.0_sass_a5463336cb7b5757ac6a783db2d383c2/node_modules/histoire/plugin.js
 function sendEvent(event, payload) {
 	if (window.__HST_PLUGIN_API__) return window.__HST_PLUGIN_API__.sendEvent(event, payload);
 }
@@ -22079,7 +22159,7 @@ function openStory(storyId) {
 	if (window.__HST_PLUGIN_API__) return window.__HST_PLUGIN_API__.openStory(storyId);
 }
 //#endregion
-//#region ../../node_modules/.pnpm/@histoire+plugin-vue@1.0.0-beta.1_histoire@1.0.0-beta.1_@types+node@24.10.9_lightningcs_e1ef98bbafa8c3eff9eb745d96d8e216/node_modules/@histoire/plugin-vue/dist/commands/generate-story.client.js
+//#region ../../node_modules/.pnpm/@histoire+plugin-vue@1.0.0-beta.1_histoire@1.0.0-beta.1_@types+node@26.0.0_lightningcss_554c8b02b4193ae0bcf7ca3e54d2b25a/node_modules/@histoire/plugin-vue/dist/commands/generate-story.client.js
 var generate_story_client_default = {
 	prompts: [{
 		field: "component",
@@ -22100,7 +22180,7 @@ var generate_story_client_default = {
 	}
 };
 //#endregion
-//#region ../../node_modules/.pnpm/@histoire+controls@1.0.0-beta.1_vite@8.0.1_@types+node@24.10.9_esbuild@0.27.4_jiti@2.6._c2e879fa32fbf8a8fe43155b61078f5f/node_modules/@histoire/controls/dist/index.es.js
+//#region ../../node_modules/.pnpm/@histoire+controls@1.0.0-beta.1_vite@8.0.16_@types+node@26.0.0_esbuild@0.28.1_jiti@2.6._c4654a42125404774203e09e319e3fd3/node_modules/@histoire/controls/dist/index.es.js
 var vl = /* @__PURE__ */ defineComponent$1({
 	name: "HstButton",
 	props: { color: {} },
@@ -23750,10 +23830,29 @@ function ai(n) {
 	return (t) => new Ll(t, n);
 }
 var gr = {
+	/**
+	The highest precedence level, for extensions that should end up
+	near the start of the precedence ordering.
+	*/
 	highest: /* @__PURE__ */ ai(Be.highest),
+	/**
+	A higher-than-default precedence, for extensions that should
+	come before those with default precedence.
+	*/
 	high: /* @__PURE__ */ ai(Be.high),
+	/**
+	The default precedence, which is also used for extensions
+	without an explicit precedence.
+	*/
 	default: /* @__PURE__ */ ai(Be.default),
+	/**
+	A lower-than-default precedence.
+	*/
 	low: /* @__PURE__ */ ai(Be.low),
+	/**
+	The lowest precedence level. Meant for things that should end up
+	near the end of the extension order.
+	*/
 	lowest: /* @__PURE__ */ ai(Be.lowest)
 };
 var Ll = class {
@@ -24767,8 +24866,8 @@ var _l = class {
 			this.from = this.to = 1e9, this.value = null;
 			break;
 		} else {
-			let t = this.layer.chunkPos[this.chunkIndex], e = this.layer.chunk[this.chunkIndex];
-			if (this.from = t + e.from[this.rangeIndex], this.to = t + e.to[this.rangeIndex], this.value = e.value[this.rangeIndex], this.setRangeIndex(this.rangeIndex + 1), this.minPoint < 0 || this.value.point && this.to - this.from >= this.minPoint) break;
+			let t = this.layer.chunkPos[this.chunkIndex], e = this.layer.chunk[this.chunkIndex], i = t + e.from[this.rangeIndex];
+			if (this.from = i, this.to = t + e.to[this.rangeIndex], this.value = e.value[this.rangeIndex], this.setRangeIndex(this.rangeIndex + 1), this.minPoint < 0 || this.value.point && this.to - this.from >= this.minPoint) break;
 		}
 	}
 	setRangeIndex(t) {
@@ -24928,7 +25027,7 @@ function nf(n, t, e, i) {
 	}
 	return n.length;
 }
-var Nn = "ͼ", Yr = typeof Symbol > "u" ? "__" + Nn : Symbol.for(Nn), In = typeof Symbol > "u" ? "__styleSet" + Math.floor(Math.random() * 1e8) : /* @__PURE__ */ Symbol("styleSet"), Xr = typeof globalThis < "u" ? globalThis : typeof window < "u" ? window : {};
+var Nn = "ͼ", Yr = typeof Symbol > "u" ? "__ͼ" : Symbol.for(Nn), In = typeof Symbol > "u" ? "__styleSet" + Math.floor(Math.random() * 1e8) : /* @__PURE__ */ Symbol("styleSet"), Xr = typeof globalThis < "u" ? globalThis : typeof window < "u" ? window : {};
 var ye = class {
 	constructor(t, e) {
 		this.rules = [];
@@ -27588,7 +27687,7 @@ function ka(n, t) {
 		let { from: o, to: l } = t.bounds, a = s.from, h = null;
 		(r === 8 || v$1.android && t.text.length < l - o) && (a = s.to, h = "end");
 		let c = va(n.state.doc.sliceString(o, l, pi), t.text, a - o, h);
-		c && (v$1.chrome && r == 13 && c.toB == c.from + 2 && t.text.slice(c.from, c.toB) == pi + pi && c.toB--, e = {
+		c && (v$1.chrome && r == 13 && c.toB == c.from + 2 && t.text.slice(c.from, c.toB) == "￿￿" && c.toB--, e = {
 			from: o + c.from,
 			to: o + c.toA,
 			insert: V$1.of(t.text.slice(c.from, c.toB).split(pi))
@@ -28721,7 +28820,8 @@ var vo = class {
 			top: 0,
 			bottom: 0
 		}, this.inView = !0, this.paddingTop = 0, this.paddingBottom = 0, this.contentDOMWidth = 0, this.contentDOMHeight = 0, this.editorHeight = 0, this.editorWidth = 0, this.scrollTop = 0, this.scrolledToBottom = !1, this.scaleX = 1, this.scaleY = 1, this.scrollAnchorPos = 0, this.scrollAnchorHeight = -1, this.scaler = So, this.scrollTarget = null, this.printing = !1, this.mustMeasureContent = !0, this.defaultTextDirection = G.LTR, this.visibleRanges = [], this.mustEnforceCursorAssoc = !1;
-		this.heightOracle = new Mu(t.facet(Sr).some((i) => typeof i != "function" && i.class == "cm-lineWrapping")), this.stateDeco = Co(t), this.heightMap = gt.empty().applyChanges(this.stateDeco, V$1.empty, this.heightOracle.setDoc(t.doc), [new Tt(0, 0, 0, t.doc.length)]);
+		let e = t.facet(Sr).some((i) => typeof i != "function" && i.class == "cm-lineWrapping");
+		this.heightOracle = new Mu(e), this.stateDeco = Co(t), this.heightMap = gt.empty().applyChanges(this.stateDeco, V$1.empty, this.heightOracle.setDoc(t.doc), [new Tt(0, 0, 0, t.doc.length)]);
 		for (let i = 0; i < 2 && (this.viewport = this.getViewport(0, null), !!this.updateForViewport()); i++);
 		this.updateViewportLines(), this.lineGaps = this.ensureLineGaps([]), this.lineGapDeco = L$1.set(this.lineGaps.map((i) => i.draw(this, !1))), this.computeVisibleRanges();
 	}
@@ -32786,89 +32886,369 @@ function jd(n) {
 	return t || null;
 }
 var k = Ot.define, ss = k(), ce = k(), zo = k(ce), _o = k(ce), fe = k(), ns = k(fe), gn = k(fe), Gt = k(), Te = k(Gt), jt = k(), Ut = k(), nr = k(), ci = k(nr), rs = k(), w$1 = {
+	/**
+	A comment.
+	*/
 	comment: ss,
+	/**
+	A line [comment](#highlight.tags.comment).
+	*/
 	lineComment: k(ss),
+	/**
+	A block [comment](#highlight.tags.comment).
+	*/
 	blockComment: k(ss),
+	/**
+	A documentation [comment](#highlight.tags.comment).
+	*/
 	docComment: k(ss),
+	/**
+	Any kind of identifier.
+	*/
 	name: ce,
+	/**
+	The [name](#highlight.tags.name) of a variable.
+	*/
 	variableName: k(ce),
+	/**
+	A type [name](#highlight.tags.name).
+	*/
 	typeName: zo,
+	/**
+	A tag name (subtag of [`typeName`](#highlight.tags.typeName)).
+	*/
 	tagName: k(zo),
+	/**
+	A property or field [name](#highlight.tags.name).
+	*/
 	propertyName: _o,
+	/**
+	An attribute name (subtag of [`propertyName`](#highlight.tags.propertyName)).
+	*/
 	attributeName: k(_o),
+	/**
+	The [name](#highlight.tags.name) of a class.
+	*/
 	className: k(ce),
+	/**
+	A label [name](#highlight.tags.name).
+	*/
 	labelName: k(ce),
+	/**
+	A namespace [name](#highlight.tags.name).
+	*/
 	namespace: k(ce),
+	/**
+	The [name](#highlight.tags.name) of a macro.
+	*/
 	macroName: k(ce),
+	/**
+	A literal value.
+	*/
 	literal: fe,
+	/**
+	A string [literal](#highlight.tags.literal).
+	*/
 	string: ns,
+	/**
+	A documentation [string](#highlight.tags.string).
+	*/
 	docString: k(ns),
+	/**
+	A character literal (subtag of [string](#highlight.tags.string)).
+	*/
 	character: k(ns),
+	/**
+	An attribute value (subtag of [string](#highlight.tags.string)).
+	*/
 	attributeValue: k(ns),
+	/**
+	A number [literal](#highlight.tags.literal).
+	*/
 	number: gn,
+	/**
+	An integer [number](#highlight.tags.number) literal.
+	*/
 	integer: k(gn),
+	/**
+	A floating-point [number](#highlight.tags.number) literal.
+	*/
 	float: k(gn),
+	/**
+	A boolean [literal](#highlight.tags.literal).
+	*/
 	bool: k(fe),
+	/**
+	Regular expression [literal](#highlight.tags.literal).
+	*/
 	regexp: k(fe),
+	/**
+	An escape [literal](#highlight.tags.literal), for example a
+	backslash escape in a string.
+	*/
 	escape: k(fe),
+	/**
+	A color [literal](#highlight.tags.literal).
+	*/
 	color: k(fe),
+	/**
+	A URL [literal](#highlight.tags.literal).
+	*/
 	url: k(fe),
+	/**
+	A language keyword.
+	*/
 	keyword: jt,
+	/**
+	The [keyword](#highlight.tags.keyword) for the self or this
+	object.
+	*/
 	self: k(jt),
+	/**
+	The [keyword](#highlight.tags.keyword) for null.
+	*/
 	null: k(jt),
+	/**
+	A [keyword](#highlight.tags.keyword) denoting some atomic value.
+	*/
 	atom: k(jt),
+	/**
+	A [keyword](#highlight.tags.keyword) that represents a unit.
+	*/
 	unit: k(jt),
+	/**
+	A modifier [keyword](#highlight.tags.keyword).
+	*/
 	modifier: k(jt),
+	/**
+	A [keyword](#highlight.tags.keyword) that acts as an operator.
+	*/
 	operatorKeyword: k(jt),
+	/**
+	A control-flow related [keyword](#highlight.tags.keyword).
+	*/
 	controlKeyword: k(jt),
+	/**
+	A [keyword](#highlight.tags.keyword) that defines something.
+	*/
 	definitionKeyword: k(jt),
+	/**
+	A [keyword](#highlight.tags.keyword) related to defining or
+	interfacing with modules.
+	*/
 	moduleKeyword: k(jt),
+	/**
+	An operator.
+	*/
 	operator: Ut,
+	/**
+	An [operator](#highlight.tags.operator) that dereferences something.
+	*/
 	derefOperator: k(Ut),
+	/**
+	Arithmetic-related [operator](#highlight.tags.operator).
+	*/
 	arithmeticOperator: k(Ut),
+	/**
+	Logical [operator](#highlight.tags.operator).
+	*/
 	logicOperator: k(Ut),
+	/**
+	Bit [operator](#highlight.tags.operator).
+	*/
 	bitwiseOperator: k(Ut),
+	/**
+	Comparison [operator](#highlight.tags.operator).
+	*/
 	compareOperator: k(Ut),
+	/**
+	[Operator](#highlight.tags.operator) that updates its operand.
+	*/
 	updateOperator: k(Ut),
+	/**
+	[Operator](#highlight.tags.operator) that defines something.
+	*/
 	definitionOperator: k(Ut),
+	/**
+	Type-related [operator](#highlight.tags.operator).
+	*/
 	typeOperator: k(Ut),
+	/**
+	Control-flow [operator](#highlight.tags.operator).
+	*/
 	controlOperator: k(Ut),
+	/**
+	Program or markup punctuation.
+	*/
 	punctuation: nr,
+	/**
+	[Punctuation](#highlight.tags.punctuation) that separates
+	things.
+	*/
 	separator: k(nr),
+	/**
+	Bracket-style [punctuation](#highlight.tags.punctuation).
+	*/
 	bracket: ci,
+	/**
+	Angle [brackets](#highlight.tags.bracket) (usually `<` and `>`
+	tokens).
+	*/
 	angleBracket: k(ci),
+	/**
+	Square [brackets](#highlight.tags.bracket) (usually `[` and `]`
+	tokens).
+	*/
 	squareBracket: k(ci),
+	/**
+	Parentheses (usually `(` and `)` tokens). Subtag of
+	[bracket](#highlight.tags.bracket).
+	*/
 	paren: k(ci),
+	/**
+	Braces (usually `{` and `}` tokens). Subtag of
+	[bracket](#highlight.tags.bracket).
+	*/
 	brace: k(ci),
+	/**
+	Content, for example plain text in XML or markup documents.
+	*/
 	content: Gt,
+	/**
+	[Content](#highlight.tags.content) that represents a heading.
+	*/
 	heading: Te,
+	/**
+	A level 1 [heading](#highlight.tags.heading).
+	*/
 	heading1: k(Te),
+	/**
+	A level 2 [heading](#highlight.tags.heading).
+	*/
 	heading2: k(Te),
+	/**
+	A level 3 [heading](#highlight.tags.heading).
+	*/
 	heading3: k(Te),
+	/**
+	A level 4 [heading](#highlight.tags.heading).
+	*/
 	heading4: k(Te),
+	/**
+	A level 5 [heading](#highlight.tags.heading).
+	*/
 	heading5: k(Te),
+	/**
+	A level 6 [heading](#highlight.tags.heading).
+	*/
 	heading6: k(Te),
+	/**
+	A prose [content](#highlight.tags.content) separator (such as a horizontal rule).
+	*/
 	contentSeparator: k(Gt),
+	/**
+	[Content](#highlight.tags.content) that represents a list.
+	*/
 	list: k(Gt),
+	/**
+	[Content](#highlight.tags.content) that represents a quote.
+	*/
 	quote: k(Gt),
+	/**
+	[Content](#highlight.tags.content) that is emphasized.
+	*/
 	emphasis: k(Gt),
+	/**
+	[Content](#highlight.tags.content) that is styled strong.
+	*/
 	strong: k(Gt),
+	/**
+	[Content](#highlight.tags.content) that is part of a link.
+	*/
 	link: k(Gt),
+	/**
+	[Content](#highlight.tags.content) that is styled as code or
+	monospace.
+	*/
 	monospace: k(Gt),
+	/**
+	[Content](#highlight.tags.content) that has a strike-through
+	style.
+	*/
 	strikethrough: k(Gt),
+	/**
+	Inserted text in a change-tracking format.
+	*/
 	inserted: k(),
+	/**
+	Deleted text.
+	*/
 	deleted: k(),
+	/**
+	Changed text.
+	*/
 	changed: k(),
+	/**
+	An invalid or unsyntactic element.
+	*/
 	invalid: k(),
+	/**
+	Metadata or meta-instruction.
+	*/
 	meta: rs,
+	/**
+	[Metadata](#highlight.tags.meta) that applies to the entire
+	document.
+	*/
 	documentMeta: k(rs),
+	/**
+	[Metadata](#highlight.tags.meta) that annotates or adds
+	attributes to a given syntactic element.
+	*/
 	annotation: k(rs),
+	/**
+	Processing instruction or preprocessor directive. Subtag of
+	[meta](#highlight.tags.meta).
+	*/
 	processingInstruction: k(rs),
+	/**
+	[Modifier](#highlight.Tag^defineModifier) that indicates that a
+	given element is being defined. Expected to be used with the
+	various [name](#highlight.tags.name) tags.
+	*/
 	definition: Ot.defineModifier("definition"),
+	/**
+	[Modifier](#highlight.Tag^defineModifier) that indicates that
+	something is constant. Mostly expected to be used with
+	[variable names](#highlight.tags.variableName).
+	*/
 	constant: Ot.defineModifier("constant"),
+	/**
+	[Modifier](#highlight.Tag^defineModifier) used to indicate that
+	a [variable](#highlight.tags.variableName) or [property
+	name](#highlight.tags.propertyName) is being called or defined
+	as a function.
+	*/
 	function: Ot.defineModifier("function"),
+	/**
+	[Modifier](#highlight.Tag^defineModifier) that can be applied to
+	[names](#highlight.tags.name) to indicate that they belong to
+	the language's standard environment.
+	*/
 	standard: Ot.defineModifier("standard"),
+	/**
+	[Modifier](#highlight.Tag^defineModifier) that indicates a given
+	[names](#highlight.tags.name) is local to some scope.
+	*/
 	local: Ot.defineModifier("local"),
+	/**
+	A generic variant [modifier](#highlight.Tag^defineModifier) that
+	can be used to tag language-specific alternative variants of
+	some common tag. It is recommended for themes to define special
+	forms of at least the [string](#highlight.tags.string) and
+	[variable name](#highlight.tags.variableName) tags, since those
+	come up a lot.
+	*/
 	special: Ot.defineModifier("special")
 };
 for (let n in w$1) {
@@ -35432,7 +35812,8 @@ var zg = class {
 	reduce(t) {
 		let e = t & 65535, i = t >> 19;
 		i == 0 ? (this.stack == this.start.stack && (this.stack = this.stack.slice()), this.stack.push(this.state, 0, 0), this.base += 3) : this.base -= (i - 1) * 3;
-		this.state = this.start.p.parser.getGoto(this.stack[this.base - 3], e, !0);
+		let s = this.start.p.parser.getGoto(this.stack[this.base - 3], e, !0);
+		this.state = s;
 	}
 };
 var Ws = class Ws {
@@ -35571,8 +35952,8 @@ var _g = class {
 			this.chunk = this.chunk2, this.chunkPos = this.chunk2Pos, this.chunk2 = t, this.chunk2Pos = e, this.chunkOff = this.pos - this.chunkPos;
 		} else {
 			this.chunk2 = this.chunk, this.chunk2Pos = this.chunkPos;
-			let t = this.input.chunk(this.pos);
-			this.chunk = this.pos + t.length > this.range.to ? t.slice(0, this.range.to - this.pos) : t, this.chunkPos = this.pos, this.chunkOff = 0;
+			let t = this.input.chunk(this.pos), e = this.pos + t.length;
+			this.chunk = e > this.range.to ? t.slice(0, this.range.to - this.pos) : t, this.chunkPos = this.pos, this.chunkOff = 0;
 		}
 	}
 	readNext() {
@@ -38480,7 +38861,10 @@ var RegExpSourceList = class {
 		}
 	}
 	compile(onigLib) {
-		if (!this._cached) this._cached = new CompiledRule(onigLib, this._items.map((e) => e.source), this._items.map((e) => e.ruleId));
+		if (!this._cached) {
+			let regExps = this._items.map((e) => e.source);
+			this._cached = new CompiledRule(onigLib, regExps, this._items.map((e) => e.ruleId));
+		}
 		return this._cached;
 	}
 	compileAG(onigLib, allowA, allowG) {
@@ -46184,7 +46568,7 @@ var createHighlighter = /* @__PURE__ */ createdBundledHighlighter({
 });
 var { codeToHtml, codeToHast, codeToTokens, codeToTokensBase, codeToTokensWithThemes, getSingletonHighlighter, getLastGrammarState } = /* @__PURE__ */ createSingletonShorthands(createHighlighter, { guessEmbeddedLanguages });
 //#endregion
-//#region ../../node_modules/.pnpm/@histoire+plugin-vue@1.0.0-beta.1_histoire@1.0.0-beta.1_@types+node@24.10.9_lightningcs_e1ef98bbafa8c3eff9eb745d96d8e216/node_modules/@histoire/plugin-vue/dist/helpers.js
+//#region ../../node_modules/.pnpm/@histoire+plugin-vue@1.0.0-beta.1_histoire@1.0.0-beta.1_@types+node@26.0.0_lightningcss_554c8b02b4193ae0bcf7ca3e54d2b25a/node_modules/@histoire/plugin-vue/dist/helpers.js
 function defineSetupVue3(handler) {
 	return handler;
 }
@@ -46197,7 +46581,7 @@ var _plugin_vue_export_helper_default = (sfc, props) => {
 };
 //#endregion
 //#region src/histoire-wrapper.vue
-var _sfc_main = /* @__PURE__ */ defineComponent({
+var _sfc_main = /*@__PURE__*/ defineComponent({
 	__name: "histoire-wrapper",
 	props: {
 		story: {
@@ -46231,7 +46615,7 @@ function _sfc_render(_ctx, _cache, $props, $setup, $data, $options) {
 	return openBlock(), createElementBlock("div", { class: normalizeClass(["wrapper", { column: $setup.isColumn() }]) }, [renderSlot(_ctx.$slots, "default", {}, void 0, true)], 2);
 }
 _sfc_main.__file = "src/histoire-wrapper.vue";
-var histoire_wrapper_default = /* @__PURE__ */ _plugin_vue_export_helper_default(_sfc_main, [
+var histoire_wrapper_default = /*#__PURE__*/ _plugin_vue_export_helper_default(_sfc_main, [
 	["render", _sfc_render],
 	["__scopeId", "data-v-1573bc26"],
 	["__file", "/home/runner/work/vue-template/vue-template/packages/ui/src/histoire-wrapper.vue"]
@@ -46242,7 +46626,7 @@ var setupVue3 = defineSetupVue3(({ addWrapper }) => {
 	addWrapper(histoire_wrapper_default);
 });
 //#endregion
-//#region ../../node_modules/.pnpm/@histoire+plugin-vue@1.0.0-beta.1_histoire@1.0.0-beta.1_@types+node@24.10.9_lightningcs_e1ef98bbafa8c3eff9eb745d96d8e216/node_modules/@histoire/plugin-vue/dist/bundled/client/app/util.js
+//#region ../../node_modules/.pnpm/@histoire+plugin-vue@1.0.0-beta.1_histoire@1.0.0-beta.1_@types+node@26.0.0_lightningcss_554c8b02b4193ae0bcf7ca3e54d2b25a/node_modules/@histoire/plugin-vue/dist/bundled/client/app/util.js
 var i = (n) => n !== null && typeof n == "object";
 function o$1(n, e = /* @__PURE__ */ new WeakMap()) {
 	const t = /* @__PURE__ */ isRef(n) ? unref(n) : n;
@@ -46298,7 +46682,7 @@ function A$4(n, e) {
 	} };
 }
 //#endregion
-//#region ../../node_modules/.pnpm/@histoire+plugin-vue@1.0.0-beta.1_histoire@1.0.0-beta.1_@types+node@24.10.9_lightningcs_e1ef98bbafa8c3eff9eb745d96d8e216/node_modules/@histoire/plugin-vue/dist/bundled/client/app/Variant.js
+//#region ../../node_modules/.pnpm/@histoire+plugin-vue@1.0.0-beta.1_histoire@1.0.0-beta.1_@types+node@26.0.0_lightningcss_554c8b02b4193ae0bcf7ca3e54d2b25a/node_modules/@histoire/plugin-vue/dist/bundled/client/app/Variant.js
 var v = /* @__PURE__ */ defineComponent({
 	name: "Variant",
 	__histoireType: "variant",
@@ -46353,7 +46737,7 @@ var v = /* @__PURE__ */ defineComponent({
 	}
 });
 //#endregion
-//#region ../../node_modules/.pnpm/@histoire+plugin-vue@1.0.0-beta.1_histoire@1.0.0-beta.1_@types+node@24.10.9_lightningcs_e1ef98bbafa8c3eff9eb745d96d8e216/node_modules/@histoire/plugin-vue/dist/bundled/client/app/Story.js
+//#region ../../node_modules/.pnpm/@histoire+plugin-vue@1.0.0-beta.1_histoire@1.0.0-beta.1_@types+node@26.0.0_lightningcss_554c8b02b4193ae0bcf7ca3e54d2b25a/node_modules/@histoire/plugin-vue/dist/bundled/client/app/Story.js
 var A$3 = /* @__PURE__ */ defineComponent({
 	name: "Story",
 	__histoireType: "story",
@@ -46415,7 +46799,7 @@ var A$3 = /* @__PURE__ */ defineComponent({
 	}
 });
 //#endregion
-//#region ../../node_modules/.pnpm/@histoire+plugin-vue@1.0.0-beta.1_histoire@1.0.0-beta.1_@types+node@24.10.9_lightningcs_e1ef98bbafa8c3eff9eb745d96d8e216/node_modules/@histoire/plugin-vue/dist/bundled/client/app/global-components.js
+//#region ../../node_modules/.pnpm/@histoire+plugin-vue@1.0.0-beta.1_histoire@1.0.0-beta.1_@types+node@26.0.0_lightningcss_554c8b02b4193ae0bcf7ca3e54d2b25a/node_modules/@histoire/plugin-vue/dist/bundled/client/app/global-components.js
 function M(e) {
 	e.component("Story", A$3), e.component("Variant", v);
 	for (const o in k0) e.component(o, A$2(k0[o]));
@@ -46475,7 +46859,7 @@ function A$2(e) {
 	});
 }
 //#endregion
-//#region ../../node_modules/.pnpm/@histoire+plugin-vue@1.0.0-beta.1_histoire@1.0.0-beta.1_@types+node@24.10.9_lightningcs_e1ef98bbafa8c3eff9eb745d96d8e216/node_modules/@histoire/plugin-vue/dist/bundled/client/app/RouterLinkStub.js
+//#region ../../node_modules/.pnpm/@histoire+plugin-vue@1.0.0-beta.1_histoire@1.0.0-beta.1_@types+node@26.0.0_lightningcss_554c8b02b4193ae0bcf7ca3e54d2b25a/node_modules/@histoire/plugin-vue/dist/bundled/client/app/RouterLinkStub.js
 var s = {
 	path: "/",
 	name: void 0,
@@ -46512,7 +46896,7 @@ var s = {
 	}
 });
 //#endregion
-//#region ../../node_modules/.pnpm/@histoire+plugin-vue@1.0.0-beta.1_histoire@1.0.0-beta.1_@types+node@24.10.9_lightningcs_e1ef98bbafa8c3eff9eb745d96d8e216/node_modules/@histoire/plugin-vue/dist/bundled/client/app/MountStory.js
+//#region ../../node_modules/.pnpm/@histoire+plugin-vue@1.0.0-beta.1_histoire@1.0.0-beta.1_@types+node@26.0.0_lightningcss_554c8b02b4193ae0bcf7ca3e54d2b25a/node_modules/@histoire/plugin-vue/dist/bundled/client/app/MountStory.js
 var L = /* @__PURE__ */ defineComponent$1({
 	name: "MountStory",
 	props: { story: {
@@ -46567,7 +46951,7 @@ var L = /* @__PURE__ */ defineComponent$1({
 	}
 });
 //#endregion
-//#region ../../node_modules/.pnpm/@histoire+plugin-vue@1.0.0-beta.1_histoire@1.0.0-beta.1_@types+node@24.10.9_lightningcs_e1ef98bbafa8c3eff9eb745d96d8e216/node_modules/@histoire/plugin-vue/dist/bundled/node_modules/.pnpm/change-case@5.4.4/node_modules/change-case/dist/index.js
+//#region ../../node_modules/.pnpm/@histoire+plugin-vue@1.0.0-beta.1_histoire@1.0.0-beta.1_@types+node@26.0.0_lightningcss_554c8b02b4193ae0bcf7ca3e54d2b25a/node_modules/@histoire/plugin-vue/dist/bundled/node_modules/.pnpm/change-case@5.4.4/node_modules/change-case/dist/index.js
 var E = /* @__PURE__ */ new RegExp("([\\p{Ll}\\d])(\\p{Lu})", "gu"), P = /* @__PURE__ */ new RegExp("(\\p{Lu})([\\p{Lu}][\\p{Ll}])", "gu"), w = /* @__PURE__ */ new RegExp("(\\d)\\p{Ll}|(\\p{L})\\d", "u"), R$1 = /[^\p{L}\d]+/giu, C = "$1\0$2", x$1 = "";
 function h(r) {
 	let e = r.trim();
@@ -46632,7 +47016,7 @@ function u(r, e = {}) {
 	];
 }
 //#endregion
-//#region ../../node_modules/.pnpm/@histoire+plugin-vue@1.0.0-beta.1_histoire@1.0.0-beta.1_@types+node@24.10.9_lightningcs_e1ef98bbafa8c3eff9eb745d96d8e216/node_modules/@histoire/plugin-vue/dist/bundled/client/codegen.js
+//#region ../../node_modules/.pnpm/@histoire+plugin-vue@1.0.0-beta.1_histoire@1.0.0-beta.1_@types+node@26.0.0_lightningcss_554c8b02b4193ae0bcf7ca3e54d2b25a/node_modules/@histoire/plugin-vue/dist/bundled/client/codegen.js
 async function I(t) {
 	const o = t.slots().default?.({ state: t.state ?? {} }) ?? [], a = Array.isArray(o) ? o : [o], b = [];
 	for (const L in a) {
@@ -46793,7 +47177,7 @@ function A(t) {
 	return t.replace(/\$setup\./g, "");
 }
 //#endregion
-//#region ../../node_modules/.pnpm/@histoire+plugin-vue@1.0.0-beta.1_histoire@1.0.0-beta.1_@types+node@24.10.9_lightningcs_e1ef98bbafa8c3eff9eb745d96d8e216/node_modules/@histoire/plugin-vue/dist/bundled/client/app/RenderStory.js
+//#region ../../node_modules/.pnpm/@histoire+plugin-vue@1.0.0-beta.1_histoire@1.0.0-beta.1_@types+node@26.0.0_lightningcss_554c8b02b4193ae0bcf7ca3e54d2b25a/node_modules/@histoire/plugin-vue/dist/bundled/client/app/RenderStory.js
 var W = /* @__PURE__ */ defineComponent$1({
 	name: "RenderStory",
 	props: {
@@ -46911,7 +47295,7 @@ var W = /* @__PURE__ */ defineComponent$1({
 	}
 });
 //#endregion
-//#region ../../node_modules/.pnpm/@histoire+plugin-vue@1.0.0-beta.1_histoire@1.0.0-beta.1_@types+node@24.10.9_lightningcs_e1ef98bbafa8c3eff9eb745d96d8e216/node_modules/@histoire/plugin-vue/dist/bundled/client/client.js
+//#region ../../node_modules/.pnpm/@histoire+plugin-vue@1.0.0-beta.1_histoire@1.0.0-beta.1_@types+node@26.0.0_lightningcss_554c8b02b4193ae0bcf7ca3e54d2b25a/node_modules/@histoire/plugin-vue/dist/bundled/client/client.js
 var client_exports$1 = /* @__PURE__ */ __exportAll({
 	MountStory: () => L,
 	RenderStory: () => W,
@@ -48442,7 +48826,7 @@ var vitesse_dark_default = Object.freeze(JSON.parse("{\"colors\":{\"activityBar.
 var vitesse_light_exports = /* @__PURE__ */ __exportAll({ default: () => vitesse_light_default });
 var vitesse_light_default = Object.freeze(JSON.parse("{\"colors\":{\"activityBar.activeBorder\":\"#1c6b48\",\"activityBar.background\":\"#ffffff\",\"activityBar.border\":\"#f0f0f0\",\"activityBar.foreground\":\"#393a34\",\"activityBar.inactiveForeground\":\"#393a3450\",\"activityBarBadge.background\":\"#4e4f47\",\"activityBarBadge.foreground\":\"#ffffff\",\"badge.background\":\"#393a3490\",\"badge.foreground\":\"#ffffff\",\"breadcrumb.activeSelectionForeground\":\"#22222218\",\"breadcrumb.background\":\"#f7f7f7\",\"breadcrumb.focusForeground\":\"#393a34\",\"breadcrumb.foreground\":\"#6a737d\",\"breadcrumbPicker.background\":\"#ffffff\",\"button.background\":\"#1c6b48\",\"button.foreground\":\"#ffffff\",\"button.hoverBackground\":\"#1c6b48\",\"checkbox.background\":\"#f7f7f7\",\"checkbox.border\":\"#d1d5da\",\"debugToolBar.background\":\"#ffffff\",\"descriptionForeground\":\"#393a3490\",\"diffEditor.insertedTextBackground\":\"#1c6b4830\",\"diffEditor.removedTextBackground\":\"#ab595940\",\"dropdown.background\":\"#ffffff\",\"dropdown.border\":\"#f0f0f0\",\"dropdown.foreground\":\"#393a34\",\"dropdown.listBackground\":\"#f7f7f7\",\"editor.background\":\"#ffffff\",\"editor.findMatchBackground\":\"#e6cc7744\",\"editor.findMatchHighlightBackground\":\"#e6cc7766\",\"editor.focusedStackFrameHighlightBackground\":\"#fff5b1\",\"editor.foldBackground\":\"#22222210\",\"editor.foreground\":\"#393a34\",\"editor.inactiveSelectionBackground\":\"#22222210\",\"editor.lineHighlightBackground\":\"#f7f7f7\",\"editor.selectionBackground\":\"#22222218\",\"editor.selectionHighlightBackground\":\"#22222210\",\"editor.stackFrameHighlightBackground\":\"#fffbdd\",\"editor.wordHighlightBackground\":\"#1c6b4805\",\"editor.wordHighlightStrongBackground\":\"#1c6b4810\",\"editorBracketHighlight.foreground1\":\"#2993a3\",\"editorBracketHighlight.foreground2\":\"#1e754f\",\"editorBracketHighlight.foreground3\":\"#a65e2b\",\"editorBracketHighlight.foreground4\":\"#a13865\",\"editorBracketHighlight.foreground5\":\"#bda437\",\"editorBracketHighlight.foreground6\":\"#296aa3\",\"editorBracketMatch.background\":\"#1c6b4820\",\"editorError.foreground\":\"#ab5959\",\"editorGroup.border\":\"#f0f0f0\",\"editorGroupHeader.tabsBackground\":\"#ffffff\",\"editorGroupHeader.tabsBorder\":\"#f0f0f0\",\"editorGutter.addedBackground\":\"#1e754f\",\"editorGutter.commentRangeForeground\":\"#393a3450\",\"editorGutter.deletedBackground\":\"#ab5959\",\"editorGutter.foldingControlForeground\":\"#393a3490\",\"editorGutter.modifiedBackground\":\"#296aa3\",\"editorHint.foreground\":\"#1e754f\",\"editorIndentGuide.activeBackground\":\"#00000030\",\"editorIndentGuide.background\":\"#00000015\",\"editorInfo.foreground\":\"#296aa3\",\"editorInlayHint.background\":\"#f7f7f7\",\"editorInlayHint.foreground\":\"#999999\",\"editorLineNumber.activeForeground\":\"#4e4f47\",\"editorLineNumber.foreground\":\"#393a3450\",\"editorOverviewRuler.border\":\"#fff\",\"editorStickyScroll.background\":\"#f7f7f7\",\"editorStickyScrollHover.background\":\"#f7f7f7\",\"editorWarning.foreground\":\"#a65e2b\",\"editorWhitespace.foreground\":\"#00000015\",\"editorWidget.background\":\"#ffffff\",\"errorForeground\":\"#ab5959\",\"focusBorder\":\"#00000000\",\"foreground\":\"#393a34\",\"gitDecoration.addedResourceForeground\":\"#1e754f\",\"gitDecoration.conflictingResourceForeground\":\"#a65e2b\",\"gitDecoration.deletedResourceForeground\":\"#ab5959\",\"gitDecoration.ignoredResourceForeground\":\"#393a3450\",\"gitDecoration.modifiedResourceForeground\":\"#296aa3\",\"gitDecoration.submoduleResourceForeground\":\"#393a3490\",\"gitDecoration.untrackedResourceForeground\":\"#2993a3\",\"input.background\":\"#f7f7f7\",\"input.border\":\"#f0f0f0\",\"input.foreground\":\"#393a34\",\"input.placeholderForeground\":\"#393a3490\",\"inputOption.activeBackground\":\"#393a3450\",\"list.activeSelectionBackground\":\"#f7f7f7\",\"list.activeSelectionForeground\":\"#393a34\",\"list.focusBackground\":\"#f7f7f7\",\"list.highlightForeground\":\"#1c6b48\",\"list.hoverBackground\":\"#f7f7f7\",\"list.hoverForeground\":\"#393a34\",\"list.inactiveFocusBackground\":\"#ffffff\",\"list.inactiveSelectionBackground\":\"#f7f7f7\",\"list.inactiveSelectionForeground\":\"#393a34\",\"menu.separatorBackground\":\"#f0f0f0\",\"notificationCenterHeader.background\":\"#ffffff\",\"notificationCenterHeader.foreground\":\"#6a737d\",\"notifications.background\":\"#ffffff\",\"notifications.border\":\"#f0f0f0\",\"notifications.foreground\":\"#393a34\",\"notificationsErrorIcon.foreground\":\"#ab5959\",\"notificationsInfoIcon.foreground\":\"#296aa3\",\"notificationsWarningIcon.foreground\":\"#a65e2b\",\"panel.background\":\"#ffffff\",\"panel.border\":\"#f0f0f0\",\"panelInput.border\":\"#e1e4e8\",\"panelTitle.activeBorder\":\"#1c6b48\",\"panelTitle.activeForeground\":\"#393a34\",\"panelTitle.inactiveForeground\":\"#6a737d\",\"peekViewEditor.background\":\"#ffffff\",\"peekViewResult.background\":\"#ffffff\",\"pickerGroup.border\":\"#f0f0f0\",\"pickerGroup.foreground\":\"#393a34\",\"problemsErrorIcon.foreground\":\"#ab5959\",\"problemsInfoIcon.foreground\":\"#296aa3\",\"problemsWarningIcon.foreground\":\"#a65e2b\",\"progressBar.background\":\"#1c6b48\",\"quickInput.background\":\"#ffffff\",\"quickInput.foreground\":\"#393a34\",\"quickInputList.focusBackground\":\"#f7f7f7\",\"scrollbar.shadow\":\"#6a737d33\",\"scrollbarSlider.activeBackground\":\"#393a3450\",\"scrollbarSlider.background\":\"#393a3410\",\"scrollbarSlider.hoverBackground\":\"#393a3450\",\"settings.headerForeground\":\"#393a34\",\"settings.modifiedItemIndicator\":\"#1c6b48\",\"sideBar.background\":\"#ffffff\",\"sideBar.border\":\"#f0f0f0\",\"sideBar.foreground\":\"#4e4f47\",\"sideBarSectionHeader.background\":\"#ffffff\",\"sideBarSectionHeader.border\":\"#f0f0f0\",\"sideBarSectionHeader.foreground\":\"#393a34\",\"sideBarTitle.foreground\":\"#393a34\",\"statusBar.background\":\"#ffffff\",\"statusBar.border\":\"#f0f0f0\",\"statusBar.debuggingBackground\":\"#f7f7f7\",\"statusBar.debuggingForeground\":\"#4e4f47\",\"statusBar.foreground\":\"#4e4f47\",\"statusBar.noFolderBackground\":\"#ffffff\",\"statusBarItem.prominentBackground\":\"#f7f7f7\",\"tab.activeBackground\":\"#ffffff\",\"tab.activeBorder\":\"#f0f0f0\",\"tab.activeBorderTop\":\"#393a3490\",\"tab.activeForeground\":\"#393a34\",\"tab.border\":\"#f0f0f0\",\"tab.hoverBackground\":\"#f7f7f7\",\"tab.inactiveBackground\":\"#ffffff\",\"tab.inactiveForeground\":\"#6a737d\",\"tab.unfocusedActiveBorder\":\"#f0f0f0\",\"tab.unfocusedActiveBorderTop\":\"#f0f0f0\",\"tab.unfocusedHoverBackground\":\"#ffffff\",\"terminal.ansiBlack\":\"#121212\",\"terminal.ansiBlue\":\"#296aa3\",\"terminal.ansiBrightBlack\":\"#aaaaaa\",\"terminal.ansiBrightBlue\":\"#296aa3\",\"terminal.ansiBrightCyan\":\"#2993a3\",\"terminal.ansiBrightGreen\":\"#1e754f\",\"terminal.ansiBrightMagenta\":\"#a13865\",\"terminal.ansiBrightRed\":\"#ab5959\",\"terminal.ansiBrightWhite\":\"#dddddd\",\"terminal.ansiBrightYellow\":\"#bda437\",\"terminal.ansiCyan\":\"#2993a3\",\"terminal.ansiGreen\":\"#1e754f\",\"terminal.ansiMagenta\":\"#a13865\",\"terminal.ansiRed\":\"#ab5959\",\"terminal.ansiWhite\":\"#dbd7ca\",\"terminal.ansiYellow\":\"#bda437\",\"terminal.foreground\":\"#393a34\",\"terminal.selectionBackground\":\"#22222218\",\"textBlockQuote.background\":\"#ffffff\",\"textBlockQuote.border\":\"#f0f0f0\",\"textCodeBlock.background\":\"#ffffff\",\"textLink.activeForeground\":\"#1c6b48\",\"textLink.foreground\":\"#1c6b48\",\"textPreformat.foreground\":\"#586069\",\"textSeparator.foreground\":\"#d1d5da\",\"titleBar.activeBackground\":\"#ffffff\",\"titleBar.activeForeground\":\"#4e4f47\",\"titleBar.border\":\"#f7f7f7\",\"titleBar.inactiveBackground\":\"#ffffff\",\"titleBar.inactiveForeground\":\"#6a737d\",\"tree.indentGuidesStroke\":\"#e1e4e8\",\"welcomePage.buttonBackground\":\"#f6f8fa\",\"welcomePage.buttonHoverBackground\":\"#e1e4e8\"},\"displayName\":\"Vitesse Light\",\"name\":\"vitesse-light\",\"semanticHighlighting\":true,\"semanticTokenColors\":{\"class\":\"#5a6aa6\",\"interface\":\"#2e808f\",\"namespace\":\"#b05a78\",\"property\":\"#998418\",\"type\":\"#2e808f\"},\"tokenColors\":[{\"scope\":[\"comment\",\"punctuation.definition.comment\",\"string.comment\"],\"settings\":{\"foreground\":\"#a0ada0\"}},{\"scope\":[\"delimiter.bracket\",\"delimiter\",\"invalid.illegal.character-not-allowed-here.html\",\"keyword.operator.rest\",\"keyword.operator.spread\",\"keyword.operator.type.annotation\",\"keyword.operator.relational\",\"keyword.operator.assignment\",\"keyword.operator.type\",\"meta.brace\",\"meta.tag.block.any.html\",\"meta.tag.inline.any.html\",\"meta.tag.structure.input.void.html\",\"meta.type.annotation\",\"meta.embedded.block.github-actions-expression\",\"storage.type.function.arrow\",\"meta.objectliteral.ts\",\"punctuation\",\"punctuation.definition.string.begin.html.vue\",\"punctuation.definition.string.end.html.vue\"],\"settings\":{\"foreground\":\"#999999\"}},{\"scope\":[\"constant\",\"entity.name.constant\",\"variable.language\",\"meta.definition.variable\"],\"settings\":{\"foreground\":\"#a65e2b\"}},{\"scope\":[\"entity\",\"entity.name\"],\"settings\":{\"foreground\":\"#59873a\"}},{\"scope\":\"variable.parameter.function\",\"settings\":{\"foreground\":\"#393a34\"}},{\"scope\":[\"entity.name.tag\",\"tag.html\"],\"settings\":{\"foreground\":\"#1e754f\"}},{\"scope\":\"entity.name.function\",\"settings\":{\"foreground\":\"#59873a\"}},{\"scope\":[\"keyword\",\"storage.type.class.jsdoc\",\"punctuation.definition.template-expression\"],\"settings\":{\"foreground\":\"#1e754f\"}},{\"scope\":[\"storage\",\"storage.type\",\"support.type.builtin\",\"constant.language.undefined\",\"constant.language.null\",\"constant.language.import-export-all.ts\"],\"settings\":{\"foreground\":\"#ab5959\"}},{\"scope\":[\"text.html.derivative\",\"storage.modifier.package\",\"storage.modifier.import\",\"storage.type.java\"],\"settings\":{\"foreground\":\"#393a34\"}},{\"scope\":[\"string\",\"string punctuation.section.embedded source\",\"attribute.value\"],\"settings\":{\"foreground\":\"#b56959\"}},{\"scope\":[\"punctuation.definition.string\"],\"settings\":{\"foreground\":\"#b5695977\"}},{\"scope\":[\"punctuation.support.type.property-name\"],\"settings\":{\"foreground\":\"#99841877\"}},{\"scope\":\"support\",\"settings\":{\"foreground\":\"#998418\"}},{\"scope\":[\"property\",\"meta.property-name\",\"meta.object-literal.key\",\"entity.name.tag.yaml\",\"attribute.name\"],\"settings\":{\"foreground\":\"#998418\"}},{\"scope\":[\"entity.other.attribute-name\",\"invalid.deprecated.entity.other.attribute-name.html\"],\"settings\":{\"foreground\":\"#b07d48\"}},{\"scope\":[\"variable\",\"identifier\"],\"settings\":{\"foreground\":\"#b07d48\"}},{\"scope\":[\"support.type.primitive\",\"entity.name.type\"],\"settings\":{\"foreground\":\"#2e8f82\"}},{\"scope\":\"namespace\",\"settings\":{\"foreground\":\"#b05a78\"}},{\"scope\":[\"keyword.operator\",\"keyword.operator.assignment.compound\",\"meta.var.expr.ts\"],\"settings\":{\"foreground\":\"#ab5959\"}},{\"scope\":\"invalid.broken\",\"settings\":{\"fontStyle\":\"italic\",\"foreground\":\"#b31d28\"}},{\"scope\":\"invalid.deprecated\",\"settings\":{\"fontStyle\":\"italic\",\"foreground\":\"#b31d28\"}},{\"scope\":\"invalid.illegal\",\"settings\":{\"fontStyle\":\"italic\",\"foreground\":\"#b31d28\"}},{\"scope\":\"invalid.unimplemented\",\"settings\":{\"fontStyle\":\"italic\",\"foreground\":\"#b31d28\"}},{\"scope\":\"carriage-return\",\"settings\":{\"background\":\"#d73a49\",\"content\":\"^M\",\"fontStyle\":\"italic underline\",\"foreground\":\"#fafbfc\"}},{\"scope\":\"message.error\",\"settings\":{\"foreground\":\"#b31d28\"}},{\"scope\":\"string variable\",\"settings\":{\"foreground\":\"#b56959\"}},{\"scope\":[\"source.regexp\",\"string.regexp\"],\"settings\":{\"foreground\":\"#ab5e3f\"}},{\"scope\":[\"string.regexp.character-class\",\"string.regexp constant.character.escape\",\"string.regexp source.ruby.embedded\",\"string.regexp string.regexp.arbitrary-repitition\"],\"settings\":{\"foreground\":\"#b56959\"}},{\"scope\":\"string.regexp constant.character.escape\",\"settings\":{\"foreground\":\"#bda437\"}},{\"scope\":[\"support.constant\"],\"settings\":{\"foreground\":\"#a65e2b\"}},{\"scope\":[\"keyword.operator.quantifier.regexp\",\"constant.numeric\",\"number\"],\"settings\":{\"foreground\":\"#2f798a\"}},{\"scope\":[\"keyword.other.unit\"],\"settings\":{\"foreground\":\"#ab5959\"}},{\"scope\":[\"constant.language.boolean\",\"constant.language\"],\"settings\":{\"foreground\":\"#1e754f\"}},{\"scope\":\"meta.module-reference\",\"settings\":{\"foreground\":\"#1c6b48\"}},{\"scope\":\"punctuation.definition.list.begin.markdown\",\"settings\":{\"foreground\":\"#a65e2b\"}},{\"scope\":[\"markup.heading\",\"markup.heading entity.name\"],\"settings\":{\"fontStyle\":\"bold\",\"foreground\":\"#1c6b48\"}},{\"scope\":\"markup.quote\",\"settings\":{\"foreground\":\"#2e808f\"}},{\"scope\":\"markup.italic\",\"settings\":{\"fontStyle\":\"italic\",\"foreground\":\"#393a34\"}},{\"scope\":\"markup.bold\",\"settings\":{\"fontStyle\":\"bold\",\"foreground\":\"#393a34\"}},{\"scope\":\"markup.raw\",\"settings\":{\"foreground\":\"#1c6b48\"}},{\"scope\":[\"markup.deleted\",\"meta.diff.header.from-file\",\"punctuation.definition.deleted\"],\"settings\":{\"background\":\"#ffeef0\",\"foreground\":\"#b31d28\"}},{\"scope\":[\"markup.inserted\",\"meta.diff.header.to-file\",\"punctuation.definition.inserted\"],\"settings\":{\"background\":\"#f0fff4\",\"foreground\":\"#22863a\"}},{\"scope\":[\"markup.changed\",\"punctuation.definition.changed\"],\"settings\":{\"background\":\"#ffebda\",\"foreground\":\"#e36209\"}},{\"scope\":[\"markup.ignored\",\"markup.untracked\"],\"settings\":{\"background\":\"#005cc5\",\"foreground\":\"#f6f8fa\"}},{\"scope\":\"meta.diff.range\",\"settings\":{\"fontStyle\":\"bold\",\"foreground\":\"#6f42c1\"}},{\"scope\":\"meta.diff.header\",\"settings\":{\"foreground\":\"#005cc5\"}},{\"scope\":\"meta.separator\",\"settings\":{\"fontStyle\":\"bold\",\"foreground\":\"#005cc5\"}},{\"scope\":\"meta.output\",\"settings\":{\"foreground\":\"#005cc5\"}},{\"scope\":[\"brackethighlighter.tag\",\"brackethighlighter.curly\",\"brackethighlighter.round\",\"brackethighlighter.square\",\"brackethighlighter.angle\",\"brackethighlighter.quote\"],\"settings\":{\"foreground\":\"#586069\"}},{\"scope\":\"brackethighlighter.unmatched\",\"settings\":{\"foreground\":\"#b31d28\"}},{\"scope\":[\"constant.other.reference.link\",\"string.other.link\",\"punctuation.definition.string.begin.markdown\",\"punctuation.definition.string.end.markdown\"],\"settings\":{\"foreground\":\"#b56959\"}},{\"scope\":[\"markup.underline.link.markdown\",\"markup.underline.link.image.markdown\"],\"settings\":{\"fontStyle\":\"underline\",\"foreground\":\"#393a3490\"}},{\"scope\":[\"type.identifier\",\"constant.other.character-class.regexp\"],\"settings\":{\"foreground\":\"#5a6aa6\"}},{\"scope\":[\"entity.other.attribute-name.html.vue\"],\"settings\":{\"foreground\":\"#59873a\"}},{\"scope\":[\"invalid.illegal.unrecognized-tag.html\"],\"settings\":{\"fontStyle\":\"normal\"}}],\"type\":\"light\"}"));
 //#endregion
-//#region ../../node_modules/.pnpm/histoire@1.0.0-beta.1_@types+node@24.10.9_lightningcss@1.32.0_sass-embedded@1.98.0_sass_231b08bc65af7d7bed0a4b7bbb4e9231/node_modules/histoire/dist/node/builtin-plugins/vanilla-support/MountStory.js
+//#region ../../node_modules/.pnpm/histoire@1.0.0-beta.1_@types+node@26.0.0_lightningcss@1.32.0_sass-embedded@1.100.0_sass_a5463336cb7b5757ac6a783db2d383c2/node_modules/histoire/dist/node/builtin-plugins/vanilla-support/MountStory.js
 var MountStory_default = /* @__PURE__ */ defineComponent$1({
 	name: "MountStory",
 	props: { story: {
@@ -48479,7 +48863,7 @@ var MountStory_default = /* @__PURE__ */ defineComponent$1({
 	}
 });
 //#endregion
-//#region ../../node_modules/.pnpm/histoire@1.0.0-beta.1_@types+node@24.10.9_lightningcss@1.32.0_sass-embedded@1.98.0_sass_231b08bc65af7d7bed0a4b7bbb4e9231/node_modules/histoire/dist/node/builtin-plugins/vanilla-support/RenderStory.js
+//#region ../../node_modules/.pnpm/histoire@1.0.0-beta.1_@types+node@26.0.0_lightningcss@1.32.0_sass-embedded@1.100.0_sass_a5463336cb7b5757ac6a783db2d383c2/node_modules/histoire/dist/node/builtin-plugins/vanilla-support/RenderStory.js
 var RenderStory_default = /* @__PURE__ */ defineComponent$1({
 	name: "RenderStory",
 	props: {
@@ -48561,7 +48945,7 @@ var RenderStory_default = /* @__PURE__ */ defineComponent$1({
 	}
 });
 //#endregion
-//#region ../../node_modules/.pnpm/histoire@1.0.0-beta.1_@types+node@24.10.9_lightningcss@1.32.0_sass-embedded@1.98.0_sass_231b08bc65af7d7bed0a4b7bbb4e9231/node_modules/histoire/dist/node/builtin-plugins/vanilla-support/client.js
+//#region ../../node_modules/.pnpm/histoire@1.0.0-beta.1_@types+node@26.0.0_lightningcss@1.32.0_sass-embedded@1.100.0_sass_a5463336cb7b5757ac6a783db2d383c2/node_modules/histoire/dist/node/builtin-plugins/vanilla-support/client.js
 var client_exports = /* @__PURE__ */ __exportAll({
 	MountStory: () => MountStory_default,
 	RenderStory: () => RenderStory_default,
@@ -48650,7 +49034,7 @@ var cva = (base, config) => (props) => {
 	}, []), props === null || props === void 0 ? void 0 : props.class, props === null || props === void 0 ? void 0 : props.className);
 };
 //#endregion
-//#region ../../node_modules/.pnpm/reka-ui@2.9.2_vue@3.5.30_typescript@5.9.3_/node_modules/reka-ui/dist/shared/renderSlotFragments.js
+//#region ../../node_modules/.pnpm/reka-ui@2.9.10_vue@3.5.38_typescript@6.0.3_/node_modules/reka-ui/dist/shared/renderSlotFragments.js
 function renderSlotFragments(children) {
 	if (!children) return [];
 	return children.flatMap((child) => {
@@ -48659,8 +49043,8 @@ function renderSlotFragments(children) {
 	});
 }
 //#endregion
-//#region ../../node_modules/.pnpm/reka-ui@2.9.2_vue@3.5.30_typescript@5.9.3_/node_modules/reka-ui/dist/Primitive/Slot.js
-var Slot = /* @__PURE__ */ defineComponent({
+//#region ../../node_modules/.pnpm/reka-ui@2.9.10_vue@3.5.38_typescript@6.0.3_/node_modules/reka-ui/dist/Primitive/Slot.js
+var Slot = /*#__PURE__*/ defineComponent({
 	name: "PrimitiveSlot",
 	inheritAttrs: false,
 	setup(_, { attrs, slots }) {
@@ -48683,13 +49067,13 @@ var Slot = /* @__PURE__ */ defineComponent({
 	}
 });
 //#endregion
-//#region ../../node_modules/.pnpm/reka-ui@2.9.2_vue@3.5.30_typescript@5.9.3_/node_modules/reka-ui/dist/Primitive/Primitive.js
+//#region ../../node_modules/.pnpm/reka-ui@2.9.10_vue@3.5.38_typescript@6.0.3_/node_modules/reka-ui/dist/Primitive/Primitive.js
 var SELF_CLOSING_TAGS = [
 	"area",
 	"img",
 	"input"
 ];
-var Primitive = /* @__PURE__ */ defineComponent({
+var Primitive = /*#__PURE__*/ defineComponent({
 	name: "Primitive",
 	inheritAttrs: false,
 	props: {
@@ -48710,4 +49094,4 @@ var Primitive = /* @__PURE__ */ defineComponent({
 	}
 });
 //#endregion
-export { everforest_light_exports as $, onClickOutside as $a, ara_exports as $i, liquid_exports as $n, vShow as $o, jsx_exports as $r, smalltalk_exports as $t, material_theme_palenight_exports as A, e as Aa, clarity_exports as Ai, pascal_exports as An, markRaw$1 as Ao, glimmer_ts_exports as Ar, typst_exports as At, gruvbox_light_soft_exports as B, createBlock as Ba, bicep_exports as Bi, move_exports as Bn, ref$1 as Bo, fsharp_exports as Br, talonscript_exports as Bt, one_dark_pro_exports as C, s0 as Ca, common_lisp_exports as Ci, powershell_exports as Cn, createStaticVNode as Co, haxe_exports as Cr, vue_exports as Ct, min_light_exports as D, clone$1 as Da, cobol_exports as Di, plsql_exports as Dn, defineComponent$1 as Do, groovy_exports as Dr, vb_exports as Dt, monokai_exports as E, applyState as Ea, codeowners_exports as Ei, po_exports as En, defineAsyncComponent$1 as Eo, hack_exports as Er, verilog_exports as Et, laserwave_exports as F, useRoute as Fa, bsl_exports as Fi, nix_exports as Fn, onBeforeUnmount$1 as Fo, gherkin_exports as Fr, toml_exports as Ft, gruvbox_dark_hard_exports as G, defineComponent as Ga, ballerina_exports as Gi, mdc_exports as Gn, resolveDynamicComponent as Go, fennel_exports as Gr, stylus_exports as Gt, gruvbox_light_hard_exports as H, createTextVNode as Ha, berry_exports as Hi, mipsasm_exports as Hn, renderSlot$1 as Ho, fortran_free_form_exports as Hr, system_verilog_exports as Ht, kanagawa_wave_exports as I, useRouter as Ia, sdbl_exports as Ii, nim_exports as In, onMounted$1 as Io, genie_exports as Ir, terraform_exports as It, github_light_default_exports as J, renderSlot as Ja, tsx_exports as Ji, make_exports as Jn, toRaw$1 as Jo, erb_exports as Jr, splunk_exports as Jt, github_light_exports as K, openBlock as Ka, awk_exports as Ki, matlab_exports as Kn, shallowRef as Ko, erlang_exports as Kr, stata_exports as Kt, kanagawa_lotus_exports as L, Icon as La, blade_exports as Li, nginx_exports as Ln, onUnmounted$1 as Lo, gdresource_exports as Lr, templ_exports as Lt, material_theme_lighter_exports as M, createWebHashHistory as Ma, python_exports as Mi, objective_cpp_exports as Mn, nextTick$1 as Mo, gleam_exports as Mr, twig_exports as Mt, material_theme_darker_exports as N, createWebHistory as Na, cadence_exports as Ni, objective_c_exports as Nn, normalizeClass$1 as No, git_rebase_exports as Nr, tsv_exports as Nt, min_dark_exports as O, omit as Oa, cmake_exports as Oi, php_exports as On, h$4 as Oo, go_exports as Or, vala_exports as Ot, light_plus_exports as P, parseQuery$2 as Pa, c_exports as Pi, nushell_exports as Pn, normalizeStyle$1 as Po, git_commit_exports as Pr, ts_tags_exports as Pt, github_dark_default_exports as Q, toDisplayString as Qa, asciidoc_exports as Qi, llvm_exports as Qn, vModelText$1 as Qo, graphql_exports as Qr, solidity_exports as Qt, kanagawa_dragon_exports as R, __vitePreload as Ra, sql_exports as Ri, nextflow_exports as Rn, openBlock$1 as Ro, gdscript_exports as Rr, tcl_exports as Rt, one_light_exports as S, n0 as Sa, coq_exports as Si, prisma_exports as Sn, createElementBlock$1 as So, hcl_exports as Sr, vue_html_exports as St, night_owl_exports as T, Fuse as Ta, codeql_exports as Ti, polar_exports as Tn, createVNode$1 as To, handlebars_exports as Tr, vhdl_exports as Tt, gruvbox_dark_soft_exports as U, createVNode as Ua, beancount_exports as Ui, mermaid_exports as Un, resolveComponent$1 as Uo, fluent_exports as Ur, swift_exports as Ut, gruvbox_light_medium_exports as V, createElementBlock as Va, bibtex_exports as Vi, mojo_exports as Vn, renderList$1 as Vo, fortran_fixed_form_exports as Vr, systemd_exports as Vt, gruvbox_dark_medium_exports as W, defineAsyncComponent as Wa, bat_exports as Wi, mdx_exports as Wn, resolveDirective as Wo, fish_exports as Wr, svelte_exports as Wt, github_dark_high_contrast_exports as X, withCtx as Xa, typescript_exports as Xi, logo_exports as Xn, unref$1 as Xo, yaml_exports as Xr, turtle_exports as Xt, github_dark_exports as Y, resolveComponent as Ya, postcss_exports as Yi, luau_exports as Yn, toRefs as Yo, ruby_exports as Yr, sparql_exports as Yt, github_dark_dimmed_exports as Z, normalizeClass as Za, asm_exports as Zi, log_exports as Zn, useCssVars as Zo, lua_exports as Zr, soy_exports as Zt, rose_pine_moon_exports as _, _plugin_vue_export_helper_default as _a, crystal_exports as _i, purescript_exports as _n, computed$2 as _o, hy_exports as _r, wgsl_exports as _t, vitesse_light_exports as a, apex_exports as aa, dream_maker_exports as ai, sas_exports as an, useResizeObserver as ao, kotlin_exports as ar, withModifiers as as, catppuccin_macchiato_exports as at, poimandres_exports as b, e0 as ba, glsl_exports as bi, proto_exports as bn, createBlock$1 as bo, hlsl_exports as br, vyper_exports as bt, vesper_exports as c, scss_exports as ca, diff_exports as ci, riscv_exports as cn, useTitle as co, jssm_exports as cr, ayu_dark_exports as ct, solarized_light_exports as d, css_exports as da, dart_exports as di, razor_exports as dn, defineStore as do, jsonc_exports as dr, zig_exports as dt, applescript_exports as ea, haml_exports as ei, shellsession_exports as en, refDebounced as eo, less_exports as er, watch$2 as es, everforest_dark_exports as et, solarized_dark_exports as f, javascript_exports as fa, d_exports as fi, raku_exports as fn, Gt$1 as fo, json5_exports as fr, zenscript_exports as ft, rose_pine_exports as g, client_exports$1 as ga, csharp_exports as gi, qml_exports as gn, Transition as go, imba_exports as gr, wikitext_exports as gt, slack_dark_exports as h, abap_exports as ha, csv_exports as hi, qmldir_exports as hn, Fragment$1 as ho, ini_exports as hr, wit_exports as ht, client_exports as i, java_exports as ia, edge_exports as ii, sass_exports as in, useMediaQuery as io, kusto_exports as ir, withKeys as is, catppuccin_mocha_exports as it, material_theme_ocean_exports as j, createRouter as ja, cairo_exports as ji, ocaml_exports as jn, mergeProps$1 as jo, glimmer_js_exports as jr, typespec_exports as jt, material_theme_exports as k, unindent as ka, clojure_exports as ki, perl_exports as kn, isRef$2 as ko, gnuplot_exports as kr, v_exports as kt, tokyo_night_exports as l, angular_html_exports as la, desktop_exports as li, rel_exports as ln, useToggle as lo, jsonnet_exports as lr, aurora_x_exports as lt, slack_ochin_exports as m, actionscript_3_exports as ma, cue_exports as mi, qss_exports as mn, kt$1 as mo, jinja_exports as mr, wolfram_exports as mt, cva as n, json_exports as na, elm_exports as ni, scheme_exports as nn, useEventListener as no, latex_exports as nr, withCtx$1 as ns, dracula_soft_exports as nt, vitesse_dark_exports as o, apache_exports as oa, dotenv_exports as oi, rust_exports as on, useStorage as oo, julia_exports as or, catppuccin_latte_exports as ot, snazzy_light_exports as p, ada_exports as pa, cypher_exports as pi, racket_exports as pn, Ot$1 as po, jison_exports as pr, xsl_exports as pt, github_light_high_contrast_exports as q, renderList as qa, astro_exports as qi, marko_exports as qn, toDisplayString$1 as qo, markdown_exports as qr, ssh_config_exports as qt, wasm_exports as r, xml_exports as ra, elixir_exports as ri, scala_exports as rn, useFocus as ro, tex_exports as rr, withDirectives as rs, dark_plus_exports as rt, vitesse_black_exports as s, angular_ts_exports as sa, docker_exports as si, rst_exports as sn, useTimeoutFn as so, r_exports as sr, catppuccin_frappe_exports as st, Primitive as t, apl_exports as ta, emacs_lisp_exports as ti, shaderlab_exports as tn, useDark as to, lean_exports as tr, watchEffect as ts, dracula_exports as tt, synthwave_84_exports as u, html_exports as ua, dax_exports as ui, reg_exports as un, createPinia as uo, jsonl_exports as ur, andromeeda_exports as ut, rose_pine_dawn_exports as v, createHighlighter as va, shellscript_exports as vi, puppet_exports as vn, createApp$1 as vo, hxml_exports as vr, wenyan_exports as vt, nord_exports as w, generate_story_client_default as wa, coffee_exports as wi, powerquery_exports as wn, createTextVNode$1 as wo, haskell_exports as wr, viml_exports as wt, plastic_exports as x, f0 as xa, regexp_exports as xi, prolog_exports as xn, createCommentVNode as xo, hjson_exports as xr, vue_vine_exports as xt, red_exports as y, d0 as ya, cpp_exports as yi, pug_exports as yn, createBaseVNode$1 as yo, http_exports as yr, wasm_exports$1 as yt, houston_exports as z, Fragment as za, html_derivative_exports as zi, narrat_exports as zn, reactive$1 as zo, gdshader_exports as zr, tasl_exports as zt };
+export { defineStore as $, createTextVNode as A, renderSlot$1 as At, toDisplayString as B, vModelText$1 as Bt, useRoute as C, onBeforeUnmount$1 as Ct, Fragment as D, reactive$1 as Dt, __vitePreload as E, openBlock$1 as Et, renderList as F, toDisplayString$1 as Ft, useFocus as G, withDirectives as Gt, refDebounced as H, watch$2 as Ht, renderSlot as I, toRaw$1 as It, useStorage as J, useMediaQuery as K, withKeys as Kt, resolveComponent as L, toRefs as Lt, defineAsyncComponent as M, resolveDirective as Mt, defineComponent as N, resolveDynamicComponent as Nt, createBlock as O, ref$1 as Ot, openBlock as P, shallowRef as Pt, createPinia as Q, withCtx as R, unref$1 as Rt, parseQuery$2 as S, normalizeStyle$1 as St, Icon as T, onUnmounted$1 as Tt, useDark as U, watchEffect as Ut, onClickOutside as V, vShow as Vt, useEventListener as W, withCtx$1 as Wt, useTitle as X, useTimeoutFn as Y, useToggle as Z, unindent as _, isRef$2 as _t, _plugin_vue_export_helper_default as a, computed$2 as at, createWebHashHistory as b, nextTick$1 as bt, e0 as c, createBlock$1 as ct, s0 as d, createStaticVNode as dt, Gt$1 as et, generate_story_client_default as f, createTextVNode$1 as ft, omit as g, h$4 as gt, clone$1 as h, defineComponent$1 as ht, client_exports$1 as i, Transition as it, createVNode as j, resolveComponent$1 as jt, createElementBlock as k, renderList$1 as kt, f0 as l, createCommentVNode as lt, applyState as m, defineAsyncComponent$1 as mt, cva as n, kt$1 as nt, createHighlighter as o, createApp$1 as ot, Fuse as p, createVNode$1 as pt, useResizeObserver as q, withModifiers as qt, client_exports as r, Fragment$1 as rt, d0 as s, createBaseVNode$1 as st, Primitive as t, Ot$1 as tt, n0 as u, createElementBlock$1 as ut, e as v, markRaw$1 as vt, useRouter as w, onMounted$1 as wt, createWebHistory as x, normalizeClass$1 as xt, createRouter as y, mergeProps$1 as yt, normalizeClass as z, useCssVars as zt };

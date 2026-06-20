@@ -1,10 +1,10 @@
-const __vite__mapDeps=(i,m=__vite__mapDeps,d=(m.f||(m.f=["./search-docs-data-TJkmHTJj.js","./vendor-BRroElKf.js","./rolldown-runtime-D9VfunvA.js"])))=>i.map(i=>d[i]);
-import { Ao as markRaw, Bo as ref, Do as defineComponent, Ho as renderSlot, Ia as useRouter, La as Icon, No as normalizeClass, Qo as vModelText, Ra as __vitePreload, Ro as openBlock, So as createElementBlock, Ta as Fuse, To as createVNode, Vo as renderList, Xo as unref, Yo as toRefs, Zo as useCssVars, _o as computed, as as withModifiers, bo as createBlock, eo as refDebounced, es as watch, ho as Fragment, is as withKeys, ns as withCtx, qo as toDisplayString, ro as useFocus, rs as withDirectives, wa as generate_story_client_default, wo as createTextVNode, xo as createCommentVNode, yo as createBaseVNode } from "./vendor-BRroElKf.js";
-import "./router-C_GbisOD.js";
-import { n as _export_sfc, r as useScrollOnActive, t as BaseListItemLink } from "./BaseListItemLink.vue-Bw9AyNIU.js";
-import { n as useCommandStore, o as useStoryStore, r as builtinCommands, s as onKeyboardShortcut } from "./bundle-main-jj-5tbrv.js";
-import { t as BaseEmpty } from "./BaseEmpty.vue-Dv4biapF.js";
-//#region ../../node_modules/.pnpm/@histoire+app@1.0.0-beta.1_vite@8.0.1_@types+node@24.10.9_esbuild@0.27.4_jiti@2.6.1_sas_389380d3ddddce5fc0b85d07c8154589/node_modules/@histoire/app/dist/bundled/util/select.js
+const __vite__mapDeps=(i,m=__vite__mapDeps,d=(m.f||(m.f=["./search-docs-data-CPHAGGin.js","./vendor-CJxuTU_T.js","./rolldown-runtime-D7D4PA-g.js"])))=>i.map(i=>d[i]);
+import { At as renderSlot, Bt as vModelText, E as __vitePreload, Et as openBlock, Ft as toDisplayString, G as useFocus, Gt as withDirectives, H as refDebounced, Ht as watch, Kt as withKeys, Lt as toRefs, Ot as ref, Rt as unref, T as Icon, Wt as withCtx, at as computed, ct as createBlock, f as generate_story_client_default, ft as createTextVNode, ht as defineComponent, kt as renderList, lt as createCommentVNode, p as Fuse, pt as createVNode, qt as withModifiers, rt as Fragment, st as createBaseVNode, ut as createElementBlock, vt as markRaw, w as useRouter, xt as normalizeClass, zt as useCssVars } from "./vendor-CJxuTU_T.js";
+import { t as useStoryStore } from "./story-C_j060cL.js";
+import { a as _export_sfc, i as BaseListItemLink, o as useScrollOnActive } from "./responsive-DnY-x6gn.js";
+import { n as builtinCommands, r as onKeyboardShortcut, t as useCommandStore } from "./bundle-main-DD2Si9uA.js";
+import { t as BaseEmpty } from "./BaseEmpty.vue-B7C9WCoc.js";
+//#region ../../node_modules/.pnpm/@histoire+app@1.0.0-beta.1_vite@8.0.16_@types+node@26.0.0_esbuild@0.28.1_jiti@2.6.1_sas_690491dbda3e433e52880ee04a3c8e64/node_modules/@histoire/app/dist/bundled/util/select.js
 function useSelection(list) {
 	const selectedIndex = ref(0);
 	watch(list, () => {
@@ -70,13 +70,13 @@ function onUpdate$1(cb) {
 	handlers.push(cb);
 }
 //#endregion
-//#region ../../node_modules/.pnpm/@histoire+app@1.0.0-beta.1_vite@8.0.1_@types+node@24.10.9_esbuild@0.27.4_jiti@2.6.1_sas_389380d3ddddce5fc0b85d07c8154589/node_modules/@histoire/app/dist/bundled/components/search/search-title-data.js
+//#region ../../node_modules/.pnpm/@histoire+app@1.0.0-beta.1_vite@8.0.16_@types+node@26.0.0_esbuild@0.28.1_jiti@2.6.1_sas_690491dbda3e433e52880ee04a3c8e64/node_modules/@histoire/app/dist/bundled/components/search/search-title-data.js
 var searchData = markRaw(searchData$1);
 function onUpdate(cb) {
 	onUpdate$1(cb);
 }
 //#endregion
-//#region ../../node_modules/.pnpm/@histoire+app@1.0.0-beta.1_vite@8.0.1_@types+node@24.10.9_esbuild@0.27.4_jiti@2.6.1_sas_389380d3ddddce5fc0b85d07c8154589/node_modules/@histoire/app/dist/bundled/components/base/BaseListItem.vue2.js
+//#region ../../node_modules/.pnpm/@histoire+app@1.0.0-beta.1_vite@8.0.16_@types+node@26.0.0_esbuild@0.28.1_jiti@2.6.1_sas_690491dbda3e433e52880ee04a3c8e64/node_modules/@histoire/app/dist/bundled/components/base/BaseListItem.vue2.js
 var _sfc_main$4 = /* @__PURE__ */ defineComponent({
 	__name: "BaseListItem",
 	props: { isActive: { type: Boolean } },
@@ -96,10 +96,10 @@ var _sfc_main$4 = /* @__PURE__ */ defineComponent({
 	}
 });
 //#endregion
-//#region ../../node_modules/.pnpm/@histoire+app@1.0.0-beta.1_vite@8.0.1_@types+node@24.10.9_esbuild@0.27.4_jiti@2.6.1_sas_389380d3ddddce5fc0b85d07c8154589/node_modules/@histoire/app/dist/bundled/components/base/BaseIcon.vue2.js
+//#region ../../node_modules/.pnpm/@histoire+app@1.0.0-beta.1_vite@8.0.16_@types+node@26.0.0_esbuild@0.28.1_jiti@2.6.1_sas_690491dbda3e433e52880ee04a3c8e64/node_modules/@histoire/app/dist/bundled/components/base/BaseIcon.vue2.js
 var _hoisted_1$3 = ["src", "alt"];
 //#endregion
-//#region ../../node_modules/.pnpm/@histoire+app@1.0.0-beta.1_vite@8.0.1_@types+node@24.10.9_esbuild@0.27.4_jiti@2.6.1_sas_389380d3ddddce5fc0b85d07c8154589/node_modules/@histoire/app/dist/bundled/components/base/BaseIcon.vue.js
+//#region ../../node_modules/.pnpm/@histoire+app@1.0.0-beta.1_vite@8.0.16_@types+node@26.0.0_esbuild@0.28.1_jiti@2.6.1_sas_690491dbda3e433e52880ee04a3c8e64/node_modules/@histoire/app/dist/bundled/components/base/BaseIcon.vue.js
 var BaseIcon = /* @__PURE__ */ _export_sfc(/* @__PURE__ */ defineComponent({
 	__name: "BaseIcon",
 	props: { icon: {} },
@@ -121,7 +121,7 @@ var BaseIcon = /* @__PURE__ */ _export_sfc(/* @__PURE__ */ defineComponent({
 	}
 }), [["__scopeId", "data-v-2114f510"]]);
 //#endregion
-//#region ../../node_modules/.pnpm/@histoire+app@1.0.0-beta.1_vite@8.0.1_@types+node@24.10.9_esbuild@0.27.4_jiti@2.6.1_sas_389380d3ddddce5fc0b85d07c8154589/node_modules/@histoire/app/dist/bundled/components/search/SearchItemContent.vue2.js
+//#region ../../node_modules/.pnpm/@histoire+app@1.0.0-beta.1_vite@8.0.16_@types+node@26.0.0_esbuild@0.28.1_jiti@2.6.1_sas_690491dbda3e433e52880ee04a3c8e64/node_modules/@histoire/app/dist/bundled/components/search/SearchItemContent.vue2.js
 var _hoisted_1$2 = { class: "htw-flex-1" };
 var _hoisted_2 = { class: "htw-flex" };
 var _hoisted_3 = { class: "htw-ml-auto htw-opacity-40" };
@@ -166,10 +166,10 @@ var _sfc_main$2 = /* @__PURE__ */ defineComponent({
 	}
 });
 //#endregion
-//#region ../../node_modules/.pnpm/@histoire+app@1.0.0-beta.1_vite@8.0.1_@types+node@24.10.9_esbuild@0.27.4_jiti@2.6.1_sas_389380d3ddddce5fc0b85d07c8154589/node_modules/@histoire/app/dist/bundled/components/search/SearchItem.vue2.js
+//#region ../../node_modules/.pnpm/@histoire+app@1.0.0-beta.1_vite@8.0.16_@types+node@26.0.0_esbuild@0.28.1_jiti@2.6.1_sas_690491dbda3e433e52880ee04a3c8e64/node_modules/@histoire/app/dist/bundled/components/search/SearchItem.vue2.js
 var _hoisted_1$1 = ["data-selected"];
 //#endregion
-//#region ../../node_modules/.pnpm/@histoire+app@1.0.0-beta.1_vite@8.0.1_@types+node@24.10.9_esbuild@0.27.4_jiti@2.6.1_sas_389380d3ddddce5fc0b85d07c8154589/node_modules/@histoire/app/dist/bundled/components/search/SearchItem.vue.js
+//#region ../../node_modules/.pnpm/@histoire+app@1.0.0-beta.1_vite@8.0.16_@types+node@26.0.0_esbuild@0.28.1_jiti@2.6.1_sas_690491dbda3e433e52880ee04a3c8e64/node_modules/@histoire/app/dist/bundled/components/search/SearchItem.vue.js
 var SearchItem = /* @__PURE__ */ _export_sfc(/* @__PURE__ */ defineComponent({
 	__name: "SearchItem",
 	props: {
@@ -235,7 +235,7 @@ var SearchItem = /* @__PURE__ */ _export_sfc(/* @__PURE__ */ defineComponent({
 	}
 }), [["__scopeId", "data-v-9f94ad2b"]]);
 //#endregion
-//#region ../../node_modules/.pnpm/@histoire+app@1.0.0-beta.1_vite@8.0.1_@types+node@24.10.9_esbuild@0.27.4_jiti@2.6.1_sas_389380d3ddddce5fc0b85d07c8154589/node_modules/@histoire/app/dist/bundled/components/search/SearchPane.vue2.js
+//#region ../../node_modules/.pnpm/@histoire+app@1.0.0-beta.1_vite@8.0.16_@types+node@26.0.0_esbuild@0.28.1_jiti@2.6.1_sas_690491dbda3e433e52880ee04a3c8e64/node_modules/@histoire/app/dist/bundled/components/search/SearchPane.vue2.js
 var _hoisted_1 = {
 	key: 1,
 	class: "htw-max-h-[400px] htw-overflow-y-auto htw-rounded-b-lg"
@@ -248,7 +248,7 @@ var _sfc_main = /* @__PURE__ */ defineComponent({
 	} },
 	emits: { close: () => true },
 	setup(__props, { emit: __emit }) {
-		const DocSearchData = () => __vitePreload(() => import("./search-docs-data-TJkmHTJj.js"), __vite__mapDeps([0,1,2]), import.meta.url);
+		const DocSearchData = () => __vitePreload(() => import("./search-docs-data-CPHAGGin.js"), __vite__mapDeps([0,1,2]), import.meta.url);
 		const props = __props;
 		const emit = __emit;
 		function close() {

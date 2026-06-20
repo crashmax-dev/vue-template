@@ -1,14 +1,14 @@
-import { $a as onClickOutside, Ao as markRaw, Bo as ref, Ca as s0, Co as createStaticVNode, Da as clone, Do as defineComponent, Ea as applyState, Fa as useRoute, Fo as onBeforeUnmount, Go as resolveDynamicComponent, Ho as renderSlot, Ia as useRouter, Io as onMounted, Jo as toRaw, Ko as shallowRef, La as Icon, Lo as onUnmounted, Mo as nextTick, No as normalizeClass, Oa as omit, Oo as h, Po as normalizeStyle, Qo as vModelText, Ra as __vitePreload, Ro as openBlock, Sa as n0, So as createElementBlock, To as createVNode, Uo as resolveComponent, Vo as renderList, Wo as resolveDirective, Xo as unref, Yo as toRefs, Zo as useCssVars, _o as computed, ao as useResizeObserver, as as withModifiers, ba as e0, bo as createBlock, do as defineStore, es as watch, go as Transition, ho as Fragment, is as withKeys, jo as mergeProps, ka as unindent, ko as isRef, mo as kt, no as useEventListener, ns as withCtx, oo as useStorage, po as Ot, qo as toDisplayString, rs as withDirectives, so as useTimeoutFn, ts as watchEffect, va as createHighlighter, wo as createTextVNode, xa as f0, xo as createCommentVNode, ya as d0, yo as createBaseVNode, zo as reactive } from "./vendor-BRroElKf.js";
-import { r as histoireConfig } from "./router-C_GbisOD.js";
-import { n as isDark, t as clientSupportPlugins } from "./_virtual__histoire-support-plugins-client-CfbNpnLM.js";
-import { n as _export_sfc, r as useScrollOnActive, t as BaseListItemLink } from "./BaseListItemLink.vue-Bw9AyNIU.js";
-import { a as _sfc_main$35, i as BaseSplitPane, o as useStoryStore, t as isMobile } from "./bundle-main-jj-5tbrv.js";
-import { a as SANDBOX_READY, i as PREVIEW_SETTINGS_SYNC, n as getContrastColor, o as STATE_SYNC, r as EVENT_SEND, s as _sfc_main$36, t as toRawDeep } from "./bundle-sandbox-D3uGPh32.js";
-import { t as BaseEmpty } from "./BaseEmpty.vue-Dv4biapF.js";
+import { $ as defineStore, At as renderSlot, Bt as vModelText, C as useRoute, Ct as onBeforeUnmount, Dt as reactive, E as __vitePreload, Et as openBlock, Ft as toDisplayString, Gt as withDirectives, Ht as watch, It as toRaw, J as useStorage, Kt as withKeys, Lt as toRefs, Mt as resolveDirective, Nt as resolveDynamicComponent, Ot as ref, Pt as shallowRef, Rt as unref, St as normalizeStyle, T as Icon, Tt as onUnmounted, Ut as watchEffect, V as onClickOutside, W as useEventListener, Wt as withCtx, Y as useTimeoutFn, _ as unindent, _t as isRef, at as computed, bt as nextTick, c as e0, ct as createBlock, d as s0, dt as createStaticVNode, ft as createTextVNode, g as omit, gt as h, h as clone, ht as defineComponent, it as Transition, jt as resolveComponent, kt as renderList, l as f0, lt as createCommentVNode, m as applyState, nt as kt, o as createHighlighter, pt as createVNode, q as useResizeObserver, qt as withModifiers, rt as Fragment, s as d0, st as createBaseVNode, tt as Ot, u as n0, ut as createElementBlock, vt as markRaw, w as useRouter, wt as onMounted, xt as normalizeClass, yt as mergeProps, zt as useCssVars } from "./vendor-CJxuTU_T.js";
+import { i as isDark, r as clientSupportPlugins } from "./plugin-Yyjcd29w.js";
+import { r as histoireConfig } from "./router-ChlKzTpF.js";
+import { t as useStoryStore } from "./story-C_j060cL.js";
+import { a as _export_sfc, i as BaseListItemLink, n as BaseSplitPane, o as useScrollOnActive, r as _sfc_main$35, t as isMobile } from "./responsive-DnY-x6gn.js";
+import { a as PREVIEW_SETTINGS_SYNC, c as _sfc_main$36, i as EVENT_SEND, o as SANDBOX_READY, r as getContrastColor, s as STATE_SYNC, t as toRawDeep } from "./state-BRbLB5U6.js";
+import { t as BaseEmpty } from "./BaseEmpty.vue-B7C9WCoc.js";
 //#region \0virtual:$histoire-markdown-files
-var markdownFiles = reactive({ "src/button/story/button.story.md": () => __vitePreload(() => import("./__resolved__virtual_md_src-button-story-button-story-md-guaMznz1.js"), [], import.meta.url) });
+var markdownFiles = reactive({ "src/button/story/button.story.md": () => __vitePreload(() => import("./__resolved__virtual_md_src-button-story-button-story-md-DC_vNG6X.js"), [], import.meta.url) });
 //#endregion
-//#region ../../node_modules/.pnpm/@histoire+app@1.0.0-beta.1_vite@8.0.1_@types+node@24.10.9_esbuild@0.27.4_jiti@2.6.1_sas_389380d3ddddce5fc0b85d07c8154589/node_modules/@histoire/app/dist/bundled/components/panel/StoryDocs.vue2.js
+//#region ../../node_modules/.pnpm/@histoire+app@1.0.0-beta.1_vite@8.0.16_@types+node@26.0.0_esbuild@0.28.1_jiti@2.6.1_sas_690491dbda3e433e52880ee04a3c8e64/node_modules/@histoire/app/dist/bundled/components/panel/StoryDocs.vue2.js
 var _hoisted_1$29 = ["innerHTML"];
 function useStoryDoc(story) {
 	const renderedDoc = ref("");
@@ -122,7 +122,7 @@ var _sfc_main$34 = /* @__PURE__ */ defineComponent({
 	}
 });
 //#endregion
-//#region ../../node_modules/.pnpm/@histoire+app@1.0.0-beta.1_vite@8.0.1_@types+node@24.10.9_esbuild@0.27.4_jiti@2.6.1_sas_389380d3ddddce5fc0b85d07c8154589/node_modules/@histoire/app/dist/bundled/stores/events.js
+//#region ../../node_modules/.pnpm/@histoire+app@1.0.0-beta.1_vite@8.0.16_@types+node@26.0.0_esbuild@0.28.1_jiti@2.6.1_sas_690491dbda3e433e52880ee04a3c8e64/node_modules/@histoire/app/dist/bundled/stores/events.js
 var useEventsStore = defineStore("events", () => {
 	const storyStore = useStoryStore();
 	const events = reactive([]);
@@ -146,7 +146,7 @@ var useEventsStore = defineStore("events", () => {
 	};
 });
 //#endregion
-//#region ../../node_modules/.pnpm/@histoire+app@1.0.0-beta.1_vite@8.0.1_@types+node@24.10.9_esbuild@0.27.4_jiti@2.6.1_sas_389380d3ddddce5fc0b85d07c8154589/node_modules/@histoire/app/dist/bundled/components/base/BaseOverflowMenu.vue2.js
+//#region ../../node_modules/.pnpm/@histoire+app@1.0.0-beta.1_vite@8.0.16_@types+node@26.0.0_esbuild@0.28.1_jiti@2.6.1_sas_690491dbda3e433e52880ee04a3c8e64/node_modules/@histoire/app/dist/bundled/components/base/BaseOverflowMenu.vue2.js
 var _hoisted_1$28 = {
 	role: "button",
 	class: "htw-cursor-pointer hover:htw-bg-primary-50 dark:hover:htw-bg-primary-900 htw-w-8 htw-h-full htw-flex htw-items-center htw-justify-center htw-absolute htw-top-0 htw-right-0"
@@ -227,7 +227,7 @@ var _sfc_main$33 = /* @__PURE__ */ defineComponent({
 	}
 });
 //#endregion
-//#region ../../node_modules/.pnpm/@histoire+app@1.0.0-beta.1_vite@8.0.1_@types+node@24.10.9_esbuild@0.27.4_jiti@2.6.1_sas_389380d3ddddce5fc0b85d07c8154589/node_modules/@histoire/app/dist/bundled/components/base/BaseOverflowTab.vue2.js
+//#region ../../node_modules/.pnpm/@histoire+app@1.0.0-beta.1_vite@8.0.16_@types+node@26.0.0_esbuild@0.28.1_jiti@2.6.1_sas_690491dbda3e433e52880ee04a3c8e64/node_modules/@histoire/app/dist/bundled/components/base/BaseOverflowTab.vue2.js
 var _sfc_main$32 = defineComponent({
 	inheritAttrs: false,
 	props: {
@@ -242,7 +242,7 @@ var _sfc_main$32 = defineComponent({
 	}
 });
 //#endregion
-//#region ../../node_modules/.pnpm/@histoire+app@1.0.0-beta.1_vite@8.0.1_@types+node@24.10.9_esbuild@0.27.4_jiti@2.6.1_sas_389380d3ddddce5fc0b85d07c8154589/node_modules/@histoire/app/dist/bundled/components/base/BaseOverflowTab.vue.js
+//#region ../../node_modules/.pnpm/@histoire+app@1.0.0-beta.1_vite@8.0.16_@types+node@26.0.0_esbuild@0.28.1_jiti@2.6.1_sas_690491dbda3e433e52880ee04a3c8e64/node_modules/@histoire/app/dist/bundled/components/base/BaseOverflowTab.vue.js
 var _hoisted_1$27 = ["href", "onClick"];
 var _hoisted_2$16 = {
 	key: 0,
@@ -264,7 +264,7 @@ function _sfc_render$4(_ctx, _cache, $props, $setup, $data, $options) {
 }
 var BaseOverflowTab = /* @__PURE__ */ _export_sfc(_sfc_main$32, [["render", _sfc_render$4]]);
 //#endregion
-//#region ../../node_modules/.pnpm/@histoire+app@1.0.0-beta.1_vite@8.0.1_@types+node@24.10.9_esbuild@0.27.4_jiti@2.6.1_sas_389380d3ddddce5fc0b85d07c8154589/node_modules/@histoire/app/dist/bundled/components/base/BaseTab.vue2.js
+//#region ../../node_modules/.pnpm/@histoire+app@1.0.0-beta.1_vite@8.0.16_@types+node@26.0.0_esbuild@0.28.1_jiti@2.6.1_sas_690491dbda3e433e52880ee04a3c8e64/node_modules/@histoire/app/dist/bundled/components/base/BaseTab.vue2.js
 var _sfc_main$31 = defineComponent({
 	inheritAttrs: false,
 	props: {
@@ -279,7 +279,7 @@ var _sfc_main$31 = defineComponent({
 	}
 });
 //#endregion
-//#region ../../node_modules/.pnpm/@histoire+app@1.0.0-beta.1_vite@8.0.1_@types+node@24.10.9_esbuild@0.27.4_jiti@2.6.1_sas_389380d3ddddce5fc0b85d07c8154589/node_modules/@histoire/app/dist/bundled/components/base/BaseTab.vue.js
+//#region ../../node_modules/.pnpm/@histoire+app@1.0.0-beta.1_vite@8.0.16_@types+node@26.0.0_esbuild@0.28.1_jiti@2.6.1_sas_690491dbda3e433e52880ee04a3c8e64/node_modules/@histoire/app/dist/bundled/components/base/BaseTab.vue.js
 var _hoisted_1$26 = ["href", "onClick"];
 var _hoisted_2$15 = {
 	key: 0,
@@ -301,7 +301,7 @@ function _sfc_render$3(_ctx, _cache, $props, $setup, $data, $options) {
 }
 var BaseTab = /* @__PURE__ */ _export_sfc(_sfc_main$31, [["render", _sfc_render$3]]);
 //#endregion
-//#region ../../node_modules/.pnpm/@histoire+app@1.0.0-beta.1_vite@8.0.1_@types+node@24.10.9_esbuild@0.27.4_jiti@2.6.1_sas_389380d3ddddce5fc0b85d07c8154589/node_modules/@histoire/app/dist/bundled/components/base/BaseTag.vue.js
+//#region ../../node_modules/.pnpm/@histoire+app@1.0.0-beta.1_vite@8.0.16_@types+node@26.0.0_esbuild@0.28.1_jiti@2.6.1_sas_690491dbda3e433e52880ee04a3c8e64/node_modules/@histoire/app/dist/bundled/components/base/BaseTag.vue.js
 var _sfc_main$30 = {};
 var _hoisted_1$25 = { class: "histoire-base-tag htw-text-center htw-text-xs htw-mx-1 htw-px-0.5 htw-h-4 htw-uppercase htw-min-w-4 htw-rounded-full htw-bg-primary-500 htw-text-white dark:htw-text-black" };
 function _sfc_render$2(_ctx, _cache) {
@@ -309,7 +309,7 @@ function _sfc_render$2(_ctx, _cache) {
 }
 var BaseTag = /* @__PURE__ */ _export_sfc(_sfc_main$30, [["render", _sfc_render$2]]);
 //#endregion
-//#region ../../node_modules/.pnpm/@histoire+app@1.0.0-beta.1_vite@8.0.1_@types+node@24.10.9_esbuild@0.27.4_jiti@2.6.1_sas_389380d3ddddce5fc0b85d07c8154589/node_modules/@histoire/app/dist/bundled/components/panel/PaneTabs.vue2.js
+//#region ../../node_modules/.pnpm/@histoire+app@1.0.0-beta.1_vite@8.0.16_@types+node@26.0.0_esbuild@0.28.1_jiti@2.6.1_sas_690491dbda3e433e52880ee04a3c8e64/node_modules/@histoire/app/dist/bundled/components/panel/PaneTabs.vue2.js
 var _sfc_main$29 = /* @__PURE__ */ defineComponent({
 	__name: "PaneTabs",
 	props: {
@@ -437,7 +437,7 @@ var _sfc_main$29 = /* @__PURE__ */ defineComponent({
 	}
 });
 //#endregion
-//#region ../../node_modules/.pnpm/@histoire+app@1.0.0-beta.1_vite@8.0.1_@types+node@24.10.9_esbuild@0.27.4_jiti@2.6.1_sas_389380d3ddddce5fc0b85d07c8154589/node_modules/@histoire/app/dist/bundled/components/panel/ControlsComponentPropItem.vue2.js
+//#region ../../node_modules/.pnpm/@histoire+app@1.0.0-beta.1_vite@8.0.16_@types+node@26.0.0_esbuild@0.28.1_jiti@2.6.1_sas_690491dbda3e433e52880ee04a3c8e64/node_modules/@histoire/app/dist/bundled/components/panel/ControlsComponentPropItem.vue2.js
 var _sfc_main$28 = /* @__PURE__ */ defineComponent({
 	__name: "ControlsComponentPropItem",
 	props: {
@@ -493,7 +493,7 @@ var _sfc_main$28 = /* @__PURE__ */ defineComponent({
 	}
 });
 //#endregion
-//#region ../../node_modules/.pnpm/@histoire+app@1.0.0-beta.1_vite@8.0.1_@types+node@24.10.9_esbuild@0.27.4_jiti@2.6.1_sas_389380d3ddddce5fc0b85d07c8154589/node_modules/@histoire/app/dist/bundled/components/panel/ControlsComponentProps.vue2.js
+//#region ../../node_modules/.pnpm/@histoire+app@1.0.0-beta.1_vite@8.0.16_@types+node@26.0.0_esbuild@0.28.1_jiti@2.6.1_sas_690491dbda3e433e52880ee04a3c8e64/node_modules/@histoire/app/dist/bundled/components/panel/ControlsComponentProps.vue2.js
 var _hoisted_1$24 = { class: "histoire-controls-component-props" };
 var _hoisted_2$14 = { class: "htw-font-mono htw-p-2 htw-flex htw-items-center htw-gap-1" };
 var _sfc_main$27 = /* @__PURE__ */ defineComponent({
@@ -528,7 +528,7 @@ var _sfc_main$27 = /* @__PURE__ */ defineComponent({
 	}
 });
 //#endregion
-//#region ../../node_modules/.pnpm/@histoire+app@1.0.0-beta.1_vite@8.0.1_@types+node@24.10.9_esbuild@0.27.4_jiti@2.6.1_sas_389380d3ddddce5fc0b85d07c8154589/node_modules/@histoire/app/dist/bundled/components/panel/ControlsComponentStateItem.vue2.js
+//#region ../../node_modules/.pnpm/@histoire+app@1.0.0-beta.1_vite@8.0.16_@types+node@26.0.0_esbuild@0.28.1_jiti@2.6.1_sas_690491dbda3e433e52880ee04a3c8e64/node_modules/@histoire/app/dist/bundled/components/panel/ControlsComponentStateItem.vue2.js
 var _sfc_main$26 = /* @__PURE__ */ defineComponent({
 	__name: "ControlsComponentStateItem",
 	props: {
@@ -565,7 +565,7 @@ var _sfc_main$26 = /* @__PURE__ */ defineComponent({
 	}
 });
 //#endregion
-//#region ../../node_modules/.pnpm/@histoire+app@1.0.0-beta.1_vite@8.0.1_@types+node@24.10.9_esbuild@0.27.4_jiti@2.6.1_sas_389380d3ddddce5fc0b85d07c8154589/node_modules/@histoire/app/dist/bundled/components/panel/ControlsComponentState.vue2.js
+//#region ../../node_modules/.pnpm/@histoire+app@1.0.0-beta.1_vite@8.0.16_@types+node@26.0.0_esbuild@0.28.1_jiti@2.6.1_sas_690491dbda3e433e52880ee04a3c8e64/node_modules/@histoire/app/dist/bundled/components/panel/ControlsComponentState.vue2.js
 var _hoisted_1$23 = { class: "histoire-controls-component-init-state" };
 var _hoisted_2$13 = { class: "htw-p-2 htw-flex htw-items-center htw-gap-1" };
 var _sfc_main$25 = /* @__PURE__ */ defineComponent({
@@ -590,7 +590,7 @@ var _sfc_main$25 = /* @__PURE__ */ defineComponent({
 	}
 });
 //#endregion
-//#region ../../node_modules/.pnpm/@histoire+app@1.0.0-beta.1_vite@8.0.1_@types+node@24.10.9_esbuild@0.27.4_jiti@2.6.1_sas_389380d3ddddce5fc0b85d07c8154589/node_modules/@histoire/app/dist/bundled/components/base/BaseSelect.vue2.js
+//#region ../../node_modules/.pnpm/@histoire+app@1.0.0-beta.1_vite@8.0.16_@types+node@26.0.0_esbuild@0.28.1_jiti@2.6.1_sas_690491dbda3e433e52880ee04a3c8e64/node_modules/@histoire/app/dist/bundled/components/base/BaseSelect.vue2.js
 var _hoisted_1$22 = { class: "htw-cursor-pointer htw-w-full htw-outline-none htw-px-2 htw-h-[27px] -htw-my-1 htw-border htw-border-solid htw-border-black/25 dark:htw-border-white/25 hover:htw-border-primary-500 dark:hover:htw-border-primary-500 htw-rounded-sm htw-flex htw-gap-2 htw-items-center htw-leading-normal" };
 var _hoisted_2$12 = { class: "htw-flex-1 htw-truncate" };
 var _hoisted_3$11 = { class: "htw-flex htw-flex-col htw-bg-gray-50 dark:htw-bg-gray-700" };
@@ -645,7 +645,7 @@ var _sfc_main$24 = /* @__PURE__ */ defineComponent({
 	}
 });
 //#endregion
-//#region ../../node_modules/.pnpm/@histoire+app@1.0.0-beta.1_vite@8.0.1_@types+node@24.10.9_esbuild@0.27.4_jiti@2.6.1_sas_389380d3ddddce5fc0b85d07c8154589/node_modules/@histoire/app/dist/bundled/components/panel/StatePresets.vue2.js
+//#region ../../node_modules/.pnpm/@histoire+app@1.0.0-beta.1_vite@8.0.16_@types+node@26.0.0_esbuild@0.28.1_jiti@2.6.1_sas_690491dbda3e433e52880ee04a3c8e64/node_modules/@histoire/app/dist/bundled/components/panel/StatePresets.vue2.js
 var _hoisted_1$21 = { class: "histoire-state-presets htw-flex htw-gap-2 htw-w-full htw-items-center" };
 var _hoisted_2$11 = ["onUpdate:modelValue"];
 var _hoisted_3$10 = {
@@ -785,7 +785,7 @@ var _sfc_main$23 = /* @__PURE__ */ defineComponent({
 	}
 });
 //#endregion
-//#region ../../node_modules/.pnpm/@histoire+app@1.0.0-beta.1_vite@8.0.1_@types+node@24.10.9_esbuild@0.27.4_jiti@2.6.1_sas_389380d3ddddce5fc0b85d07c8154589/node_modules/@histoire/app/dist/bundled/components/panel/StoryControls.vue2.js
+//#region ../../node_modules/.pnpm/@histoire+app@1.0.0-beta.1_vite@8.0.16_@types+node@26.0.0_esbuild@0.28.1_jiti@2.6.1_sas_690491dbda3e433e52880ee04a3c8e64/node_modules/@histoire/app/dist/bundled/components/panel/StoryControls.vue2.js
 var _hoisted_1$20 = {
 	"data-test-id": "story-controls",
 	class: "histoire-story-controls htw-flex htw-flex-col htw-divide-y htw-divide-gray-100 dark:htw-divide-gray-750"
@@ -850,7 +850,7 @@ var _sfc_main$22 = /* @__PURE__ */ defineComponent({
 	}
 });
 //#endregion
-//#region ../../node_modules/.pnpm/@histoire+app@1.0.0-beta.1_vite@8.0.1_@types+node@24.10.9_esbuild@0.27.4_jiti@2.6.1_sas_389380d3ddddce5fc0b85d07c8154589/node_modules/@histoire/app/dist/bundled/components/panel/StoryEvent.vue2.js
+//#region ../../node_modules/.pnpm/@histoire+app@1.0.0-beta.1_vite@8.0.16_@types+node@26.0.0_esbuild@0.28.1_jiti@2.6.1_sas_690491dbda3e433e52880ee04a3c8e64/node_modules/@histoire/app/dist/bundled/components/panel/StoryEvent.vue2.js
 var _hoisted_1$19 = {
 	key: 0,
 	class: "htw-text-xs htw-opacity-50 htw-truncate"
@@ -884,7 +884,7 @@ var _sfc_main$21 = /* @__PURE__ */ defineComponent({
 	}
 });
 //#endregion
-//#region ../../node_modules/.pnpm/@histoire+app@1.0.0-beta.1_vite@8.0.1_@types+node@24.10.9_esbuild@0.27.4_jiti@2.6.1_sas_389380d3ddddce5fc0b85d07c8154589/node_modules/@histoire/app/dist/bundled/components/panel/StoryEvents.vue2.js
+//#region ../../node_modules/.pnpm/@histoire+app@1.0.0-beta.1_vite@8.0.16_@types+node@26.0.0_esbuild@0.28.1_jiti@2.6.1_sas_690491dbda3e433e52880ee04a3c8e64/node_modules/@histoire/app/dist/bundled/components/panel/StoryEvents.vue2.js
 var _hoisted_1$18 = { key: 1 };
 var _sfc_main$20 = /* @__PURE__ */ defineComponent({
 	__name: "StoryEvents",
@@ -920,7 +920,7 @@ var _sfc_main$20 = /* @__PURE__ */ defineComponent({
 	}
 });
 //#endregion
-//#region ../../node_modules/.pnpm/@histoire+app@1.0.0-beta.1_vite@8.0.1_@types+node@24.10.9_esbuild@0.27.4_jiti@2.6.1_sas_389380d3ddddce5fc0b85d07c8154589/node_modules/@histoire/app/dist/bundled/components/panel/StorySourceCode.vue2.js
+//#region ../../node_modules/.pnpm/@histoire+app@1.0.0-beta.1_vite@8.0.16_@types+node@26.0.0_esbuild@0.28.1_jiti@2.6.1_sas_690491dbda3e433e52880ee04a3c8e64/node_modules/@histoire/app/dist/bundled/components/panel/StorySourceCode.vue2.js
 var _hoisted_1$17 = { class: "histoire-story-source-code htw-bg-gray-50 dark:htw-bg-gray-750 htw-h-full htw-overflow-hidden htw-flex htw-flex-col" };
 var _hoisted_2$8 = {
 	key: 0,
@@ -934,7 +934,7 @@ var _hoisted_4$4 = {
 var _hoisted_5$4 = ["value"];
 var _hoisted_6$2 = ["innerHTML"];
 //#endregion
-//#region ../../node_modules/.pnpm/@histoire+app@1.0.0-beta.1_vite@8.0.1_@types+node@24.10.9_esbuild@0.27.4_jiti@2.6.1_sas_389380d3ddddce5fc0b85d07c8154589/node_modules/@histoire/app/dist/bundled/components/panel/StorySourceCode.vue.js
+//#region ../../node_modules/.pnpm/@histoire+app@1.0.0-beta.1_vite@8.0.16_@types+node@26.0.0_esbuild@0.28.1_jiti@2.6.1_sas_690491dbda3e433e52880ee04a3c8e64/node_modules/@histoire/app/dist/bundled/components/panel/StorySourceCode.vue.js
 var StorySourceCode = /* @__PURE__ */ _export_sfc(/* @__PURE__ */ defineComponent({
 	__name: "StorySourceCode",
 	props: {
@@ -1055,7 +1055,7 @@ var StorySourceCode = /* @__PURE__ */ _export_sfc(/* @__PURE__ */ defineComponen
 	}
 }), [["__scopeId", "data-v-96af7f40"]]);
 //#endregion
-//#region ../../node_modules/.pnpm/@histoire+app@1.0.0-beta.1_vite@8.0.1_@types+node@24.10.9_esbuild@0.27.4_jiti@2.6.1_sas_389380d3ddddce5fc0b85d07c8154589/node_modules/@histoire/app/dist/bundled/components/panel/StorySidePanel.vue2.js
+//#region ../../node_modules/.pnpm/@histoire+app@1.0.0-beta.1_vite@8.0.16_@types+node@26.0.0_esbuild@0.28.1_jiti@2.6.1_sas_690491dbda3e433e52880ee04a3c8e64/node_modules/@histoire/app/dist/bundled/components/panel/StorySidePanel.vue2.js
 var _hoisted_1$16 = { class: "htw-flex htw-flex-col htw-h-full" };
 var _sfc_main$18 = /* @__PURE__ */ defineComponent({
 	__name: "StorySidePanel",
@@ -1108,7 +1108,7 @@ var _sfc_main$18 = /* @__PURE__ */ defineComponent({
 	}
 });
 //#endregion
-//#region ../../node_modules/.pnpm/@histoire+app@1.0.0-beta.1_vite@8.0.1_@types+node@24.10.9_esbuild@0.27.4_jiti@2.6.1_sas_389380d3ddddce5fc0b85d07c8154589/node_modules/@histoire/app/dist/bundled/stores/preview-settings.js
+//#region ../../node_modules/.pnpm/@histoire+app@1.0.0-beta.1_vite@8.0.16_@types+node@26.0.0_esbuild@0.28.1_jiti@2.6.1_sas_690491dbda3e433e52880ee04a3c8e64/node_modules/@histoire/app/dist/bundled/stores/preview-settings.js
 var usePreviewSettingsStore = defineStore("preview-settings", () => {
 	return { currentSettings: useStorage("_histoire-sandbox-settings-v3", {
 		responsiveWidth: 720,
@@ -1120,7 +1120,7 @@ var usePreviewSettingsStore = defineStore("preview-settings", () => {
 	}) };
 });
 //#endregion
-//#region ../../node_modules/.pnpm/@histoire+app@1.0.0-beta.1_vite@8.0.1_@types+node@24.10.9_esbuild@0.27.4_jiti@2.6.1_sas_389380d3ddddce5fc0b85d07c8154589/node_modules/@histoire/app/dist/bundled/components/base/BaseCheckbox.vue2.js
+//#region ../../node_modules/.pnpm/@histoire+app@1.0.0-beta.1_vite@8.0.16_@types+node@26.0.0_esbuild@0.28.1_jiti@2.6.1_sas_690491dbda3e433e52880ee04a3c8e64/node_modules/@histoire/app/dist/bundled/components/base/BaseCheckbox.vue2.js
 var _hoisted_1$15 = { class: "htw-text-white htw-w-[16px] htw-h-[16px] htw-relative" };
 var _hoisted_2$7 = {
 	width: "16",
@@ -1171,7 +1171,7 @@ var _sfc_main$17 = /* @__PURE__ */ defineComponent({
 	}
 });
 //#endregion
-//#region ../../node_modules/.pnpm/@histoire+app@1.0.0-beta.1_vite@8.0.1_@types+node@24.10.9_esbuild@0.27.4_jiti@2.6.1_sas_389380d3ddddce5fc0b85d07c8154589/node_modules/@histoire/app/dist/bundled/components/toolbar/ToolbarBackground.vue2.js
+//#region ../../node_modules/.pnpm/@histoire+app@1.0.0-beta.1_vite@8.0.16_@types+node@26.0.0_esbuild@0.28.1_jiti@2.6.1_sas_690491dbda3e433e52880ee04a3c8e64/node_modules/@histoire/app/dist/bundled/components/toolbar/ToolbarBackground.vue2.js
 var _hoisted_1$14 = { class: "htw-cursor-pointer hover:htw-text-primary-500 htw-flex htw-items-center htw-gap-1 htw-h-full htw-px-2 htw-group" };
 var _hoisted_2$6 = { class: "bind-preview-bg htw-w-4 htw-h-4 htw-rounded-full htw-border htw-border-black/50 dark:htw-border-white/50 htw-flex htw-items-center htw-justify-center htw-text-xs" };
 var _hoisted_3$5 = { key: 0 };
@@ -1184,7 +1184,7 @@ var _hoisted_6$1 = { class: "htw-mr-auto" };
 var _hoisted_7$1 = { class: "htw-ml-auto htw-opacity-70" };
 var _hoisted_8$1 = { key: 0 };
 //#endregion
-//#region ../../node_modules/.pnpm/@histoire+app@1.0.0-beta.1_vite@8.0.1_@types+node@24.10.9_esbuild@0.27.4_jiti@2.6.1_sas_389380d3ddddce5fc0b85d07c8154589/node_modules/@histoire/app/dist/bundled/components/toolbar/ToolbarBackground.vue.js
+//#region ../../node_modules/.pnpm/@histoire+app@1.0.0-beta.1_vite@8.0.16_@types+node@26.0.0_esbuild@0.28.1_jiti@2.6.1_sas_690491dbda3e433e52880ee04a3c8e64/node_modules/@histoire/app/dist/bundled/components/toolbar/ToolbarBackground.vue.js
 var ToolbarBackground = /* @__PURE__ */ _export_sfc(/* @__PURE__ */ defineComponent({
 	__name: "ToolbarBackground",
 	setup(__props) {
@@ -1236,7 +1236,7 @@ var ToolbarBackground = /* @__PURE__ */ _export_sfc(/* @__PURE__ */ defineCompon
 	}
 }), [["__scopeId", "data-v-c48fb2b2"]]);
 //#endregion
-//#region ../../node_modules/.pnpm/@histoire+app@1.0.0-beta.1_vite@8.0.1_@types+node@24.10.9_esbuild@0.27.4_jiti@2.6.1_sas_389380d3ddddce5fc0b85d07c8154589/node_modules/@histoire/app/dist/bundled/components/toolbar/ToolbarTextDirection.vue2.js
+//#region ../../node_modules/.pnpm/@histoire+app@1.0.0-beta.1_vite@8.0.16_@types+node@26.0.0_esbuild@0.28.1_jiti@2.6.1_sas_690491dbda3e433e52880ee04a3c8e64/node_modules/@histoire/app/dist/bundled/components/toolbar/ToolbarTextDirection.vue2.js
 var _sfc_main$15 = /* @__PURE__ */ defineComponent({
 	__name: "ToolbarTextDirection",
 	setup(__props) {
@@ -1254,7 +1254,7 @@ var _sfc_main$15 = /* @__PURE__ */ defineComponent({
 	}
 });
 //#endregion
-//#region ../../node_modules/.pnpm/@histoire+app@1.0.0-beta.1_vite@8.0.1_@types+node@24.10.9_esbuild@0.27.4_jiti@2.6.1_sas_389380d3ddddce5fc0b85d07c8154589/node_modules/@histoire/app/dist/bundled/util/docs.js
+//#region ../../node_modules/.pnpm/@histoire+app@1.0.0-beta.1_vite@8.0.16_@types+node@26.0.0_esbuild@0.28.1_jiti@2.6.1_sas_690491dbda3e433e52880ee04a3c8e64/node_modules/@histoire/app/dist/bundled/util/docs.js
 async function getSourceCode(story, variant) {
 	if (variant.source) return variant.source;
 	else if (variant.slots?.().source) {
@@ -1268,7 +1268,7 @@ async function getSourceCode(story, variant) {
 	if (sourceLoader) return (await sourceLoader()).default;
 }
 //#endregion
-//#region ../../node_modules/.pnpm/@histoire+app@1.0.0-beta.1_vite@8.0.1_@types+node@24.10.9_esbuild@0.27.4_jiti@2.6.1_sas_389380d3ddddce5fc0b85d07c8154589/node_modules/@histoire/app/dist/bundled/util/variant.js
+//#region ../../node_modules/.pnpm/@histoire+app@1.0.0-beta.1_vite@8.0.16_@types+node@26.0.0_esbuild@0.28.1_jiti@2.6.1_sas_690491dbda3e433e52880ee04a3c8e64/node_modules/@histoire/app/dist/bundled/util/variant.js
 function useCurrentVariantRoute(variant) {
 	const route = useRoute();
 	return {
@@ -1283,7 +1283,7 @@ function useCurrentVariantRoute(variant) {
 	};
 }
 //#endregion
-//#region ../../node_modules/.pnpm/@histoire+app@1.0.0-beta.1_vite@8.0.1_@types+node@24.10.9_esbuild@0.27.4_jiti@2.6.1_sas_389380d3ddddce5fc0b85d07c8154589/node_modules/@histoire/app/dist/bundled/components/misc/CheckerboardPattern.vue.js
+//#region ../../node_modules/.pnpm/@histoire+app@1.0.0-beta.1_vite@8.0.16_@types+node@26.0.0_esbuild@0.28.1_jiti@2.6.1_sas_690491dbda3e433e52880ee04a3c8e64/node_modules/@histoire/app/dist/bundled/components/misc/CheckerboardPattern.vue.js
 var _sfc_main$14 = {};
 var _hoisted_1$13 = { fill: "none" };
 function _sfc_render$1(_ctx, _cache) {
@@ -1314,7 +1314,7 @@ function _sfc_render$1(_ctx, _cache) {
 }
 var CheckerboardPattern = /* @__PURE__ */ _export_sfc(_sfc_main$14, [["render", _sfc_render$1]]);
 //#endregion
-//#region ../../node_modules/.pnpm/@histoire+app@1.0.0-beta.1_vite@8.0.1_@types+node@24.10.9_esbuild@0.27.4_jiti@2.6.1_sas_389380d3ddddce5fc0b85d07c8154589/node_modules/@histoire/app/dist/bundled/util/sandbox.js
+//#region ../../node_modules/.pnpm/@histoire+app@1.0.0-beta.1_vite@8.0.16_@types+node@26.0.0_esbuild@0.28.1_jiti@2.6.1_sas_690491dbda3e433e52880ee04a3c8e64/node_modules/@histoire/app/dist/bundled/util/sandbox.js
 function getSandboxUrl(story, variant) {
 	const url = new URLSearchParams();
 	url.append("storyId", story.id);
@@ -1322,7 +1322,7 @@ function getSandboxUrl(story, variant) {
 	return `./__sandbox.html?${url.toString()}`;
 }
 //#endregion
-//#region ../../node_modules/.pnpm/@histoire+app@1.0.0-beta.1_vite@8.0.1_@types+node@24.10.9_esbuild@0.27.4_jiti@2.6.1_sas_389380d3ddddce5fc0b85d07c8154589/node_modules/@histoire/app/dist/bundled/components/toolbar/ToolbarNewTab.vue2.js
+//#region ../../node_modules/.pnpm/@histoire+app@1.0.0-beta.1_vite@8.0.16_@types+node@26.0.0_esbuild@0.28.1_jiti@2.6.1_sas_690491dbda3e433e52880ee04a3c8e64/node_modules/@histoire/app/dist/bundled/components/toolbar/ToolbarNewTab.vue2.js
 var _hoisted_1$12 = ["href"];
 var _sfc_main$13 = /* @__PURE__ */ defineComponent({
 	__name: "ToolbarNewTab",
@@ -1349,12 +1349,12 @@ var _sfc_main$13 = /* @__PURE__ */ defineComponent({
 	}
 });
 //#endregion
-//#region ../../node_modules/.pnpm/@histoire+app@1.0.0-beta.1_vite@8.0.1_@types+node@24.10.9_esbuild@0.27.4_jiti@2.6.1_sas_389380d3ddddce5fc0b85d07c8154589/node_modules/@histoire/app/dist/bundled/components/story/StoryVariantGridItem.vue2.js
+//#region ../../node_modules/.pnpm/@histoire+app@1.0.0-beta.1_vite@8.0.16_@types+node@26.0.0_esbuild@0.28.1_jiti@2.6.1_sas_690491dbda3e433e52880ee04a3c8e64/node_modules/@histoire/app/dist/bundled/components/story/StoryVariantGridItem.vue2.js
 var _hoisted_1$11 = { class: "htw-flex-none htw-flex htw-items-center" };
 var _hoisted_2$5 = { class: "htw-truncate htw-flex-1" };
 var _hoisted_3$4 = { class: "htw-flex-none htw-ml-auto htw-hidden group-hover:htw-flex htw-items-center" };
 //#endregion
-//#region ../../node_modules/.pnpm/@histoire+app@1.0.0-beta.1_vite@8.0.1_@types+node@24.10.9_esbuild@0.27.4_jiti@2.6.1_sas_389380d3ddddce5fc0b85d07c8154589/node_modules/@histoire/app/dist/bundled/components/story/StoryVariantGridItem.vue.js
+//#region ../../node_modules/.pnpm/@histoire+app@1.0.0-beta.1_vite@8.0.16_@types+node@26.0.0_esbuild@0.28.1_jiti@2.6.1_sas_690491dbda3e433e52880ee04a3c8e64/node_modules/@histoire/app/dist/bundled/components/story/StoryVariantGridItem.vue.js
 var StoryVariantGridItem = /* @__PURE__ */ _export_sfc(/* @__PURE__ */ defineComponent({
 	__name: "StoryVariantGridItem",
 	props: {
@@ -1462,7 +1462,7 @@ var StoryVariantGridItem = /* @__PURE__ */ _export_sfc(/* @__PURE__ */ defineCom
 	}
 }), [["__scopeId", "data-v-feff9239"]]);
 //#endregion
-//#region ../../node_modules/.pnpm/@histoire+app@1.0.0-beta.1_vite@8.0.1_@types+node@24.10.9_esbuild@0.27.4_jiti@2.6.1_sas_389380d3ddddce5fc0b85d07c8154589/node_modules/@histoire/app/dist/bundled/components/story/StoryVariantGrid.vue2.js
+//#region ../../node_modules/.pnpm/@histoire+app@1.0.0-beta.1_vite@8.0.16_@types+node@26.0.0_esbuild@0.28.1_jiti@2.6.1_sas_690491dbda3e433e52880ee04a3c8e64/node_modules/@histoire/app/dist/bundled/components/story/StoryVariantGrid.vue2.js
 var _hoisted_1$10 = { class: "histoire-story-variant-grid htw-flex htw-flex-col htw-items-stretch htw-h-full __histoire-pane-shadow-from-right" };
 var _hoisted_2$4 = {
 	key: 0,
@@ -1564,10 +1564,10 @@ var _sfc_main$11 = /* @__PURE__ */ defineComponent({
 	}
 });
 //#endregion
-//#region ../../node_modules/.pnpm/@histoire+app@1.0.0-beta.1_vite@8.0.1_@types+node@24.10.9_esbuild@0.27.4_jiti@2.6.1_sas_389380d3ddddce5fc0b85d07c8154589/node_modules/@histoire/app/dist/bundled/components/story/StoryVariantListItem.vue2.js
+//#region ../../node_modules/.pnpm/@histoire+app@1.0.0-beta.1_vite@8.0.16_@types+node@26.0.0_esbuild@0.28.1_jiti@2.6.1_sas_690491dbda3e433e52880ee04a3c8e64/node_modules/@histoire/app/dist/bundled/components/story/StoryVariantListItem.vue2.js
 var _hoisted_1$9 = { class: "htw-truncate" };
 //#endregion
-//#region ../../node_modules/.pnpm/@histoire+app@1.0.0-beta.1_vite@8.0.1_@types+node@24.10.9_esbuild@0.27.4_jiti@2.6.1_sas_389380d3ddddce5fc0b85d07c8154589/node_modules/@histoire/app/dist/bundled/components/story/StoryVariantListItem.vue.js
+//#region ../../node_modules/.pnpm/@histoire+app@1.0.0-beta.1_vite@8.0.16_@types+node@26.0.0_esbuild@0.28.1_jiti@2.6.1_sas_690491dbda3e433e52880ee04a3c8e64/node_modules/@histoire/app/dist/bundled/components/story/StoryVariantListItem.vue.js
 var StoryVariantListItem = /* @__PURE__ */ _export_sfc(/* @__PURE__ */ defineComponent({
 	__name: "StoryVariantListItem",
 	props: { variant: {
@@ -1604,7 +1604,7 @@ var StoryVariantListItem = /* @__PURE__ */ _export_sfc(/* @__PURE__ */ defineCom
 	}
 }), [["__scopeId", "data-v-1b279b85"]]);
 //#endregion
-//#region ../../node_modules/.pnpm/@histoire+app@1.0.0-beta.1_vite@8.0.1_@types+node@24.10.9_esbuild@0.27.4_jiti@2.6.1_sas_389380d3ddddce5fc0b85d07c8154589/node_modules/@histoire/app/dist/bundled/components/toolbar/ToolbarResponsiveSize.vue2.js
+//#region ../../node_modules/.pnpm/@histoire+app@1.0.0-beta.1_vite@8.0.16_@types+node@26.0.0_esbuild@0.28.1_jiti@2.6.1_sas_690491dbda3e433e52880ee04a3c8e64/node_modules/@histoire/app/dist/bundled/components/toolbar/ToolbarResponsiveSize.vue2.js
 var _hoisted_1$8 = { class: "htw-flex htw-flex-col htw-items-stretch" };
 var _hoisted_2$3 = { class: "htw-flex htw-items-center htw-gap-2 htw-px-4 htw-py-3" };
 var _hoisted_3$2 = ["onClick"];
@@ -1691,7 +1691,7 @@ var _sfc_main$9 = /* @__PURE__ */ defineComponent({
 	}
 });
 //#endregion
-//#region ../../node_modules/.pnpm/@histoire+app@1.0.0-beta.1_vite@8.0.1_@types+node@24.10.9_esbuild@0.27.4_jiti@2.6.1_sas_389380d3ddddce5fc0b85d07c8154589/node_modules/@histoire/app/dist/bundled/components/toolbar/ToolbarTitle.vue2.js
+//#region ../../node_modules/.pnpm/@histoire+app@1.0.0-beta.1_vite@8.0.16_@types+node@26.0.0_esbuild@0.28.1_jiti@2.6.1_sas_690491dbda3e433e52880ee04a3c8e64/node_modules/@histoire/app/dist/bundled/components/toolbar/ToolbarTitle.vue2.js
 var _hoisted_1$7 = { class: "histoire-toolbar-title htw-flex htw-items-center htw-gap-1 htw-text-gray-500 htw-flex-1 htw-truncate htw-min-w-0" };
 var _sfc_main$8 = /* @__PURE__ */ defineComponent({
 	__name: "ToolbarTitle",
@@ -1706,7 +1706,7 @@ var _sfc_main$8 = /* @__PURE__ */ defineComponent({
 	}
 });
 //#endregion
-//#region ../../node_modules/.pnpm/@histoire+app@1.0.0-beta.1_vite@8.0.1_@types+node@24.10.9_esbuild@0.27.4_jiti@2.6.1_sas_389380d3ddddce5fc0b85d07c8154589/node_modules/@histoire/app/dist/bundled/components/misc/HatchedPattern.vue.js
+//#region ../../node_modules/.pnpm/@histoire+app@1.0.0-beta.1_vite@8.0.16_@types+node@26.0.0_esbuild@0.28.1_jiti@2.6.1_sas_690491dbda3e433e52880ee04a3c8e64/node_modules/@histoire/app/dist/bundled/components/misc/HatchedPattern.vue.js
 var _sfc_main$7 = {};
 var _hoisted_1$6 = { class: "__histoire-hatched-pattern" };
 function _sfc_render(_ctx, _cache) {
@@ -1714,7 +1714,7 @@ function _sfc_render(_ctx, _cache) {
 }
 var HatchedPattern = /* @__PURE__ */ _export_sfc(_sfc_main$7, [["render", _sfc_render], ["__scopeId", "data-v-91561117"]]);
 //#endregion
-//#region ../../node_modules/.pnpm/@histoire+app@1.0.0-beta.1_vite@8.0.1_@types+node@24.10.9_esbuild@0.27.4_jiti@2.6.1_sas_389380d3ddddce5fc0b85d07c8154589/node_modules/@histoire/app/dist/bundled/components/story/StoryResponsivePreview.vue2.js
+//#region ../../node_modules/.pnpm/@histoire+app@1.0.0-beta.1_vite@8.0.16_@types+node@26.0.0_esbuild@0.28.1_jiti@2.6.1_sas_690491dbda3e433e52880ee04a3c8e64/node_modules/@histoire/app/dist/bundled/components/story/StoryResponsivePreview.vue2.js
 var _hoisted_1$5 = { class: "histoire-story-responsive-preview htw-w-full htw-h-full htw-flex-1 htw-rounded-lg htw-relative htw-overflow-hidden" };
 var _hoisted_2$2 = {
 	key: 0,
@@ -1727,7 +1727,7 @@ var _hoisted_3$1 = {
 var _hoisted_4$1 = { class: "htw-p-8 htw-h-full htw-relative" };
 var _hoisted_5$1 = { class: "htw-w-full htw-h-full htw-relative" };
 //#endregion
-//#region ../../node_modules/.pnpm/@histoire+app@1.0.0-beta.1_vite@8.0.1_@types+node@24.10.9_esbuild@0.27.4_jiti@2.6.1_sas_389380d3ddddce5fc0b85d07c8154589/node_modules/@histoire/app/dist/bundled/components/story/StoryResponsivePreview.vue.js
+//#region ../../node_modules/.pnpm/@histoire+app@1.0.0-beta.1_vite@8.0.16_@types+node@26.0.0_esbuild@0.28.1_jiti@2.6.1_sas_690491dbda3e433e52880ee04a3c8e64/node_modules/@histoire/app/dist/bundled/components/story/StoryResponsivePreview.vue.js
 var StoryResponsivePreview = /* @__PURE__ */ _export_sfc(/* @__PURE__ */ defineComponent({
 	__name: "StoryResponsivePreview",
 	props: { variant: {} },
@@ -1878,7 +1878,7 @@ var StoryResponsivePreview = /* @__PURE__ */ _export_sfc(/* @__PURE__ */ defineC
 	}
 }), [["__scopeId", "data-v-18122333"]]);
 //#endregion
-//#region ../../node_modules/.pnpm/@histoire+app@1.0.0-beta.1_vite@8.0.1_@types+node@24.10.9_esbuild@0.27.4_jiti@2.6.1_sas_389380d3ddddce5fc0b85d07c8154589/node_modules/@histoire/app/dist/bundled/components/story/StoryVariantSinglePreviewNative.vue2.js
+//#region ../../node_modules/.pnpm/@histoire+app@1.0.0-beta.1_vite@8.0.16_@types+node@26.0.0_esbuild@0.28.1_jiti@2.6.1_sas_690491dbda3e433e52880ee04a3c8e64/node_modules/@histoire/app/dist/bundled/components/story/StoryVariantSinglePreviewNative.vue2.js
 var _sfc_main$5 = /* @__PURE__ */ defineComponent({
 	__name: "StoryVariantSinglePreviewNative",
 	props: {
@@ -1934,7 +1934,7 @@ var _sfc_main$5 = /* @__PURE__ */ defineComponent({
 	}
 });
 //#endregion
-//#region ../../node_modules/.pnpm/@histoire+app@1.0.0-beta.1_vite@8.0.1_@types+node@24.10.9_esbuild@0.27.4_jiti@2.6.1_sas_389380d3ddddce5fc0b85d07c8154589/node_modules/@histoire/app/dist/bundled/components/story/StoryVariantSinglePreviewRemote.vue2.js
+//#region ../../node_modules/.pnpm/@histoire+app@1.0.0-beta.1_vite@8.0.16_@types+node@26.0.0_esbuild@0.28.1_jiti@2.6.1_sas_690491dbda3e433e52880ee04a3c8e64/node_modules/@histoire/app/dist/bundled/components/story/StoryVariantSinglePreviewRemote.vue2.js
 var _hoisted_1$4 = ["src"];
 var _sfc_main$4 = /* @__PURE__ */ defineComponent({
 	__name: "StoryVariantSinglePreviewRemote",
@@ -2038,7 +2038,7 @@ var _sfc_main$4 = /* @__PURE__ */ defineComponent({
 	}
 });
 //#endregion
-//#region ../../node_modules/.pnpm/@histoire+app@1.0.0-beta.1_vite@8.0.1_@types+node@24.10.9_esbuild@0.27.4_jiti@2.6.1_sas_389380d3ddddce5fc0b85d07c8154589/node_modules/@histoire/app/dist/bundled/components/story/StoryVariantSingleView.vue2.js
+//#region ../../node_modules/.pnpm/@histoire+app@1.0.0-beta.1_vite@8.0.16_@types+node@26.0.0_esbuild@0.28.1_jiti@2.6.1_sas_690491dbda3e433e52880ee04a3c8e64/node_modules/@histoire/app/dist/bundled/components/story/StoryVariantSingleView.vue2.js
 var _hoisted_1$3 = {
 	class: "histoire-story-variant-single-view htw-h-full htw-flex htw-flex-col",
 	"data-test-id": "story-variant-single-view"
@@ -2078,7 +2078,7 @@ var _sfc_main$3 = /* @__PURE__ */ defineComponent({
 	}
 });
 //#endregion
-//#region ../../node_modules/.pnpm/@histoire+app@1.0.0-beta.1_vite@8.0.1_@types+node@24.10.9_esbuild@0.27.4_jiti@2.6.1_sas_389380d3ddddce5fc0b85d07c8154589/node_modules/@histoire/app/dist/bundled/components/story/StoryVariantSingle.vue2.js
+//#region ../../node_modules/.pnpm/@histoire+app@1.0.0-beta.1_vite@8.0.16_@types+node@26.0.0_esbuild@0.28.1_jiti@2.6.1_sas_690491dbda3e433e52880ee04a3c8e64/node_modules/@histoire/app/dist/bundled/components/story/StoryVariantSingle.vue2.js
 var _hoisted_1$2 = {
 	key: 0,
 	class: "histoire-story-variant-single htw-p-2 htw-h-full __histoire-pane-shadow-from-right"
@@ -2097,7 +2097,7 @@ var _hoisted_5 = {
 	class: "htw-p-2 htw-h-full __histoire-pane-shadow-from-right"
 };
 //#endregion
-//#region ../../node_modules/.pnpm/@histoire+app@1.0.0-beta.1_vite@8.0.1_@types+node@24.10.9_esbuild@0.27.4_jiti@2.6.1_sas_389380d3ddddce5fc0b85d07c8154589/node_modules/@histoire/app/dist/bundled/components/story/StoryVariantSingle.vue.js
+//#region ../../node_modules/.pnpm/@histoire+app@1.0.0-beta.1_vite@8.0.16_@types+node@26.0.0_esbuild@0.28.1_jiti@2.6.1_sas_690491dbda3e433e52880ee04a3c8e64/node_modules/@histoire/app/dist/bundled/components/story/StoryVariantSingle.vue.js
 var StoryVariantSingle = /* @__PURE__ */ _export_sfc(/* @__PURE__ */ defineComponent({
 	__name: "StoryVariantSingle",
 	emits: { openVariantMenu: () => true },
@@ -2148,10 +2148,10 @@ var StoryVariantSingle = /* @__PURE__ */ _export_sfc(/* @__PURE__ */ defineCompo
 	}
 }), [["__scopeId", "data-v-c2a43485"]]);
 //#endregion
-//#region ../../node_modules/.pnpm/@histoire+app@1.0.0-beta.1_vite@8.0.1_@types+node@24.10.9_esbuild@0.27.4_jiti@2.6.1_sas_389380d3ddddce5fc0b85d07c8154589/node_modules/@histoire/app/dist/bundled/components/story/StoryViewer.vue2.js
+//#region ../../node_modules/.pnpm/@histoire+app@1.0.0-beta.1_vite@8.0.16_@types+node@26.0.0_esbuild@0.28.1_jiti@2.6.1_sas_690491dbda3e433e52880ee04a3c8e64/node_modules/@histoire/app/dist/bundled/components/story/StoryViewer.vue2.js
 var _hoisted_1$1 = { class: "histoire-story-viewer htw-bg-gray-50 htw-h-full dark:htw-bg-gray-750" };
 //#endregion
-//#region ../../node_modules/.pnpm/@histoire+app@1.0.0-beta.1_vite@8.0.1_@types+node@24.10.9_esbuild@0.27.4_jiti@2.6.1_sas_389380d3ddddce5fc0b85d07c8154589/node_modules/@histoire/app/dist/bundled/components/story/StoryViewer.vue.js
+//#region ../../node_modules/.pnpm/@histoire+app@1.0.0-beta.1_vite@8.0.16_@types+node@26.0.0_esbuild@0.28.1_jiti@2.6.1_sas_690491dbda3e433e52880ee04a3c8e64/node_modules/@histoire/app/dist/bundled/components/story/StoryViewer.vue.js
 var StoryViewer = /* @__PURE__ */ _export_sfc(/* @__PURE__ */ defineComponent({
 	__name: "StoryViewer",
 	setup(__props) {
@@ -2186,7 +2186,7 @@ var StoryViewer = /* @__PURE__ */ _export_sfc(/* @__PURE__ */ defineComponent({
 	}
 }), [["__scopeId", "data-v-096f6d6e"]]);
 //#endregion
-//#region ../../node_modules/.pnpm/@histoire+app@1.0.0-beta.1_vite@8.0.1_@types+node@24.10.9_esbuild@0.27.4_jiti@2.6.1_sas_389380d3ddddce5fc0b85d07c8154589/node_modules/@histoire/app/dist/bundled/components/story/StoryView.vue2.js
+//#region ../../node_modules/.pnpm/@histoire+app@1.0.0-beta.1_vite@8.0.16_@types+node@26.0.0_esbuild@0.28.1_jiti@2.6.1_sas_690491dbda3e433e52880ee04a3c8e64/node_modules/@histoire/app/dist/bundled/components/story/StoryView.vue2.js
 var _hoisted_1 = {
 	key: 1,
 	class: "histoire-story-view histoire-with-story htw-h-full"

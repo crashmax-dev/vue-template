@@ -1,4 +1,4 @@
-import { Ao as markRaw } from "./vendor-BRroElKf.js";
+import { vt as markRaw } from "./vendor-CJxuTU_T.js";
 //#region \0virtual:$histoire-search-docs-data
 var searchData$1 = {
 	"index": [{
@@ -15,7 +15,7 @@ function onUpdate$1(cb) {
 	handlers.push(cb);
 }
 //#endregion
-//#region ../../node_modules/.pnpm/@histoire+app@1.0.0-beta.1_vite@8.0.1_@types+node@24.10.9_esbuild@0.27.4_jiti@2.6.1_sas_389380d3ddddce5fc0b85d07c8154589/node_modules/@histoire/app/dist/bundled/components/search/search-docs-data.js
+//#region ../../node_modules/.pnpm/@histoire+app@1.0.0-beta.1_vite@8.0.16_@types+node@26.0.0_esbuild@0.28.1_jiti@2.6.1_sas_690491dbda3e433e52880ee04a3c8e64/node_modules/@histoire/app/dist/bundled/components/search/search-docs-data.js
 var searchData = markRaw(searchData$1);
 function onUpdate(cb) {
 	onUpdate$1(cb);

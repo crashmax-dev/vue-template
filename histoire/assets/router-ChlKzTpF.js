@@ -1,5 +1,5 @@
-const __vite__mapDeps=(i,m=__vite__mapDeps,d=(m.f||(m.f=["./HomeView.vue-BFe7byZd.js","./vendor-BRroElKf.js","./rolldown-runtime-D9VfunvA.js","./bundle-main-jj-5tbrv.js","./_virtual__histoire-support-plugins-client-CfbNpnLM.js","./plugin-BtXcQfze.js","./BaseListItemLink.vue-Bw9AyNIU.js","./StoryView.vue-D3v2aBwe.js","./bundle-sandbox-D3uGPh32.js","./BaseEmpty.vue-Dv4biapF.js"])))=>i.map(i=>d[i]);
-import { Ma as createWebHashHistory, Na as createWebHistory, Ra as __vitePreload, ja as createRouter } from "./vendor-BRroElKf.js";
+const __vite__mapDeps=(i,m=__vite__mapDeps,d=(m.f||(m.f=["./HomeView.vue-CIN6VxtY.js","./vendor-CJxuTU_T.js","./rolldown-runtime-D7D4PA-g.js","./story-C_j060cL.js","./StoryView.vue-MeJJJAd3.js","./plugin-Yyjcd29w.js","./responsive-DnY-x6gn.js","./BaseEmpty.vue-B7C9WCoc.js","./state-BRbLB5U6.js"])))=>i.map(i=>d[i]);
+import { E as __vitePreload, b as createWebHashHistory, x as createWebHistory, y as createRouter } from "./vendor-CJxuTU_T.js";
 //#region \0virtual:$histoire-config
 var config = {
 	"plugins": [
@@ -8,7 +8,7 @@ var config = {
 			"name": "builtin:vanilla-support",
 			"supportPlugin": {
 				"id": "vanilla",
-				"moduleName": "/home/runner/work/vue-template/vue-template/node_modules/.pnpm/histoire@1.0.0-beta.1_@types+node@24.10.9_lightningcss@1.32.0_sass-embedded@1.98.0_sass_231b08bc65af7d7bed0a4b7bbb4e9231/node_modules/histoire/dist/node/builtin-plugins/vanilla-support",
+				"moduleName": "/home/runner/work/vue-template/vue-template/node_modules/.pnpm/histoire@1.0.0-beta.1_@types+node@26.0.0_lightningcss@1.32.0_sass-embedded@1.100.0_sass_a5463336cb7b5757ac6a783db2d383c2/node_modules/histoire/dist/node/builtin-plugins/vanilla-support",
 				"setupFn": "setupVanilla"
 			}
 		},
@@ -161,7 +161,7 @@ var config = {
 };
 var logos = {};
 //#endregion
-//#region ../../node_modules/.pnpm/@histoire+app@1.0.0-beta.1_vite@8.0.1_@types+node@24.10.9_esbuild@0.27.4_jiti@2.6.1_sas_389380d3ddddce5fc0b85d07c8154589/node_modules/@histoire/app/dist/bundled/util/config.js
+//#region ../../node_modules/.pnpm/@histoire+app@1.0.0-beta.1_vite@8.0.16_@types+node@26.0.0_esbuild@0.28.1_jiti@2.6.1_sas_690491dbda3e433e52880ee04a3c8e64/node_modules/@histoire/app/dist/bundled/util/config.js
 var histoireConfig = config;
 var customLogos = logos;
 function createRouterHistory() {
@@ -175,11 +175,11 @@ var router = createRouter({
 	routes: [{
 		path: "/",
 		name: "home",
-		component: () => __vitePreload(() => import("./HomeView.vue-BFe7byZd.js"), __vite__mapDeps([0,1,2,3,4,5,6]), import.meta.url)
+		component: () => __vitePreload(() => import("./HomeView.vue-CIN6VxtY.js"), __vite__mapDeps([0,1,2,3]), import.meta.url)
 	}, {
 		path: "/story/:storyId",
 		name: "story",
-		component: () => __vitePreload(() => import("./StoryView.vue-D3v2aBwe.js"), __vite__mapDeps([7,1,2,4,3,5,6,8,9]), import.meta.url)
+		component: () => __vitePreload(() => import("./StoryView.vue-MeJJJAd3.js"), __vite__mapDeps([4,1,2,5,6,7,8,3]), import.meta.url)
 	}]
 });
 //#endregion
