@@ -30,6 +30,6 @@
     "build": "tsc"
   },
   "devDependencies": {
-    "@tailwindcss/vite": "4.2.2"
+    "@tailwindcss/vite": "4.3.1"
   }
 }

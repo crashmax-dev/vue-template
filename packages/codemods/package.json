@@ -9,7 +9,7 @@
     "codemod": "jscodeshift --extensions=\"vue,ts\" --parser=ts ./target"
   },
   "devDependencies": {
-    "@vue/compiler-sfc": "3.5.30",
+    "@vue/compiler-sfc": "3.5.38",
     "vue-jscodeshift-adapter": "3.0.0"
   }
 }

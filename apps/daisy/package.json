@@ -11,13 +11,13 @@
   },
   "dependencies": {
     "@vue-workspace/daisy-ui": "workspace:^",
-    "@vueuse/core": "14.2.1",
-    "vue": "3.5.30"
+    "@vueuse/core": "14.3.0",
+    "vue": "3.5.38"
   },
   "devDependencies": {
-    "@tailwindcss/vite": "4.2.2",
+    "@tailwindcss/vite": "4.3.1",
     "@vue-workspace/vite-config": "workspace:^",
-    "daisyui": "5.5.19",
-    "tailwindcss": "4.2.2"
+    "daisyui": "5.5.23",
+    "tailwindcss": "4.3.1"
   }
 }

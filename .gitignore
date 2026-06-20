@@ -12,3 +12,4 @@ storybook-static
 coverage
 test-results/
 __screenshots__
+*.tsbuildinfo

@@ -7,9 +7,13 @@
       "DOM.Iterable"
     ],
     "useDefineForClassFields": true,
+    "rootDir": "src",
     "module": "ESNext",
     "moduleResolution": "Bundler",
     "resolveJsonModule": true,
+    "types": [
+      "node"
+    ],
     "strict": true,
     "noFallthroughCasesInSwitch": true,
     "noUnusedLocals": true,

@@ -21,6 +21,7 @@ export default antfu({
   rules: {
     // pinia
     ...pinia.configs.recommended.rules,
+    'pinia/no-store-to-refs-in-store': 'off',
     'pinia/prefer-single-store-per-file': ['error'],
     'pinia/prefer-use-store-naming-convention': ['error'],
 

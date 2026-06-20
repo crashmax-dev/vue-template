@@ -3,7 +3,7 @@
 ## Requirements
 
 - Node.js 22.22.x
-- PNPM 10.28.x
+- PNPM 11.8.x
 
 ## Stack
 

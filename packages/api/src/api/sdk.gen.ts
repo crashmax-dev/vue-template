@@ -2,12 +2,12 @@
 
 import * as v from 'valibot';
 
-import type { Client, Options as Options2, TDataShape } from './client';
+import type { Client, ClientMeta, Options as Options2, RequestResult, TDataShape } from './client';
 import { client } from './client.gen';
 import type { DeleteTodoByIdData, DeleteTodoByIdErrors, DeleteTodoByIdResponses, GetTodoByIdData, GetTodoByIdErrors, GetTodoByIdResponses, GetTodosData, GetTodosResponses, PostTodosData, PostTodosResponses, UpdateTodoByIdData, UpdateTodoByIdErrors, UpdateTodoByIdResponses } from './types.gen';
 import { vGetTodoByIdResponse, vGetTodosResponse, vPostTodosResponse, vUpdateTodoByIdResponse } from './valibot.gen';
 
-export type Options<TData extends TDataShape = TDataShape, ThrowOnError extends boolean = boolean> = Options2<TData, ThrowOnError> & {
+export type Options<TData extends TDataShape = TDataShape, ThrowOnError extends boolean = boolean, TResponse = unknown> = Options2<TData, ThrowOnError, TResponse> & {
     /**
      * You can provide a client instance returned by `createClient()` instead of
      * individual options. This might be also useful if you want to implement a
@@ -18,16 +18,16 @@ export type Options<TData extends TDataShape = TDataShape, ThrowOnError extends 
      * You can pass arbitrary values through the `meta` object. This can be
      * used to access values that aren't defined as part of the SDK function.
      */
-    meta?: Record<string, unknown>;
+    meta?: keyof ClientMeta extends never ? Record<string, unknown> : ClientMeta;
 };
 
-export const getTodos = <ThrowOnError extends boolean = true>(options: Options<GetTodosData, ThrowOnError>) => (options.client ?? client).get<GetTodosResponses, unknown, ThrowOnError>({
+export const getTodos = <ThrowOnError extends boolean = true>(options: Options<GetTodosData, ThrowOnError>): RequestResult<GetTodosResponses, unknown, ThrowOnError> => (options.client ?? client).get<GetTodosResponses, unknown, ThrowOnError>({
     responseValidator: async (data) => await v.parseAsync(vGetTodosResponse, data),
     url: '/todos',
     ...options
 });
 
-export const postTodos = <ThrowOnError extends boolean = true>(options: Options<PostTodosData, ThrowOnError>) => (options.client ?? client).post<PostTodosResponses, unknown, ThrowOnError>({
+export const postTodos = <ThrowOnError extends boolean = true>(options: Options<PostTodosData, ThrowOnError>): RequestResult<PostTodosResponses, unknown, ThrowOnError> => (options.client ?? client).post<PostTodosResponses, unknown, ThrowOnError>({
     responseValidator: async (data) => await v.parseAsync(vPostTodosResponse, data),
     url: '/todos',
     ...options,
@@ -37,15 +37,15 @@ export const postTodos = <ThrowOnError extends boolean = true>(options: Options<
     }
 });
 
-export const deleteTodoById = <ThrowOnError extends boolean = true>(options: Options<DeleteTodoByIdData, ThrowOnError>) => (options.client ?? client).delete<DeleteTodoByIdResponses, DeleteTodoByIdErrors, ThrowOnError>({ url: '/todos/{uuid}', ...options });
+export const deleteTodoById = <ThrowOnError extends boolean = true>(options: Options<DeleteTodoByIdData, ThrowOnError>): RequestResult<DeleteTodoByIdResponses, DeleteTodoByIdErrors, ThrowOnError> => (options.client ?? client).delete<DeleteTodoByIdResponses, DeleteTodoByIdErrors, ThrowOnError>({ url: '/todos/{uuid}', ...options });
 
-export const getTodoById = <ThrowOnError extends boolean = true>(options: Options<GetTodoByIdData, ThrowOnError>) => (options.client ?? client).get<GetTodoByIdResponses, GetTodoByIdErrors, ThrowOnError>({
+export const getTodoById = <ThrowOnError extends boolean = true>(options: Options<GetTodoByIdData, ThrowOnError>): RequestResult<GetTodoByIdResponses, GetTodoByIdErrors, ThrowOnError> => (options.client ?? client).get<GetTodoByIdResponses, GetTodoByIdErrors, ThrowOnError>({
     responseValidator: async (data) => await v.parseAsync(vGetTodoByIdResponse, data),
     url: '/todos/{uuid}',
     ...options
 });
 
-export const updateTodoById = <ThrowOnError extends boolean = true>(options: Options<UpdateTodoByIdData, ThrowOnError>) => (options.client ?? client).patch<UpdateTodoByIdResponses, UpdateTodoByIdErrors, ThrowOnError>({
+export const updateTodoById = <ThrowOnError extends boolean = true>(options: Options<UpdateTodoByIdData, ThrowOnError>): RequestResult<UpdateTodoByIdResponses, UpdateTodoByIdErrors, ThrowOnError> => (options.client ?? client).patch<UpdateTodoByIdResponses, UpdateTodoByIdErrors, ThrowOnError>({
     responseValidator: async (data) => await v.parseAsync(vUpdateTodoByIdResponse, data),
     url: '/todos/{uuid}',
     ...options,
