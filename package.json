@@ -8,7 +8,7 @@
     "node": ">=22.22"
   },
   "scripts": {
-    "dev": "turbo run dev --parallel",
+    "dev": "turbo run dev",
     "dev:apps": "turbo run dev --filter='./apps/*'",
     "dev:ui": "turbo run dev --filter='./packages/ui'",
     "dev:packages": "turbo run dev --filter='./packages/*'",

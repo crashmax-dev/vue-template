@@ -15,8 +15,7 @@
       "persistent": true
     },
     "type-check": {
-      "cache": false,
-      "persistent": true
+      "cache": false
     }
   }
 }
