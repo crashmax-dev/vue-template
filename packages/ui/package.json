@@ -15,9 +15,10 @@
     "build": "pnpm type-check && histoire build",
     "preview": "histoire preview",
     "test": "vitest run",
-    "test:unit": "vitest",
+    "test:unit": "vitest run",
     "test:unit-ui": "vitest --ui",
-    "type-check": "vue-tsc --build"
+    "type-check": "vue-tsc --build",
+    "clean": "rm -rf dist"
   },
   "dependencies": {
     "@vueuse/core": "14.3.0",

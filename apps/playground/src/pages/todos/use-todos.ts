@@ -1,21 +1,34 @@
 import { useQuery } from '@tanstack/vue-query'
 import { getTodos } from '@vue-workspace/api'
 import { defineStore, storeToRefs } from 'pinia'
-import { computed } from 'vue'
+import { computed, watch } from 'vue'
 import { usePagination } from './use-pagination'
+import { useTodoFilters } from './use-todo-filters'
 
 export const useTodos = defineStore('todos/use-todos', () => {
-  const { pageSize, pagination } = storeToRefs(usePagination())
+  const paginationStore = usePagination()
+  const filtersStore = useTodoFilters()
+  const { pageSize, pagination } = storeToRefs(paginationStore)
+  const { query: filters } = storeToRefs(filtersStore)
+
+  watch(filters, () => {
+    paginationStore.resetPagination()
+  }, { deep: true })
 
   const {
     isFetching,
     data,
     refetch: refetchTodos,
   } = useQuery({
-    queryKey: ['todos', pagination],
+    queryKey: ['todos', pagination, filters],
     initialData: () => ({ data: [], total: 0 }),
     queryFn: async () => {
-      const { data } = await getTodos({ query: pagination.value })
+      const { data } = await getTodos({
+        query: {
+          ...pagination.value,
+          ...filters.value,
+        },
+      })
       return data
     },
   })

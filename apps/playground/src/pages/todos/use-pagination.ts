@@ -1,30 +1,31 @@
 import { defineStore } from 'pinia'
-import { computed, ref, shallowRef } from 'vue'
-import type { GetTodosData } from '@vue-workspace/api/types'
+import { computed, ref } from 'vue'
 
 export const usePagination = defineStore('todos/use-pagination', () => {
   const pageSize = ref(10)
-  const paginationInitial = computed(() => ({ start: 0, limit: pageSize.value }))
-  const pagination = shallowRef<GetTodosData['query']>({ ...paginationInitial.value })
+  const start = ref(0)
+
+  const pagination = computed(() => ({
+    start: start.value,
+    limit: pageSize.value,
+  }))
 
   function updatePagination(params: { target: 'prev' | 'next', total: number }) {
-    if (params.target === 'prev' && pagination.value.start === 0) return
-    if (params.target === 'next' && pagination.value.start + pageSize.value >= params.total) return
+    if (params.target === 'prev' && start.value === 0) return
+    if (params.target === 'next' && start.value + pageSize.value >= params.total) return
 
-    pagination.value = {
-      ...pagination.value,
-      start: params.target === 'prev'
-        ? pagination.value.start - pageSize.value
-        : pagination.value.start + pageSize.value,
-    }
+    start.value = params.target === 'prev'
+      ? start.value - pageSize.value
+      : start.value + pageSize.value
   }
 
   function resetPagination() {
-    pagination.value = { ...paginationInitial.value }
+    start.value = 0
   }
 
   return {
     pageSize,
+    start,
     pagination,
     resetPagination,
     updatePagination,

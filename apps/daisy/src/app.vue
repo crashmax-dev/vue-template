@@ -1,9 +1,20 @@
 <template>
-  <div class="flex flex-col items-center gap-2 h-full p-4 overflow-hidden">
-    <h1>Steps: {{ stepCounter }}</h1>
-    <h1>Time: {{ timer.time.value }}</h1>
+  <div class="flex flex-col items-center gap-4 h-full p-4 overflow-hidden">
+    <div class="flex flex-wrap items-end justify-center gap-4">
+      <ui-select
+        v-model="boardSize"
+        label="Board size"
+        :items="boardSizeOptions"
+      />
+      <div class="flex flex-col gap-1 text-center sm:text-left">
+        <p>Steps: {{ stepCounter }}</p>
+        <p>Time: {{ timer.time.value }}</p>
+      </div>
+    </div>
+
     <div
-      class="grid h-full grid-flow-col grid-rows-6 grid-cols-6 gap-4 mx-auto"
+      class="grid h-full gap-4 mx-auto"
+      :class="gridClass"
       :inert="isDisabledBoard"
     >
       <swap-item
@@ -40,11 +51,18 @@
 </template>
 
 <script setup lang="ts">
+import { UiSelect } from '@vue-workspace/daisy-ui'
 import { computed, onMounted, ref, useTemplateRef, watch } from 'vue'
 import SwapItem from './swap-item.vue'
 import { useTimer } from './use-timer'
 
-const COLS = 6
+const boardSizeOptions = [
+  { value: 4, label: '4 × 4' },
+  { value: 6, label: '6 × 6' },
+] as const
+
+type BoardSize = typeof boardSizeOptions[number]['value']
+
 const EMOJIS = [
   '😀',
   '😂',
@@ -86,8 +104,20 @@ function getRandomEmoji() {
   return EMOJIS[Math.floor(Math.random() * EMOJIS.length)]!
 }
 
-function generateEmojiGrid() {
-  const totalCells = COLS * COLS
+function shuffle<T>(items: T[]): T[] {
+  const pairs = [...items]
+  for (let i = pairs.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1))
+    const left = pairs[i]!
+    const right = pairs[j]!
+    pairs[i] = right
+    pairs[j] = left
+  }
+  return pairs
+}
+
+function generateEmojiGrid(cols: BoardSize) {
+  const totalCells = cols * cols
   const uniqueCount = totalCells / 2
 
   const uniqueEmojis = new Set<string>()
@@ -95,15 +125,7 @@ function generateEmojiGrid() {
     uniqueEmojis.add(getRandomEmoji())
   }
 
-  const pairs = [...uniqueEmojis, ...uniqueEmojis]
-
-  for (let i = pairs.length - 1; i > 0; i--) {
-    const j = Math.floor(Math.random() * (i + 1));
-    // @ts-ignore
-    [pairs[i], pairs[j]] = [pairs[j], pairs[i]]
-  }
-
-  return pairs.map((emoji) => {
+  return shuffle([...uniqueEmojis, ...uniqueEmojis]).map((emoji) => {
     return {
       emoji,
       isOpen: false,
@@ -112,14 +134,20 @@ function generateEmojiGrid() {
   })
 }
 
+const boardSize = ref<BoardSize>(6)
 const timer = useTimer()
 const dialogRef = useTemplateRef('dialogRef')
-const items = ref(generateEmojiGrid())
+const items = ref(generateEmojiGrid(boardSize.value))
 
 const openedEmojiIndexes = ref<number[]>([])
 const stepCounter = ref(0)
 const isGameEnded = computed(() => items.value.every((item) => item.isDisabled))
 const isDisabledBoard = computed(() => openedEmojiIndexes.value.length === 2)
+const gridClass = computed(() => {
+  return boardSize.value === 4
+    ? 'grid-cols-4 grid-rows-4'
+    : 'grid-cols-6 grid-rows-6'
+})
 
 function revealeEmojiByIndex(index: number) {
   openedEmojiIndexes.value.push(index)
@@ -127,9 +155,14 @@ function revealeEmojiByIndex(index: number) {
 
 function restartGame() {
   stepCounter.value = 0
-  items.value = generateEmojiGrid()
+  openedEmojiIndexes.value = []
+  items.value = generateEmojiGrid(boardSize.value)
   timer.reset()
 }
+
+watch(boardSize, () => {
+  restartGame()
+})
 
 watch(isGameEnded, (isEnded) => {
   if (isEnded) {

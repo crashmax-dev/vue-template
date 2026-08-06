@@ -1,23 +1,38 @@
 <template>
-  <input
-    name="title"
-    class="input-field"
-    :value="todo.title"
-  >
+  <div class="flex flex-col gap-3">
+    <fieldset class="fieldset w-full">
+      <label class="label">
+        <span class="label-text">Title</span>
+      </label>
+      <input
+        name="title"
+        type="text"
+        class="input input-bordered w-full"
+        placeholder="Todo title"
+        required
+        :value="todo.title"
+      >
+    </fieldset>
 
-  <select
-    :value="todo.status"
-    name="status"
-    class="select-field"
-  >
-    <option
-      v-for="status of Object.values(TodoStatus)"
-      :key="status"
-      :value="status"
-    >
-      {{ status }}
-    </option>
-  </select>
+    <fieldset class="fieldset w-full">
+      <label class="label">
+        <span class="label-text">Status</span>
+      </label>
+      <select
+        name="status"
+        class="select select-bordered w-full"
+        :value="todo.status"
+      >
+        <option
+          v-for="status of Object.values(TodoStatus)"
+          :key="status"
+          :value="status"
+        >
+          {{ status }}
+        </option>
+      </select>
+    </fieldset>
+  </div>
 </template>
 
 <script setup lang="ts">
@@ -33,43 +48,3 @@ withDefaults(defineProps<{
   }),
 })
 </script>
-
-<style scoped lang="scss">
-.input-field,
-.select-field {
-  transition: all 0.2s ease;
-  outline: none;
-  border: 1px solid hsl(var(--input));
-  border-radius: var(--radius);
-  background: hsl(var(--background));
-  padding: 0.625rem 0.875rem;
-  color: hsl(var(--foreground));
-  font-size: 0.875rem;
-
-  &:focus {
-    outline: 2px solid transparent;
-    outline-offset: 2px;
-    border-color: hsl(var(--ring));
-  }
-
-  &::placeholder {
-    color: hsl(var(--muted-foreground));
-  }
-}
-
-.input-field {
-  flex: 1;
-}
-
-.select-field {
-  appearance: none;
-  -webkit-appearance: none;
-  -moz-appearance: none;
-  cursor: pointer;
-  background-image: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 12 12"><path fill="gray" d="M6 9L1 4h10z"/></svg>');
-  background-position: calc(100% - 0.875rem) center;
-  background-repeat: no-repeat;
-  padding-right: 2.5rem;
-  min-width: 140px;
-}
-</style>

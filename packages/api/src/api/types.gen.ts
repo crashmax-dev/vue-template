@@ -40,6 +40,13 @@ export type GetTodosData = {
     query: {
         start: number;
         limit: number;
+        /**
+         * Case-insensitive substring match on todo title
+         */
+        title?: string;
+        status?: TodoStatus;
+        sortBy?: 'title' | 'status' | 'createdAt' | 'updatedAt';
+        sortOrder?: 'asc' | 'desc';
     };
     url: '/todos';
 };

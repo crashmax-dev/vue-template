@@ -1,5 +1,5 @@
 import { expect, it } from 'vitest'
-import { renderComponent } from '@/test-utils'
+import { renderComponent } from '@/test/render-component'
 import CounterButton from './counter-button.vue'
 
 it('counter button increments the count', async () => {

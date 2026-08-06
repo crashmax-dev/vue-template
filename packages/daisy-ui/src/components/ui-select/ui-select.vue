@@ -1,21 +1,19 @@
 <template>
-  <div class="w-64">
-    <label class="label">
-      <span class="label-text">Выберите опцию</span>
+  <div class="w-full">
+    <label
+      v-if="label"
+      class="label"
+    >
+      <span class="label-text">{{ label }}</span>
     </label>
     <select
       v-model="selectedValue"
       class="select select-bordered w-full"
+      :name="name"
     >
       <option
-        disabled
-        value=""
-      >
-        Пожалуйста, выберите...
-      </option>
-      <option
         v-for="option in items"
-        :key="option.value"
+        :key="String(option.value)"
         :value="option.value"
       >
         {{ option.label }}
@@ -24,10 +22,15 @@
   </div>
 </template>
 
-<script setup lang="ts" generic="T extends { value: any, label: string }">
-defineProps<{
-  items: T[]
-}>()
+<script setup lang="ts" generic="T extends { value: string | number, label: string }">
+withDefaults(defineProps<{
+  items: readonly T[]
+  label?: string
+  name?: string
+}>(), {
+  label: '',
+  name: undefined,
+})
 
-const selectedValue = defineModel()
+const selectedValue = defineModel<T['value']>({ required: true })
 </script>

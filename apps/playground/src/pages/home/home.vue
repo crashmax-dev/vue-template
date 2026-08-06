@@ -1,5 +1,5 @@
 <template>
-  <div class="home">
+  <div class="home flex-1 min-h-0 overflow-y-auto">
     <vue-icon class="vue-icon" />
   </div>
 </template>

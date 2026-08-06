@@ -3,9 +3,11 @@ import { client } from '@vue-workspace/api/client'
 import { createPinia } from 'pinia'
 import { createApp } from 'vue'
 import App from './app.vue'
+import { reportApiError } from './libs/api-error'
 import { mswSetup } from './libs/msw/msw-setup'
 import { router } from './libs/router'
 import './main.scss'
+import './styles/daisy.css'
 
 mswSetup().then(() => {
   const app = createApp(App)
@@ -24,8 +26,13 @@ mswSetup().then(() => {
   })
 
   client.interceptors.error.use((error) => {
-    console.log({ error })
+    reportApiError(error)
+    return error
   })
+
+  app.config.errorHandler = (error) => {
+    reportApiError(error)
+  }
 
   app.mount('#app')
 })

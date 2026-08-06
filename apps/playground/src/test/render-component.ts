@@ -3,13 +3,14 @@ import { createPinia } from 'pinia'
 import { render as vitestRender } from 'vitest-browser-vue'
 import { createMemoryHistory, createRouter } from 'vue-router'
 import App from '@/app.vue'
+import { RoutePath } from '@/libs/router'
 import type { ComponentMountingOptions } from '@vue/test-utils'
 import type {
   Locator,
   LocatorSelectors,
   PrettyDOMOptions,
 } from 'vitest/browser'
-import type { DefineComponent } from 'vue'
+import type { Component, DefineComponent } from 'vue'
 import type { RouteRecordRaw } from 'vue-router'
 
 type ComponentProps<T> = T extends new (...args: any) => {
@@ -21,11 +22,13 @@ interface RenderResult<Props> extends LocatorSelectors {
   container: HTMLElement
   baseElement: HTMLElement
   locator: Locator
-  debug(el?: HTMLElement | HTMLElement[] | Locator | Locator[], maxLength?: number, options?: PrettyDOMOptions): void
-  unmount(): void
-  emitted<T = unknown>(): Record<string, T[]>
-  emitted<T = unknown[]>(eventName: string): undefined | T[]
-  rerender(props: Partial<Props>): void
+  debug: (el?: HTMLElement | HTMLElement[] | Locator | Locator[], maxLength?: number, options?: PrettyDOMOptions) => void
+  unmount: () => void
+  emitted: {
+    <T = unknown>(): Record<string, T[]>
+    <T = unknown[]>(eventName: string): undefined | T[]
+  }
+  rerender: (props: Partial<Props>) => void
 }
 
 interface ComponentRenderOptions<C, P extends ComponentProps<C>> extends ComponentMountingOptions<C, P> {
@@ -33,6 +36,16 @@ interface ComponentRenderOptions<C, P extends ComponentProps<C>> extends Compone
   baseElement?: HTMLElement
   routes?: RouteRecordRaw[]
 }
+
+const stubPage = { template: '<div />' }
+
+const defaultRoutes: RouteRecordRaw[] = [
+  { path: RoutePath.Home, name: 'home', component: stubPage },
+  { path: RoutePath.Counter, name: 'counter', component: stubPage },
+  { path: RoutePath.Form, name: 'form', component: stubPage },
+  { path: RoutePath.Todos, name: 'todos', component: stubPage },
+  { path: RoutePath.Toast, name: 'toast', component: stubPage },
+]
 
 export async function renderComponent<T, C = T extends ((...args: any) => any) | (new (...args: any) => any) ? T : T extends {
   props?: infer Props
@@ -49,9 +62,9 @@ export async function renderComponent<T, C = T extends ((...args: any) => any) |
     routes: [
       {
         path: '/',
-        // @ts-ignore
-        component,
+        component: component as Component,
       },
+      ...defaultRoutes.filter((route) => route.path !== '/'),
       ...options.routes ?? [],
     ],
   })
@@ -80,4 +93,4 @@ export async function renderComponent<T, C = T extends ((...args: any) => any) |
   await router.isReady()
 
   return screen
-};
+}

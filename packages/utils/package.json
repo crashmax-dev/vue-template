@@ -14,6 +14,9 @@
   ],
   "scripts": {
     "dev": "tsc --watch",
-    "build": "tsc"
+    "build": "tsc",
+    "test": "vitest run",
+    "test:unit": "vitest run",
+    "clean": "rm -rf dist"
   }
 }

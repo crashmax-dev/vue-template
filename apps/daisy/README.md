@@ -1,5 +1,13 @@
-# Vue 3 + TypeScript + Vite
+# Daisy app
 
-This template should help get you started developing with Vue 3 and TypeScript in Vite. The template uses Vue 3 `<script setup>` SFCs, check out the [script setup docs](https://v3.vuejs.org/api/sfc-script-setup.html#sfc-script-setup) to learn more.
+Memory-match game demo built with Vue 3, Tailwind CSS v4, and DaisyUI 5. Depends on `@vue-workspace/daisy-ui` for shared DaisyUI components (e.g. `UiSelect` for board size).
 
-Learn more about the recommended Project Setup and IDE Support in the [Vue Docs TypeScript Guide](https://vuejs.org/guide/typescript/overview.html#project-setup).
+## Scripts
+
+```bash
+pnpm --filter=daisy dev      # http://localhost:3001
+pnpm --filter=daisy build
+pnpm --filter=daisy preview
+```
+
+This app intentionally stays lean — no router/Pinia — to show a second styling track next to the SCSS-based playground UI kit. See [theming & styling docs](../../docs/theming-and-styling.md).

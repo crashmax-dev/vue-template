@@ -1,168 +1,121 @@
 <template>
-  <div class="todo-app">
-    <form
-      class="todo-form"
-      @submit.prevent="createTodo"
-    >
-      <div class="form-row">
-        <todo-form />
-      </div>
+  <div class="flex h-full min-h-0 min-w-0 flex-col overflow-hidden">
+    <div class="grid min-h-0 flex-1 grid-rows-[auto_minmax(0,1fr)_auto] gap-4 overflow-hidden">
+      <div class="flex flex-wrap items-center justify-between gap-3">
+        <v-page-header title="Todos">
+          Total: {{ todos.data.total }}
+        </v-page-header>
 
-      <div class="form-actions">
-        <todo-button
-          type="submit"
-          variant="primary"
-          class="form-actions__submit"
-        >
-          Create
-        </todo-button>
-      </div>
-    </form>
+        <div class="flex flex-wrap gap-2">
+          <button
+            type="button"
+            class="btn btn-primary gap-2"
+            @click="createModal?.open()"
+          >
+            <plus-icon class="size-5" />
+            Create
+          </button>
 
-    <div class="todos-section">
-      <div class="todos-header">
-        <h2 class="todos-title">
-          Todos (total: {{ todos.data.total }})
-        </h2>
-        <div class="pagination-controls">
-          <todo-button
-            variant="danger"
+          <div class="join">
+            <button
+              type="button"
+              class="btn join-item gap-2"
+              :class="{ 'btn-active': filters.hasActiveFilters }"
+              @click="filtersModal?.open()"
+            >
+              <funnel-icon class="size-5" />
+              Filters
+            </button>
+            <button
+              v-if="filters.hasActiveFilters"
+              type="button"
+              class="btn join-item btn-square btn-active"
+              aria-label="Clear filters"
+              title="Clear filters"
+              @click="filters.resetSearchFilters()"
+            >
+              <x-icon class="size-5" />
+            </button>
+          </div>
+
+          <button
+            type="button"
+            class="btn btn-error btn-outline gap-2"
             @click="resetTodos"
           >
-            Reset todos
-          </todo-button>
-
-          <todo-button
-            variant="icon"
-            :disabled="todos.isPagePrevDisabled"
-            @click="pagination.updatePagination({
-              target: 'prev',
-              total: todos.data.total,
-            })"
-          >
-            Prev
-          </todo-button>
-          <todo-button
-            variant="icon"
-            :disabled="todos.isPageNextDisabled"
-            @click="pagination.updatePagination({
-              target: 'next',
-              total: todos.data.total,
-            })"
-          >
-            Next
-          </todo-button>
+            <refresh-icon class="size-5" />
+            Reset
+          </button>
         </div>
       </div>
 
-      <ul class="todos-list">
-        <todo-item
-          v-for="todo of todos.data.data"
-          :key="todo.uuid"
-          :todo="todo"
-        />
-      </ul>
+      <div class="min-h-0 min-w-0 overflow-hidden">
+        <todo-table @edit="editModal?.open($event)" />
+      </div>
+
+      <div class="flex justify-end gap-2">
+        <button
+          type="button"
+          class="btn"
+          data-testid="todos-prev"
+          :disabled="todos.isPagePrevDisabled"
+          @click="pagination.updatePagination({
+            target: 'prev',
+            total: todos.data.total,
+          })"
+        >
+          Prev
+        </button>
+        <button
+          type="button"
+          class="btn"
+          data-testid="todos-next"
+          :disabled="todos.isPageNextDisabled"
+          @click="pagination.updatePagination({
+            target: 'next',
+            total: todos.data.total,
+          })"
+        >
+          Next
+        </button>
+      </div>
     </div>
+
+    <todo-create-modal ref="createModal" />
+    <todo-edit-modal ref="editModal" />
+    <todo-filters-modal ref="filtersModal" />
   </div>
 </template>
 
 <script setup lang="ts">
-import { postTodos } from '@vue-workspace/api'
-import TodoButton from './todo-button.vue'
-import TodoForm from './todo-form.vue'
-import TodoItem from './todo-item.vue'
+import { useTemplateRef } from 'vue'
+import FunnelIcon from '~icons/heroicons-outline/filter'
+import PlusIcon from '~icons/heroicons-outline/plus'
+import RefreshIcon from '~icons/heroicons-outline/refresh'
+import XIcon from '~icons/heroicons-outline/x'
+import VPageHeader from '@/layout/v-page-header.vue'
+import TodoCreateModal from './todo-create-modal.vue'
+import TodoEditModal from './todo-edit-modal.vue'
+import TodoFiltersModal from './todo-filters-modal.vue'
+import TodoTable from './todo-table.vue'
 import { usePagination } from './use-pagination'
+import { useTodoFilters } from './use-todo-filters'
 import { useTodos } from './use-todos'
-import type { TodoWritable } from '@vue-workspace/api/types'
 
 const todos = useTodos()
 const pagination = usePagination()
+const filters = useTodoFilters()
 
-function createTodo(event: SubmitEvent) {
-  const form = event.target as HTMLFormElement
-  const formData = new FormData(form)
-  const todo = Object.fromEntries(formData) as TodoWritable
-  if (!todo.title) return
-
-  postTodos({ body: todo }).then(() => {
-    form.reset()
-    todos.refetchTodos()
-  })
-}
+const createModal = useTemplateRef('createModal')
+const editModal = useTemplateRef('editModal')
+const filtersModal = useTemplateRef('filtersModal')
 
 function resetTodos() {
   const isConfirm = confirm('Reset todos?')
   if (!isConfirm) return
   window.__MSW__.todos?.createInitialData()
+  filters.resetFilters()
   pagination.resetPagination()
+  todos.refetchTodos()
 }
 </script>
-
-<style scoped lang="scss">
-.todo-app {
-  box-shadow:
-    0 4px 6px -1px rgba(0, 0, 0, 0.1),
-    0 2px 4px -1px rgba(0, 0, 0, 0.06);
-  border: 1px solid hsl(var(--border));
-  border-radius: var(--radius);
-  background: hsl(var(--card));
-  padding: 2.5rem;
-  width: 100%;
-}
-
-.todo-form {
-  margin-bottom: 3rem;
-}
-
-.form-row {
-  display: flex;
-  gap: 1rem;
-  margin-bottom: 1rem;
-}
-
-.form-actions {
-  display: flex;
-  gap: 0.75rem;
-
-  &__submit {
-    flex: 1;
-  }
-}
-
-.todos-section {
-  border: 1px solid hsl(var(--border));
-  border-radius: var(--radius);
-  background: hsl(var(--muted) / 0.3);
-  padding: 1.5rem;
-}
-
-.todos-header {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-between;
-  align-items: center;
-  gap: 1rem;
-  margin-bottom: 1.5rem;
-}
-
-.todos-title {
-  margin: 0;
-  color: hsl(var(--foreground));
-  font-weight: 600;
-  font-size: 1.25rem;
-}
-
-.pagination-controls {
-  display: flex;
-  gap: 0.5rem;
-}
-
-.todos-list {
-  display: flex;
-  flex-direction: column;
-  gap: 0.75rem;
-  margin: 0;
-  padding: 0;
-  list-style: none;
-}
-</style>

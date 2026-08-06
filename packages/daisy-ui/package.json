@@ -10,7 +10,15 @@
     "src"
   ],
   "scripts": {
+    "test": "vitest run",
+    "test:unit": "vitest run",
     "type-check": "vue-tsc --build"
+  },
+  "peerDependencies": {
+    "vue": "^3.5.0"
+  },
+  "dependencies": {
+    "@tanstack/vue-table": "8.21.3"
   },
   "devDependencies": {
     "daisyui": "5.5.23",

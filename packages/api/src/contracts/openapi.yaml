@@ -25,6 +25,37 @@ paths:
           required: true
           schema:
             type: number
+        - name: title
+          in: query
+          required: false
+          schema:
+            type: string
+          description: Case-insensitive substring match on todo title
+        - name: status
+          in: query
+          required: false
+          schema:
+            $ref: '#/components/schemas/TodoStatus'
+        - name: sortBy
+          in: query
+          required: false
+          schema:
+            type: string
+            enum:
+              - title
+              - status
+              - createdAt
+              - updatedAt
+            default: createdAt
+        - name: sortOrder
+          in: query
+          required: false
+          schema:
+            type: string
+            enum:
+              - asc
+              - desc
+            default: desc
       responses:
         '200':
           description: Get todos

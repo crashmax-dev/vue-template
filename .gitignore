@@ -12,4 +12,8 @@ storybook-static
 coverage
 test-results/
 __screenshots__
+.vitest-attachments
 *.tsbuildinfo
+.env
+.env.local
+.env.*.local

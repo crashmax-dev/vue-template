@@ -5,6 +5,7 @@ export const RoutePath = {
   Counter: '/counter',
   Form: '/form',
   Todos: '/todos',
+  Toast: '/toast',
 } as const
 
 export const router = createRouter({
@@ -29,6 +30,11 @@ export const router = createRouter({
       path: RoutePath.Todos,
       name: 'todos',
       component: () => import('@/pages/todos/todos.vue'),
+    },
+    {
+      path: RoutePath.Toast,
+      name: 'toast',
+      component: () => import('@/pages/toast/toast.vue'),
     },
   ],
 })

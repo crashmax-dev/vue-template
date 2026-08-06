@@ -19,6 +19,16 @@ interface FormFieldCheckbox extends FormFieldBase {
   indeterminate?: boolean
 }
 
-export type FormFields = FormFieldInput | FormFieldTextarea | FormFieldCheckbox
+interface FormFieldSelect extends FormFieldBase {
+  type: 'select'
+  options: ReadonlyArray<{ value: string, label: string }>
+  value?: string
+}
+
+export type FormFields
+  = | FormFieldInput
+    | FormFieldTextarea
+    | FormFieldCheckbox
+    | FormFieldSelect
 
 export type FormFieldsRecord = Record<string, FormFields>

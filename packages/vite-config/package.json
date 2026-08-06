@@ -27,7 +27,8 @@
   ],
   "scripts": {
     "dev": "tsc --watch",
-    "build": "tsc"
+    "build": "tsc",
+    "clean": "rm -rf dist"
   },
   "devDependencies": {
     "@tailwindcss/vite": "4.3.1"

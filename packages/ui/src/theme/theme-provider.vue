@@ -24,6 +24,7 @@ function toggleTheme(): void {
 
 watch(theme, () => {
   document.body.classList.toggle('dark', isDark())
+  document.documentElement.dataset.theme = theme.value
 }, { immediate: true })
 
 provide(useThemeInjectionKey, {

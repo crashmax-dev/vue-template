@@ -1,5 +1,5 @@
 {
-  "$schema": "https://turborepo.org/schema.json",
+  "$schema": "https://turborepo.dev/schema.json",
   "globalDependencies": ["pnpm-lock.yaml"],
   "tasks": {
     "build": {
@@ -15,6 +15,27 @@
       "persistent": true
     },
     "type-check": {
+      "dependsOn": [
+        "^build"
+      ],
+      "cache": false
+    },
+    "test": {
+      "dependsOn": [
+        "^build"
+      ],
+      "cache": false
+    },
+    "test:unit": {
+      "dependsOn": [
+        "^build"
+      ],
+      "cache": false
+    },
+    "lint": {
+      "cache": false
+    },
+    "clean": {
       "cache": false
     }
   }

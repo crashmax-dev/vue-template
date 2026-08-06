@@ -1,90 +1,54 @@
 <template>
-  <header class="header">
-    <nav class="header-nav">
-      <v-button
-        v-for="[name, path] of Object.entries(RoutePath)"
-        :key="path"
-        class="header-link"
-        :as="RouterLink"
-        :to="path"
-        :variant="route.path === path ? 'primary' : 'secondary'"
-      >
-        {{ name }}
-      </v-button>
+  <header class="w-full shrink-0 border-b border-base-300 bg-base-300">
+    <div class="flex min-h-16 items-center gap-2 px-4 sm:px-6">
+      <div class="app-nav-burger">
+        <button
+          type="button"
+          class="btn btn-square btn-ghost"
+          aria-label="Open navigation"
+          aria-controls="app-drawer-sidebar"
+          :aria-expanded="open"
+          data-testid="nav-burger"
+          @click="toggle"
+        >
+          <menu-icon class="size-6" />
+        </button>
+      </div>
 
-      <v-button
-        as="a"
-        variant="secondary"
-        :href="histoireUrl()"
-        target="_blank"
-        class="header-link header-link__with-icon"
-      >
-        <external-link-icon />
-        Histoire
-      </v-button>
+      <div class="flex-1 font-semibold">
+        Playground
+      </div>
 
-      <v-button
-        class="toggle-theme"
+      <button
+        type="button"
+        class="btn btn-square btn-ghost"
         data-testid="toggle-theme"
+        aria-label="Toggle theme"
         @click="theme.toggleTheme"
       >
         <moon-icon
           v-if="theme.theme.value === 'dark'"
-          class="text-xl"
+          class="size-5"
         />
         <sun-icon
           v-else
-          class="text-xl"
+          class="size-5"
         />
-      </v-button>
-    </nav>
+      </button>
+    </div>
   </header>
 </template>
 
 <script setup lang="ts">
-import { useTheme, VButton } from '@vue-workspace/ui'
-import { RouterLink, useRoute } from 'vue-router'
-import ExternalLinkIcon from '~icons/heroicons-outline/external-link'
+import { useTheme } from '@vue-workspace/ui'
+import MenuIcon from '~icons/heroicons-outline/menu'
 import MoonIcon from '~icons/heroicons-outline/moon'
 import SunIcon from '~icons/heroicons-outline/sun'
-import { RoutePath } from '@/libs/router'
 
-const route = useRoute()
+defineProps<{
+  open: boolean
+  toggle: () => void
+}>()
+
 const theme = useTheme()
-
-function histoireUrl() {
-  if (import.meta.env.DEV) return 'http://localhost:6006'
-  return '/vue-template/histoire'
-}
 </script>
-
-<style scoped lang="scss">
-.header {
-  border-bottom: 1px solid hsl(var(--border));
-  background-color: hsl(var(--primary-foreground));
-  padding: 8px 16px;
-
-  &-nav {
-    display: flex;
-    flex-wrap: wrap;
-    align-items: center;
-    gap: 8px;
-    height: 100%;
-  }
-
-  &-link {
-    text-decoration: none;
-
-    &__with-icon {
-      display: flex;
-      align-items: center;
-      gap: 4px;
-    }
-  }
-}
-
-.toggle-theme {
-  --button-padding: 0.625rem;
-  margin-left: auto;
-}
-</style>
