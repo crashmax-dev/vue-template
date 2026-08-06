@@ -4,16 +4,62 @@ on:
   push:
     branches:
       - master
+  pull_request:
+    branches:
+      - master
+  workflow_dispatch:
 
 permissions:
-  id-token: write
   contents: write
+  pages: write
+  id-token: write
+
+concurrency:
+  group: ci-${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
 
 env:
   TURBO_TELEMETRY_DISABLED: 1
 
 jobs:
+  check:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v6
+
+      - name: Caching for Turborepo
+        uses: rharkor/caching-for-turbo@v2.3.11
+
+      - name: Install pnpm
+        uses: pnpm/action-setup@v4
+
+      - name: Install Node.js
+        uses: actions/setup-node@v6
+        with:
+          node-version: 22
+          cache: pnpm
+
+      - name: Install dependencies
+        run: pnpm install
+
+      - name: Install Playwright Chromium
+        run: pnpm exec playwright install --with-deps chromium
+
+      - name: Lint
+        run: pnpm lint
+
+      - name: Type-check
+        run: pnpm type-check
+
+      - name: Test
+        run: |
+          pnpm test
+          pnpm test:browser
+
   build-and-deploy:
+    if: github.event_name == 'push' && github.ref == 'refs/heads/master'
+    needs: check
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
