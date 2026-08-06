@@ -98,19 +98,19 @@ function variantClass(variant: ToastVariant) {
 
 .ui-toaster__item {
   display: flex !important;
-  width: 100%;
-  align-items: center;
-  justify-content: space-between;
-  gap: 0.75rem;
   grid-template-columns: none !important;
+  justify-content: space-between;
+  align-items: center;
+  gap: 0.75rem;
+  width: 100%;
 }
 
 .ui-toaster__body {
   display: flex;
-  min-width: 0;
   flex: 1 1 auto;
   flex-direction: column;
   gap: 0.125rem;
+  min-width: 0;
   overflow-wrap: anywhere;
 }
 

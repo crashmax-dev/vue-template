@@ -22,15 +22,15 @@ export interface ToastRecord {
   createdAt: number
 }
 
-export type ToastPlacement =
-  | 'top-start'
-  | 'top-center'
-  | 'top-end'
-  | 'middle-start'
-  | 'middle-center'
-  | 'middle-end'
-  | 'bottom-start'
-  | 'bottom-center'
-  | 'bottom-end'
+export type ToastPlacement
+  = | 'top-start'
+    | 'top-center'
+    | 'top-end'
+    | 'middle-start'
+    | 'middle-center'
+    | 'middle-end'
+    | 'bottom-start'
+    | 'bottom-center'
+    | 'bottom-end'
 
 export type ToastHelperOptions = Omit<ToastInput, 'message' | 'variant'>

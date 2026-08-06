@@ -83,10 +83,10 @@
 
 /* Shared page column — header + content use the same shell. */
 .app-shell {
-  width: 100%;
-  max-width: 64rem;
   margin-inline: auto;
   padding-inline: 1rem;
+  width: 100%;
+  max-width: 64rem;
 }
 
 @media (width >= 40rem) {

@@ -110,17 +110,17 @@ function onHeaderClick(column: Column<TData, unknown>) {
 */
 .ui-table {
   box-sizing: border-box;
-  width: 100%;
-  height: 100%;
-  min-width: 0;
-  min-height: 0;
-  overflow: auto;
-  border-radius: var(--radius-box);
-  border: 1px solid var(--color-base-300);
-  background-color: var(--color-base-200);
   box-shadow:
     0 1px 0 color-mix(in oklab, var(--color-base-content) 6%, transparent),
     0 8px 24px -16px color-mix(in oklab, #000 55%, transparent);
+  border: 1px solid var(--color-base-300);
+  border-radius: var(--radius-box);
+  background-color: var(--color-base-200);
+  width: 100%;
+  min-width: 0;
+  height: 100%;
+  min-height: 0;
+  overflow: auto;
 }
 
 .ui-table__table {

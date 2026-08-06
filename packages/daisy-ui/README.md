@@ -8,14 +8,14 @@ The consumer app must `@source` this package so Tailwind picks up class names.
 
 ```ts
 import {
-  UiSelect,
-  UiTable,
-  UiToaster,
   createColumnHelper,
   dismissAllToasts,
   dismissToast,
   getCoreRowModel,
   toast,
+  UiSelect,
+  UiTable,
+  UiToaster,
   useToasts,
   useVueTable,
 } from '@vue-workspace/daisy-ui'

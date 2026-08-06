@@ -126,4 +126,9 @@ export default antfu({
       'style/arrow-parens': 'off',
     },
   },
+}).append({
+  files: ['**/*.md/**'],
+  rules: {
+    'unused-imports/no-unused-imports': 'off',
+  },
 })

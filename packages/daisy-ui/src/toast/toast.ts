@@ -53,8 +53,7 @@ function push(input: ToastInput | string): string {
 }
 
 function createHelper(variant: ToastVariant) {
-  return (message: string, options: ToastHelperOptions = {}) =>
-    push({ ...options, message, variant })
+  return (message: string, options: ToastHelperOptions = {}) => push({ ...options, message, variant })
 }
 
 export interface ToastApi {
@@ -88,7 +87,7 @@ export function useToasts() {
   return readonly(toasts)
 }
 
-/** @internal test helper */
+/** @internal */
 export function __resetToastsForTests() {
   dismissAllToasts()
 }
