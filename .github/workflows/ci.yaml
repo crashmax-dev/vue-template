@@ -5,10 +5,18 @@ on:
     branches:
       - master
   pull_request:
+    branches:
+      - master
+  workflow_dispatch:
 
 permissions:
-  id-token: write
   contents: write
+  pages: write
+  id-token: write
+
+concurrency:
+  group: ci-${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
 
 env:
   TURBO_TELEMETRY_DISABLED: 1
