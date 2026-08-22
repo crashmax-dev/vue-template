@@ -1,3 +1,5 @@
+
+
 # Vue 3 Template
 
 pnpm + Turborepo monorepo starter for Vue 3 apps with shared UI, OpenAPI client generation, MSW mocks, and dual Vitest (unit + browser).
@@ -41,7 +43,7 @@ pnpm dev
 | Target | URL | Command |
 |--------|-----|---------|
 | Playground | http://localhost:3000 | `pnpm dev:apps` / `pnpm --filter=@vue-workspace/playground dev` |
-| Daisy | http://localhost:3001 | same as above |
+| Daisy | http://localhost:3001 | `pnpm dev:apps` / `pnpm --filter=daisy dev` |
 | Histoire (UI) | http://localhost:6006 | `pnpm dev:ui` |
 
 GitHub Pages deploy layout (after push to `master`):
